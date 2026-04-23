@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* =========================================
+   PREMIUM SAAS VISUAL OVERHAUL
+   ========================================= */
+
+/* -- Global Background & Noise -- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* -- Glow Orbs -- */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+.glow-orb.purple { background: rgba(124, 58, 237, 0.4); }
+.glow-orb.pink { background: rgba(236, 72, 153, 0.3); }
+
+/* -- Glassmorphism Utilities -- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.08);
+}
+.glass-dark {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* -- Elite SVG System -- */
+svg {
+  stroke-width: 1.5px !important;
+}
+
+.icon-box {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+}
+
+/* -- Mega Menu Navbar Stabilizer -- */
+.nav-mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  z-index: -1;
+}
+
+.mega-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.mega-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: #7C3AED !important;
+}
+
+.premium-card:hover .icon-box {
+  transform: scale(1.1) translateY(-4px);
+  filter: drop-shadow(0 10px 15px rgba(124, 58, 237, 0.3));
+}
+
+/* -- Abstract Metaphors & Motion -- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* -- Card Upgrades -- */
+.premium-card {
+  background: #ffffff;
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  border-radius: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+.premium-ca.hover-up:hover {
+  transform: translateY(-8px);
+}
+
+.method-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .method-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-2x2-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .method-cards-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -15px rgba(124, 58, 237, 0.12);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* -- Interactive Component Overrides -- */
+.staggered-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.staggered-grid > div:nth-child(even) {
+  transform: translateY(2rem); /* Creates asymmetrical layout */
+}
+@media (max-width: 768px) {
+  .staggered-grid { grid-template-columns: 1fr; }
+  .staggered-grid > div:nth-child(even) { transform: translateY(0); }
+}
+
+/* Remove green text except on CTAs (Brand Rule constraint) */
+.result-number { color: #A855F7 !important; } /* Was green, now vivid purple */
+.offer-check { color: #A855F7 !important; }
+.comp-check { color: #A855F7 !important; }
+.industry-metric { background: #F3E8FF !important; color: #7C3AED !important; }
+.desktop-hidden {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  .desktop-hidden {
+    display: block !important;
+  }
+}
+
+/* -- TrustBar Overlap Effect -- */
+.trust-bar-overlap {
+  margin-top: -4rem; /* Overlap the hero section */
+  position: relative;
+  z-index: 10;
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+}
+
+/* =========================================
+   NAVBAR MEGA MENU SYSTEM
+   ========================================= */
+
+.nav-item-group {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.15s; /* Keep dropdown open for 150ms when mouse leaves */
+  padding: 1.5rem;
+  z-index: 1000;
+  min-width: max-content;
+}
+
+/* Bulletproof bridge spanning the empty space above the dropdown */
+.nav-mega-menu::before {
+  content: '';
+  position: absolute;
+  bottom: 100%; /* Sits exactly on top of the menu */
+  left: 0;
+  width: 100%;
+  height: 25px; /* Bridges 25px vertically upwards */
+}
+
+/* Hover exact bounds buffer to prevent mouse-leave flickering (fallback) */
+.nav-item-group::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+/* Removed CSS hover rules to allow React-driven delay states */
+
+.mega-menu-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: #111827;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.mega-menu-link:hover {
+  background: #F3F4F6;
+}
+
+.mega-menu-icon-box {
+  background: #F3E8FF;
+  color: #7C3AED;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mega-menu-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.mega-menu-desc {
+  color: #6B7280;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.mega-menu-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  color: #9CA3AF;
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+}
+
+.mega-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mega-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* Featured Card Specific Hover - No visibility loss */
+.mega-card-featured-hover:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.4) !important;
+  border-color: rgba(124, 58, 237, 0.5) !important;
+  filter: brightness(1.1);
+}
+
+.mega-card-hover:hover .mega-menu-icon-box {
+  background: #7C3AED !important;
+  color: white !important;
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
