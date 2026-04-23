@@ -97,7 +97,92 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
       .mobile-only { display:none; }
       @media(max-width:960px){ .ind-grid{grid-template-columns:1fr 1fr;} }
       @media(max-width:640px){ .ind-grid{grid-template-columns:1fr;} .ind-card{padding:1.5rem;} .mobile-only{display:block;} }
-    `}),(0,F.jsx)(`div`,{style:{position:`absolute`,inset:0,backgroundImage:`radial-gradient(rgba(168,85,247,.05) 1px,transparent 1px)`,backgroundSize:`36px 36px`,pointerEvents:`none`}}),(0,F.jsxs)(`div`,{style:{position:`relative`,zIndex:1},children:[(0,F.jsxs)(`div`,{style:{textAlign:`center`,marginBottom:`4rem`,padding:`0 2rem`},children:[(0,F.jsxs)($.div,{initial:{opacity:0,y:12},whileInView:{opacity:1,y:0},viewport:{once:!0},style:{display:`inline-flex`,alignItems:`center`,gap:`.5rem`,padding:`.28rem .9rem`,background:`rgba(168,85,247,.1)`,border:`1px solid rgba(168,85,247,.25)`,borderRadius:`99px`,marginBottom:`1rem`},children:[(0,F.jsx)(`div`,{style:{width:`6px`,height:`6px`,borderRadius:`50%`,background:`#A855F7`,boxShadow:`0 0 8px rgba(168,85,247,.8)`}}),(0,F.jsx)(`span`,{style:{fontSize:`.72rem`,fontWeight:800,color:`#C4B5FD`,letterSpacing:`.07em`,textTransform:`uppercase`},children:`Who We Help`})]}),(0,F.jsxs)($.h2,{initial:{opacity:0,y:14},whileInView:{opacity:1,y:0},viewport:{once:!0},transition:{delay:.1},style:{color:`white`,fontWeight:900,fontSize:`clamp(1.8rem,3vw,2.6rem)`,letterSpacing:`-.04em`,lineHeight:1.1,margin:`0 0 .75rem`},children:[`Built precisely for `,(0,F.jsx)(`br`,{className:`mobile-only`}),(0,F.jsx)(`span`,{style:{background:`linear-gradient(135deg,#A855F7,#EC4899)`,WebkitBackgroundClip:`text`,WebkitTextFillColor:`transparent`,backgroundClip:`text`},children:`Indian Businesses`})]}),(0,F.jsx)(`p`,{style:{color:`#64748B`,fontSize:`.92rem`,maxWidth:`600px`,margin:`0 auto`,lineHeight:1.6},children:`Our growth architecture is battle-tested across 6 high-competition domestic industries. We know what works.`})]}),(0,F.jsx)(`div`,{className:`ind-grid`,children:Eg.map((e,t)=>(0,F.jsxs)($.div,{className:`ind-card`,initial:{opacity:0,y:24},whileInView:{opacity:1,y:0},viewport:{once:!0},transition:{delay:t*.1,duration:.5},style:{boxShadow:`0 0 0 0 transparent`},onMouseEnter:t=>t.currentTarget.style.boxShadow=`0 15px 50px -15px ${e.glow}, inset 0 20px 40px -20px ${e.glow}`,onMouseLeave:e=>e.currentTarget.style.boxShadow=`none`,children:[(0,F.jsxs)(`div`,{style:{display:`flex`,alignItems:`center`,gap:`1rem`,marginBottom:`1.5rem`},children:[(0,F.jsx)(`div`,{style:{width:`48px`,height:`48px`,borderRadius:`14px`,background:`${e.color}15`,border:`1px solid ${e.color}33`,display:`flex`,alignItems:`center`,justifyContent:`center`,color:e.color,flexShrink:0},children:(0,F.jsx)(e.icon,{size:24,strokeWidth:2})}),(0,F.jsx)(`h3`,{style:{color:`white`,fontWeight:800,fontSize:`1.1rem`,margin:0,lineHeight:1.2,letterSpacing:`-.02em`},children:e.name})]}),(0,F.jsx)(`p`,{style:{color:`#94A3B8`,fontSize:`.9rem`,lineHeight:1.6,flex:1,margin:`0 0 2rem`},children:e.desc}),(0,F.jsxs)(`div`,{style:{display:`inline-block`,padding:`.4rem 1rem`,background:`${e.color}15`,border:`1px solid ${e.color}40`,color:e.color,borderRadius:`10px`,fontSize:`.78rem`,fontWeight:800,letterSpacing:`.03em`,textTransform:`uppercase`,alignSelf:`flex-start`},children:[`🎯 `,e.metric]})]},e.name))}),(0,F.jsx)(`div`,{style:{textAlign:`center`,marginTop:`4rem`},children:(0,F.jsxs)(`a`,{href:`/industries`,style:{display:`inline-flex`,alignItems:`center`,gap:`.5rem`,color:`#94A3B8`,fontSize:`.85rem`,fontWeight:600,textDecoration:`none`,transition:`color .2s`},onMouseEnter:e=>e.currentTarget.style.color=`white`,onMouseLeave:e=>e.currentTarget.style.color=`#94A3B8`,children:[`Explore all industry capabilities `,(0,F.jsx)(j,{size:14})]})})]})]}),Og=()=>(0,F.jsxs)(`section`,{style:{minHeight:`100vh`,padding:`8rem 0`,background:`#0a0a0a`,display:`flex`,alignItems:`center`,position:`relative`,overflow:`hidden`},children:[(0,F.jsx)(`div`,{style:{position:`absolute`,top:`50%`,right:`0%`,transform:`translate(50%, -50%)`,width:`800px`,height:`800px`,background:`radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(10,10,10,0) 70%)`,zIndex:0}}),(0,F.jsx)(`div`,{className:`section-container`,style:{position:`relative`,zIndex:1,width:`100%`,maxWidth:`1280px`,margin:`0 auto`},children:(0,F.jsxs)(`div`,{style:{display:`grid`,gridTemplateColumns:`minmax(0, 1fr) minmax(0, 1.2fr)`,gap:`6rem`,alignItems:`center`},children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`div`,{className:`section-label`,style:{color:`#34D399`,background:`rgba(16, 185, 129, 0.1)`,borderColor:`rgba(16, 185, 129, 0.2)`,marginBottom:`1.5rem`},children:`A Quick Message`}),(0,F.jsxs)(`h2`,{style:{color:`white`,fontSize:`3.5rem`,fontWeight:800,lineHeight:1.1,marginBottom:`1.5rem`,letterSpacing:`-0.02em`},children:[`Watch this before you `,(0,F.jsx)(`br`,{}),(0,F.jsx)(`span`,{className:`text-gradient-purple`,children:`book your audit.`})]}),(0,F.jsx)(`p`,{style:{color:`#9CA3AF`,fontSize:`1.2rem`,lineHeight:1.6,margin:`0 0 2.5rem`},children:`We are real people building systems for real businesses. No ghosting. No hidden fees. Just results.`}),(0,F.jsxs)(`div`,{style:{display:`flex`,flexDirection:`column`,alignItems:`flex-start`,gap:`1.5rem`},children:[(0,F.jsxs)(`a`,{href:`https://wa.me/917997001700?text=Hi! I just watched the video and I want to talk.`,target:`_blank`,rel:`noreferrer`,style:{display:`inline-flex`,alignItems:`center`,justifyContent:`center`,background:`#22C55E`,color:`white`,padding:`1.25rem 2.5rem`,borderRadius:`0.75rem`,textDecoration:`none`,transition:`background 0.2s`,fontWeight:700,fontSize:`1.05rem`,boxShadow:`0 4px 14px 0 rgba(34, 197, 94, 0.39)`},children:[`I've Seen Enough. Let's Talk. `,(0,F.jsx)(j,{size:18,style:{marginLeft:`0.5rem`}})]}),(0,F.jsxs)(`div`,{style:{display:`flex`,gap:`1.5rem`,color:`#6B7280`,fontSize:`0.95rem`,fontWeight:600},children:[(0,F.jsxs)(`span`,{style:{display:`flex`,alignItems:`center`,gap:`0.5rem`},children:[(0,F.jsx)(Cr,{size:16,color:`#10B981`}),` 100% Free Strategy`]}),(0,F.jsxs)(`span`,{style:{display:`flex`,alignItems:`center`,gap:`0.5rem`},children:[(0,F.jsx)(Cr,{size:16,color:`#10B981`}),` Talk to a real expert`]})]})]})]}),(0,F.jsx)(`div`,{className:`hover-up`,style:{position:`relative`,width:`100%`,borderRadius:`1.5rem`,overflow:`hidden`,boxShadow:`0 25px 50px -12px rgba(124,58,237,0.3)`,border:`1px solid rgba(124,58,237,0.2)`,backgroundColor:`#111827`},children:(0,F.jsx)(`video`,{autoPlay:!0,muted:!0,loop:!0,playsInline:!0,controlsList:`nodownload nofullscreen noremoteplayback`,style:{width:`100%`,height:`100%`,objectFit:`cover`,display:`block`,pointerEvents:`none`},poster:`/logo.webp`,children:(0,F.jsx)(`source`,{src:`/creativals.mp4`,type:`video/mp4`})})})]})})]}),kg=[{name:`Ramesh Kumar`,role:`Principal`,firm:`Sunrise Academy`,ava:`RK`,color:`#A855F7`,glow:`rgba(168,85,247,.2)`,result:`10x enquiries in 3 weeks`,text:`In 21 days, we went from 12 enquiries a month to over 140. Before Creativals, I was seriously considering cutting staff. Now we have a waitlist. This system is not a joke.`},{name:`Priya Sharma`,role:`Owner`,firm:`The Palm Resort Goa`,ava:`PS`,color:`#22C55E`,glow:`rgba(34,197,94,.2)`,result:`Bookings tripled. No OTAs.`,text:`We stopped paying Swiggy/MakeMyTrip. We stopped relying on walk-ins. The WhatsApp bot alone saves my team 3 hours every single day. I only wish I had found them sooner.`},{name:`Arjun Mehra`,role:`Founder`,firm:`StyleCraft Mumbai`,ava:`AM`,color:`#38BDF8`,glow:`rgba(56,189,248,.2)`,result:`112 leads from ₹4,000 spend`,text:`I was skeptical. Everyone promises leads, nobody delivers. But ₹4,000 in, I had 112 paying customer enquiries. I've not looked back. These guys genuinely know what they are doing.`}],Ag=()=>(0,F.jsxs)(`section`,{style:{background:`#04030F`,position:`relative`,overflow:`hidden`,padding:`5rem 0`},children:[(0,F.jsx)(`style`,{children:`
+    `}),(0,F.jsx)(`div`,{style:{position:`absolute`,inset:0,backgroundImage:`radial-gradient(rgba(168,85,247,.05) 1px,transparent 1px)`,backgroundSize:`36px 36px`,pointerEvents:`none`}}),(0,F.jsxs)(`div`,{style:{position:`relative`,zIndex:1},children:[(0,F.jsxs)(`div`,{style:{textAlign:`center`,marginBottom:`4rem`,padding:`0 2rem`},children:[(0,F.jsxs)($.div,{initial:{opacity:0,y:12},whileInView:{opacity:1,y:0},viewport:{once:!0},style:{display:`inline-flex`,alignItems:`center`,gap:`.5rem`,padding:`.28rem .9rem`,background:`rgba(168,85,247,.1)`,border:`1px solid rgba(168,85,247,.25)`,borderRadius:`99px`,marginBottom:`1rem`},children:[(0,F.jsx)(`div`,{style:{width:`6px`,height:`6px`,borderRadius:`50%`,background:`#A855F7`,boxShadow:`0 0 8px rgba(168,85,247,.8)`}}),(0,F.jsx)(`span`,{style:{fontSize:`.72rem`,fontWeight:800,color:`#C4B5FD`,letterSpacing:`.07em`,textTransform:`uppercase`},children:`Who We Help`})]}),(0,F.jsxs)($.h2,{initial:{opacity:0,y:14},whileInView:{opacity:1,y:0},viewport:{once:!0},transition:{delay:.1},style:{color:`white`,fontWeight:900,fontSize:`clamp(1.8rem,3vw,2.6rem)`,letterSpacing:`-.04em`,lineHeight:1.1,margin:`0 0 .75rem`},children:[`Built precisely for `,(0,F.jsx)(`br`,{className:`mobile-only`}),(0,F.jsx)(`span`,{style:{background:`linear-gradient(135deg,#A855F7,#EC4899)`,WebkitBackgroundClip:`text`,WebkitTextFillColor:`transparent`,backgroundClip:`text`},children:`Indian Businesses`})]}),(0,F.jsx)(`p`,{style:{color:`#64748B`,fontSize:`.92rem`,maxWidth:`600px`,margin:`0 auto`,lineHeight:1.6},children:`Our growth architecture is battle-tested across 6 high-competition domestic industries. We know what works.`})]}),(0,F.jsx)(`div`,{className:`ind-grid`,children:Eg.map((e,t)=>(0,F.jsxs)($.div,{className:`ind-card`,initial:{opacity:0,y:24},whileInView:{opacity:1,y:0},viewport:{once:!0},transition:{delay:t*.1,duration:.5},style:{boxShadow:`0 0 0 0 transparent`},onMouseEnter:t=>t.currentTarget.style.boxShadow=`0 15px 50px -15px ${e.glow}, inset 0 20px 40px -20px ${e.glow}`,onMouseLeave:e=>e.currentTarget.style.boxShadow=`none`,children:[(0,F.jsxs)(`div`,{style:{display:`flex`,alignItems:`center`,gap:`1rem`,marginBottom:`1.5rem`},children:[(0,F.jsx)(`div`,{style:{width:`48px`,height:`48px`,borderRadius:`14px`,background:`${e.color}15`,border:`1px solid ${e.color}33`,display:`flex`,alignItems:`center`,justifyContent:`center`,color:e.color,flexShrink:0},children:(0,F.jsx)(e.icon,{size:24,strokeWidth:2})}),(0,F.jsx)(`h3`,{style:{color:`white`,fontWeight:800,fontSize:`1.1rem`,margin:0,lineHeight:1.2,letterSpacing:`-.02em`},children:e.name})]}),(0,F.jsx)(`p`,{style:{color:`#94A3B8`,fontSize:`.9rem`,lineHeight:1.6,flex:1,margin:`0 0 2rem`},children:e.desc}),(0,F.jsxs)(`div`,{style:{display:`inline-block`,padding:`.4rem 1rem`,background:`${e.color}15`,border:`1px solid ${e.color}40`,color:e.color,borderRadius:`10px`,fontSize:`.78rem`,fontWeight:800,letterSpacing:`.03em`,textTransform:`uppercase`,alignSelf:`flex-start`},children:[`🎯 `,e.metric]})]},e.name))}),(0,F.jsx)(`div`,{style:{textAlign:`center`,marginTop:`4rem`},children:(0,F.jsxs)(`a`,{href:`/industries`,style:{display:`inline-flex`,alignItems:`center`,gap:`.5rem`,color:`#94A3B8`,fontSize:`.85rem`,fontWeight:600,textDecoration:`none`,transition:`color .2s`},onMouseEnter:e=>e.currentTarget.style.color=`white`,onMouseLeave:e=>e.currentTarget.style.color=`#94A3B8`,children:[`Explore all industry capabilities `,(0,F.jsx)(j,{size:14})]})})]})]}),Og=()=>(0,F.jsxs)(`section`,{style:{padding:`clamp(4rem,8vw,8rem) 0`,background:`#0a0a0a`,display:`flex`,alignItems:`center`,position:`relative`,overflow:`hidden`},children:[(0,F.jsx)(`style`,{children:`
+      .fv-wrap {
+        position: relative; zIndex: 1;
+        width: 100%; max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 clamp(1.25rem, 5vw, 4rem);
+      }
+      .fv-grid {
+        display: grid;
+        grid-template-columns: minmax(0,1fr) minmax(0,1.2fr);
+        gap: 5rem;
+        align-items: center;
+      }
+      .fv-video {
+        position: relative;
+        width: 100%;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(124,58,237,0.3);
+        border: 1px solid rgba(124,58,237,0.2);
+        background-color: #111827;
+        aspect-ratio: 16/9;
+      }
+      .fv-headline {
+        color: white;
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.02em;
+      }
+      .fv-body {
+        color: #9CA3AF;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.6;
+        margin: 0 0 2rem;
+      }
+      .fv-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #22C55E;
+        color: white;
+        padding: 1.1rem 2rem;
+        border-radius: 0.75rem;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 4px 14px 0 rgba(34,197,94,0.39);
+        width: 100%;
+        max-width: 360px;
+      }
+      .fv-cta:hover { background: #16a34a; transform: translateY(-2px); }
+      .fv-badges {
+        display: flex;
+        gap: 1.5rem;
+        color: #6B7280;
+        font-size: 0.9rem;
+        font-weight: 600;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 860px) {
+        .fv-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .fv-grid > div:last-child {
+          order: -1;
+        }
+        .fv-headline {
+          font-size: clamp(1.9rem, 7vw, 2.6rem);
+        }
+      }
+      @media (max-width: 480px) {
+        .fv-cta {
+          max-width: 100%;
+          font-size: 0.95rem;
+          padding: 1rem 1.5rem;
+        }
+        .fv-badges {
+          gap: 1rem;
+          font-size: 0.82rem;
+        }
+      }
+    `}),(0,F.jsx)(`div`,{style:{position:`absolute`,top:`50%`,right:`0%`,transform:`translate(50%, -50%)`,width:`700px`,height:`700px`,background:`radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(10,10,10,0) 70%)`,zIndex:0,pointerEvents:`none`}}),(0,F.jsx)(`div`,{className:`fv-wrap`,style:{position:`relative`,zIndex:1},children:(0,F.jsxs)(`div`,{className:`fv-grid`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`div`,{className:`section-label`,style:{color:`#34D399`,background:`rgba(16,185,129,0.1)`,borderColor:`rgba(16,185,129,0.2)`,marginBottom:`1.25rem`},children:`A Quick Message`}),(0,F.jsxs)(`h2`,{className:`fv-headline`,children:[`Watch this before you`,` `,(0,F.jsx)(`span`,{className:`text-gradient-purple`,children:`book your audit.`})]}),(0,F.jsx)(`p`,{className:`fv-body`,children:`We are real people building systems for real businesses. No ghosting. No hidden fees. Just results.`}),(0,F.jsxs)(`div`,{style:{display:`flex`,flexDirection:`column`,alignItems:`flex-start`,gap:`1.25rem`},children:[(0,F.jsxs)(`a`,{href:`https://wa.me/917997001700?text=Hi! I just watched the video and I want to talk.`,target:`_blank`,rel:`noreferrer`,className:`fv-cta`,children:[`I've Seen Enough. Let's Talk. `,(0,F.jsx)(j,{size:17,style:{marginLeft:`0.5rem`,flexShrink:0}})]}),(0,F.jsxs)(`div`,{className:`fv-badges`,children:[(0,F.jsxs)(`span`,{style:{display:`flex`,alignItems:`center`,gap:`0.4rem`},children:[(0,F.jsx)(Cr,{size:15,color:`#10B981`}),` 100% Free Strategy`]}),(0,F.jsxs)(`span`,{style:{display:`flex`,alignItems:`center`,gap:`0.4rem`},children:[(0,F.jsx)(Cr,{size:15,color:`#10B981`}),` Talk to a real expert`]})]})]})]}),(0,F.jsx)(`div`,{className:`fv-video`,children:(0,F.jsx)(`video`,{autoPlay:!0,muted:!0,loop:!0,playsInline:!0,controlsList:`nodownload nofullscreen noremoteplayback`,style:{width:`100%`,height:`100%`,objectFit:`cover`,display:`block`,pointerEvents:`none`},poster:`/logo.webp`,children:(0,F.jsx)(`source`,{src:`/creativals.mp4`,type:`video/mp4`})})})]})})]}),kg=[{name:`Ramesh Kumar`,role:`Principal`,firm:`Sunrise Academy`,ava:`RK`,color:`#A855F7`,glow:`rgba(168,85,247,.2)`,result:`10x enquiries in 3 weeks`,text:`In 21 days, we went from 12 enquiries a month to over 140. Before Creativals, I was seriously considering cutting staff. Now we have a waitlist. This system is not a joke.`},{name:`Priya Sharma`,role:`Owner`,firm:`The Palm Resort Goa`,ava:`PS`,color:`#22C55E`,glow:`rgba(34,197,94,.2)`,result:`Bookings tripled. No OTAs.`,text:`We stopped paying Swiggy/MakeMyTrip. We stopped relying on walk-ins. The WhatsApp bot alone saves my team 3 hours every single day. I only wish I had found them sooner.`},{name:`Arjun Mehra`,role:`Founder`,firm:`StyleCraft Mumbai`,ava:`AM`,color:`#38BDF8`,glow:`rgba(56,189,248,.2)`,result:`112 leads from ₹4,000 spend`,text:`I was skeptical. Everyone promises leads, nobody delivers. But ₹4,000 in, I had 112 paying customer enquiries. I've not looked back. These guys genuinely know what they are doing.`}],Ag=()=>(0,F.jsxs)(`section`,{style:{background:`#04030F`,position:`relative`,overflow:`hidden`,padding:`5rem 0`},children:[(0,F.jsx)(`style`,{children:`
       .test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1200px; margin:0 auto; padding:0 2rem; }
       .test-card { border-radius:20px; padding:2rem; border:1px solid rgba(255,255,255,.05); background:rgba(255,255,255,.02); display:flex; flex-direction:column; position:relative; overflow:hidden; transition:transform .3s; }
       .test-card:hover { transform:translateY(-8px); }
