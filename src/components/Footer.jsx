@@ -165,7 +165,10 @@ const Footer = () => {
         }
         @media(max-width:640px){
           .ftr-main-grid { grid-template-columns:1fr; }
-          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(255,255,255,0.05); align-items:center; text-align:center; padding:2rem 1.5rem; }
+          .ftr-brand-col p { margin-left:auto; margin-right:auto; }
+          .ftr-soc-wrap { justify-content:center; }
+          .ftr-stats-badge { margin-left:auto; margin-right:auto; align-items:center; display:flex; flex-direction:column; }
           .ftr-nav-col { grid-template-columns:repeat(3,1fr); gap:1rem; border-top:none; }
           .ftr-contact-col { grid-column:auto; grid-row:auto; border-top:1px solid rgba(255,255,255,0.05); }
           .ftr-goals-grid { grid-template-columns:1fr; max-width:360px; }
@@ -242,7 +245,7 @@ const Footer = () => {
           <p style={{ color:'#64748B', fontSize:'0.8rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:220 }}>
             We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
           </p>
-          <div style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
+          <div className="ftr-soc-wrap" style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
             {SOCIALS.map(({ Icon, href, color }) => (
               <a key={href} href={href} target="_blank" rel="noreferrer" className="ftr-soc">
                 <Icon size={13} color={color} />
@@ -250,9 +253,9 @@ const Footer = () => {
             ))}
           </div>
 
-          <div style={{ marginTop:'0.5rem', padding:'0.5rem 0.6rem', background:'rgba(124,58,237,0.06)', border:'1px solid rgba(124,58,237,0.12)', borderRadius:'0.6rem', width: 'fit-content' }}>
+          <div className="ftr-stats-badge" style={{ marginTop:'0.5rem', padding:'0.5rem 0.6rem', background:'rgba(124,58,237,0.06)', border:'1px solid rgba(124,58,237,0.12)', borderRadius:'0.6rem', width: 'fit-content' }}>
             <div style={{ fontSize:'0.55rem', color:'#A78BFA', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em' }}>160+ Clients · 6 Countries</div>
-            <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.3rem' }}>
+            <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.3rem', flexWrap:'wrap', justifyContent:'center' }}>
               {['IN','US','CA','AE','MY','AU'].map(c => (
                 <span key={c} style={{ fontSize:'0.5rem', fontWeight:800, color:'#374151', background:'rgba(255,255,255,0.05)', padding:'0.1rem 0.3rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
               ))}
