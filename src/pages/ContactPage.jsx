@@ -84,6 +84,19 @@ const ContactPage = () => {
 
   return (
     <div className="dark-page" style={{ background: '#050812', minHeight: '100vh', color: 'white', paddingTop: 80 }}>
+      <style>{`
+        .contact-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 3rem; }
+        .contact-goal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+        .contact-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        @media(max-width: 900px) {
+          .contact-hero-grid { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 2rem; }
+          .contact-form-grid { grid-template-columns: 1fr; gap: 3rem; }
+          .contact-goal-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 540px) {
+          .contact-goal-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
 
       {/* ── SCARCITY BANNER ── */}
       <div style={{ background: 'linear-gradient(90deg,#7C3AED,#A855F7,#EC4899)', padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.05em' }}>
@@ -94,7 +107,7 @@ const ContactPage = () => {
       </div>
 
       {/* ── HERO ── */}
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '5rem 2rem 3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+      <section className="contact-hero-grid">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.3rem 0.9rem', background: isOnline ? 'rgba(34,197,94,0.12)' : 'rgba(100,116,139,0.12)', border: `1px solid ${isOnline ? 'rgba(34,197,94,0.3)' : 'rgba(100,116,139,0.3)'}`, borderRadius: 99, marginBottom: '1.5rem' }}>
             <motion.div animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ width: 7, height: 7, borderRadius: '50%', background: isOnline ? '#22C55E' : '#64748B' }} />
@@ -185,7 +198,7 @@ const ContactPage = () => {
           <h2 style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 0.5rem' }}>What's your main goal?</h2>
           <p style={{ color: '#64748B', fontSize: '0.9rem' }}>Pick one — we'll tailor everything to your exact need.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1rem', marginBottom: '3rem' }}>
+        <div className="contact-goal-grid">
           {GOALS.map((g) => {
             const selected = goal?.label === g.label;
             return (
@@ -201,7 +214,7 @@ const ContactPage = () => {
         </div>
 
         {/* ── FORM ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
+        <div className="contact-form-grid">
           {/* What Happens Next */}
           <div>
             <h3 style={{ fontWeight: 800, fontSize: '1.15rem', marginBottom: '1.5rem', color: '#E2E8F0' }}>What happens after you message us?</h3>
