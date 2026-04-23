@@ -237,7 +237,7 @@ const Footer = () => {
         {/* Brand */}
         <div className="ftr-brand-col">
           <Link to="/" style={{ textDecoration:'none' }}>
-            <img src="/logo.webp" alt="Creativals" style={{ height:34, width:'auto' }} />
+            <img src="/logo_white.png" alt="Creativals" style={{ height:34, width:'auto' }} />
           </Link>
           <p style={{ color:'#64748B', fontSize:'0.8rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:220 }}>
             We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
