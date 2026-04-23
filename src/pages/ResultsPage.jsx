@@ -37,6 +37,17 @@ const ResultsPage = () => {
 
   return (
     <div style={{ background: '#02010A', minHeight: '100vh', color: 'white' }}>
+      <style>{`
+        .results-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .results-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .results-grid-3-last { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media(max-width: 1024px) {
+          .results-grid-3, .results-grid-3-last { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 768px) {
+          .results-grid-3, .results-grid-2, .results-grid-3-last { grid-template-columns: 1fr; }
+        }
+      `}</style>
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', overflow: 'hidden', padding: '8rem 2rem 5rem', textAlign: 'center' }}>
@@ -132,19 +143,19 @@ const ResultsPage = () => {
           </div>
 
           {/* Featured 3 (large) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '1.5rem' }}>
+          <div className="results-grid-3">
             {HERO_CASE_STUDIES.slice(0, 3).map((s, i) => (
               <CaseStudyCard key={s.id} study={s} index={i} size="large" />
             ))}
           </div>
 
           {/* Next 5 (normal, 2+3 grid) */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginBottom: '1.5rem' }}>
+          <div className="results-grid-2">
             {HERO_CASE_STUDIES.slice(3, 5).map((s, i) => (
               <CaseStudyCard key={s.id} study={s} index={i} />
             ))}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="results-grid-3-last">
             {HERO_CASE_STUDIES.slice(5, 8).map((s, i) => (
               <CaseStudyCard key={s.id} study={s} index={i} />
             ))}
