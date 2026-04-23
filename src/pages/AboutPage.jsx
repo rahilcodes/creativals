@@ -85,6 +85,22 @@ const AboutPage = () => {
 
   return (
     <div className="dark-page" style={{ background: '#050812', color: 'white', paddingTop: 80, minHeight: '100vh' }}>
+      <style>{`
+        .about-origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+        .about-mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+        .rahil-profile-col { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; }
+        .rahil-avatar { width: 140px; height: 140px; border-radius: 24px; overflow: hidden; margin-bottom: 1.5rem; }
+        .team-avatar { width: 100px; height: 100px; border-radius: 20px; overflow: hidden; margin-bottom: 1.5rem; }
+        @media (max-width: 900px) {
+          .about-origin-grid { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+          .about-mission-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+          .rahil-profile-col { width: 100%; }
+          .rahil-avatar { width: 100%; height: auto; aspect-ratio: 1/1; max-width: 100%; }
+          .team-avatar { width: 100%; height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius: 24px; }
+        }
+      `}</style>
 
       {/* ── HERO ── */}
       <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: 820, margin: '0 auto' }}>
@@ -121,7 +137,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── ORIGIN STORY ── */}
-      <section style={{ maxWidth: 1100, margin: '0 auto', padding: '6rem 2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+      <section className="about-origin-grid">
         <motion.div {...fin}>
           <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>The Origin Story</div>
           <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '1.5rem' }}>
@@ -202,8 +218,8 @@ const AboutPage = () => {
               <div style={{ padding: 'clamp(2rem, 5vw, 3.5rem)', display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                 
                 {/* Left Profile Section */}
-                <div style={{ width: 220, flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ width: 140, height: 140, borderRadius: 24, overflow: 'hidden', border: `2px solid ${rahil.color}40`, boxShadow: `0 0 32px -8px ${rahil.glow}`, marginBottom: '1.5rem' }}>
+                <div className="rahil-profile-col">
+                  <div className="rahil-avatar" style={{ border: `2px solid ${rahil.color}40`, boxShadow: `0 0 32px -8px ${rahil.glow}` }}>
                     <img src={rahil.avatar} alt={rahil.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ fontSize: '0.8rem', fontWeight: 800, color: rahil.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>{rahil.role}</div>
@@ -254,7 +270,7 @@ const AboutPage = () => {
               style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, overflow: 'hidden', position: 'relative' }}>
               <div style={{ height: 4, background: `linear-gradient(90deg,${member.color},transparent)` }} />
               <div style={{ padding: '2rem' }}>
-                <div style={{ width: 100, height: 100, borderRadius: 20, overflow: 'hidden', border: `2px solid ${member.color}40`, marginBottom: '1.5rem', boxShadow: `0 0 24px -6px ${member.glow}` }}>
+                <div className="team-avatar" style={{ border: `2px solid ${member.color}40`, boxShadow: `0 0 24px -6px ${member.glow}` }}>
                   <img src={member.avatar} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ fontSize: '0.75rem', fontWeight: 800, color: member.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.4rem' }}>{member.role}</div>
@@ -275,7 +291,7 @@ const AboutPage = () => {
 
       {/* ── MISSION & VISION ── */}
       <section style={{ padding: '4rem 2rem 6rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <div className="about-mission-grid">
           <motion.div {...fin} style={{ padding: '3rem', background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 24 }}>
             <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Our Mission</div>
             <p style={{ fontSize: '1.2rem', fontWeight: 700, color: '#E2E8F0', lineHeight: 1.65 }}>
