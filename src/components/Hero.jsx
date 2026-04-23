@@ -349,7 +349,7 @@ const Hero = () => {
           .icon-lbl { position:absolute; bottom:-17px; left:50%; transform:translateX(-50%); font-size:.57rem; font-weight:700; white-space:nowrap; letter-spacing:.04em; color:#4B5563; transition:color .2s; pointer-events:none; }
           .hero-section-mob { min-height:100vh; align-items:center; padding-top:80px; }
           @media(max-width:900px){ .hg{grid-template-columns:1fr;} .hr{display:none;} .hl{padding:2rem 0;} .hero-section-mob{min-height:unset!important; align-items:flex-start!important; padding-top:100px!important; padding-bottom:3rem!important;} }
-          @media(max-width:640px){ .hl{gap:.9rem; padding:1.5rem 0;} .hero-ctas{flex-direction:column; align-items:flex-start;} .hero-ctas a:first-child{text-align:left; justify-content:flex-start;} .hero-stats{gap:1.25rem; flex-wrap:wrap; justify-content:flex-start;} }
+          @media(max-width:640px){ .hl{gap:.9rem; padding:1.5rem 0;} .hero-ctas{flex-direction:column!important; align-items:flex-start!important; gap:1.25rem!important;} .hero-ctas a:first-child{width:auto!important;} .hero-stats{gap:1.25rem; flex-wrap:wrap; justify-content:flex-start!important;} }
           @media(max-width:480px){ .h1{font-size:clamp(2.2rem,9vw,2.6rem)!important; line-height:1.05!important;} .hg{padding:0 1.25rem;} }
         `}</style>
 
