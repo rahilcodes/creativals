@@ -335,10 +335,9 @@ const Hero = () => {
   return (
     <>
       {/* ══════ SCREEN 1: HERO ══════ */}
-      <section style={{
-        minHeight:'100vh', display:'flex', alignItems:'center',
+      <section className="hero-section-mob" style={{
+        display:'flex',
         position:'relative', overflow:'hidden',
-        paddingTop:'80px',
         background:'linear-gradient(140deg,#050411 0%,#0A0818 65%,#060C18 100%)',
       }}>
         <style>{`
@@ -348,7 +347,8 @@ const Hero = () => {
           .icon-abs { position:absolute; cursor:pointer; }
           .icon-abs img { width:100%; height:100%; object-fit:cover; border-radius:14px; transition:box-shadow .2s; }
           .icon-lbl { position:absolute; bottom:-17px; left:50%; transform:translateX(-50%); font-size:.57rem; font-weight:700; white-space:nowrap; letter-spacing:.04em; color:#4B5563; transition:color .2s; pointer-events:none; }
-          @media(max-width:900px){ .hg{grid-template-columns:1fr;} .hr{display:none;} .hl{padding:2rem 0;} }
+          .hero-section-mob { min-height:100vh; align-items:center; padding-top:80px; }
+          @media(max-width:900px){ .hg{grid-template-columns:1fr;} .hr{display:none;} .hl{padding:2rem 0;} .hero-section-mob{min-height:unset!important; align-items:flex-start!important; padding-top:100px!important; padding-bottom:3rem!important;} }
           @media(max-width:640px){ .hl{gap:.9rem; padding:1.5rem 0;} .hero-ctas{flex-direction:column; align-items:stretch; width:100%;} .hero-ctas a:first-child{text-align:center; justify-content:center;} .hero-stats{gap:1.25rem; flex-wrap:wrap;} }
           @media(max-width:480px){ .h1{font-size:clamp(2.2rem,9vw,2.6rem)!important; line-height:1.05!important;} .hg{padding:0 1.25rem;} }
         `}</style>
