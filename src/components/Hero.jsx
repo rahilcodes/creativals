@@ -349,8 +349,8 @@ const Hero = () => {
           .icon-abs img { width:100%; height:100%; object-fit:cover; border-radius:14px; transition:box-shadow .2s; }
           .icon-lbl { position:absolute; bottom:-17px; left:50%; transform:translateX(-50%); font-size:.57rem; font-weight:700; white-space:nowrap; letter-spacing:.04em; color:#4B5563; transition:color .2s; pointer-events:none; }
           @media(max-width:900px){ .hg{grid-template-columns:1fr;} .hr{display:none;} .hl{padding:2rem 0;} }
-          @media(max-width:640px){ .hl{gap:1rem;} .hero-ctas{flex-direction:column; align-items:flex-start;} .hero-stats{gap:1.25rem;} }
-          @media(max-width:480px){ .h1{font-size:2.1rem!important;} }
+          @media(max-width:640px){ .hl{gap:.9rem; padding:1.5rem 0;} .hero-ctas{flex-direction:column; align-items:stretch; width:100%;} .hero-ctas a:first-child{text-align:center; justify-content:center;} .hero-stats{gap:1.25rem; flex-wrap:wrap;} }
+          @media(max-width:480px){ .h1{font-size:clamp(2.2rem,9vw,2.6rem)!important; line-height:1.05!important;} .hg{padding:0 1.25rem;} }
         `}</style>
 
         {/* Grid lines */}
@@ -504,8 +504,9 @@ const Hero = () => {
           .s2-bento { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:0.75rem; }
           .s2-card { border-radius:1.1rem; padding:1rem 1.1rem; border:1px solid rgba(255,255,255,.05); display:flex; flex-direction:column; gap:.35rem; cursor:default; transition:transform .25s, box-shadow .25s; }
           .s2-card:hover { transform:translateY(-3px); }
-          @media(max-width:860px){ .s2-grid{grid-template-columns:1fr; gap:2.5rem;} .s2-grid>*:last-child{order:-1;} }
-          @media(max-width:540px){ .s2-form-row{flex-direction:column!important;} .s2-bento{grid-template-columns:1fr;} }
+          @media(max-width:860px){ .s2-grid{grid-template-columns:1fr; gap:2rem; padding:2rem 1.25rem;} .s2-grid>*:last-child{order:-1;} }
+          @media(max-width:540px){ .s2-form-row{flex-direction:column!important;} .s2-bento{grid-template-columns:1fr 1fr;} .s2-form-card{padding:1.25rem;} }
+          @media(max-width:400px){ .s2-bento{grid-template-columns:1fr;} }
         `}</style>
 
         {/* ── Background atmosphere ── */}

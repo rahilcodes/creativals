@@ -151,6 +151,30 @@ const Footer = () => {
         .cc { display:flex; align-items:center; gap:0.55rem; border-radius:0.7rem; padding:0.55rem 0.7rem; text-decoration:none; transition:all 0.18s; }
         .cc:hover { transform:translateX(3px); }
         @keyframes ftrPulse { 0%,100%{opacity:.4} 50%{opacity:.8} }
+        .ftr-main-grid { display:grid; grid-template-columns:1.2fr 2fr 1fr; border-bottom:1px solid rgba(255,255,255,0.05); }
+        .ftr-brand-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); border-right:1px solid rgba(255,255,255,0.05); display:flex; flex-direction:column; gap:1.25rem; }
+        .ftr-nav-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; border-right:1px solid rgba(255,255,255,0.05); }
+        .ftr-contact-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1rem,2vw,1.75rem); display:flex; flex-direction:column; gap:0.5rem; }
+        .ftr-goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.85rem; max-width:660px; margin:0 auto; }
+        .ftr-billion { font-size:clamp(3rem,8vw,6.5rem); font-weight:900; letter-spacing:-0.05em; line-height:1; margin-bottom:0.4rem; overflow:hidden; }
+        @media(max-width:900px){
+          .ftr-main-grid { grid-template-columns:1fr 1fr; }
+          .ftr-brand-col { border-right:1px solid rgba(255,255,255,0.05); }
+          .ftr-nav-col { grid-column:1/-1; border-right:none; border-top:1px solid rgba(255,255,255,0.05); }
+          .ftr-contact-col { grid-column:2/3; grid-row:1/2; border-left:none; border-top:none; }
+        }
+        @media(max-width:640px){
+          .ftr-main-grid { grid-template-columns:1fr; }
+          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+          .ftr-nav-col { grid-template-columns:repeat(3,1fr); gap:1rem; border-top:none; }
+          .ftr-contact-col { grid-column:auto; grid-row:auto; border-top:1px solid rgba(255,255,255,0.05); }
+          .ftr-goals-grid { grid-template-columns:1fr; max-width:360px; }
+        }
+        @media(max-width:480px){
+          .ftr-nav-col { grid-template-columns:repeat(2,1fr); }
+          .ftr-billion { font-size:clamp(2.4rem,11vw,3.5rem) !important; }
+          .cc { padding:0.6rem 0.7rem; }
+        }
       `}</style>
 
       {/* Galaxy background */}
@@ -161,23 +185,23 @@ const Footer = () => {
       </div>
 
       {/* ── ZONE 1: GALAXY HERO CTA ─────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'4rem clamp(1.5rem,6vw,6rem) 3rem', borderBottom:'1px solid rgba(255,255,255,0.05)', textAlign:'center' }}>
-        <div style={{ fontSize:'0.68rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem' }}>
+      <div style={{ position:'relative', zIndex:1, padding:'4rem clamp(1.25rem,5vw,6rem) 3rem', borderBottom:'1px solid rgba(255,255,255,0.05)', textAlign:'center' }}>
+        <div style={{ fontSize:'0.68rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem', flexWrap:'wrap' }}>
           <span style={{ width:7, height:7, borderRadius:'50%', background:'#22C55E', display:'inline-block', boxShadow:'0 0 10px #22C55E' }} />
           Now Accepting Clients · 6 Global Offices · Live Results
         </div>
 
-        <div style={{ fontSize:'clamp(3.5rem,8vw,6.5rem)', fontWeight:900, letterSpacing:'-0.05em', lineHeight:1, marginBottom:'0.4rem' }}>
-          <span style={{ background:'linear-gradient(135deg,#F59E0B 0%,#EC4899 50%,#7C3AED 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', filter:'drop-shadow(0 0 40px rgba(124,58,237,0.35))' }}>
+        <div className="ftr-billion">
+          <span style={{ background:'linear-gradient(135deg,#F59E0B 0%,#EC4899 50%,#7C3AED 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', filter:'drop-shadow(0 0 40px rgba(124,58,237,0.35))', display:'block', whiteSpace:'nowrap' }}>
             ₹1,000,000,000+
           </span>
         </div>
-        <div style={{ fontSize:'clamp(0.95rem,2vw,1.3rem)', fontWeight:600, color:'#334155', letterSpacing:'-0.02em', marginBottom:'2.5rem' }}>
+        <div style={{ fontSize:'clamp(0.85rem,2vw,1.3rem)', fontWeight:600, color:'#334155', letterSpacing:'-0.02em', marginBottom:'2.5rem' }}>
           Generated for our clients. And counting.
         </div>
 
         {/* 3-Goal cards */}
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'0.85rem', maxWidth:660, margin:'0 auto' }}>
+        <div className="ftr-goals-grid">
           {GOALS.map(({ Icon, label, sub, color, href }) => (
             <Link key={label} to={href}
               onMouseEnter={() => setHGoal(label)} onMouseLeave={() => setHGoal(null)}
@@ -208,10 +232,10 @@ const Footer = () => {
       <div style={{ position:'relative', zIndex:1 }}><WinTicker /></div>
 
       {/* ── ZONE 3: MAIN GRID ───────────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, display:'grid', gridTemplateColumns:'1.2fr 2fr 1fr', borderBottom:'1px solid rgba(255,255,255,0.05)' }}>
+      <div className="ftr-main-grid" style={{ position:'relative', zIndex:1 }}>
 
         {/* Brand */}
-        <div style={{ padding:'clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem)', borderRight:'1px solid rgba(255,255,255,0.05)', display:'flex', flexDirection:'column', gap:'1.25rem' }}>
+        <div className="ftr-brand-col">
           <Link to="/" style={{ textDecoration:'none' }}>
             <img src="/logo.webp" alt="Creativals" style={{ height:34, width:'auto' }} />
           </Link>
@@ -237,7 +261,7 @@ const Footer = () => {
         </div>
 
         {/* Nav */}
-        <div style={{ padding:'clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem)', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'2rem', borderRight:'1px solid rgba(255,255,255,0.05)' }}>
+        <div className="ftr-nav-col">
           {NAV_COLS.map(col => (
             <div key={col.label}>
               <div style={{ fontSize:'0.58rem', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.1em', color:'#374151', marginBottom:'1.1rem' }}>{col.label}</div>
@@ -249,7 +273,7 @@ const Footer = () => {
         </div>
 
         {/* Contact */}
-        <div style={{ padding:'clamp(1.5rem,2vw,1.5rem) clamp(1rem,2vw,1.75rem)', display:'flex', flexDirection:'column', gap:'0.5rem' }}>
+        <div className="ftr-contact-col">
           <div style={{ fontSize:'0.57rem', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.1em', color:'#374151', marginBottom:'0.4rem' }}>Get In Touch</div>
           <a href={WA_IN} target="_blank" rel="noreferrer" className="cc" style={{ background:'rgba(34,197,94,0.07)', border:'1px solid rgba(34,197,94,0.18)' }}>
             <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(34,197,94,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
