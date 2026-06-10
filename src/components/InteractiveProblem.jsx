@@ -231,7 +231,6 @@ const InteractiveProblem = () => {
                     boxShadow:`0 8px 24px -6px ${active.glow}`,
                   }}
                 >
-                  <img src="/logos/whatsapp.png" alt="WhatsApp" style={{ width:'18px', height:'18px', objectFit:'contain' }}/>
                   {active.action} <ArrowRight size={15}/>
                 </motion.a>
                 <span style={{ fontSize:'.7rem', color:'#374151', textAlign:'center', fontWeight:500 }}>

@@ -124,7 +124,6 @@ const Funnels = () => {
                 target="_blank" rel="noreferrer"
                 whileHover={{ scale:1.02 }} whileTap={{ scale:.97 }}
                 style={{ display:'inline-flex', alignItems:'center', gap:'.55rem', padding:'.85rem 1.5rem', background:`linear-gradient(135deg,${f.color},${f.color}bb)`, color:'white', fontWeight:700, fontSize:'.85rem', borderRadius:'12px', textDecoration:'none', boxShadow:`0 8px 24px -6px ${f.glow}` }}>
-                <img src="/logos/whatsapp.png" alt="" style={{ width:'16px', height:'16px', objectFit:'contain' }}/>
                 Build my {f.title} <ArrowRight size={14}/>
               </motion.a>
             </motion.div>

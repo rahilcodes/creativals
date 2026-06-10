@@ -222,10 +222,9 @@ const ResultsPage = () => {
             href="https://wa.me/917997001700?text=Hi!%20I%20saw%20your%20results%20page%20and%20want%20a%20free%20growth%20audit."
             target="_blank" rel="noreferrer"
             whileHover={{ scale: 1.03, boxShadow: '0 15px 40px -10px rgba(34,197,94,.5)' }} whileTap={{ scale: .97 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#02010A', fontWeight: 900, fontSize: '1.1rem', borderRadius: 16, textDecoration: 'none', boxShadow: '0 10px 30px -10px rgba(34,197,94,.4)' }}>
-            <img src="/logos/whatsapp.png" alt="" style={{ width: 22, height: 22, objectFit: 'contain' }} />
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#ffffff', fontWeight: 900, fontSize: '1.1rem', borderRadius: 16, textDecoration: 'none', boxShadow: '0 10px 30px -10px rgba(34,197,94,.4)' }}>
             Get My Free Growth Audit
-            <ArrowRight size={20} color="#02010A" />
+            <ArrowRight size={20} color="#ffffff" />
           </motion.a>
           <div style={{ marginTop: '1.25rem', display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <span style={{ color: '#64748B', fontSize: '.82rem', fontWeight: 600 }}>✓ 100% Free · No obligation</span>

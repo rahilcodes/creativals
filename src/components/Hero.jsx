@@ -608,8 +608,6 @@ const Hero = () => {
                     animate={{ boxShadow:['0 0 20px -8px rgba(124,58,237,.4)','0 0 35px -5px rgba(124,58,237,.6)','0 0 20px -8px rgba(124,58,237,.4)'] }}
                     transition={{ duration:2.5, repeat:Infinity, ease:'easeInOut' }}
                     style={{ padding:'1.1rem', background:'linear-gradient(135deg,#7C3AED,#A855F7)', color:'white', fontWeight:800, borderRadius:'.85rem', border:'none', cursor:'pointer', display:'flex', justifyContent:'center', alignItems:'center', gap:'.6rem', fontSize:'1rem', letterSpacing:'-.01em' }}>
-                    {/* WhatsApp icon inline */}
-                    <svg width="18" height="18" viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="24" fill="rgba(255,255,255,0.15)"/><path d="M24 8C15.2 8 8 15.2 8 24c0 2.8.7 5.4 2 7.7L8 40l8.5-2A15.9 15.9 0 0024 40c8.8 0 16-7.2 16-16S32.8 8 24 8z" fill="white"/><path d="M32 28.2c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.7-.2-1 .2-.3.4-1.2 1.3-1.4 1.6-.3.3-.5.3-.9.1-2.6-1.3-4.3-2.3-6-5.2-.4-.8.4-.7 1.2-2.4.1-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.8-.7-.7-1-.7h-.9c-.3 0-.7.1-1 .4-1.4 1.5-1.4 3.5.1 5.6C20.1 25 22.2 29 27 30.6c1.5.5 2.6.5 3.6.3 1-.2 2.4-1 2.8-2 .4-.9.4-1.7.3-1.9z" fill="#22C55E"/></svg>
                     Get My Free Audit on WhatsApp <ArrowRight size={17}/>
                   </motion.button>
 

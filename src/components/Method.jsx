@@ -80,8 +80,7 @@ const Method = () => (
         style={{ textAlign:'center', marginTop:'2.5rem' }}>
         <a href="https://wa.me/917997001700?text=Hi!%20I%20want%20a%20free%20growth%20audit."
           target="_blank" rel="noreferrer"
-          style={{ display:'inline-flex', alignItems:'center', gap:'.55rem', padding:'.8rem 1.75rem', background:'rgba(168,85,247,.1)', border:'1px solid rgba(168,85,247,.25)', color:'#C4B5FD', borderRadius:'12px', fontWeight:700, fontSize:'.85rem', textDecoration:'none' }}>
-          <img src="/logos/whatsapp.png" alt="" style={{ width:'16px', height:'16px', objectFit:'contain' }}/>
+          style={{ display:'inline-flex', alignItems:'center', gap:'.55rem', padding:'.85rem 1.75rem', background:'linear-gradient(135deg,#7C3AED,#A855F7)', color:'#ffffff', borderRadius:'12px', fontWeight:700, fontSize:'.88rem', textDecoration:'none', boxShadow:'0 6px 24px -4px rgba(124,58,237,.4)' }}>
           Get this exact system built for my business <ArrowRight size={14}/>
         </a>
       </motion.div>
