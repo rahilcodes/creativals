@@ -1,53 +1,53 @@
 /*
   ╔══════════════════════════════════════════════════════════════════╗
-  ║        CREATIVALS — COMPLETE LIGHT THEME SYSTEM                  ║
+  ║        CREATIVALS — COMPLETE LIGHT THEME v2                      ║
   ║                                                                  ║
-  ║  Strategy: [data-theme="light"] on <html> (set in index.html)   ║
-  ║  Covers: ALL components, inline styles, bg colors, glow effects  ║
-  ║  Fonts: Uses clean Inter/Outfit — readable on all light surfaces ║
+  ║  Strategy: Element-based !important overrides (NOT inline-style  ║
+  ║  attribute selectors, which don't match React-rendered DOM)      ║
   ╚══════════════════════════════════════════════════════════════════╝
 */
 
-/* ═══════════════════════════════════════════════════════════════════
-   1. DESIGN TOKENS — Light palette
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] {
-  --lt-bg:          #F9F8FF;
-  --lt-bg-alt:      #F3F0FF;
-  --lt-bg-card:     #FFFFFF;
-  --lt-border:      rgba(124,58,237,0.1);
-  --lt-border-soft: rgba(0,0,0,0.06);
-  --lt-text:        #1A1040;
-  --lt-text-muted:  #5B6478;
-  --lt-text-subtle: #9CA3AF;
-  --lt-shadow:      0 4px 24px rgba(124,58,237,0.08);
-  --lt-shadow-md:   0 8px 40px rgba(124,58,237,0.12);
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --lt-bg:        #F9F8FF;
+  --lt-bg-alt:    #EEE9FF;
+  --lt-card:      #FFFFFF;
+  --lt-text:      #1A1040;
+  --lt-muted:     #4B5563;
+  --lt-subtle:    #6B7280;
+  --lt-border:    rgba(124, 58, 237, 0.12);
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   2. GLOBAL RESET — body & page backgrounds
-═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   1. BASE — Body & page wrapper
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] body {
   background: var(--lt-bg) !important;
   color: var(--lt-text) !important;
-  transition: background 0.3s, color 0.3s;
 }
 
 [data-theme="light"] #root,
-[data-theme="light"] .dark-page,
-[data-theme="light"] .min-h-screen {
+[data-theme="light"] .min-h-screen,
+[data-theme="light"] .dark-page {
   background: var(--lt-bg) !important;
   color: var(--lt-text) !important;
 }
 
-/* Every section with a dark background */
-[data-theme="light"] section {
-  color: var(--lt-text) !important;
+/* ═══════════════════════════════════════════════════════════════
+   2. GLOBAL TEXT — The core fix.
+   All p, span, div, li default to dark readable colors.
+   !important beats inline styles.
+   Brand-colored spans are excluded by later specific rules.
+═══════════════════════════════════════════════════════════════ */
+
+/* Paragraphs — always body text, always dark */
+[data-theme="light"] p {
+  color: var(--lt-muted) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   3. TYPOGRAPHY — Force dark text everywhere, clean font weights
-═══════════════════════════════════════════════════════════════════ */
+/* Headings — deep navy */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
@@ -58,418 +58,512 @@
   text-shadow: none !important;
 }
 
-/* Override the dark-page heading white rule */
-[data-theme="light"] .dark-page h1,
-[data-theme="light"] .dark-page h2,
-[data-theme="light"] .dark-page h3,
-[data-theme="light"] .dark-page h4 {
+/* Span text that carries body copy — muted readable */
+[data-theme="light"] section span,
+[data-theme="light"] section div > span {
+  color: var(--lt-muted) !important;
+}
+
+/* Strong tags inside paragraphs */
+[data-theme="light"] p strong,
+[data-theme="light"] p b {
   color: var(--lt-text) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   4. KILL ALL GLOW / TEXT-SHADOW EFFECTS
-═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   3. GRADIENT TEXT — Preserve brand gradient text spans
+   WebkitTextFillColor:transparent makes color irrelevant,
+   but we must NOT override it.
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="-webkit-text-fill-color: transparent"],
+[data-theme="light"] [style*="WebkitTextFillColor"],
+[data-theme="light"] [style*="webkitTextFillColor"] {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. KILL GLOWS & TEXT-SHADOW
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] * {
   text-shadow: none !important;
-}
-
-/* Kill box-glow effects (keep structural box-shadows) */
-[data-theme="light"] [style*="boxShadow"],
-[data-theme="light"] [style*="box-shadow"] {
   box-shadow: none !important;
 }
 
-/* Restore only structural shadows needed for cards */
-[data-theme="light"] .nav-bar {
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important;
-}
-[data-theme="light"] .ftr-soc {
-  box-shadow: none !important;
+/* Restore card box-shadows */
+[data-theme="light"] .nav-bar,
+[data-theme="light"] .faq-card,
+[data-theme="light"] .prob-card,
+[data-theme="light"] .mth-card,
+[data-theme="light"] .test-card,
+[data-theme="light"] .coi-card,
+[data-theme="light"] .cmp-table {
+  box-shadow: 0 2px 16px rgba(124, 58, 237, 0.07) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   5. NAVBAR
-═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   5. SECTION BACKGROUNDS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] section {
+  background: var(--lt-bg) !important;
+  color: var(--lt-text) !important;
+}
+
+[data-theme="light"] section:nth-child(even) {
+  background: var(--lt-bg-alt) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. NAVBAR
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] .nav-bar {
-  background: rgba(255,255,255,0.96) !important;
-  border: 1px solid rgba(124,58,237,0.1) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  border: 1px solid rgba(124, 58, 237, 0.1) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07) !important;
 }
 
 [data-theme="light"] .nav-mega-menu,
 [data-theme="light"] .nav-dropdown {
   background: #ffffff !important;
-  border-color: rgba(124,58,237,0.1) !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  border-color: rgba(124, 58, 237, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   6. HERO SECTION
-═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .nav-mega-menu p,
+[data-theme="light"] .nav-mega-menu span,
+[data-theme="light"] .nav-dropdown span {
+  color: var(--lt-muted) !important;
+}
+
+[data-theme="light"] .nav-mega-menu h3,
+[data-theme="light"] .nav-mega-menu h4 {
+  color: var(--lt-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   7. HERO SECTION
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] .hero-section-mob {
-  background: linear-gradient(140deg, #F3EEFF 0%, #FAF8FF 60%, #F0F4FF 100%) !important;
+  background: linear-gradient(140deg, #EDE8FF 0%, #FAF8FF 60%, #EEF2FF 100%) !important;
 }
 
-/* Hero icon label text */
 [data-theme="light"] .icon-lbl {
-  color: #5B6478 !important;
+  color: var(--lt-subtle) !important;
 }
 
-/* Hero tooltip / popup card */
-[data-theme="light"] [style*="rgba(10,10,25"] {
-  background: rgba(255,255,255,0.97) !important;
-  border: 1px solid rgba(124,58,237,0.15) !important;
+[data-theme="light"] .hero-section-mob p {
+  color: var(--lt-muted) !important;
+}
+
+/* Stats numbers in hero — keep them dark not muted */
+[data-theme="light"] .hero-stats div > div:first-child {
   color: var(--lt-text) !important;
 }
 
-/* Hero icon bubbles */
-[data-theme="light"] .icon-abs img {
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1)) !important;
-}
-
-/* Orb backgrounds → invisible on light */
-[data-theme="light"] [style*="radial-gradient(circle,rgba(124,58,237"] {
-  opacity: 0.25 !important;
-}
-[data-theme="light"] [style*="radial-gradient(circle,rgba(239,68,68"] {
-  opacity: 0.15 !important;
-}
-[data-theme="light"] [style*="radial-gradient(circle,rgba(34,197,94"] {
-  opacity: 0.15 !important;
-}
-[data-theme="light"] [style*="radial-gradient(circle,rgba(59,130,246"] {
-  opacity: 0.12 !important;
-}
-
-/* Hero background gradient lines/dots → very faint on light */
-[data-theme="light"] [style*="backgroundImage:'linear-gradient(rgba(124,58,237"],
-[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba"] {
-  opacity: 0.4 !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   7. INLINE BACKGROUND COLOR OVERRIDES
-   — Targeting hardcoded dark hex values used across all components
-═══════════════════════════════════════════════════════════════════ */
-
-/* Section wrappers with pure dark backgrounds */
-[data-theme="light"] section[style*="background:'#"],
-[data-theme="light"] section[style*='background:"#'],
-[data-theme="light"] div[style*="background:'#0"],
-[data-theme="light"] div[style*='background:"#0'] {
-  background: var(--lt-bg) !important;
-}
-
-/* Ultra-dark values: #02010A #04030F #050812 #060411 #060608 #070717 #0A0818 #0B0B1A #0D0D1A */
-[data-theme="light"] [style*="'#02010A'"],
-[data-theme="light"] [style*="'#04030F'"],
-[data-theme="light"] [style*="'#050812'"],
-[data-theme="light"] [style*="'#060411'"],
-[data-theme="light"] [style*="'#060608'"],
-[data-theme="light"] [style*="'#070717'"],
-[data-theme="light"] [style*="'#070718'"],
-[data-theme="light"] [style*="'#080814'"],
-[data-theme="light"] [style*="'#0A0818'"],
-[data-theme="light"] [style*="'#0B0B1A'"],
-[data-theme="light"] [style*="'#0D0D1A'"],
-[data-theme="light"] [style*="'#050411'"],
-[data-theme="light"] [style*="'#060410'"],
-[data-theme="light"] [style*="'#060608'"],
-[data-theme="light"] [style*="'#111'"],
-[data-theme="light"] [style*="'#0a0a0a'"] {
-  background: var(--lt-bg) !important;
+/* ═══════════════════════════════════════════════════════════════
+   8. CARD SURFACES — All dark-glass cards → white
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .prob-card,
+[data-theme="light"] .mth-card,
+[data-theme="light"] .test-card,
+[data-theme="light"] .coi-card,
+[data-theme="light"] .faq-card,
+[data-theme="light"] .fn-tab,
+[data-theme="light"] .ip-tab,
+[data-theme="light"] .ip-stat {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
   color: var(--lt-text) !important;
 }
 
-/* Dark linear-gradients used as section backgrounds */
-[data-theme="light"] [style*="linear-gradient(140deg,#050411"],
-[data-theme="light"] [style*="linear-gradient(135deg,#050811"],
-[data-theme="light"] [style*="linear-gradient(160deg,#04030F"] {
-  background: linear-gradient(140deg, #F3EEFF 0%, #FAF8FF 60%, #F0F4FF 100%) !important;
+/* ═══════════════════════════════════════════════════════════════
+   9. FAQ — Key fix: question & answer text
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .faq-card {
+  background: var(--lt-card) !important;
+  border: 1px solid var(--lt-border) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   8. TEXT COLOR OVERRIDES — white & near-white → dark
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="color:'white'"],
-[data-theme="light"] [style*='color:"white"'],
-[data-theme="light"] [style*="color:'#FFFFFF'"],
-[data-theme="light"] [style*="color:'#fff'"],
-[data-theme="light"] [style*="color:'#F1F5F9'"],
-[data-theme="light"] [style*="color:'#E2E8F0'"],
-[data-theme="light"] [style*="color:'#CBD5E1'"],
-[data-theme="light"] [style*="color:'#94A3B8'"],
-[data-theme="light"] [style*="color: white"],
-[data-theme="light"] [style*='color: "white"'] {
+/* Question text — dark whether open or closed */
+[data-theme="light"] .faq-btn span {
   color: var(--lt-text) !important;
 }
 
-/* Muted text → medium grey (readable on white) */
-[data-theme="light"] [style*="color:'#64748B'"],
-[data-theme="light"] [style*="color:'#6B7280'"],
-[data-theme="light"] [style*="color:'#475569'"],
-[data-theme="light"] [style*="color:'#374151'"],
-[data-theme="light"] [style*="color:'#4B5563'"],
-[data-theme="light"] [style*="color:'#9CA3AF'"] {
-  color: var(--lt-text-muted) !important;
+/* Answer text */
+[data-theme="light"] .faq-card div {
+  color: var(--lt-muted) !important;
 }
 
-/* Keep brand/accent colors — purple, green, orange, pink, blue */
-/* These look great on light backgrounds, no override needed */
-
-/* ═══════════════════════════════════════════════════════════════════
-   9. CARD SURFACES — dark transparent → white frosted
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="rgba(255,255,255,0.02)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.03)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.04)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.05)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.06)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.08)"],
-[data-theme="light"] [style*="rgba(255,255,255,.02)"],
-[data-theme="light"] [style*="rgba(255,255,255,.03)"],
-[data-theme="light"] [style*="rgba(255,255,255,.04)"],
-[data-theme="light"] [style*="rgba(255,255,255,.05)"],
-[data-theme="light"] [style*="rgba(255,255,255,.06)"],
-[data-theme="light"] [style*="rgba(255,255,255,.08)"] {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.1) !important;
+/* Chevron — use purple */
+[data-theme="light"] .faq-btn svg {
+  color: #7C3AED !important;
+  stroke: #7C3AED !important;
 }
 
-/* Dark gradient cards → white card */
-[data-theme="light"] [style*="linear-gradient(145deg,rgba(255,255,255,0.04)"] {
-  background: #ffffff !important;
-  border: 1px solid rgba(124,58,237,0.1) !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   10. BORDERS — white-transparent → purple-transparent
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.05)'"],
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,.05)'"],
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.06)'"],
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,.06)'"],
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.08)'"],
-[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.1)'"],
-[data-theme="light"] [style*="borderTop:'1px solid rgba(255,255,255"] ,
-[data-theme="light"] [style*="borderBottom:'1px solid rgba(255,255,255"] {
-  border-color: rgba(124,58,237,0.1) !important;
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   11. COMPARISON TABLE
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] .cmp-table {
-  border-color: rgba(124,58,237,0.1) !important;
-  box-shadow: 0 4px 32px rgba(124,58,237,0.08) !important;
-  background: #ffffff !important;
-}
-[data-theme="light"] .cmp-row {
-  border-color: rgba(124,58,237,0.07) !important;
-}
-[data-theme="light"] .cmp-cell-label { color: #5B6478 !important; }
-[data-theme="light"] .cmp-cell-typ   { color: #6B7280 !important; background: #fafafa !important; border-color: rgba(0,0,0,0.04) !important; }
-[data-theme="light"] .cmp-cell-cre   { color: var(--lt-text) !important; background: rgba(34,197,94,0.05) !important; border-color: rgba(34,197,94,0.15) !important; font-weight: 600 !important; }
-
-/* ═══════════════════════════════════════════════════════════════════
-   12. PROBLEM / INTERACTIVE PROBLEM
-═══════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   10. PROBLEM SECTION
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] .prob-card {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.08) !important;
+  background: var(--lt-card) !important;
+  border-color: rgba(124, 58, 237, 0.08) !important;
 }
-[data-theme="light"] .prob-card h3 { color: var(--lt-text) !important; }
 
-/* ═══════════════════════════════════════════════════════════════════
-   13. METHOD / STEP CARDS
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] .mth-card {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.08) !important;
-}
+[data-theme="light"] .prob-card h3 { color: var(--lt-text) !important; }
+[data-theme="light"] .prob-card p  { color: var(--lt-muted) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   11. METHOD CARDS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .mth-card { background: var(--lt-card) !important; }
+[data-theme="light"] .mth-card p { color: var(--lt-muted) !important; }
 [data-theme="light"] .mth-connector {
   background: linear-gradient(90deg, rgba(124,58,237,0.15), transparent) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   14. RESULTS / CASE STUDIES GRIDS
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] .results-grid-3 > *,
-[data-theme="light"] .results-grid-2 > *,
-[data-theme="light"] .results-grid-3-last > * {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.1) !important;
+/* ═══════════════════════════════════════════════════════════════
+   12. INTERACTIVE PROBLEM TABS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .ip-tab {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   15. FOOTER — Keep dark footer (elegant contrast)
-═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .ip-tab span {
+  color: var(--lt-muted) !important;
+}
+
+/* Active tab text override — keep brand color */
+[data-theme="light"] .ip-stat span:first-of-type {
+  /* value number — keep brand accent, don't override */
+}
+
+[data-theme="light"] .ip-stat span:last-of-type {
+  color: var(--lt-subtle) !important;
+}
+
+[data-theme="light"] .ip-stat {
+  background: rgba(124,58,237,0.04) !important;
+  border-color: var(--lt-border) !important;
+}
+
+/* The right strategy card */
+[data-theme="light"] .ip-grid > div:last-child p {
+  color: var(--lt-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   13. FUNNEL TABS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .fn-tab {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
+}
+
+[data-theme="light"] .fn-tab > div:last-child > div:first-child {
+  color: var(--lt-text) !important;
+}
+
+[data-theme="light"] .fn-step {
+  color: var(--lt-muted) !important;
+}
+
+[data-theme="light"] .fn-grid > div:last-child p {
+  color: var(--lt-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   14. COMPARISON TABLE
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .cmp-table {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
+}
+
+[data-theme="light"] .cmp-row { border-color: rgba(124,58,237,0.07) !important; }
+[data-theme="light"] .cmp-cell-label { color: var(--lt-subtle) !important; }
+[data-theme="light"] .cmp-cell-typ   { color: var(--lt-muted) !important; background: #f8f8fc !important; border-left-color: rgba(0,0,0,0.05) !important; }
+[data-theme="light"] .cmp-cell-cre   { color: var(--lt-text) !important; font-weight: 700 !important; background: rgba(34,197,94,0.05) !important; border-left-color: rgba(34,197,94,0.15) !important; }
+[data-theme="light"] .cmp-cell-cre p { color: var(--lt-text) !important; }
+
+/* Comparison heading text */
+[data-theme="light"] .cmp-table p { color: var(--lt-muted) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   15. TESTIMONIALS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .test-grid {
+  /* no bg override — section handles it */
+}
+
+[data-theme="light"] .test-card {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
+}
+
+[data-theme="light"] .test-card p   { color: var(--lt-muted) !important; }
+[data-theme="light"] .test-card div { color: var(--lt-text) !important; }
+
+/* Author name */
+[data-theme="light"] .test-card > div:last-child > div > div:first-child {
+  color: var(--lt-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   16. COST OF INACTION
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .coi-card {
+  background: var(--lt-card) !important;
+  border-color: rgba(239, 68, 68, 0.12) !important;
+}
+[data-theme="light"] .coi-card h3 { color: var(--lt-text) !important; }
+[data-theme="light"] .coi-card p  { color: var(--lt-muted) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   17. FOOTER — KEEP DARK (intentional contrast anchor)
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] footer {
   background: #1A1040 !important;
 }
-/* Override any light-theme text overrides inside footer */
-[data-theme="light"] footer h1,
-[data-theme="light"] footer h2,
-[data-theme="light"] footer h3,
-[data-theme="light"] footer h4,
-[data-theme="light"] footer span,
-[data-theme="light"] footer p,
-[data-theme="light"] footer a,
-[data-theme="light"] footer div {
+
+/* Prevent our light-theme rules from leaking into footer */
+[data-theme="light"] footer * {
   color: inherit !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   16. FORM INPUTS
-═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] footer p { color: inherit !important; }
+[data-theme="light"] footer span { color: inherit !important; }
+[data-theme="light"] footer h1, [data-theme="light"] footer h2,
+[data-theme="light"] footer h3, [data-theme="light"] footer h4 {
+  color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   18. FORM INPUTS
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] input,
 [data-theme="light"] textarea,
 [data-theme="light"] select {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.2) !important;
+  background: var(--lt-card) !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
   color: var(--lt-text) !important;
 }
+
 [data-theme="light"] input::placeholder,
 [data-theme="light"] textarea::placeholder {
   color: #9CA3AF !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   17. FAQ ACCORDION
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="rgba(255,255,255,0.03)"] {
-  background: #ffffff !important;
+/* ═══════════════════════════════════════════════════════════════
+   19. BADGE PILLS — small label chips throughout
+═══════════════════════════════════════════════════════════════ */
+/* Purple badges — keep color, make bg light */
+[data-theme="light"] [style*="rgba(124,58,237"] {
+  /* keep as-is — purple on white looks great */
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   18. PROCESS BAR
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="'#060410'"],
-[data-theme="light"] [style*="'#04030F'"] {
-  background: var(--lt-bg-alt) !important;
+/* Light purple text (#C4B5FD) in badges → use proper purple */
+[data-theme="light"] section span[style*="#C4B5FD"],
+[data-theme="light"] section div[style*="#C4B5FD"] {
+  color: #7C3AED !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   19. ABOUT / RESULTS / CONTACT PAGES
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] .about-origin-grid,
-[data-theme="light"] .about-mission-grid {
+/* ═══════════════════════════════════════════════════════════════
+   20. BADGE / SECTION LABEL SPANS (e.g. "Our Method", "The Real Problem")
+   These use colors like #C4B5FD, #FCA5A5, #86EFAC etc. which are 
+   light-on-dark colours. Map them to darker equivalents.
+═══════════════════════════════════════════════════════════════ */
+
+/* Light purple badge text → deep purple */
+[data-theme="light"] section [style*="color: #C4B5FD"],
+[data-theme="light"] section [style*="color:#C4B5FD"],
+[data-theme="light"] section [style*="color: rgb(196, 181, 253)"] {
+  color: #6D28D9 !important;
+}
+
+/* Light red badge text (#FCA5A5) → darker red */
+[data-theme="light"] section [style*="color: #FCA5A5"],
+[data-theme="light"] section [style*="color:#FCA5A5"],
+[data-theme="light"] section [style*="color: rgb(252, 165, 165)"] {
+  color: #DC2626 !important;
+}
+
+/* Light green badge text (#86EFAC) → darker green */
+[data-theme="light"] section [style*="color: #86EFAC"],
+[data-theme="light"] section [style*="color:#86EFAC"],
+[data-theme="light"] section [style*="color: rgb(134, 239, 172)"] {
+  color: #16A34A !important;
+}
+
+/* Neutral slate text (#94A3B8, #64748B, #6B7280) → readable dark */
+[data-theme="light"] section [style*="color: #94A3B8"],
+[data-theme="light"] section [style*="color:#94A3B8"],
+[data-theme="light"] section [style*="color: rgb(148, 163, 184)"],
+[data-theme="light"] section [style*="color: #64748B"],
+[data-theme="light"] section [style*="color:#64748B"],
+[data-theme="light"] section [style*="color: rgb(100, 116, 139)"],
+[data-theme="light"] section [style*="color: #6B7280"],
+[data-theme="light"] section [style*="color:#6B7280"],
+[data-theme="light"] section [style*="color: rgb(107, 114, 128)"] {
+  color: var(--lt-muted) !important;
+}
+
+/* Near-white text (#E2E8F0, #F1F5F9, #CBD5E1) → dark */
+[data-theme="light"] section [style*="color: #E2E8F0"],
+[data-theme="light"] section [style*="color:#E2E8F0"],
+[data-theme="light"] section [style*="color: rgb(226, 232, 240)"],
+[data-theme="light"] section [style*="color: #F1F5F9"],
+[data-theme="light"] section [style*="color:#F1F5F9"],
+[data-theme="light"] section [style*="color: #CBD5E1"],
+[data-theme="light"] section [style*="color:#CBD5E1"] {
   color: var(--lt-text) !important;
 }
 
-[data-theme="light"] .contact-hero-grid,
-[data-theme="light"] .contact-form-grid,
-[data-theme="light"] .contact-goal-grid button {
+/* White text */
+[data-theme="light"] section [style*="color: white"],
+[data-theme="light"] section [style*="color:white"],
+[data-theme="light"] section [style*="color: #fff"],
+[data-theme="light"] section [style*="color:#fff"],
+[data-theme="light"] section [style*="color: #FFFFFF"],
+[data-theme="light"] section [style*="color:#FFFFFF"] {
   color: var(--lt-text) !important;
 }
 
-[data-theme="light"] .contact-goal-grid button {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.1) !important;
+/* Dark text that's fine on dark but is already readable (#374151, #4B5563) */
+[data-theme="light"] section [style*="color: #374151"],
+[data-theme="light"] section [style*="color:#374151"],
+[data-theme="light"] section [style*="color: #4B5563"],
+[data-theme="light"] section [style*="color:#4B5563"] {
+  color: var(--lt-muted) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   20. SCROLLBAR — Light purple
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] ::-webkit-scrollbar { width: 6px; }
-[data-theme="light"] ::-webkit-scrollbar-track  { background: #F3F0FF; }
-[data-theme="light"] ::-webkit-scrollbar-thumb  { background: rgba(124,58,237,0.3); border-radius: 3px; }
-[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.5); }
-
-/* ═══════════════════════════════════════════════════════════════════
-   21. ALTERNATING SECTION TINT — gentle visual rhythm
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] section:nth-child(even) {
-  background: var(--lt-bg-alt) !important;
-}
-[data-theme="light"] section:nth-child(odd) {
+/* ═══════════════════════════════════════════════════════════════
+   21. SECTION DARK BACKGROUNDS → light
+   React renders background as 'background: #04030F' so we match
+   the actual attribute value format.
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] section[style*="#02010A"],
+[data-theme="light"] section[style*="#04030F"],
+[data-theme="light"] section[style*="#050812"],
+[data-theme="light"] section[style*="#060411"],
+[data-theme="light"] section[style*="#060608"],
+[data-theme="light"] section[style*="#070717"],
+[data-theme="light"] section[style*="#0A0818"],
+[data-theme="light"] section[style*="#0B0B1A"],
+[data-theme="light"] section[style*="#0D0D1A"],
+[data-theme="light"] section[style*="#0A0304"],
+[data-theme="light"] section[style*="#04030F"],
+[data-theme="light"] section[style*="#060410"] {
   background: var(--lt-bg) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   22. BADGE PILLS — dark transparent backgrounds → light tint
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="rgba(124,58,237,0.08)"],
-[data-theme="light"] [style*="rgba(124,58,237,.08)"] {
-  background: rgba(124,58,237,0.07) !important;
-}
-[data-theme="light"] [style*="rgba(124,58,237,0.12)"],
-[data-theme="light"] [style*="rgba(124,58,237,.12)"] {
-  background: rgba(124,58,237,0.08) !important;
-}
-[data-theme="light"] [style*="rgba(124,58,237,0.1)"],
-[data-theme="light"] [style*="rgba(124,58,237,.1)"] {
-  background: rgba(124,58,237,0.07) !important;
+/* ═══════════════════════════════════════════════════════════════
+   22. HERO BACKGROUND
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] section[style*="140deg,#050411"],
+[data-theme="light"] section[style*="linear-gradient(140deg,#050411"] {
+  background: linear-gradient(140deg, #EDE8FF 0%, #FAF8FF 60%, #EEF2FF 100%) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   23. TESTIMONIAL / PROOF CARDS
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="rgba(255,255,255,0.04)"] {
-  background: #ffffff !important;
-  border-color: rgba(124,58,237,0.1) !important;
+/* Orb decorations — dim on light */
+[data-theme="light"] div[style*="radial-gradient(circle,rgba(124,58,237"],
+[data-theme="light"] div[style*="radial-gradient(circle,rgba(239,68,68"],
+[data-theme="light"] div[style*="radial-gradient(circle,rgba(34,197,94"],
+[data-theme="light"] div[style*="radial-gradient(circle,rgba(59,130,246"],
+[data-theme="light"] div[style*="radial-gradient(circle,rgba(168,85,247"] {
+  opacity: 0.18 !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   24. WORLDMAP / GRID BACKGROUNDS
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba(124,58,237"],
-[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba(239,68,68"],
-[data-theme="light"] [style*="backgroundImage:'linear-gradient(rgba(124,58,237"] {
-  opacity: 0.35 !important;
+/* ═══════════════════════════════════════════════════════════════
+   23. CARD/SURFACE DARK GLASSES → white
+═══════════════════════════════════════════════════════════════ */
+
+/* Transparent dark glass cards (rgba(255,255,255, 0.02-0.08)) */
+[data-theme="light"] div[style*="rgba(255,255,255, 0.02)"],
+[data-theme="light"] div[style*="rgba(255,255,255, 0.03)"],
+[data-theme="light"] div[style*="rgba(255,255,255, 0.04)"],
+[data-theme="light"] div[style*="rgba(255,255,255, 0.05)"],
+[data-theme="light"] div[style*="rgba(255,255,255, 0.06)"],
+[data-theme="light"] div[style*="rgba(255,255,255, 0.08)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.02)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.03)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.04)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.05)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.06)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.08)"] {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   25. FONT PAIRING — Reinforce clean typography for light mode
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3 {
-  font-family: 'Outfit', sans-serif !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
+/* ═══════════════════════════════════════════════════════════════
+   24. RESULTS / CASE STUDY GRIDS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .results-grid-3 > *,
+[data-theme="light"] .results-grid-2 > *,
+[data-theme="light"] .results-grid-3-last > * {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
 }
 
-[data-theme="light"] p,
-[data-theme="light"] span,
-[data-theme="light"] li,
-[data-theme="light"] a {
-  font-family: 'Inter', sans-serif !important;
-}
-
-/* Subtle drop-shadow on headings for depth on light bg */
+/* ═══════════════════════════════════════════════════════════════
+   25. TYPOGRAPHY REFINEMENT
+═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] h1 { color: #1A1040 !important; }
 [data-theme="light"] h2 { color: #1F1050 !important; }
 [data-theme="light"] h3 { color: #252060 !important; }
 
-/* ═══════════════════════════════════════════════════════════════════
-   26. GRADIENT TEXT — keep brand gradients, they pop on light
-═══════════════════════════════════════════════════════════════════ */
-/* Gradient text spans have WebkitTextFillColor:transparent — leave them */
-/* They render beautifully over light backgrounds                         */
-
-/* ═══════════════════════════════════════════════════════════════════
-   27. CTA BUTTONS — keep brand colors, just remove glow
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="linear-gradient(135deg,#7C3AED,#A855F7)"] {
-  /* Keep purple gradient CTA */
-  box-shadow: 0 4px 16px rgba(124,58,237,0.25) !important;
-}
-[data-theme="light"] [style*="linear-gradient(135deg,#22C55E"] {
-  /* Keep green gradient CTA */
-  box-shadow: 0 4px 16px rgba(34,197,94,0.25) !important;
+/* Inter for body copy */
+[data-theme="light"] p,
+[data-theme="light"] li {
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.65 !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   28. WHATSAPP BUTTON — stays green, slight shadow only
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] [style*="background:'#25D366'"],
-[data-theme="light"] [style*='background:"#25D366"'] {
-  box-shadow: 0 4px 16px rgba(37,211,102,0.3) !important;
+/* ═══════════════════════════════════════════════════════════════
+   26. SCROLLBAR
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] ::-webkit-scrollbar { width: 6px; }
+[data-theme="light"] ::-webkit-scrollbar-track  { background: #EDE8FF; }
+[data-theme="light"] ::-webkit-scrollbar-thumb  { background: rgba(124,58,237,0.3); border-radius: 3px; }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.5); }
+
+/* ═══════════════════════════════════════════════════════════════
+   27. CONTACT PAGE
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .contact-goal-grid button {
+  background: var(--lt-card) !important;
+  border-color: var(--lt-border) !important;
+  color: var(--lt-text) !important;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   29. SMOOTH TRANSITION ON THEME
-═══════════════════════════════════════════════════════════════════ */
-[data-theme="light"] *:not([style*="animation"]):not(svg):not(path) {
+[data-theme="light"] .contact-goal-grid button span {
+  color: var(--lt-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   28. ABOUT PAGE
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] .about-origin-grid p,
+[data-theme="light"] .about-mission-grid p {
+  color: var(--lt-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   29. HERO BADGE AVATAR CIRCLES
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] div[style*="border: 2px solid #0A0818"] {
+  border-color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   30. SMOOTH TRANSITIONS
+═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] body,
+[data-theme="light"] section,
+[data-theme="light"] .faq-card,
+[data-theme="light"] .prob-card,
+[data-theme="light"] .mth-card,
+[data-theme="light"] .test-card,
+[data-theme="light"] .coi-card,
+[data-theme="light"] .cmp-table {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
