@@ -44,12 +44,12 @@ const CostOfInaction = () => (
         <motion.div initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
           style={{ display:'inline-flex', alignItems:'center', gap:'.5rem', padding:'.28rem .9rem', background:'rgba(239,68,68,.1)', border:'1px solid rgba(239,68,68,.25)', borderRadius:'99px', marginBottom:'1rem' }}>
           <div style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#EF4444', boxShadow:'0 0 8px rgba(239,68,68,.8)' }}/>
-          <span style={{ fontSize:'.72rem', fontWeight:800, color:'#FCA5A5', letterSpacing:'.07em', textTransform:'uppercase' }}>The Hidden Cost</span>
+          <span style={{ fontSize:'.72rem', fontWeight:800, color:'#DC2626', letterSpacing:'.07em', textTransform:'uppercase' }}>The Hidden Cost</span>
         </motion.div>
         <motion.h2 initial={{ opacity:0, y:14 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:.1 }}
-          style={{ color:'white', fontWeight:900, fontSize:'clamp(1.8rem,3vw,2.6rem)', letterSpacing:'-.04em', lineHeight:1.1, margin:'0 0 .75rem' }}>
+          style={{ color:'#1A1040', fontWeight:900, fontSize:'clamp(1.8rem,3vw,2.6rem)', letterSpacing:'-.04em', lineHeight:1.1, margin:'0 0 .75rem' }}>
           What is it costing you to<br/>
-          <span style={{ color:'#EF4444' }}>stay exactly where you are?</span>
+          <span style={{ color:'#DC2626' }}>stay exactly where you are?</span>
         </motion.h2>
         <p style={{ color:'#9CA3AF', fontSize:'.92rem', maxWidth:'600px', margin:'0 auto', lineHeight:1.6 }}>
           Doing nothing is never free. Every month you delay fixing your marketing, you are actively losing revenue, time, and market share to the competition.
@@ -64,13 +64,13 @@ const CostOfInaction = () => (
               <div style={{ width:'48px', height:'48px', borderRadius:'12px', background:'rgba(239,68,68,.1)', border:'1px solid rgba(239,68,68,.2)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
                 <c.Icon size={24} color="#EF4444" strokeWidth={2}/>
               </div>
-              <h3 style={{ color:'white', fontWeight:800, fontSize:'1.1rem', margin:0, lineHeight:1.2, letterSpacing:'-.02em' }}>{c.title}</h3>
+              <h3 style={{ color:'#1A1040', fontWeight:800, fontSize:'1.1rem', margin:0, lineHeight:1.2, letterSpacing:'-.02em' }}>{c.title}</h3>
             </div>
             <p style={{ color:'#94A3B8', fontSize:'.9rem', lineHeight:1.6, margin:0, flex:1, marginBottom:'2rem' }}>
               {c.desc}
             </p>
             <div style={{ background:'rgba(239,68,68,.08)', border:'1px dashed rgba(239,68,68,.3)', padding:'.85rem 1.25rem', borderRadius:'10px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-              <span style={{ color:'#FCA5A5', fontSize:'.75rem', fontWeight:700, textTransform:'uppercase', letterSpacing:'.05em' }}>Estimated Loss:</span>
+              <span style={{ color:'#B91C1C', fontSize:'.75rem', fontWeight:700, textTransform:'uppercase', letterSpacing:'.05em' }}>Estimated Loss:</span>
               <span style={{ color:'#EF4444', fontSize:'.95rem', fontWeight:900 }}>{c.cost}</span>
             </div>
           </motion.div>

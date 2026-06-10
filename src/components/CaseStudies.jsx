@@ -17,7 +17,7 @@ const CaseStudies = () => (
         <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.28rem .9rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', borderRadius: '99px', marginBottom: '1rem' }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', boxShadow: '0 0 8px rgba(245,158,11,.8)' }} />
-          <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#FCD34D', letterSpacing: '.07em', textTransform: 'uppercase' }}>Real Results · Real Businesses</span>
+          <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Real Results · Real Businesses</span>
         </motion.div>
         <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
           style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
@@ -39,7 +39,7 @@ const CaseStudies = () => (
       {/* See all button */}
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
         <motion.a href="/results" whileHover={{ scale: 1.03 }} whileTap={{ scale: .97 }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.9rem 2rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', color: '#FCD34D', fontWeight: 700, fontSize: '.88rem', borderRadius: 14, textDecoration: 'none' }}>
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.9rem 2rem', background: 'linear-gradient(135deg,#D97706,#F59E0B)', border: 'none', color: '#ffffff', fontWeight: 700, fontSize: '.88rem', borderRadius: 14, textDecoration: 'none', boxShadow: '0 6px 20px -4px rgba(217,119,6,.35)' }}>
           See all 160+ client results <ArrowRight size={15} />
         </motion.a>
       </div>

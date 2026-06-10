@@ -59,7 +59,7 @@ const ResultsPage = () => {
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.3rem 1rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', borderRadius: '99px', marginBottom: '1.5rem' }}>
             <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', boxShadow: '0 0 8px rgba(245,158,11,.8)' }} />
-            <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#FCD34D', letterSpacing: '.07em', textTransform: 'uppercase' }}>Proven Results · Real Businesses</span>
+            <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Proven Results · Real Businesses</span>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }}
@@ -131,10 +131,10 @@ const ResultsPage = () => {
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.28rem .9rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', borderRadius: '99px', marginBottom: '1rem' }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', boxShadow: '0 0 8px rgba(245,158,11,.8)' }} />
-              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#FCD34D', letterSpacing: '.07em', textTransform: 'uppercase' }}>Elite Case Studies</span>
+              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Elite Case Studies</span>
             </motion.div>
             <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
-              style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
+              style={{ color: '#1A1040', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
               Our most jaw-dropping transformations.
             </motion.h2>
             <p style={{ color: '#64748B', fontSize: '.92rem', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>

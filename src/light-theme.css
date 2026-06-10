@@ -614,3 +614,38 @@
 [data-theme="light"] .cmp-table {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }
+
+/* ---------------------------------------------------------------
+   31. GLOBAL DARK-ON-DARK COLOR TOKEN FIXES
+--------------------------------------------------------------- */
+[data-theme="light"] [style*="color: #FCD34D"],
+[data-theme="light"] [style*="color:#FCD34D"] { color: #B45309 !important; }
+[data-theme="light"] [style*="color: #FCA5A5"],
+[data-theme="light"] [style*="color:#FCA5A5"] { color: #DC2626 !important; }
+[data-theme="light"] [style*="color: #F87171"],
+[data-theme="light"] [style*="color:#F87171"] { color: #DC2626 !important; }
+[data-theme="light"] [style*="color: #86EFAC"],
+[data-theme="light"] [style*="color:#86EFAC"] { color: #15803D !important; }
+[data-theme="light"] [style*="color: #7DD3FC"],
+[data-theme="light"] [style*="color:#7DD3FC"] { color: #0369A1 !important; }
+[data-theme="light"] [style*="color: #67E8F9"],
+[data-theme="light"] [style*="color:#67E8F9"] { color: #0E7490 !important; }
+[data-theme="light"] [style*="color: #FED7AA"],
+[data-theme="light"] [style*="color:#FED7AA"] { color: #C2410C !important; }
+
+/* Ghost buttons -> solid */
+[data-theme="light"] a[style*="rgba(239,68,68,.12)"],
+[data-theme="light"] a[style*="rgba(239,68,68,0.12)"] {
+  background: linear-gradient(135deg,#DC2626,#EF4444) !important;
+  color: #ffffff !important; border-color: transparent !important;
+  box-shadow: 0 6px 20px -4px rgba(220,38,38,.35) !important;
+}
+[data-theme="light"] a[style*="rgba(239,68,68,.12)"] * { color: #ffffff !important; stroke: #ffffff !important; }
+
+[data-theme="light"] a[style*="rgba(245,158,11,.1)"],
+[data-theme="light"] a[style*="rgba(245,158,11,0.1)"] {
+  background: linear-gradient(135deg,#D97706,#F59E0B) !important;
+  color: #ffffff !important; border-color: transparent !important;
+  box-shadow: 0 6px 20px -4px rgba(217,119,6,.35) !important;
+}
+[data-theme="light"] a[style*="rgba(245,158,11,.1)"] * { color: #ffffff !important; stroke: #ffffff !important; }

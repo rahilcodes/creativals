@@ -49,11 +49,11 @@ const Problem = () => (
       <motion.div initial={{ opacity:0, x:-30 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }} transition={{ duration:.6 }}>
         <div style={{ display:'inline-flex', alignItems:'center', gap:'.5rem', padding:'.28rem .9rem', background:'rgba(239,68,68,.1)', border:'1px solid rgba(239,68,68,.3)', borderRadius:'99px', marginBottom:'1.25rem' }}>
           <div style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#EF4444', boxShadow:'0 0 8px rgba(239,68,68,.8)' }}/>
-          <span style={{ fontSize:'.72rem', fontWeight:800, color:'#FCA5A5', letterSpacing:'.07em', textTransform:'uppercase' }}>The Real Problem</span>
+          <span style={{ fontSize:'.72rem', fontWeight:800, color:'#DC2626', letterSpacing:'.07em', textTransform:'uppercase' }}>The Real Problem</span>
         </div>
-        <h2 style={{ color:'white', fontWeight:900, fontSize:'clamp(2rem,3.2vw,3rem)', letterSpacing:'-.04em', lineHeight:1.1, margin:'0 0 1rem' }}>
+        <h2 style={{ color:'#1A1040', fontWeight:900, fontSize:'clamp(2rem,3.2vw,3rem)', letterSpacing:'-.04em', lineHeight:1.1, margin:'0 0 1rem' }}>
           Your ads aren't the problem.<br/>
-          <span style={{ color:'#EF4444' }}>The system around them is.</span>
+          <span style={{ color:'#DC2626' }}>The system around them is.</span>
         </h2>
         <p style={{ color:'#64748B', fontSize:'.95rem', lineHeight:1.65, margin:'0 0 2rem', maxWidth:'380px' }}>
           Traffic is useless if it doesn't convert. If you recognise any of these three symptoms, you're actively bleeding revenue while your competitors scale.
@@ -62,7 +62,7 @@ const Problem = () => (
           href="https://wa.me/917997001700?text=Hi!%20I%20want%20a%20free%20growth%20audit."
           target="_blank" rel="noreferrer"
           whileHover={{ scale:1.04 }} whileTap={{ scale:.97 }}
-          style={{ display:'inline-flex', alignItems:'center', gap:'.55rem', padding:'.85rem 1.6rem', background:'rgba(239,68,68,.12)', border:'1px solid rgba(239,68,68,.35)', color:'#FCA5A5', borderRadius:'12px', fontWeight:700, fontSize:'.88rem', textDecoration:'none' }}>
+          style={{ display:'inline-flex', alignItems:'center', gap:'.55rem', padding:'.85rem 1.6rem', background:'linear-gradient(135deg,#DC2626,#EF4444)', border:'none', color:'#ffffff', borderRadius:'12px', fontWeight:700, fontSize:'.88rem', textDecoration:'none', boxShadow:'0 6px 20px -4px rgba(220,38,38,.35)' }}>
           Fix My System <ArrowRight size={15}/>
         </motion.a>
       </motion.div>
