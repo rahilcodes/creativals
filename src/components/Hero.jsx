@@ -288,12 +288,12 @@ const CountCard = ({ metric, index }) => {
       {/* Animated number */}
       <div style={{ display:'flex', alignItems:'baseline', gap:'.05rem', margin:'.15rem 0 .05rem', position:'relative', zIndex:1 }}>
         {metric.prefix && (
-          <span style={{ fontSize:'1.15rem', fontWeight:900, color: metric.color, letterSpacing:'-.02em' }}>{metric.prefix}</span>
+          <span style={{ fontSize:'1.15rem', fontWeight:900, color: '#111111', letterSpacing:'-.02em' }}>{metric.prefix}</span>
         )}
-        <span style={{ fontSize:'clamp(1.7rem,2.4vw,2.2rem)', fontWeight:900, color: '#1A1040', letterSpacing:'-.05em', lineHeight:1 }}>
+        <span style={{ fontSize:'clamp(1.7rem,2.4vw,2.2rem)', fontWeight:900, color: '#111111', letterSpacing:'-.05em', lineHeight:1 }}>
           {count}
         </span>
-        <span style={{ fontSize:'1.25rem', fontWeight:900, color: metric.color, letterSpacing:'-.04em' }}>{metric.suffix}</span>
+        <span style={{ fontSize:'1.25rem', fontWeight:900, color: '#111111', letterSpacing:'-.04em' }}>{metric.suffix}</span>
       </div>
 
       {/* Label */}
