@@ -240,63 +240,86 @@ const CountCard = ({ metric, index }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: metric.bg,
-        border: `1px solid ${hovered ? metric.color : metric.border}`,
+        background: `linear-gradient(145deg, ${metric.color}10 0%, white 60%)`,
+        border: `1.5px solid ${hovered ? metric.color : metric.color + '40'}`,
         boxShadow: hovered
-          ? `0 0 40px -8px ${metric.glow}, 0 20px 40px -12px rgba(0,0,0,.6)`
-          : `0 8px 32px -8px rgba(0,0,0,.4)`,
+          ? `0 8px 32px ${metric.color}30, 0 2px 8px rgba(0,0,0,.06)`
+          : `0 2px 12px ${metric.color}15, 0 1px 4px rgba(0,0,0,.04)`,
         transition: 'transform .25s, box-shadow .25s, border-color .25s',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {/* Icon + label row */}
-      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'.1rem' }}>
-        <div style={{ width:'28px', height:'28px', borderRadius:'8px', background:metric.bg, border:`1px solid ${metric.border}`, display:'flex', alignItems:'center', justifyContent:'center' }}>
-          <metric.Icon size={14} color={metric.color} strokeWidth={2.2}/>
+      {/* Colored top accent bar */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
+        background: `linear-gradient(90deg, ${metric.color}, ${metric.color}88)`,
+        borderRadius: '1.1rem 1.1rem 0 0',
+      }}/>
+
+      {/* Decorative corner circle */}
+      <div style={{
+        position:'absolute', top:'-20px', right:'-20px',
+        width:'80px', height:'80px', borderRadius:'50%',
+        background:`radial-gradient(circle, ${metric.color}20 0%, transparent 70%)`,
+        pointerEvents:'none',
+      }}/>
+
+      {/* Icon + LIVE badge row */}
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:'.25rem', position:'relative', zIndex:1 }}>
+        <div style={{
+          width:'32px', height:'32px', borderRadius:'10px',
+          background: `linear-gradient(135deg, ${metric.color}25, ${metric.color}10)`,
+          border:`1.5px solid ${metric.color}50`,
+          display:'flex', alignItems:'center', justifyContent:'center',
+          boxShadow: `0 2px 8px ${metric.color}20`,
+        }}>
+          <metric.Icon size={15} color={metric.color} strokeWidth={2.2}/>
         </div>
         <span style={{
-          fontSize:'.62rem', fontWeight:800, color: metric.color,
+          fontSize:'.62rem', fontWeight:800, color: '#ffffff',
           textTransform:'uppercase', letterSpacing:'.08em',
-          background:`${metric.glow}`, padding:'.2rem .55rem',
-          borderRadius:'99px', border:`1px solid ${metric.border}`,
+          background: metric.color, padding:'.22rem .6rem',
+          borderRadius:'99px',
+          boxShadow: `0 2px 8px ${metric.color}40`,
         }}>LIVE</span>
       </div>
 
       {/* Animated number */}
-      <div style={{ display:'flex', alignItems:'baseline', gap:'.05rem', margin:'.1rem 0 0' }}>
+      <div style={{ display:'flex', alignItems:'baseline', gap:'.05rem', margin:'.15rem 0 .05rem', position:'relative', zIndex:1 }}>
         {metric.prefix && (
-          <span style={{ fontSize:'1.1rem', fontWeight:900, color: metric.color, letterSpacing:'-.02em' }}>{metric.prefix}</span>
+          <span style={{ fontSize:'1.15rem', fontWeight:900, color: metric.color, letterSpacing:'-.02em' }}>{metric.prefix}</span>
         )}
-        <span style={{ fontSize:'clamp(1.6rem,2.2vw,2rem)', fontWeight:900, color: metric.color, letterSpacing:'-.05em', lineHeight:1 }}>
+        <span style={{ fontSize:'clamp(1.7rem,2.4vw,2.2rem)', fontWeight:900, color: '#1A1040', letterSpacing:'-.05em', lineHeight:1 }}>
           {count}
         </span>
-        <span style={{ fontSize:'1.2rem', fontWeight:900, color: metric.color, letterSpacing:'-.04em' }}>{metric.suffix}</span>
+        <span style={{ fontSize:'1.25rem', fontWeight:900, color: metric.color, letterSpacing:'-.04em' }}>{metric.suffix}</span>
       </div>
 
       {/* Label */}
-      <p style={{ fontSize:'.72rem', fontWeight:700, color:'#4B5563', margin:'0 0 .2rem', letterSpacing:'.01em', lineHeight:1.3 }}>
+      <p style={{ fontSize:'.73rem', fontWeight:800, color:'#1A1040', margin:'0 0 .2rem', letterSpacing:'.005em', lineHeight:1.3, position:'relative', zIndex:1 }}>
         {metric.label}
       </p>
 
-      {/* Story line — one line max */}
-      <p style={{ fontSize:'.68rem', color:'#4B5563', margin:'0 0 .4rem', lineHeight:1.4, overflow:'hidden', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical' }}>
+      {/* Story line */}
+      <p style={{ fontSize:'.67rem', color:'#6B7280', margin:'0 0 .55rem', lineHeight:1.4, overflow:'hidden', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical', position:'relative', zIndex:1 }}>
         {metric.story}
       </p>
 
       {/* Progress bar */}
-      <div style={{ position:'relative', height:'2px', background:'rgba(0,0,0,0.08)', borderRadius:'99px', overflow:'hidden' }}>
+      <div style={{ position:'relative', height:'3px', background:`${metric.color}18`, borderRadius:'99px', overflow:'hidden', position:'relative', zIndex:1 }}>
         <motion.div
           initial={{ width: '0%' }}
           animate={{ width: inView ? `${metric.bar}%` : '0%' }}
           transition={{ delay: index * 0.15 + 0.3, duration: 1.2, ease: 'easeOut' }}
           style={{
             position:'absolute', left:0, top:0, height:'100%',
-            background:`linear-gradient(90deg, ${metric.color}88, ${metric.color})`,
+            background:`linear-gradient(90deg, ${metric.color}99, ${metric.color})`,
             borderRadius:'99px',
-            boxShadow:`0 0 6px ${metric.color}`,
           }}
         />
       </div>
-      <span style={{ fontSize:'.58rem', color:'#4B5563', fontWeight:600 }}>
+      <span style={{ fontSize:'.6rem', color: metric.color, fontWeight:700, position:'relative', zIndex:1 }}>
         {metric.bar}% above industry avg.
       </span>
     </motion.div>
@@ -502,8 +525,8 @@ const Hero = () => {
           .s2-input:focus { border-color:rgba(124,58,237,.6); box-shadow:0 0 0 3px rgba(124,58,237,.1); }
           .s2-input::placeholder { color:#9CA3AF; }
           .s2-bento { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:0.75rem; }
-          .s2-card { border-radius:1.1rem; padding:1rem 1.1rem; border:1px solid rgba(0,0,0,.06); display:flex; flex-direction:column; gap:.35rem; cursor:default; transition:transform .25s, box-shadow .25s; background:#ffffff; }
-          .s2-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(124,58,237,.1); }
+          .s2-card { border-radius:1.1rem; padding:1.1rem; padding-top:1.25rem; border:1.5px solid rgba(0,0,0,.08); display:flex; flex-direction:column; gap:.3rem; cursor:default; transition:transform .25s, box-shadow .25s, border-color .25s; }
+          .s2-card:hover { transform:translateY(-4px); }
           @media(max-width:860px){ .s2-grid{grid-template-columns:1fr; gap:2rem; padding:2rem 1.25rem;} .s2-grid>*:last-child{order:-1;} }
           @media(max-width:540px){ .s2-form-row{flex-direction:column!important;} .s2-bento{grid-template-columns:1fr 1fr;} .s2-form-card{padding:1.25rem;} }
           @media(max-width:400px){ .s2-bento{grid-template-columns:1fr;} }
