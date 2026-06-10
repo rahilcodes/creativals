@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const FounderVideo = () => (
-  <section style={{ padding: 'clamp(4rem,8vw,8rem) 0', background: '#0a0a0a', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+  <section style={{ padding: 'clamp(4rem,8vw,8rem) 0', background: 'linear-gradient(160deg, #F5F3FF 0%, #EEF2FF 100%)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
     <style>{`
       .fv-wrap {
         position: relative; zIndex: 1;
@@ -27,7 +27,7 @@ const FounderVideo = () => (
         aspect-ratio: 16/9;
       }
       .fv-headline {
-        color: white;
+        color: #1A1040;
         font-size: clamp(2rem, 4.5vw, 3.5rem);
         font-weight: 800;
         line-height: 1.1;
@@ -35,7 +35,7 @@ const FounderVideo = () => (
         letter-spacing: -0.02em;
       }
       .fv-body {
-        color: #9CA3AF;
+        color: #4B5563;
         font-size: clamp(1rem, 2vw, 1.2rem);
         line-height: 1.6;
         margin: 0 0 2rem;
@@ -44,7 +44,7 @@ const FounderVideo = () => (
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: #22C55E;
+        background: linear-gradient(135deg, #7C3AED, #A855F7);
         color: white;
         padding: 1.1rem 2rem;
         border-radius: 0.75rem;
@@ -52,11 +52,11 @@ const FounderVideo = () => (
         transition: background 0.2s, transform 0.2s;
         font-weight: 700;
         font-size: 1rem;
-        box-shadow: 0 4px 14px 0 rgba(34,197,94,0.39);
+        box-shadow: 0 6px 24px -4px rgba(124,58,237,.4);
         width: 100%;
         max-width: 360px;
       }
-      .fv-cta:hover { background: #16a34a; transform: translateY(-2px); }
+      .fv-cta:hover { background: linear-gradient(135deg,#6D28D9,#9333EA); transform: translateY(-2px); }
       .fv-badges {
         display: flex;
         gap: 1.5rem;
@@ -98,7 +98,7 @@ const FounderVideo = () => (
 
         {/* Left: Text */}
         <div>
-          <div className="section-label" style={{ color: '#34D399', background: 'rgba(16,185,129,0.1)', borderColor: 'rgba(16,185,129,0.2)', marginBottom: '1.25rem' }}>
+          <div className="section-label" style={{ color: '#6D28D9', background: 'rgba(124,58,237,.08)', borderColor: 'rgba(124,58,237,.2)', marginBottom: '1.25rem', display:'inline-flex', alignItems:'center', padding:'.3rem .9rem', borderRadius:'99px', border:'1px solid rgba(124,58,237,.2)', fontSize:'.72rem', fontWeight:800, letterSpacing:'.07em', textTransform:'uppercase' }}>
             A Quick Message
           </div>
 
