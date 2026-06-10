@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 
 const SERVICE_COLORS = {
-  'Web Development': '#38BDF8',
-  'Marketing':       '#A855F7',
-  'Graphic Design':  '#F97316',
+  'Web Development': { text: '#0369A1', bg: '#E0F2FE', border: '#BAE6FD' },
+  'Marketing':       { text: '#6D28D9', bg: '#EDE9FE', border: '#C4B5FD' },
+  'Graphic Design':  { text: '#C2410C', bg: '#FFF7ED', border: '#FDBA74' },
 };
 
 const CaseStudyCard = ({ study, index = 0, size = 'normal' }) => {
@@ -13,85 +13,179 @@ const CaseStudyCard = ({ study, index = 0, size = 'normal' }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }} transition={{ delay: index * 0.12, duration: 0.55 }}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.12, duration: 0.55 }}
+      whileHover={{ y: -6 }}
       style={{
         borderRadius: 20,
-        border: `1px solid ${study.color}22`,
-        background: `linear-gradient(145deg, ${study.color}08 0%, rgba(255,255,255,.01) 100%)`,
-        display: 'flex', flexDirection: 'column',
-        overflow: 'hidden', position: 'relative',
+        border: `1.5px solid ${study.color}30`,
+        background: '#ffffff',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        position: 'relative',
         transition: 'transform .3s, box-shadow .3s',
         height: '100%',
+        boxShadow: `0 4px 24px ${study.color}12, 0 1px 4px rgba(0,0,0,.05)`,
       }}
-      whileHover={{ y: -6, boxShadow: `0 20px 60px -15px ${study.glow}` }}
     >
-      {/* Gold bar at top for Tier 1 */}
-      <div style={{ height: 3, background: `linear-gradient(90deg, ${study.color}, ${study.color}44)` }} />
+      {/* Bold colored top bar */}
+      <div style={{
+        height: 4,
+        background: `linear-gradient(90deg, ${study.color}, ${study.color}66)`,
+      }} />
 
-      {/* Header section */}
-      <div style={{ padding: isLarge ? '2rem 2rem 1.5rem' : '1.75rem 1.75rem 1.25rem' }}>
-        {/* Country + Category row */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '.5rem' }}>
-          <span style={{ fontSize: '.7rem', fontWeight: 800, color: study.color, textTransform: 'uppercase', letterSpacing: '.07em', background: `${study.color}15`, padding: '.25rem .75rem', borderRadius: '99px', border: `1px solid ${study.color}33` }}>
+      {/* Header — gradient tint bg */}
+      <div style={{
+        padding: isLarge ? '1.75rem 2rem 1.25rem' : '1.5rem 1.75rem 1rem',
+        background: `linear-gradient(160deg, ${study.color}10 0%, #ffffff 100%)`,
+        borderBottom: `1px solid ${study.color}18`,
+      }}>
+        {/* Category + Country */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '.85rem', flexWrap: 'wrap', gap: '.5rem' }}>
+          <span style={{
+            fontSize: '.65rem', fontWeight: 800, color: study.color,
+            textTransform: 'uppercase', letterSpacing: '.08em',
+            background: `${study.color}15`, padding: '.22rem .75rem',
+            borderRadius: '99px', border: `1px solid ${study.color}35`,
+          }}>
             {study.category}
           </span>
-          <span style={{ fontSize: '.8rem', color: '#4B5563', fontWeight: 600 }}>{study.country}</span>
+          <span style={{ fontSize: '.72rem', color: '#6B7280', fontWeight: 600 }}>{study.country}</span>
         </div>
 
         {/* Client Name */}
-        <h3 style={{ color: 'white', fontWeight: 900, fontSize: isLarge ? '1.6rem' : '1.2rem', letterSpacing: '-.03em', lineHeight: 1.15, margin: '0 0 .75rem' }}>
+        <h3 style={{
+          color: '#111111', fontWeight: 900,
+          fontSize: isLarge ? '1.55rem' : '1.2rem',
+          letterSpacing: '-.03em', lineHeight: 1.15, margin: '0 0 .6rem',
+        }}>
           {study.name}
         </h3>
 
-        {/* Headline */}
-        <p style={{ color: '#94A3B8', fontSize: isLarge ? '.95rem' : '.88rem', lineHeight: 1.6, margin: '0 0 1.25rem', fontStyle: 'italic' }}>
+        {/* Headline quote */}
+        <p style={{
+          color: study.color, fontSize: isLarge ? '.92rem' : '.84rem',
+          lineHeight: 1.55, margin: 0, fontStyle: 'italic', fontWeight: 600,
+          opacity: 0.85,
+        }}>
           "{study.headline}"
         </p>
       </div>
 
       {/* Stats row */}
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${study.stat3 ? 3 : 2}, 1fr)`, borderTop: `1px solid rgba(255,255,255,.05)`, borderBottom: `1px solid rgba(255,255,255,.05)` }}>
-        {[study.stat1, study.stat2, study.stat3].filter(Boolean).map((stat, i) => (
-          <div key={i} style={{ padding: '1rem .75rem', textAlign: 'center', borderRight: i < (study.stat3 ? 2 : 1) ? '1px solid rgba(255,255,255,.05)' : 'none' }}>
-            <div style={{ fontSize: isLarge ? '1.6rem' : '1.3rem', fontWeight: 900, color: study.color, lineHeight: 1, marginBottom: '.2rem' }}>{stat.v}</div>
-            <div style={{ fontSize: '.62rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '.05em', lineHeight: 1.3 }}>{stat.l}</div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${study.stat3 ? 3 : 2}, 1fr)`,
+        borderBottom: `1px solid ${study.color}15`,
+        background: `${study.color}06`,
+      }}>
+        {[study.stat1, study.stat2, study.stat3].filter(Boolean).map((stat, i, arr) => (
+          <div key={i} style={{
+            padding: '.9rem .6rem',
+            textAlign: 'center',
+            borderRight: i < arr.length - 1 ? `1px solid ${study.color}18` : 'none',
+          }}>
+            <div style={{
+              fontSize: isLarge ? '1.55rem' : '1.25rem',
+              fontWeight: 900, color: study.color,
+              lineHeight: 1, marginBottom: '.2rem',
+            }}>{stat.v}</div>
+            <div style={{
+              fontSize: '.58rem', fontWeight: 800, color: '#6B7280',
+              textTransform: 'uppercase', letterSpacing: '.06em', lineHeight: 1.3,
+            }}>{stat.l}</div>
           </div>
         ))}
       </div>
 
       {/* Before / After */}
-      <div style={{ padding: '1.25rem 1.75rem', flex: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '.85rem' }}>
-          <div style={{ display: 'flex', gap: '.75rem' }}>
-            <span style={{ fontSize: '.6rem', fontWeight: 800, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '.06em', flexShrink: 0, marginTop: '.15rem' }}>Before</span>
-            <p style={{ color: '#6B7280', fontSize: '.82rem', lineHeight: 1.5, margin: 0 }}>{study.before}</p>
-          </div>
-          <div style={{ display: 'flex', gap: '.75rem' }}>
-            <span style={{ fontSize: '.6rem', fontWeight: 800, color: '#22C55E', textTransform: 'uppercase', letterSpacing: '.06em', flexShrink: 0, marginTop: '.15rem' }}>After</span>
-            <p style={{ color: '#E2E8F0', fontSize: '.82rem', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>{study.after}</p>
-          </div>
+      <div style={{ padding: '1.1rem 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '.7rem' }}>
+        {/* BEFORE */}
+        <div style={{
+          display: 'flex', gap: '.75rem', alignItems: 'flex-start',
+          background: '#FEF2F2', borderRadius: 10, padding: '.65rem .85rem',
+          border: '1px solid #FECACA',
+        }}>
+          <span style={{
+            fontSize: '.58rem', fontWeight: 900, color: '#DC2626',
+            textTransform: 'uppercase', letterSpacing: '.08em',
+            flexShrink: 0, marginTop: '.15rem',
+            background: '#FEE2E2', padding: '.15rem .45rem',
+            borderRadius: '4px', border: '1px solid #FECACA',
+          }}>Before</span>
+          <p style={{ color: '#6B7280', fontSize: '.8rem', lineHeight: 1.5, margin: 0 }}>{study.before}</p>
+        </div>
+
+        {/* AFTER */}
+        <div style={{
+          display: 'flex', gap: '.75rem', alignItems: 'flex-start',
+          background: '#F0FDF4', borderRadius: 10, padding: '.65rem .85rem',
+          border: '1px solid #BBF7D0',
+        }}>
+          <span style={{
+            fontSize: '.58rem', fontWeight: 900, color: '#16A34A',
+            textTransform: 'uppercase', letterSpacing: '.08em',
+            flexShrink: 0, marginTop: '.15rem',
+            background: '#DCFCE7', padding: '.15rem .45rem',
+            borderRadius: '4px', border: '1px solid #BBF7D0',
+          }}>After</span>
+          <p style={{ color: '#374151', fontSize: '.8rem', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>{study.after}</p>
         </div>
       </div>
 
-      {/* Footer: Services + Timeline + CTA */}
-      <div style={{ padding: '1rem 1.75rem', borderTop: '1px solid rgba(255,255,255,.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '.75rem', background: 'rgba(0,0,0,.15)' }}>
-        <div style={{ display: 'flex', gap: '.4rem', flexWrap: 'wrap' }}>
-          {study.services.map(s => (
-            <span key={s} style={{ fontSize: '.6rem', fontWeight: 700, color: SERVICE_COLORS[s], background: `${SERVICE_COLORS[s]}12`, padding: '.2rem .5rem', borderRadius: '6px', border: `1px solid ${SERVICE_COLORS[s]}25`, textTransform: 'uppercase', letterSpacing: '.04em' }}>{s}</span>
-          ))}
+      {/* Footer */}
+      <div style={{
+        padding: '.85rem 1.75rem',
+        borderTop: `1px solid ${study.color}12`,
+        background: `${study.color}04`,
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap', gap: '.5rem',
+      }}>
+        <div style={{ display: 'flex', gap: '.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          {study.services.map(s => {
+            const sc = SERVICE_COLORS[s] || { text: '#6B7280', bg: '#F3F4F6', border: '#E5E7EB' };
+            return (
+              <span key={s} style={{
+                fontSize: '.58rem', fontWeight: 800,
+                color: sc.text, background: sc.bg,
+                padding: '.2rem .55rem', borderRadius: '6px',
+                border: `1px solid ${sc.border}`,
+                textTransform: 'uppercase', letterSpacing: '.05em',
+              }}>{s}</span>
+            );
+          })}
         </div>
-        <span style={{ fontSize: '.72rem', fontWeight: 700, color: study.color }}>⏱ {study.timeline}</span>
+        <span style={{
+          fontSize: '.68rem', fontWeight: 700, color: '#6B7280',
+          display: 'flex', alignItems: 'center', gap: '.3rem',
+        }}>
+          <Clock size={11} color="#9CA3AF" /> {study.timeline}
+        </span>
       </div>
 
-      {/* Hover CTA overlay */}
-      <motion.a
-        href={`https://wa.me/917997001700?text=Hi!%20I%20saw%20${encodeURIComponent(study.name)}'s%20case%20study%20and%20want%20similar%20results.`}
-        target="_blank" rel="noreferrer"
-        initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}
-        style={{ position: 'absolute', bottom: '4rem', right: '1.5rem', display: 'flex', alignItems: 'center', gap: '.4rem', padding: '.6rem 1rem', background: study.color, color: '#02010A', fontWeight: 800, fontSize: '.78rem', borderRadius: '10px', textDecoration: 'none', boxShadow: `0 8px 20px -6px ${study.glow}` }}>
-        Get these results <ArrowRight size={12} />
-      </motion.a>
+      {/* Always-visible CTA button */}
+      <div style={{ padding: '0 1.75rem 1.25rem' }}>
+        <motion.a
+          href={`https://wa.me/917997001700?text=Hi!%20I%20saw%20${encodeURIComponent(study.name)}'s%20case%20study%20and%20want%20similar%20results.`}
+          target="_blank" rel="noreferrer"
+          whileHover={{ scale: 1.02 }} whileTap={{ scale: .97 }}
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '.45rem',
+            padding: '.7rem 1.2rem',
+            background: `linear-gradient(135deg, ${study.color}, ${study.color}cc)`,
+            color: '#ffffff', fontWeight: 800, fontSize: '.8rem',
+            borderRadius: 12, textDecoration: 'none',
+            boxShadow: `0 4px 16px ${study.color}30`,
+            letterSpacing: '.01em',
+          }}
+        >
+          Get these results <ArrowRight size={13} />
+        </motion.a>
+      </div>
     </motion.div>
   );
 };
