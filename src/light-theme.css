@@ -418,14 +418,61 @@
   color: var(--lt-text) !important;
 }
 
-/* White text */
-[data-theme="light"] section [style*="color: white"],
-[data-theme="light"] section [style*="color:white"],
+/* White text — only apply to non-button/non-link elements */
+[data-theme="light"] section p[style*="color: white"],
+[data-theme="light"] section p[style*="color:white"],
+[data-theme="light"] section h1[style*="color: white"],
+[data-theme="light"] section h2[style*="color: white"],
+[data-theme="light"] section h3[style*="color: white"],
+[data-theme="light"] section h4[style*="color: white"],
+[data-theme="light"] section span[style*="color: white"],
+[data-theme="light"] section span[style*="color:white"],
+[data-theme="light"] section div[style*="color: white"],
+[data-theme="light"] section div[style*="color:white"],
 [data-theme="light"] section [style*="color: #fff"],
 [data-theme="light"] section [style*="color:#fff"],
 [data-theme="light"] section [style*="color: #FFFFFF"],
 [data-theme="light"] section [style*="color:#FFFFFF"] {
   color: var(--lt-text) !important;
+}
+
+/* ── CRITICAL: Buttons & links on colored backgrounds always keep WHITE text ── */
+[data-theme="light"] a[style*="background"],
+[data-theme="light"] button[style*="background"],
+[data-theme="light"] a[class*="btn"],
+[data-theme="light"] button[class*="btn"],
+[data-theme="light"] .cta-primary-btn,
+[data-theme="light"] .fv-cta {
+  color: #ffffff !important;
+}
+
+/* Specifically: purple gradient buttons */
+[data-theme="light"] a[style*="linear-gradient(135deg,#7C3AED"],
+[data-theme="light"] a[style*="linear-gradient(135deg, #7C3AED"],
+[data-theme="light"] button[style*="linear-gradient(135deg,#7C3AED"],
+[data-theme="light"] button[style*="linear-gradient(135deg, #7C3AED"],
+/* green gradient buttons */
+[data-theme="light"] a[style*="linear-gradient(135deg,#22C55E"],
+[data-theme="light"] a[style*="linear-gradient(135deg, #22C55E"],
+[data-theme="light"] button[style*="linear-gradient(135deg,#22C55E"],
+/* solid brand color buttons */
+[data-theme="light"] a[style*="background: #7C3AED"],
+[data-theme="light"] a[style*="background:#7C3AED"],
+[data-theme="light"] a[style*="background: #22C55E"],
+[data-theme="light"] a[style*="background:#22C55E"],
+[data-theme="light"] a[style*="background: #16A34A"],
+[data-theme="light"] a[style*="background:#16A34A"],
+/* any colored fn/funnel CTA */
+[data-theme="light"] a[style*="linear-gradient(135deg,#A855F7"],
+[data-theme="light"] a[style*="linear-gradient(135deg, #A855F7"] {
+  color: #ffffff !important;
+}
+
+/* Ensure arrow icons inside colored buttons stay white */
+[data-theme="light"] a[style*="linear-gradient"] svg,
+[data-theme="light"] button[style*="linear-gradient"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 /* Dark text that's fine on dark but is already readable (#374151, #4B5563) */
