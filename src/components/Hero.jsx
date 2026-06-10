@@ -273,17 +273,17 @@ const CountCard = ({ metric, index }) => {
       </div>
 
       {/* Label */}
-      <p style={{ fontSize:'.72rem', fontWeight:700, color:'#9CA3AF', margin:'0 0 .2rem', letterSpacing:'.01em', lineHeight:1.3 }}>
+      <p style={{ fontSize:'.72rem', fontWeight:700, color:'#4B5563', margin:'0 0 .2rem', letterSpacing:'.01em', lineHeight:1.3 }}>
         {metric.label}
       </p>
 
       {/* Story line — one line max */}
-      <p style={{ fontSize:'.68rem', color:'#374151', margin:'0 0 .4rem', lineHeight:1.4, overflow:'hidden', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical' }}>
+      <p style={{ fontSize:'.68rem', color:'#4B5563', margin:'0 0 .4rem', lineHeight:1.4, overflow:'hidden', display:'-webkit-box', WebkitLineClamp:2, WebkitBoxOrient:'vertical' }}>
         {metric.story}
       </p>
 
       {/* Progress bar */}
-      <div style={{ position:'relative', height:'2px', background:'rgba(255,255,255,.06)', borderRadius:'99px', overflow:'hidden' }}>
+      <div style={{ position:'relative', height:'2px', background:'rgba(0,0,0,0.08)', borderRadius:'99px', overflow:'hidden' }}>
         <motion.div
           initial={{ width: '0%' }}
           animate={{ width: inView ? `${metric.bar}%` : '0%' }}
@@ -296,7 +296,7 @@ const CountCard = ({ metric, index }) => {
           }}
         />
       </div>
-      <span style={{ fontSize:'.58rem', color:'#374151', fontWeight:600 }}>
+      <span style={{ fontSize:'.58rem', color:'#4B5563', fontWeight:600 }}>
         {metric.bar}% above industry avg.
       </span>
     </motion.div>
@@ -492,18 +492,18 @@ const Hero = () => {
       ══════════════════════════════════════════════════ */}
       <section style={{
         minHeight:'100vh', display:'flex', alignItems:'center',
-        background:'#04030F', position:'relative', overflow:'hidden',
+        background:'linear-gradient(160deg, #EDE8FF 0%, #F5F3FF 50%, #EEF2FF 100%)', position:'relative', overflow:'hidden',
       }}>
         <style>{`
           /* ── Screen-2 styles ── */
           .s2-grid { display:grid; grid-template-columns:1fr 1.15fr; gap:4rem; width:100%; max-width:1280px; margin:0 auto; padding:2.5rem 2rem; align-items:center; position:relative; z-index:2; }
-          .s2-form-card { background:rgba(255,255,255,.025); border:1px solid rgba(124,58,237,.18); border-radius:1.5rem; padding:1.75rem; backdrop-filter:blur(24px); box-shadow:0 0 80px -20px rgba(124,58,237,.25), 0 25px 50px -12px rgba(0,0,0,.7); }
-          .s2-input { width:100%; box-sizing:border-box; padding:.9rem 1.1rem; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:white; border-radius:.75rem; font-size:.92rem; outline:none; transition:border-color .2s, box-shadow .2s; font-family:inherit; }
-          .s2-input:focus { border-color:rgba(124,58,237,.6); box-shadow:0 0 0 3px rgba(124,58,237,.12); }
-          .s2-input::placeholder { color:#4B5563; }
+          .s2-form-card { background:#ffffff; border:1px solid rgba(124,58,237,.18); border-radius:1.5rem; padding:1.75rem; box-shadow:0 4px 32px rgba(124,58,237,.1); }
+          .s2-input { width:100%; box-sizing:border-box; padding:.9rem 1.1rem; background:#f8f7ff; border:1px solid rgba(124,58,237,.15); color:#1A1040; border-radius:.75rem; font-size:.92rem; outline:none; transition:border-color .2s, box-shadow .2s; font-family:inherit; }
+          .s2-input:focus { border-color:rgba(124,58,237,.6); box-shadow:0 0 0 3px rgba(124,58,237,.1); }
+          .s2-input::placeholder { color:#9CA3AF; }
           .s2-bento { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:0.75rem; }
-          .s2-card { border-radius:1.1rem; padding:1rem 1.1rem; border:1px solid rgba(255,255,255,.05); display:flex; flex-direction:column; gap:.35rem; cursor:default; transition:transform .25s, box-shadow .25s; }
-          .s2-card:hover { transform:translateY(-3px); }
+          .s2-card { border-radius:1.1rem; padding:1rem 1.1rem; border:1px solid rgba(0,0,0,.06); display:flex; flex-direction:column; gap:.35rem; cursor:default; transition:transform .25s, box-shadow .25s; background:#ffffff; }
+          .s2-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(124,58,237,.1); }
           @media(max-width:860px){ .s2-grid{grid-template-columns:1fr; gap:2rem; padding:2rem 1.25rem;} .s2-grid>*:last-child{order:-1;} }
           @media(max-width:540px){ .s2-form-row{flex-direction:column!important;} .s2-bento{grid-template-columns:1fr 1fr;} .s2-form-card{padding:1.25rem;} }
           @media(max-width:400px){ .s2-bento{grid-template-columns:1fr;} }
@@ -531,15 +531,15 @@ const Hero = () => {
                 animate={{ opacity:[.8,1,.8] }} transition={{ duration:2.5, repeat:Infinity }}
                 style={{ display:'inline-flex', alignItems:'center', gap:'.5rem', padding:'.28rem .8rem', background:'rgba(239,68,68,.1)', border:'1px solid rgba(239,68,68,.3)', borderRadius:'99px', marginBottom:'.85rem' }}>
                 <div style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#EF4444', boxShadow:'0 0 8px rgba(239,68,68,.8)' }}/>
-                <span style={{ fontSize:'.72rem', fontWeight:800, color:'#FCA5A5', letterSpacing:'.06em', textTransform:'uppercase' }}>3 audit slots open this week</span>
+                <span style={{ fontSize:'.72rem', fontWeight:800, color:'#DC2626', letterSpacing:'.06em', textTransform:'uppercase' }}>3 audit slots open this week</span>
               </motion.div>
 
-              <h2 style={{ color:'white', margin:'0 0 .5rem', fontWeight:900, fontSize:'clamp(1.6rem,2.4vw,2.2rem)', letterSpacing:'-.04em', lineHeight:1.1 }}>
+              <h2 style={{ color:'#1A1040', margin:'0 0 .5rem', fontWeight:900, fontSize:'clamp(1.6rem,2.4vw,2.2rem)', letterSpacing:'-.04em', lineHeight:1.1 }}>
                 Your competitors are scaling.<br/>
                 <span style={{ background:'linear-gradient(135deg,#A855F7,#EC4899)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>You're still guessing.</span>
               </h2>
-              <p style={{ color:'#64748B', fontSize:'.88rem', lineHeight:1.55, margin:0, maxWidth:'400px' }}>
-                Get the exact growth system that took <strong style={{ color:'#C4B5FD' }}>120+ brands</strong> from invisible to inevitable — completely free.
+              <p style={{ color:'#4B5563', fontSize:'.88rem', lineHeight:1.55, margin:0, maxWidth:'400px' }}>
+                Get the exact growth system that took <strong style={{ color:'#7C3AED' }}>120+ brands</strong> from invisible to inevitable — completely free.
               </p>
             </div>
 
@@ -549,8 +549,8 @@ const Hero = () => {
                 <motion.div initial={{ opacity:0, scale:.9 }} animate={{ opacity:1, scale:1 }}
                   style={{ padding:'2rem', background:'rgba(34,197,94,.06)', border:'1px solid rgba(34,197,94,.15)', borderRadius:'1.25rem', textAlign:'center' }}>
                   <CheckCircle size={48} color="#22C55E" style={{ margin:'0 auto 1rem', display:'block' }}/>
-                  <h3 style={{ color:'white', fontSize:'1.4rem', margin:'0 0 .5rem', fontWeight:800 }}>You're in the system! 🚀</h3>
-                  <p style={{ color:'#94A3B8', fontSize:'.9rem', margin:0 }}>Check WhatsApp — your audit starts within 2 hours.</p>
+                  <h3 style={{ color:'#1A1040', fontSize:'1.4rem', margin:'0 0 .5rem', fontWeight:800 }}>You're in the system!</h3>
+                  <p style={{ color:'#4B5563', fontSize:'.9rem', margin:0 }}>Check WhatsApp — your audit starts within 2 hours.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:'.65rem' }}>
@@ -574,7 +574,7 @@ const Hero = () => {
                       <div style={{ display:'flex', gap:'2px', marginBottom:'2px' }}>
                         {[1,2,3,4,5].map(s=><span key={s} style={{ color:'#FBBF24', fontSize:'.75rem' }}>★</span>)}
                       </div>
-                      <span style={{ fontSize:'.72rem', color:'#6B7280', fontWeight:600 }}>120+ brands trust Creativals</span>
+                      <span style={{ fontSize:'.72rem', color:'#4B5563', fontWeight:600 }}>120+ brands trust Creativals</span>
                     </div>
                   </div>
 
@@ -591,7 +591,7 @@ const Hero = () => {
                   </motion.button>
 
                   {/* Risk reversal */}
-                  <p style={{ textAlign:'center', fontSize:'.72rem', color:'#374151', margin:0, lineHeight:1.5 }}>
+                  <p style={{ textAlign:'center', fontSize:'.72rem', color:'#6B7280', margin:0, lineHeight:1.5 }}>
                     Free &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Response within 2 hours &nbsp;·&nbsp; Takes 2 minutes
                   </p>
                 </form>
