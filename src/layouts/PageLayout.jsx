@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import ThemeToggle from '../components/ThemeToggle';
 
 const PageLayout = ({ children }) => {
   return (
@@ -13,7 +12,6 @@ const PageLayout = ({ children }) => {
       </main>
       <Footer />
       <WhatsAppButton />
-      <ThemeToggle />
     </div>
   );
 };

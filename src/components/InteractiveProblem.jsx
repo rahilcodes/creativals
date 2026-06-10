@@ -32,7 +32,7 @@ const PROBLEMS = [
     stats: [
       { Icon: BarChart2, value: '60%',  label: 'More Direct Bookings' },
       { Icon: Zap,       value: '0%',   label: 'Commission Paid' },
-      { Icon: Star,      value: '4.9★', label: 'Avg. Review Score' },
+      { Icon: Star,      value: '4.9',  label: 'Avg. Review Score' },
     ],
   },
   {
@@ -62,7 +62,7 @@ const PROBLEMS = [
     accent: '#F97316',
     glow: 'rgba(249,115,22,.22)',
     stats: [
-      { Icon: Star,      value: '5★',   label: 'Avg. Review Rating' },
+      { Icon: Star,      value: '5',   label: 'Avg. Review Rating' },
       { Icon: TrendingUp,value: 'Top 3', label: 'Google Map Pack' },
       { Icon: BarChart2, value: '2x',   label: 'Organic Traffic' },
     ],
@@ -235,7 +235,7 @@ const InteractiveProblem = () => {
                   {active.action} <ArrowRight size={15}/>
                 </motion.a>
                 <span style={{ fontSize:'.7rem', color:'#374151', textAlign:'center', fontWeight:500 }}>
-                  ✓ Free &nbsp;·&nbsp; ✓ No commitment &nbsp;·&nbsp; ✓ Reply within 2 hrs
+                  Free &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Reply within 2 hrs
                 </span>
               </div>
             </motion.div>

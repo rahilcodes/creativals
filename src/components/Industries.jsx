@@ -68,7 +68,7 @@ const Industries = () => (
             </p>
 
             <div style={{ display:'inline-block', padding:'.4rem 1rem', background:`${ind.color}15`, border:`1px solid ${ind.color}40`, color:ind.color, borderRadius:'10px', fontSize:'.78rem', fontWeight:800, letterSpacing:'.03em', textTransform:'uppercase', alignSelf:'flex-start' }}>
-               🎯 {ind.metric}
+               {ind.metric}
             </div>
           </motion.div>
         ))}

@@ -1,265 +1,298 @@
 /*
-  ╔════════════════════════════════════════════════════════════╗
-  ║           CREATIVALS — LIGHT THEME OVERRIDES               ║
-  ║  Applied when [data-theme="light"] is on <html>            ║
-  ║  All dark colours → soft whites/greys, all glow → subtle   ║
-  ╚════════════════════════════════════════════════════════════╝
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║        CREATIVALS — COMPLETE LIGHT THEME SYSTEM                  ║
+  ║                                                                  ║
+  ║  Strategy: [data-theme="light"] on <html> (set in index.html)   ║
+  ║  Covers: ALL components, inline styles, bg colors, glow effects  ║
+  ║  Fonts: Uses clean Inter/Outfit — readable on all light surfaces ║
+  ╚══════════════════════════════════════════════════════════════════╝
 */
 
-/* ─── PAGE BACKGROUNDS ─────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   1. DESIGN TOKENS — Light palette
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --lt-bg:          #F9F8FF;
+  --lt-bg-alt:      #F3F0FF;
+  --lt-bg-card:     #FFFFFF;
+  --lt-border:      rgba(124,58,237,0.1);
+  --lt-border-soft: rgba(0,0,0,0.06);
+  --lt-text:        #1A1040;
+  --lt-text-muted:  #5B6478;
+  --lt-text-subtle: #9CA3AF;
+  --lt-shadow:      0 4px 24px rgba(124,58,237,0.08);
+  --lt-shadow-md:   0 8px 40px rgba(124,58,237,0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   2. GLOBAL RESET — body & page backgrounds
+═══════════════════════════════════════════════════════════════════ */
 [data-theme="light"] body {
-  background: #F8F7FF !important;
+  background: var(--lt-bg) !important;
+  color: var(--lt-text) !important;
+  transition: background 0.3s, color 0.3s;
 }
 
+[data-theme="light"] #root,
 [data-theme="light"] .dark-page,
-[data-theme="light"] [style*="background: '#02010A'"],
-[data-theme="light"] [style*="background: '#04030F'"],
-[data-theme="light"] [style*="background: '#050812'"],
-[data-theme="light"] [style*="background: '#060608'"],
-[data-theme="light"] [style*="background: '#0B0B1A'"],
-[data-theme="light"] [style*="background: '#0D0D1A'"] {
-  background: #F8F7FF !important;
-  color: #111827 !important;
+[data-theme="light"] .min-h-screen {
+  background: var(--lt-bg) !important;
+  color: var(--lt-text) !important;
 }
 
-/* Generic dark bg sections */
-[data-theme="light"] section,
-[data-theme="light"] div[style*="background: #0"] {
-  color: #111827;
+/* Every section with a dark background */
+[data-theme="light"] section {
+  color: var(--lt-text) !important;
 }
 
-/* ─── NAVBAR ────────────────────────────────────────────────── */
-[data-theme="light"] .nav-bar {
-  background: rgba(255,255,255,0.95) !important;
-  border: 1px solid rgba(124,58,237,0.12) !important;
-  box-shadow: 0 2px 20px rgba(124,58,237,0.08) !important;
-}
-
-/* ─── TEXT OVERRIDES ────────────────────────────────────────── */
-/* White text → dark */
-[data-theme="light"] [style*="color: 'white'"],
-[data-theme="light"] [style*="color: '#FFFFFF'"],
-[data-theme="light"] [style*="color: '#fff'"],
-[data-theme="light"] [style*="color: '#F1F5F9'"],
-[data-theme="light"] [style*="color: '#E2E8F0'"],
-[data-theme="light"] [style*="color: '#CBD5E1'"],
-[data-theme="light"] [style*="color: white"] {
-  color: #1F1F3A !important;
-}
-
-/* Muted slate → medium grey */
-[data-theme="light"] [style*="color: '#94A3B8'"],
-[data-theme="light"] [style*="color: '#64748B'"],
-[data-theme="light"] [style*="color: '#475569'"],
-[data-theme="light"] [style*="color: '#374151'"] {
-  color: #6B7280 !important;
-}
-
-/* Force dark headings */
+/* ═══════════════════════════════════════════════════════════════════
+   3. TYPOGRAPHY — Force dark text everywhere, clean font weights
+═══════════════════════════════════════════════════════════════════ */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
 [data-theme="light"] h4,
 [data-theme="light"] h5,
 [data-theme="light"] h6 {
-  color: #1F1F3A !important;
+  color: var(--lt-text) !important;
+  text-shadow: none !important;
 }
 
-/* ─── CARD / SURFACE BACKGROUNDS ────────────────────────────── */
-/* Dark translucent cards → light frosted */
-[data-theme="light"] [style*="background: 'rgba(255,255,255,0.02)'"],
+/* Override the dark-page heading white rule */
+[data-theme="light"] .dark-page h1,
+[data-theme="light"] .dark-page h2,
+[data-theme="light"] .dark-page h3,
+[data-theme="light"] .dark-page h4 {
+  color: var(--lt-text) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   4. KILL ALL GLOW / TEXT-SHADOW EFFECTS
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] * {
+  text-shadow: none !important;
+}
+
+/* Kill box-glow effects (keep structural box-shadows) */
+[data-theme="light"] [style*="boxShadow"],
+[data-theme="light"] [style*="box-shadow"] {
+  box-shadow: none !important;
+}
+
+/* Restore only structural shadows needed for cards */
+[data-theme="light"] .nav-bar {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important;
+}
+[data-theme="light"] .ftr-soc {
+  box-shadow: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   5. NAVBAR
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .nav-bar {
+  background: rgba(255,255,255,0.96) !important;
+  border: 1px solid rgba(124,58,237,0.1) !important;
+}
+
+[data-theme="light"] .nav-mega-menu,
+[data-theme="light"] .nav-dropdown {
+  background: #ffffff !important;
+  border-color: rgba(124,58,237,0.1) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   6. HERO SECTION
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .hero-section-mob {
+  background: linear-gradient(140deg, #F3EEFF 0%, #FAF8FF 60%, #F0F4FF 100%) !important;
+}
+
+/* Hero icon label text */
+[data-theme="light"] .icon-lbl {
+  color: #5B6478 !important;
+}
+
+/* Hero tooltip / popup card */
+[data-theme="light"] [style*="rgba(10,10,25"] {
+  background: rgba(255,255,255,0.97) !important;
+  border: 1px solid rgba(124,58,237,0.15) !important;
+  color: var(--lt-text) !important;
+}
+
+/* Hero icon bubbles */
+[data-theme="light"] .icon-abs img {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1)) !important;
+}
+
+/* Orb backgrounds → invisible on light */
+[data-theme="light"] [style*="radial-gradient(circle,rgba(124,58,237"] {
+  opacity: 0.25 !important;
+}
+[data-theme="light"] [style*="radial-gradient(circle,rgba(239,68,68"] {
+  opacity: 0.15 !important;
+}
+[data-theme="light"] [style*="radial-gradient(circle,rgba(34,197,94"] {
+  opacity: 0.15 !important;
+}
+[data-theme="light"] [style*="radial-gradient(circle,rgba(59,130,246"] {
+  opacity: 0.12 !important;
+}
+
+/* Hero background gradient lines/dots → very faint on light */
+[data-theme="light"] [style*="backgroundImage:'linear-gradient(rgba(124,58,237"],
+[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba"] {
+  opacity: 0.4 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   7. INLINE BACKGROUND COLOR OVERRIDES
+   — Targeting hardcoded dark hex values used across all components
+═══════════════════════════════════════════════════════════════════ */
+
+/* Section wrappers with pure dark backgrounds */
+[data-theme="light"] section[style*="background:'#"],
+[data-theme="light"] section[style*='background:"#'],
+[data-theme="light"] div[style*="background:'#0"],
+[data-theme="light"] div[style*='background:"#0'] {
+  background: var(--lt-bg) !important;
+}
+
+/* Ultra-dark values: #02010A #04030F #050812 #060411 #060608 #070717 #0A0818 #0B0B1A #0D0D1A */
+[data-theme="light"] [style*="'#02010A'"],
+[data-theme="light"] [style*="'#04030F'"],
+[data-theme="light"] [style*="'#050812'"],
+[data-theme="light"] [style*="'#060411'"],
+[data-theme="light"] [style*="'#060608'"],
+[data-theme="light"] [style*="'#070717'"],
+[data-theme="light"] [style*="'#070718'"],
+[data-theme="light"] [style*="'#080814'"],
+[data-theme="light"] [style*="'#0A0818'"],
+[data-theme="light"] [style*="'#0B0B1A'"],
+[data-theme="light"] [style*="'#0D0D1A'"],
+[data-theme="light"] [style*="'#050411'"],
+[data-theme="light"] [style*="'#060410'"],
+[data-theme="light"] [style*="'#060608'"],
+[data-theme="light"] [style*="'#111'"],
+[data-theme="light"] [style*="'#0a0a0a'"] {
+  background: var(--lt-bg) !important;
+  color: var(--lt-text) !important;
+}
+
+/* Dark linear-gradients used as section backgrounds */
+[data-theme="light"] [style*="linear-gradient(140deg,#050411"],
+[data-theme="light"] [style*="linear-gradient(135deg,#050811"],
+[data-theme="light"] [style*="linear-gradient(160deg,#04030F"] {
+  background: linear-gradient(140deg, #F3EEFF 0%, #FAF8FF 60%, #F0F4FF 100%) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   8. TEXT COLOR OVERRIDES — white & near-white → dark
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="color:'white'"],
+[data-theme="light"] [style*='color:"white"'],
+[data-theme="light"] [style*="color:'#FFFFFF'"],
+[data-theme="light"] [style*="color:'#fff'"],
+[data-theme="light"] [style*="color:'#F1F5F9'"],
+[data-theme="light"] [style*="color:'#E2E8F0'"],
+[data-theme="light"] [style*="color:'#CBD5E1'"],
+[data-theme="light"] [style*="color:'#94A3B8'"],
+[data-theme="light"] [style*="color: white"],
+[data-theme="light"] [style*='color: "white"'] {
+  color: var(--lt-text) !important;
+}
+
+/* Muted text → medium grey (readable on white) */
+[data-theme="light"] [style*="color:'#64748B'"],
+[data-theme="light"] [style*="color:'#6B7280'"],
+[data-theme="light"] [style*="color:'#475569'"],
+[data-theme="light"] [style*="color:'#374151'"],
+[data-theme="light"] [style*="color:'#4B5563'"],
+[data-theme="light"] [style*="color:'#9CA3AF'"] {
+  color: var(--lt-text-muted) !important;
+}
+
+/* Keep brand/accent colors — purple, green, orange, pink, blue */
+/* These look great on light backgrounds, no override needed */
+
+/* ═══════════════════════════════════════════════════════════════════
+   9. CARD SURFACES — dark transparent → white frosted
+═══════════════════════════════════════════════════════════════════ */
 [data-theme="light"] [style*="rgba(255,255,255,0.02)"],
 [data-theme="light"] [style*="rgba(255,255,255,0.03)"],
 [data-theme="light"] [style*="rgba(255,255,255,0.04)"],
 [data-theme="light"] [style*="rgba(255,255,255,0.05)"],
 [data-theme="light"] [style*="rgba(255,255,255,0.06)"],
-[data-theme="light"] [style*="rgba(255,255,255,0.08)"] {
-  background: rgba(124,58,237,0.04) !important;
-  border-color: rgba(124,58,237,0.12) !important;
-}
-
-/* Section borders */
-[data-theme="light"] [style*="borderTop: '1px solid rgba(255,255,255,.05)'"],
-[data-theme="light"] [style*="borderTop: '1px solid rgba(255,255,255,0.05)'"],
-[data-theme="light"] [style*="borderBottom: '1px solid rgba(255,255,255,0.05)'"],
-[data-theme="light"] [style*="border: '1px solid rgba(255,255,255,0.06)'"] {
+[data-theme="light"] [style*="rgba(255,255,255,0.08)"],
+[data-theme="light"] [style*="rgba(255,255,255,.02)"],
+[data-theme="light"] [style*="rgba(255,255,255,.03)"],
+[data-theme="light"] [style*="rgba(255,255,255,.04)"],
+[data-theme="light"] [style*="rgba(255,255,255,.05)"],
+[data-theme="light"] [style*="rgba(255,255,255,.06)"],
+[data-theme="light"] [style*="rgba(255,255,255,.08)"] {
+  background: #ffffff !important;
   border-color: rgba(124,58,237,0.1) !important;
 }
 
-/* ─── HERO SECTION ──────────────────────────────────────────── */
-[data-theme="light"] .hero-section,
-[data-theme="light"] [class*="hero"] {
-  background: linear-gradient(160deg, #f3f0ff 0%, #fdf8ff 40%, #f8f7ff 100%) !important;
-}
-
-/* Hero icon grid area */
-[data-theme="light"] [style*="background: 'rgba(0,0,0,0.6)'"],
-[data-theme="light"] [style*="background: rgba(0,0,0,0.6)"] {
-  background: rgba(255,255,255,0.85) !important;
-  backdrop-filter: blur(14px) !important;
-}
-
-[data-theme="light"] [style*="background: '#111'"],
-[data-theme="light"] [style*="background: '#0a0a0a'"],
-[data-theme="light"] [style*="background: '#050812'"] {
+/* Dark gradient cards → white card */
+[data-theme="light"] [style*="linear-gradient(145deg,rgba(255,255,255,0.04)"] {
   background: #ffffff !important;
-}
-
-/* Icon bubbles in hero */
-[data-theme="light"] [style*="background: 'rgba(255,255,255,0.08)'"],
-[data-theme="light"] [style*="background: rgba(255,255,255,0.08)"],
-[data-theme="light"] [style*="background: rgba(255,255,255,0.12)"] {
-  background: rgba(255,255,255,0.9) !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
-}
-
-/* Tooltip cards inside hero */
-[data-theme="light"] [style*="background: 'rgba(10,10,25,'"],
-[data-theme="light"] [style*="rgba(10,10,25,"] {
-  background: rgba(255,255,255,0.95) !important;
-  border: 1px solid rgba(124,58,237,0.15) !important;
-  color: #1F1F3A !important;
-}
-
-/* ─── GRADIENTS / GLOWS ─────────────────────────────────────── */
-[data-theme="light"] [style*="background: 'linear-gradient(135deg,#7C3AED,#A855F7,#EC4899)'"] {
-  /* Keep brand gradient intact — looks great on light too */
-}
-
-/* Dark background gradients on sections → light */
-[data-theme="light"] [style*="background: 'linear-gradient(145deg,rgba(255,255,255,0.04)"] {
-  background: rgba(248,247,255,0.9) !important;
   border: 1px solid rgba(124,58,237,0.1) !important;
 }
 
-/* ─── COMPARISON TABLE ──────────────────────────────────────── */
-[data-theme="light"] [style*="background: '#0D0D1A'"] {
+/* ═══════════════════════════════════════════════════════════════════
+   10. BORDERS — white-transparent → purple-transparent
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.05)'"],
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,.05)'"],
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.06)'"],
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,.06)'"],
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.08)'"],
+[data-theme="light"] [style*="border:'1px solid rgba(255,255,255,0.1)'"],
+[data-theme="light"] [style*="borderTop:'1px solid rgba(255,255,255"] ,
+[data-theme="light"] [style*="borderBottom:'1px solid rgba(255,255,255"] {
+  border-color: rgba(124,58,237,0.1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   11. COMPARISON TABLE
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .cmp-table {
+  border-color: rgba(124,58,237,0.1) !important;
+  box-shadow: 0 4px 32px rgba(124,58,237,0.08) !important;
   background: #ffffff !important;
 }
-
-[data-theme="light"] [style*="background: 'rgba(124,58,237,0.08)'"],
-[data-theme="light"] [style*="rgba(124,58,237,0.08)"] {
-  background: rgba(124,58,237,0.06) !important;
+[data-theme="light"] .cmp-row {
+  border-color: rgba(124,58,237,0.07) !important;
 }
+[data-theme="light"] .cmp-cell-label { color: #5B6478 !important; }
+[data-theme="light"] .cmp-cell-typ   { color: #6B7280 !important; background: #fafafa !important; border-color: rgba(0,0,0,0.04) !important; }
+[data-theme="light"] .cmp-cell-cre   { color: var(--lt-text) !important; background: rgba(34,197,94,0.05) !important; border-color: rgba(34,197,94,0.15) !important; font-weight: 600 !important; }
 
-[data-theme="light"] [style*="background: 'rgba(239,68,68,0.08)'"],
-[data-theme="light"] [style*="rgba(239,68,68,0.08)"] {
-  background: rgba(239,68,68,0.05) !important;
-}
-
-/* ─── FORM INPUTS ───────────────────────────────────────────── */
-[data-theme="light"] input,
-[data-theme="light"] textarea,
-[data-theme="light"] select {
+/* ═══════════════════════════════════════════════════════════════════
+   12. PROBLEM / INTERACTIVE PROBLEM
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .prob-card {
   background: #ffffff !important;
-  border-color: rgba(124,58,237,0.2) !important;
-  color: #1F1F3A !important;
+  border-color: rgba(124,58,237,0.08) !important;
 }
+[data-theme="light"] .prob-card h3 { color: var(--lt-text) !important; }
 
-[data-theme="light"] input::placeholder,
-[data-theme="light"] textarea::placeholder {
-  color: #9CA3AF !important;
-}
-
-/* ─── FOOTER ────────────────────────────────────────────────── */
-[data-theme="light"] footer {
-  background: #1F1F3A !important;
-  color: white !important;
-}
-
-[data-theme="light"] .ftr-brand-col p,
-[data-theme="light"] .ftr-link,
-[data-theme="light"] .ftr-contact-col {
-  color: #CBD5E1 !important;
-}
-
-/* ─── WHATSAPP BUTTON ───────────────────────────────────────── */
-[data-theme="light"] [style*="background: '#25D366'"],
-[data-theme="light"] [style*="background: 'linear-gradient(135deg,#22C55E"] {
-  /* Keep WhatsApp green */
-}
-
-/* ─── SPECIFIC COMPONENT OVERRIDES ─────────────────────────── */
-
-/* Problem / InteractiveProblem */
-[data-theme="light"] [style*="background: '#070718'"],
-[data-theme="light"] [style*="background: '#080814'"],
-[data-theme="light"] [style*="background: '#0B0B1A'"] {
-  background: #f3f0ff !important;
-}
-
-/* Testimonials bg */
-[data-theme="light"] [style*="background: 'rgba(124,58,237,0.06)'"],
-[data-theme="light"] [style*="rgba(124,58,237,0.06)"] {
-  background: rgba(124,58,237,0.05) !important;
-}
-
-/* CostOfInaction dark cards */
-[data-theme="light"] [style*="background: 'rgba(239,68,68,0.05)'"],
-[data-theme="light"] [style*="rgba(239,68,68,0.05)"] {
-  background: rgba(239,68,68,0.04) !important;
-}
-
-/* ─── PROCESS BAR ───────────────────────────────────────────── */
-[data-theme="light"] [style*="background: '#060410'"] {
-  background: #f3f0ff !important;
-}
-
-/* ─── FOUNDER VIDEO SECTION ─────────────────────────────────── */
-[data-theme="light"] [style*="background: '#04030F'"] {
+/* ═══════════════════════════════════════════════════════════════════
+   13. METHOD / STEP CARDS
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .mth-card {
   background: #ffffff !important;
+  border-color: rgba(124,58,237,0.08) !important;
+}
+[data-theme="light"] .mth-connector {
+  background: linear-gradient(90deg, rgba(124,58,237,0.15), transparent) !important;
 }
 
-/* ─── GLOBAL TRANSITION ─────────────────────────────────────── */
-[data-theme="light"] *,
-[data-theme="light"] *::before,
-[data-theme="light"] *::after {
-  transition-duration: 0.3s !important;
-  transition-property: background, background-color, color, border-color, box-shadow !important;
-}
-
-/* Prevent transition on animations that should be instant */
-[data-theme="light"] [style*="animation"],
-[data-theme="light"] [style*="transform"] {
-  transition-property: background, background-color, color, border-color !important;
-}
-
-/* ─── DARK TEXT ON LIGHT CARDS ──────────────────────────────── */
-[data-theme="light"] .dark-page h1,
-[data-theme="light"] .dark-page h2,
-[data-theme="light"] .dark-page h3,
-[data-theme="light"] .dark-page h4,
-[data-theme="light"] .dark-page h5,
-[data-theme="light"] .dark-page h6 {
-  color: #1F1F3A !important;
-}
-
-/* ─── GRADIENT TEXT — keep as-is ───────────────────────────── */
-[data-theme="light"] [style*="WebkitTextFillColor: 'transparent'"],
-[data-theme="light"] [style*="-webkit-text-fill-color: transparent"] {
-  /* Brand gradient text remains beautiful on light bg */
-}
-
-/* ─── SUBTLE PAGE SECTION ALTERNATION ───────────────────────── */
-[data-theme="light"] section:nth-child(even) {
-  background: rgba(124,58,237,0.02);
-}
-
-/* ─── SCARCITY BANNERS / COLORED STRIPS ─────────────────────── */
-/* Keep colored banners (gradient banners) as they are */
-
-/* ─── SCROLLBAR ─────────────────────────────────────────────── */
-[data-theme="light"] ::-webkit-scrollbar-track {
-  background: #F1F0FF;
-}
-[data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(124,58,237,0.3);
-}
-[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124,58,237,0.5);
-}
-
-/* ─── RESULTS / CASE STUDIES GRIDS ─────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   14. RESULTS / CASE STUDIES GRIDS
+═══════════════════════════════════════════════════════════════════ */
 [data-theme="light"] .results-grid-3 > *,
 [data-theme="light"] .results-grid-2 > *,
 [data-theme="light"] .results-grid-3-last > * {
@@ -267,9 +300,176 @@
   border-color: rgba(124,58,237,0.1) !important;
 }
 
-/* ─── NAV DARK BG DROPDOWNS → white ────────────────────────── */
-[data-theme="light"] .nav-mega-menu,
-[data-theme="light"] [style*="background: '#070717'"] {
+/* ═══════════════════════════════════════════════════════════════════
+   15. FOOTER — Keep dark footer (elegant contrast)
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] footer {
+  background: #1A1040 !important;
+}
+/* Override any light-theme text overrides inside footer */
+[data-theme="light"] footer h1,
+[data-theme="light"] footer h2,
+[data-theme="light"] footer h3,
+[data-theme="light"] footer h4,
+[data-theme="light"] footer span,
+[data-theme="light"] footer p,
+[data-theme="light"] footer a,
+[data-theme="light"] footer div {
+  color: inherit !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   16. FORM INPUTS
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
   background: #ffffff !important;
-  border: 1px solid rgba(124,58,237,0.1) !important;
+  border-color: rgba(124,58,237,0.2) !important;
+  color: var(--lt-text) !important;
+}
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   17. FAQ ACCORDION
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="rgba(255,255,255,0.03)"] {
+  background: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   18. PROCESS BAR
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="'#060410'"],
+[data-theme="light"] [style*="'#04030F'"] {
+  background: var(--lt-bg-alt) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   19. ABOUT / RESULTS / CONTACT PAGES
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .about-origin-grid,
+[data-theme="light"] .about-mission-grid {
+  color: var(--lt-text) !important;
+}
+
+[data-theme="light"] .contact-hero-grid,
+[data-theme="light"] .contact-form-grid,
+[data-theme="light"] .contact-goal-grid button {
+  color: var(--lt-text) !important;
+}
+
+[data-theme="light"] .contact-goal-grid button {
+  background: #ffffff !important;
+  border-color: rgba(124,58,237,0.1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   20. SCROLLBAR — Light purple
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] ::-webkit-scrollbar { width: 6px; }
+[data-theme="light"] ::-webkit-scrollbar-track  { background: #F3F0FF; }
+[data-theme="light"] ::-webkit-scrollbar-thumb  { background: rgba(124,58,237,0.3); border-radius: 3px; }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.5); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   21. ALTERNATING SECTION TINT — gentle visual rhythm
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] section:nth-child(even) {
+  background: var(--lt-bg-alt) !important;
+}
+[data-theme="light"] section:nth-child(odd) {
+  background: var(--lt-bg) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   22. BADGE PILLS — dark transparent backgrounds → light tint
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="rgba(124,58,237,0.08)"],
+[data-theme="light"] [style*="rgba(124,58,237,.08)"] {
+  background: rgba(124,58,237,0.07) !important;
+}
+[data-theme="light"] [style*="rgba(124,58,237,0.12)"],
+[data-theme="light"] [style*="rgba(124,58,237,.12)"] {
+  background: rgba(124,58,237,0.08) !important;
+}
+[data-theme="light"] [style*="rgba(124,58,237,0.1)"],
+[data-theme="light"] [style*="rgba(124,58,237,.1)"] {
+  background: rgba(124,58,237,0.07) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   23. TESTIMONIAL / PROOF CARDS
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="rgba(255,255,255,0.04)"] {
+  background: #ffffff !important;
+  border-color: rgba(124,58,237,0.1) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   24. WORLDMAP / GRID BACKGROUNDS
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba(124,58,237"],
+[data-theme="light"] [style*="backgroundImage:'radial-gradient(rgba(239,68,68"],
+[data-theme="light"] [style*="backgroundImage:'linear-gradient(rgba(124,58,237"] {
+  opacity: 0.35 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   25. FONT PAIRING — Reinforce clean typography for light mode
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] li,
+[data-theme="light"] a {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Subtle drop-shadow on headings for depth on light bg */
+[data-theme="light"] h1 { color: #1A1040 !important; }
+[data-theme="light"] h2 { color: #1F1050 !important; }
+[data-theme="light"] h3 { color: #252060 !important; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   26. GRADIENT TEXT — keep brand gradients, they pop on light
+═══════════════════════════════════════════════════════════════════ */
+/* Gradient text spans have WebkitTextFillColor:transparent — leave them */
+/* They render beautifully over light backgrounds                         */
+
+/* ═══════════════════════════════════════════════════════════════════
+   27. CTA BUTTONS — keep brand colors, just remove glow
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="linear-gradient(135deg,#7C3AED,#A855F7)"] {
+  /* Keep purple gradient CTA */
+  box-shadow: 0 4px 16px rgba(124,58,237,0.25) !important;
+}
+[data-theme="light"] [style*="linear-gradient(135deg,#22C55E"] {
+  /* Keep green gradient CTA */
+  box-shadow: 0 4px 16px rgba(34,197,94,0.25) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   28. WHATSAPP BUTTON — stays green, slight shadow only
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] [style*="background:'#25D366'"],
+[data-theme="light"] [style*='background:"#25D366"'] {
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   29. SMOOTH TRANSITION ON THEME
+═══════════════════════════════════════════════════════════════════ */
+[data-theme="light"] *:not([style*="animation"]):not(svg):not(path) {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
 }

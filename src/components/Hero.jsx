@@ -592,7 +592,7 @@ const Hero = () => {
 
                   {/* Risk reversal */}
                   <p style={{ textAlign:'center', fontSize:'.72rem', color:'#374151', margin:0, lineHeight:1.5 }}>
-                    ✓ Free &nbsp;·&nbsp; ✓ No commitment &nbsp;·&nbsp; ✓ Response within 2 hours &nbsp;·&nbsp; ✓ Takes 2 minutes
+                    Free &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Response within 2 hours &nbsp;·&nbsp; Takes 2 minutes
                   </p>
                 </form>
               )}
