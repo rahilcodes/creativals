@@ -1,0 +1,275 @@
+/*
+  ╔════════════════════════════════════════════════════════════╗
+  ║           CREATIVALS — LIGHT THEME OVERRIDES               ║
+  ║  Applied when [data-theme="light"] is on <html>            ║
+  ║  All dark colours → soft whites/greys, all glow → subtle   ║
+  ╚════════════════════════════════════════════════════════════╝
+*/
+
+/* ─── PAGE BACKGROUNDS ─────────────────────────────────────── */
+[data-theme="light"] body {
+  background: #F8F7FF !important;
+}
+
+[data-theme="light"] .dark-page,
+[data-theme="light"] [style*="background: '#02010A'"],
+[data-theme="light"] [style*="background: '#04030F'"],
+[data-theme="light"] [style*="background: '#050812'"],
+[data-theme="light"] [style*="background: '#060608'"],
+[data-theme="light"] [style*="background: '#0B0B1A'"],
+[data-theme="light"] [style*="background: '#0D0D1A'"] {
+  background: #F8F7FF !important;
+  color: #111827 !important;
+}
+
+/* Generic dark bg sections */
+[data-theme="light"] section,
+[data-theme="light"] div[style*="background: #0"] {
+  color: #111827;
+}
+
+/* ─── NAVBAR ────────────────────────────────────────────────── */
+[data-theme="light"] .nav-bar {
+  background: rgba(255,255,255,0.95) !important;
+  border: 1px solid rgba(124,58,237,0.12) !important;
+  box-shadow: 0 2px 20px rgba(124,58,237,0.08) !important;
+}
+
+/* ─── TEXT OVERRIDES ────────────────────────────────────────── */
+/* White text → dark */
+[data-theme="light"] [style*="color: 'white'"],
+[data-theme="light"] [style*="color: '#FFFFFF'"],
+[data-theme="light"] [style*="color: '#fff'"],
+[data-theme="light"] [style*="color: '#F1F5F9'"],
+[data-theme="light"] [style*="color: '#E2E8F0'"],
+[data-theme="light"] [style*="color: '#CBD5E1'"],
+[data-theme="light"] [style*="color: white"] {
+  color: #1F1F3A !important;
+}
+
+/* Muted slate → medium grey */
+[data-theme="light"] [style*="color: '#94A3B8'"],
+[data-theme="light"] [style*="color: '#64748B'"],
+[data-theme="light"] [style*="color: '#475569'"],
+[data-theme="light"] [style*="color: '#374151'"] {
+  color: #6B7280 !important;
+}
+
+/* Force dark headings */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+  color: #1F1F3A !important;
+}
+
+/* ─── CARD / SURFACE BACKGROUNDS ────────────────────────────── */
+/* Dark translucent cards → light frosted */
+[data-theme="light"] [style*="background: 'rgba(255,255,255,0.02)'"],
+[data-theme="light"] [style*="rgba(255,255,255,0.02)"],
+[data-theme="light"] [style*="rgba(255,255,255,0.03)"],
+[data-theme="light"] [style*="rgba(255,255,255,0.04)"],
+[data-theme="light"] [style*="rgba(255,255,255,0.05)"],
+[data-theme="light"] [style*="rgba(255,255,255,0.06)"],
+[data-theme="light"] [style*="rgba(255,255,255,0.08)"] {
+  background: rgba(124,58,237,0.04) !important;
+  border-color: rgba(124,58,237,0.12) !important;
+}
+
+/* Section borders */
+[data-theme="light"] [style*="borderTop: '1px solid rgba(255,255,255,.05)'"],
+[data-theme="light"] [style*="borderTop: '1px solid rgba(255,255,255,0.05)'"],
+[data-theme="light"] [style*="borderBottom: '1px solid rgba(255,255,255,0.05)'"],
+[data-theme="light"] [style*="border: '1px solid rgba(255,255,255,0.06)'"] {
+  border-color: rgba(124,58,237,0.1) !important;
+}
+
+/* ─── HERO SECTION ──────────────────────────────────────────── */
+[data-theme="light"] .hero-section,
+[data-theme="light"] [class*="hero"] {
+  background: linear-gradient(160deg, #f3f0ff 0%, #fdf8ff 40%, #f8f7ff 100%) !important;
+}
+
+/* Hero icon grid area */
+[data-theme="light"] [style*="background: 'rgba(0,0,0,0.6)'"],
+[data-theme="light"] [style*="background: rgba(0,0,0,0.6)"] {
+  background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+[data-theme="light"] [style*="background: '#111'"],
+[data-theme="light"] [style*="background: '#0a0a0a'"],
+[data-theme="light"] [style*="background: '#050812'"] {
+  background: #ffffff !important;
+}
+
+/* Icon bubbles in hero */
+[data-theme="light"] [style*="background: 'rgba(255,255,255,0.08)'"],
+[data-theme="light"] [style*="background: rgba(255,255,255,0.08)"],
+[data-theme="light"] [style*="background: rgba(255,255,255,0.12)"] {
+  background: rgba(255,255,255,0.9) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+/* Tooltip cards inside hero */
+[data-theme="light"] [style*="background: 'rgba(10,10,25,'"],
+[data-theme="light"] [style*="rgba(10,10,25,"] {
+  background: rgba(255,255,255,0.95) !important;
+  border: 1px solid rgba(124,58,237,0.15) !important;
+  color: #1F1F3A !important;
+}
+
+/* ─── GRADIENTS / GLOWS ─────────────────────────────────────── */
+[data-theme="light"] [style*="background: 'linear-gradient(135deg,#7C3AED,#A855F7,#EC4899)'"] {
+  /* Keep brand gradient intact — looks great on light too */
+}
+
+/* Dark background gradients on sections → light */
+[data-theme="light"] [style*="background: 'linear-gradient(145deg,rgba(255,255,255,0.04)"] {
+  background: rgba(248,247,255,0.9) !important;
+  border: 1px solid rgba(124,58,237,0.1) !important;
+}
+
+/* ─── COMPARISON TABLE ──────────────────────────────────────── */
+[data-theme="light"] [style*="background: '#0D0D1A'"] {
+  background: #ffffff !important;
+}
+
+[data-theme="light"] [style*="background: 'rgba(124,58,237,0.08)'"],
+[data-theme="light"] [style*="rgba(124,58,237,0.08)"] {
+  background: rgba(124,58,237,0.06) !important;
+}
+
+[data-theme="light"] [style*="background: 'rgba(239,68,68,0.08)'"],
+[data-theme="light"] [style*="rgba(239,68,68,0.08)"] {
+  background: rgba(239,68,68,0.05) !important;
+}
+
+/* ─── FORM INPUTS ───────────────────────────────────────────── */
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: #ffffff !important;
+  border-color: rgba(124,58,237,0.2) !important;
+  color: #1F1F3A !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+[data-theme="light"] footer {
+  background: #1F1F3A !important;
+  color: white !important;
+}
+
+[data-theme="light"] .ftr-brand-col p,
+[data-theme="light"] .ftr-link,
+[data-theme="light"] .ftr-contact-col {
+  color: #CBD5E1 !important;
+}
+
+/* ─── WHATSAPP BUTTON ───────────────────────────────────────── */
+[data-theme="light"] [style*="background: '#25D366'"],
+[data-theme="light"] [style*="background: 'linear-gradient(135deg,#22C55E"] {
+  /* Keep WhatsApp green */
+}
+
+/* ─── SPECIFIC COMPONENT OVERRIDES ─────────────────────────── */
+
+/* Problem / InteractiveProblem */
+[data-theme="light"] [style*="background: '#070718'"],
+[data-theme="light"] [style*="background: '#080814'"],
+[data-theme="light"] [style*="background: '#0B0B1A'"] {
+  background: #f3f0ff !important;
+}
+
+/* Testimonials bg */
+[data-theme="light"] [style*="background: 'rgba(124,58,237,0.06)'"],
+[data-theme="light"] [style*="rgba(124,58,237,0.06)"] {
+  background: rgba(124,58,237,0.05) !important;
+}
+
+/* CostOfInaction dark cards */
+[data-theme="light"] [style*="background: 'rgba(239,68,68,0.05)'"],
+[data-theme="light"] [style*="rgba(239,68,68,0.05)"] {
+  background: rgba(239,68,68,0.04) !important;
+}
+
+/* ─── PROCESS BAR ───────────────────────────────────────────── */
+[data-theme="light"] [style*="background: '#060410'"] {
+  background: #f3f0ff !important;
+}
+
+/* ─── FOUNDER VIDEO SECTION ─────────────────────────────────── */
+[data-theme="light"] [style*="background: '#04030F'"] {
+  background: #ffffff !important;
+}
+
+/* ─── GLOBAL TRANSITION ─────────────────────────────────────── */
+[data-theme="light"] *,
+[data-theme="light"] *::before,
+[data-theme="light"] *::after {
+  transition-duration: 0.3s !important;
+  transition-property: background, background-color, color, border-color, box-shadow !important;
+}
+
+/* Prevent transition on animations that should be instant */
+[data-theme="light"] [style*="animation"],
+[data-theme="light"] [style*="transform"] {
+  transition-property: background, background-color, color, border-color !important;
+}
+
+/* ─── DARK TEXT ON LIGHT CARDS ──────────────────────────────── */
+[data-theme="light"] .dark-page h1,
+[data-theme="light"] .dark-page h2,
+[data-theme="light"] .dark-page h3,
+[data-theme="light"] .dark-page h4,
+[data-theme="light"] .dark-page h5,
+[data-theme="light"] .dark-page h6 {
+  color: #1F1F3A !important;
+}
+
+/* ─── GRADIENT TEXT — keep as-is ───────────────────────────── */
+[data-theme="light"] [style*="WebkitTextFillColor: 'transparent'"],
+[data-theme="light"] [style*="-webkit-text-fill-color: transparent"] {
+  /* Brand gradient text remains beautiful on light bg */
+}
+
+/* ─── SUBTLE PAGE SECTION ALTERNATION ───────────────────────── */
+[data-theme="light"] section:nth-child(even) {
+  background: rgba(124,58,237,0.02);
+}
+
+/* ─── SCARCITY BANNERS / COLORED STRIPS ─────────────────────── */
+/* Keep colored banners (gradient banners) as they are */
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────── */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #F1F0FF;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(124,58,237,0.3);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(124,58,237,0.5);
+}
+
+/* ─── RESULTS / CASE STUDIES GRIDS ─────────────────────────── */
+[data-theme="light"] .results-grid-3 > *,
+[data-theme="light"] .results-grid-2 > *,
+[data-theme="light"] .results-grid-3-last > * {
+  background: #ffffff !important;
+  border-color: rgba(124,58,237,0.1) !important;
+}
+
+/* ─── NAV DARK BG DROPDOWNS → white ────────────────────────── */
+[data-theme="light"] .nav-mega-menu,
+[data-theme="light"] [style*="background: '#070717'"] {
+  background: #ffffff !important;
+  border: 1px solid rgba(124,58,237,0.1) !important;
+}

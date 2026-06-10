@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './typography.css';
 import './new-components.css';
 import './premium-theme.css';
+import './light-theme.css';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Layout
 import PageLayout from './layouts/PageLayout';
@@ -32,9 +34,10 @@ import ClientReviewsPage from './pages/ClientReviewsPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <PageLayout>
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <PageLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -57,8 +60,9 @@ function App() {
           <Route path="/client-reviews" element={<ClientReviewsPage />} />
           <Route path="/industries/:slug" element={<IndustryPage />} />
         </Routes>
-      </PageLayout>
-    </BrowserRouter>
+        </PageLayout>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
