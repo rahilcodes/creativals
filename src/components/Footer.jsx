@@ -105,7 +105,7 @@ function WinTicker() {
     tick(); return () => cancelAnimationFrame(af);
   }, []);
   return (
-    <div style={{ overflow:'hidden', padding:'0.55rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', background:'rgba(255,255,255,0.012)' }}>
+    <div style={{ overflow:'hidden', padding:'0.55rem 0', borderBottom:'1px solid rgba(0,0,0,0.07)', background:'#F1F5F9' }}>
       <div ref={ref} style={{ display:'inline-flex', gap:'3rem', whiteSpace:'nowrap', willChange:'transform' }}>
         {[...WIN_TICKER,...WIN_TICKER].map((item,i) => (
           <span key={i} style={{ fontSize:'0.7rem', fontWeight:600, color:'#475569', display:'inline-flex', alignItems:'center', gap:'0.45rem' }}>
@@ -142,35 +142,35 @@ const Footer = () => {
   const [hGoal, setHGoal] = useState(null);
 
   return (
-    <footer style={{ background:'#060608', color:'white', fontFamily:'Inter,system-ui,sans-serif', borderTop:'1px solid rgba(124,58,237,0.15)', position:'relative', overflow:'hidden' }}>
+    <footer style={{ background:'#F8FAFC', color:'#0F172A', fontFamily:'Inter,system-ui,sans-serif', borderTop:'1px solid rgba(124,58,237,0.15)', position:'relative', overflow:'hidden' }}>
       <style>{`
-        .ftr-link { color:#6B7280; text-decoration:none; font-size:0.8rem; font-weight:500; transition:color 0.2s; display:block; }
-        .ftr-link:hover { color:#E2E8F0; }
-        .ftr-soc { width:32px; height:32px; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); transition:all 0.2s; text-decoration:none; flex-shrink:0; }
-        .ftr-soc:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+        .ftr-link { color:#475569; text-decoration:none; font-size:0.8rem; font-weight:500; transition:color 0.2s; display:block; }
+        .ftr-link:hover { color:#0F172A; }
+        .ftr-soc { width:32px; height:32px; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; background:#F1F5F9; border:1px solid rgba(0,0,0,0.08); transition:all 0.2s; text-decoration:none; flex-shrink:0; }
+        .ftr-soc:hover { background:#E2E8F0; transform:translateY(-2px); }
         .cc { display:flex; align-items:center; gap:0.55rem; border-radius:0.7rem; padding:0.55rem 0.7rem; text-decoration:none; transition:all 0.18s; }
         .cc:hover { transform:translateX(3px); }
         @keyframes ftrPulse { 0%,100%{opacity:.4} 50%{opacity:.8} }
-        .ftr-main-grid { display:grid; grid-template-columns:1.2fr 2fr 1fr; border-bottom:1px solid rgba(255,255,255,0.05); }
-        .ftr-brand-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); border-right:1px solid rgba(255,255,255,0.05); display:flex; flex-direction:column; gap:1.25rem; }
-        .ftr-nav-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; border-right:1px solid rgba(255,255,255,0.05); }
+        .ftr-main-grid { display:grid; grid-template-columns:1.2fr 2fr 1fr; border-bottom:1px solid rgba(0,0,0,0.07); }
+        .ftr-brand-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); border-right:1px solid rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:1.25rem; }
+        .ftr-nav-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; border-right:1px solid rgba(0,0,0,0.07); }
         .ftr-contact-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1rem,2vw,1.75rem); display:flex; flex-direction:column; gap:0.5rem; }
         .ftr-goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.85rem; max-width:660px; margin:0 auto; }
         .ftr-billion { font-size:clamp(3rem,8vw,6.5rem); font-weight:900; letter-spacing:-0.05em; line-height:1; margin-bottom:0.4rem; overflow:hidden; }
         @media(max-width:900px){
           .ftr-main-grid { grid-template-columns:1fr 1fr; }
-          .ftr-brand-col { border-right:1px solid rgba(255,255,255,0.05); }
-          .ftr-nav-col { grid-column:1/-1; border-right:none; border-top:1px solid rgba(255,255,255,0.05); }
+          .ftr-brand-col { border-right:1px solid rgba(0,0,0,0.07); }
+          .ftr-nav-col { grid-column:1/-1; border-right:none; border-top:1px solid rgba(0,0,0,0.07); }
           .ftr-contact-col { grid-column:2/3; grid-row:1/2; border-left:none; border-top:none; }
         }
         @media(max-width:640px){
           .ftr-main-grid { grid-template-columns:1fr; }
-          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(255,255,255,0.05); align-items:center; text-align:center; padding:2rem 1.5rem; }
+          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(0,0,0,0.07); align-items:center; text-align:center; padding:2rem 1.5rem; }
           .ftr-brand-col p { margin-left:auto; margin-right:auto; }
           .ftr-soc-wrap { justify-content:center; }
           .ftr-stats-badge { margin-left:auto; margin-right:auto; align-items:center; display:flex; flex-direction:column; }
           .ftr-nav-col { grid-template-columns:repeat(3,1fr); gap:1rem; border-top:none; }
-          .ftr-contact-col { grid-column:auto; grid-row:auto; border-top:1px solid rgba(255,255,255,0.05); }
+          .ftr-contact-col { grid-column:auto; grid-row:auto; border-top:1px solid rgba(0,0,0,0.07); }
           .ftr-goals-grid { grid-template-columns:1fr; max-width:360px; }
         }
         @media(max-width:480px){
@@ -183,12 +183,12 @@ const Footer = () => {
       {/* Galaxy background */}
       <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none' }}>
         <ParticleCanvas />
-        <div style={{ position:'absolute', top:'-5%', left:'35%', width:'600px', height:'350px', borderRadius:'50%', background:'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)', animation:'ftrPulse 6s ease-in-out infinite' }} />
-        <div style={{ position:'absolute', bottom:'5%', right:'5%', width:'350px', height:'250px', borderRadius:'50%', background:'radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)' }} />
+        <div style={{ position:'absolute', top:'-5%', left:'35%', width:'600px', height:'350px', borderRadius:'50%', background:'radial-gradient(circle, rgba(124,58,237,0.05) 0%, transparent 70%)', animation:'ftrPulse 6s ease-in-out infinite' }} />
+        <div style={{ position:'absolute', bottom:'5%', right:'5%', width:'350px', height:'250px', borderRadius:'50%', background:'radial-gradient(circle, rgba(236,72,153,0.04) 0%, transparent 70%)' }} />
       </div>
 
       {/* ── ZONE 1: GALAXY HERO CTA ─────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'4rem clamp(1.25rem,5vw,6rem) 3rem', borderBottom:'1px solid rgba(255,255,255,0.05)', textAlign:'center' }}>
+      <div style={{ position:'relative', zIndex:1, padding:'4rem clamp(1.25rem,5vw,6rem) 3rem', borderBottom:'1px solid rgba(0,0,0,0.07)', textAlign:'center' }}>
         <div style={{ fontSize:'0.68rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem', flexWrap:'wrap' }}>
           <span style={{ width:7, height:7, borderRadius:'50%', background:'#22C55E', display:'inline-block', boxShadow:'0 0 10px #22C55E' }} />
           Now Accepting Clients · 6 Global Offices · Live Results
@@ -211,8 +211,8 @@ const Footer = () => {
               style={{
                 display:'flex', flexDirection:'column', alignItems:'center', gap:'0.65rem',
                 padding:'1.25rem 0.85rem', borderRadius:'0.875rem', textDecoration:'none',
-                border:`1px solid ${hGoal===label ? color+'40' : 'rgba(255,255,255,0.08)'}`,
-                background: hGoal===label ? `${color}10` : 'rgba(255,255,255,0.025)',
+                border:`1px solid ${hGoal===label ? color+'40' : 'rgba(0,0,0,0.09)'}`,
+                background: hGoal===label ? `${color}10` : '#ffffff',
                 boxShadow: hGoal===label ? `0 8px 28px -8px ${color}50` : 'none',
                 transition:'all 0.25s',
               }}>
@@ -220,7 +220,7 @@ const Footer = () => {
                 <Icon size={20} color={color} />
               </div>
               <div>
-                <div style={{ fontSize:'0.82rem', fontWeight:800, color:'#E2E8F0', marginBottom:'0.2rem' }}>{label}</div>
+                <div style={{ fontSize:'0.82rem', fontWeight:800, color:'#0F172A', marginBottom:'0.2rem' }}>{label}</div>
                 <div style={{ fontSize:'0.62rem', color:'#64748B', fontWeight:500 }}>{sub}</div>
               </div>
               <div style={{ display:'flex', alignItems:'center', gap:'0.3rem', fontSize:'0.68rem', fontWeight:700, color }}>
@@ -240,7 +240,7 @@ const Footer = () => {
         {/* Brand */}
         <div className="ftr-brand-col">
           <Link to="/" style={{ textDecoration:'none' }}>
-            <img src="/logo_white.png" alt="Creativals" style={{ height:34, width:'auto' }} />
+            <img src="/logo.webp" alt="Creativals" style={{ height:34, width:'auto' }} />
           </Link>
           <p style={{ color:'#64748B', fontSize:'0.8rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:220 }}>
             We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
@@ -257,7 +257,7 @@ const Footer = () => {
             <div style={{ fontSize:'0.55rem', color:'#A78BFA', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em' }}>160+ Clients · 6 Countries</div>
             <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.3rem', flexWrap:'wrap', justifyContent:'center' }}>
               {['IN','US','CA','AE','MY','AU'].map(c => (
-                <span key={c} style={{ fontSize:'0.5rem', fontWeight:800, color:'#374151', background:'rgba(255,255,255,0.05)', padding:'0.1rem 0.3rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
+                <span key={c} style={{ fontSize:'0.5rem', fontWeight:800, color:'#374151', background:'rgba(0,0,0,0.06)', padding:'0.1rem 0.3rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
               ))}
             </div>
           </div>
@@ -283,7 +283,7 @@ const Footer = () => {
               <MessageCircle size={14} color="#22C55E"/>
             </div>
             <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#E2E8F0' }}>WhatsApp India</div>
+              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>WhatsApp India</div>
               <div style={{ fontSize:'0.58rem', color:'#22C55E', fontWeight:600 }}>+91 799 700 1700</div>
             </div>
             <ArrowRight size={11} color="#22C55E" style={{ flexShrink:0, opacity:0.6 }}/>
@@ -293,17 +293,17 @@ const Footer = () => {
               <Phone size={14} color="#38BDF8"/>
             </div>
             <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#E2E8F0' }}>WhatsApp USA</div>
+              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>WhatsApp USA</div>
               <div style={{ fontSize:'0.58rem', color:'#38BDF8', fontWeight:600 }}>+1 628 628 4743</div>
             </div>
             <ArrowRight size={11} color="#38BDF8" style={{ flexShrink:0, opacity:0.6 }}/>
           </a>
-          <a href="mailto:hello@creativals.com" className="cc" style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.07)' }}>
+          <a href="mailto:hello@creativals.com" className="cc" style={{ background:'#F1F5F9', border:'1px solid rgba(0,0,0,0.08)' }}>
             <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(124,58,237,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <Mail size={14} color="#A78BFA"/>
             </div>
             <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#E2E8F0' }}>Email Us</div>
+              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>Email Us</div>
               <div style={{ fontSize:'0.58rem', color:'#64748B' }}>hello@creativals.com</div>
             </div>
             <ArrowRight size={11} color="#A78BFA" style={{ flexShrink:0, opacity:0.6 }}/>
@@ -313,7 +313,7 @@ const Footer = () => {
               <Calendar size={14} color="#A78BFA"/>
             </div>
             <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#E2E8F0' }}>Book a Call</div>
+              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>Book a Call</div>
               <div style={{ fontSize:'0.58rem', color:'#A78BFA' }}>30-min free session</div>
             </div>
             <ArrowRight size={11} color="#A78BFA" style={{ flexShrink:0, opacity:0.6 }}/>
