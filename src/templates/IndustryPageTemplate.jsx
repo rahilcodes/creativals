@@ -67,7 +67,8 @@ const IndustryPageTemplate = ({ industry }) => {
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <motion.a href={`${WA}?text=${waMsg}`} target="_blank" rel="noreferrer"
               whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1.1rem 2.25rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: 'white', borderRadius: 14, fontWeight: 900, fontSize: '1.05rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
+              className="text-white"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1.1rem 2.25rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', borderRadius: 14, fontWeight: 900, fontSize: '1.05rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
               <MessageCircle size={18} /> Get My Free Audit <ArrowRight size={16} />
             </motion.a>
             <motion.a href={`tel:+917997001700`}
@@ -134,7 +135,7 @@ const IndustryPageTemplate = ({ industry }) => {
               <React.Fragment key={step}>
                 <motion.div {...fin} transition={{ delay: i * 0.1 }}
                   style={{ padding: '1.5rem', background: '#ffffff', border: `1px solid ${i === 0 ? color : 'rgba(124,58,237,0.1)'}`, borderRadius: 16, textAlign: 'center', minWidth: 150, flex: '1 1 180px', maxWidth: '240px', boxShadow: '0 4px 16px rgba(124,58,237,0.04)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: i === 0 ? color : `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', fontSize: '0.85rem', fontWeight: 900, color: i === 0 ? 'white' : color, border: i === 0 ? 'none' : `1px solid ${color}40`, boxShadow: i === 0 ? `0 4px 10px ${color}35` : 'none' }}>
+                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: i === 0 ? color : `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1rem', fontSize: '0.85rem', fontWeight: 900, border: i === 0 ? 'none' : `1px solid ${color}40`, boxShadow: i === 0 ? `0 4px 10px ${color}35` : 'none', ...(i !== 0 ? { color } : {}) }} className={i === 0 ? "text-white" : ""}>
                     {String(i + 1).padStart(2, '0')}
                   </div>
                   <div style={{ fontWeight: 800, fontSize: '0.95rem', color: '#1A1040', lineHeight: 1.3 }}>{step}</div>
@@ -286,7 +287,8 @@ const IndustryPageTemplate = ({ industry }) => {
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <motion.a href={`${WA}?text=${waMsg}`} target="_blank" rel="noreferrer"
               whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: 'white', borderRadius: 14, fontWeight: 900, fontSize: '1.05rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
+              className="text-white"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', borderRadius: 14, fontWeight: 900, fontSize: '1.05rem', textDecoration: 'none', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
               <MessageCircle size={20} /> Chat on WhatsApp — It's Free <ArrowRight size={16} />
             </motion.a>
           </div>

@@ -775,7 +775,16 @@
 [data-theme="light"] .dark-page button[style*="color: rgb(255, 255, 255)"],
 [data-theme="light"] .dark-page div[style*="color: white"],
 [data-theme="light"] .dark-page div[style*="color:white"],
-[data-theme="light"] .dark-page div[style*="color: rgb(255, 255, 255)"] {
+[data-theme="light"] .dark-page div[style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .light-page a[style*="color: white"],
+[data-theme="light"] .light-page a[style*="color:white"],
+[data-theme="light"] .light-page a[style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .light-page button[style*="color: white"],
+[data-theme="light"] .light-page button[style*="color:white"],
+[data-theme="light"] .light-page button[style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .light-page div[style*="color: white"],
+[data-theme="light"] .light-page div[style*="color:white"],
+[data-theme="light"] .light-page div[style*="color: rgb(255, 255, 255)"] {
   color: #ffffff !important;
 }
 

@@ -30,7 +30,8 @@ const ServicePageTemplate = ({ service }) => {
             {service.heroSub}
           </p>
           <a href={`https://wa.me/917997001700?text=${waMsg}`} target="_blank" rel="noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1.1rem 2.25rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: 'white', borderRadius: '0.75rem', fontWeight: 800, textDecoration: 'none', fontSize: '1.05rem', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
+            className="text-white"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1.1rem 2.25rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', borderRadius: '0.75rem', fontWeight: 800, textDecoration: 'none', fontSize: '1.05rem', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
             Get Free Audit <ArrowRight size={18} />
           </a>
         </div>
@@ -83,7 +84,7 @@ const ServicePageTemplate = ({ service }) => {
           {service.systemSteps.map((step, i) => (
             <div key={step.step} style={{ display: 'flex', gap: '2rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
-                <div style={{ width: '44px', height: '44px', background: '#7C3AED', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.95rem', fontWeight: 900, color: 'white', boxShadow: '0 4px 10px rgba(124,58,237,0.3)' }}>{i + 1}</div>
+                <div style={{ width: '44px', height: '44px', background: '#7C3AED', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.95rem', fontWeight: 900, boxShadow: '0 4px 10px rgba(124,58,237,0.3)' }} className="text-white">{i + 1}</div>
                 {i < service.systemSteps.length - 1 && <div style={{ width: '3px', flex: 1, background: '#E9E3FF', marginTop: '8px', marginBottom: '8px' }} />}
               </div>
               <div style={{ paddingTop: '0.4rem', paddingBottom: i < service.systemSteps.length - 1 ? '2.5rem' : 0 }}>
@@ -205,7 +206,8 @@ const ServicePageTemplate = ({ service }) => {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'var(--lt-text)' }}>Ready to build your {service.title.toLowerCase()} system?</h2>
           <p style={{ color: '#4B5563', marginBottom: '2rem', fontSize: '1.1rem' }}>Free audit. No commitment. Just clarity on exactly what to fix.</p>
           <a href={`https://wa.me/917997001700?text=${waMsg}`} target="_blank" rel="noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1.1rem 2.5rem', background: '#22C55E', color: 'white', borderRadius: '0.75rem', fontWeight: 800, textDecoration: 'none', fontSize: '1.05rem', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
+            className="text-white"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1.1rem 2.5rem', background: '#22C55E', borderRadius: '0.75rem', fontWeight: 800, textDecoration: 'none', fontSize: '1.05rem', boxShadow: '0 4px 14px rgba(34,197,94,0.35)' }}>
             Get Free Audit on WhatsApp <ArrowRight size={18} />
           </a>
           <p style={{ color: '#64748B', fontSize: '0.8rem', marginTop: '1.25rem' }}>Takes 30 seconds. No spam. Just real help.</p>
