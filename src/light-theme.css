@@ -764,7 +764,19 @@
 [data-theme="light"] .dark-page [style*="color: #F1F5F9"],
 [data-theme="light"] .dark-page [style*="color:#F1F5F9"],
 [data-theme="light"] .dark-page [style*="color: rgb(241, 245, 249)"] {
-  color: var(--lt-text) !important;
+}
+
+/* Restore white text for solid colored buttons, links, and step number circles in light theme */
+[data-theme="light"] .dark-page a[style*="color: white"],
+[data-theme="light"] .dark-page a[style*="color:white"],
+[data-theme="light"] .dark-page a[style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .dark-page button[style*="color: white"],
+[data-theme="light"] .dark-page button[style*="color:white"],
+[data-theme="light"] .dark-page button[style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .dark-page div[style*="color: white"],
+[data-theme="light"] .dark-page div[style*="color:white"],
+[data-theme="light"] .dark-page div[style*="color: rgb(255, 255, 255)"] {
+  color: #ffffff !important;
 }
 
 /* Muted spans */
