@@ -426,10 +426,10 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: 'auto', background: '#111827', padding: '1rem', borderRadius: '1rem', position: 'relative', zIndex: 2 }}>
-                  <h4 style={{ color: 'white', fontSize: '0.85rem', margin: '0 0 0.15rem', fontWeight: 900 }}>Free Consultation</h4>
-                  <p style={{ color: '#9CA3AF', fontSize: '0.7rem', margin: '0 0 0.75rem', fontWeight: 500 }}>Let's build your roadmap.</p>
-                  <Link to="/contact" onClick={handleMouseLeave} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#7C3AED', color: 'white', textDecoration: 'none', padding: '0.5rem', borderRadius: '0.5rem', fontSize: '0.8rem', fontWeight: 800 }}>
+                <div style={{ marginTop: 'auto', background: '#F5F0FF', border: '1.5px solid rgba(124,58,237,.15)', padding: '1rem', borderRadius: '1rem', position: 'relative', zIndex: 2 }}>
+                  <h4 style={{ color: '#1A1040', fontSize: '0.85rem', margin: '0 0 0.15rem', fontWeight: 900 }}>Free Consultation</h4>
+                  <p style={{ color: '#6B7280', fontSize: '0.7rem', margin: '0 0 0.75rem', fontWeight: 500 }}>Let's build your roadmap.</p>
+                  <Link to="/contact" onClick={handleMouseLeave} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg,#7C3AED,#A855F7)', color: '#ffffff', textDecoration: 'none', padding: '0.5rem', borderRadius: '0.5rem', fontSize: '0.8rem', fontWeight: 800 }}>
                     Get Free Audit
                   </Link>
                 </div>
@@ -479,11 +479,11 @@ const Navbar = () => {
                 {/* Column 1: Featured Card (Hotels & Resorts) */}
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <Link to="/industries/hotels-resorts" onClick={handleMouseLeave} className="mega-card-featured-hover" style={{ 
-                    padding: '32px', 
-                    background: 'linear-gradient(135deg, #1e293b, #334155)', 
+                    padding: '28px', 
+                    background: 'linear-gradient(135deg, #F5F0FF, #EEE9FF)', 
                     borderRadius: '24px', 
                     textDecoration: 'none', 
-                    color: 'white', 
+                    border: '1.5px solid rgba(124,58,237,.18)',
                     display: 'flex', 
                     flexDirection: 'column',
                     gap: '20px',
@@ -491,25 +491,25 @@ const Navbar = () => {
                     position: 'relative',
                     overflow: 'hidden',
                     transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                    boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.3)'
+                    boxShadow: '0 8px 32px -8px rgba(124,58,237,.15)'
                   }}>
-                    <div style={{ position: 'absolute', top: '-10px', right: '-10px', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)', borderRadius: '50%' }}></div>
+                    <div style={{ position: 'absolute', top: '-10px', right: '-10px', width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)', borderRadius: '50%' }}></div>
                     
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
-                      <div style={{ width: '52px', height: '52px', background: '#7C3AED', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(124,58,237,0.3)' }}>
-                        <Building size={28} color="white" />
+                      <div style={{ width: '52px', height: '52px', background: '#7C3AED', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(124,58,237,0.25)' }}>
+                        <Building size={28} color="#ffffff" />
                       </div>
-                      <span style={{ fontSize: '0.6rem', fontWeight: 600, background: 'rgba(255, 255, 255, 0.08)', color: 'white', padding: '4px 10px', borderRadius: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', border: '1px solid rgba(255, 255, 255, 0.1)' }}>High ROI</span>
+                      <span style={{ fontSize: '0.6rem', fontWeight: 700, background: '#7C3AED', color: '#ffffff', padding: '4px 10px', borderRadius: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>High ROI</span>
                     </div>
 
                     <div style={{ position: 'relative', zIndex: 2 }}>
-                      <h3 style={{ fontSize: '1.5rem', fontWeight: 900, marginBottom: '6px', letterSpacing: '-0.03em', color: '#ffffff' }}>Hotels & Resorts</h3>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, color: '#e2e8f0', fontWeight: 600, margin: '0 0 24px' }}>Get more direct bookings. Reduce OTA dependency.</p>
+                      <h3 style={{ fontSize: '1.5rem', fontWeight: 900, marginBottom: '6px', letterSpacing: '-0.03em', color: '#1A1040' }}>Hotels & Resorts</h3>
+                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, color: '#4B5563', fontWeight: 600, margin: '0 0 24px' }}>Get more direct bookings. Reduce OTA dependency.</p>
                       
-                      <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '16px 20px' }}>
+                      <div style={{ background: '#ffffff', border: '1.5px solid rgba(124,58,237,.12)', borderRadius: '16px', padding: '16px 20px' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <span style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>+180%</span>
-                          <span style={{ fontSize: '0.7rem', fontWeight: 800, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Direct Booking Growth</span>
+                          <span style={{ fontSize: '1.35rem', fontWeight: 900, color: '#7C3AED' }}>+180%</span>
+                          <span style={{ fontSize: '0.7rem', fontWeight: 800, color: '#16A34A', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Direct Booking Growth</span>
                         </div>
                       </div>
                     </div>
@@ -607,9 +607,9 @@ const Navbar = () => {
                     </div>
                   </Link>
 
-                  <div style={{ marginTop: 'auto', background: '#1e293b', padding: '20px', borderRadius: '20px', display: 'flex', flexDirection: 'column', gap: '12px', boxShadow: '0 12px 24px -8px rgba(15, 23, 42, 0.2)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                    <p style={{ fontSize: '0.8rem', color: '#cbd5e1', margin: 0, fontWeight: 600 }}>Not listed above?</p>
-                    <Link to="/industries" onClick={handleMouseLeave} style={{ fontSize: '0.9rem', fontWeight: 900, color: '#ffffff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', transition: 'transform 0.2s' }} className="hover:translate-x-1">
+                  <div style={{ marginTop: 'auto', background: '#F5F0FF', padding: '20px', borderRadius: '20px', display: 'flex', flexDirection: 'column', gap: '12px', border: '1.5px solid rgba(124,58,237,.15)' }}>
+                    <p style={{ fontSize: '0.8rem', color: '#4B5563', margin: 0, fontWeight: 600 }}>Not listed above?</p>
+                    <Link to="/industries" onClick={handleMouseLeave} style={{ fontSize: '0.9rem', fontWeight: 900, color: '#7C3AED', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', transition: 'transform 0.2s' }}>
                       View all industries <ArrowRight size={16} />
                     </Link>
                   </div>
@@ -659,29 +659,28 @@ const Navbar = () => {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <div style={{ 
                     padding: '32px', 
-                    background: 'linear-gradient(135deg, #1e293b, #0f172a)', 
+                    background: 'linear-gradient(135deg, #F5F0FF, #EEE9FF)', 
                     borderRadius: '24px', 
-                    color: 'white', 
+                    border: '1.5px solid rgba(124,58,237,.15)',
                     display: 'flex', 
                     flexDirection: 'column',
                     gap: '24px',
                     height: '100%',
                     position: 'relative',
                     overflow: 'hidden',
-                    boxShadow: '0 20px 40px -15px rgba(15, 23, 42, 0.3)'
+                    boxShadow: '0 8px 32px -8px rgba(124,58,237,.12)'
                   }}>
-                    {/* Background Soft Glow */}
-                    <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%)', borderRadius: '50%' }}></div>
+                    <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%)', borderRadius: '50%' }}></div>
                     
                     <div style={{ position: 'relative', zIndex: 2 }}>
-                      <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px', display: 'block' }}>World-Class Systems</span>
-                      <h3 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '12px', letterSpacing: '-0.03em', color: '#ffffff' }}>Inside Creativals</h3>
-                      <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: '#94a3b8', fontWeight: 500, margin: 0 }}>We donâ€™t just run marketing. We build systems, products, and playbooks that scale businesses.</p>
+                      <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px', display: 'block' }}>World-Class Systems</span>
+                      <h3 style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '12px', letterSpacing: '-0.03em', color: '#1A1040' }}>Inside Creativals</h3>
+                      <p style={{ fontSize: '0.95rem', lineHeight: 1.6, color: '#4B5563', fontWeight: 500, margin: 0 }}>We don’t just run marketing. We build systems, products, and playbooks that scale businesses.</p>
                     </div>
 
-                    <div style={{ position: 'relative', zIndex: 2, background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '16px', padding: '16px' }}>
+                    <div style={{ position: 'relative', zIndex: 2, background: '#ffffff', border: '1.5px solid rgba(124,58,237,.12)', borderRadius: '16px', padding: '16px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <div style={{ width: '32px', height: '32px', background: 'rgba(124, 58, 237, 0.2)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <div style={{ width: '32px', height: '32px', background: '#F3E8FF', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Award size={18} color="#7C3AED" />
                         </div>
                         <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#e2e8f0' }}>Trusted by 100+ growing brands across industries.</span>
