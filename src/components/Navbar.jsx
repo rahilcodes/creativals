@@ -246,7 +246,7 @@ const ResultsDropdown = ({ handleMouseLeave, activeDropdown, handleMouseEnter })
 
             {/* CTA */}
             <Link to="/contact" onClick={handleMouseLeave}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: '#111827', color: 'white', textDecoration: 'none', padding: '0.65rem', borderRadius: '0.7rem', fontSize: '0.8rem', fontWeight: 800, flexShrink: 0, marginTop: 'auto' }}>
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'linear-gradient(135deg,#7C3AED,#A855F7)', color: '#ffffff', textDecoration: 'none', padding: '0.65rem', borderRadius: '0.7rem', fontSize: '0.8rem', fontWeight: 800, flexShrink: 0, marginTop: 'auto' }}>
               Get Free Audit <ArrowRight size={13} />
             </Link>
           </div>
@@ -683,12 +683,12 @@ const Navbar = () => {
                         <div style={{ width: '32px', height: '32px', background: '#F3E8FF', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Award size={18} color="#7C3AED" />
                         </div>
-                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#e2e8f0' }}>Trusted by 100+ growing brands across industries.</span>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#374151' }}>Trusted by 100+ growing brands across industries.</span>
                       </div>
                     </div>
 
                     <div style={{ marginTop: 'auto', position: 'relative', zIndex: 2 }}>
-                      <Link to="/about-us" onClick={handleMouseLeave} style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Link to="/about-us" onClick={handleMouseLeave} style={{ color: '#7C3AED', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px' }}>
                         Explore our story <ArrowRight size={18} />
                       </Link>
                     </div>

@@ -36,7 +36,7 @@ const ResultsPage = () => {
   });
 
   return (
-    <div style={{ background: '#02010A', minHeight: '100vh', color: 'white' }}>
+    <div style={{ background: '#F8FAFC', minHeight: '100vh', color: '#0F172A' }}>
       <style>{`
         .results-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
         .results-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
@@ -51,7 +51,7 @@ const ResultsPage = () => {
 
       {/* ── HERO ─────────────────────────────────────────────────────── */}
       <section style={{ position: 'relative', overflow: 'hidden', padding: '8rem 2rem 5rem', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(168,85,247,.07) 1px,transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(168,85,247,.08) 1px,transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
         <motion.div animate={{ scale: [1, 1.08, 1], opacity: [.08, .18, .08] }} transition={{ duration: 10, repeat: Infinity }}
           style={{ position: 'absolute', left: '50%', top: '30%', transform: 'translate(-50%, -50%)', width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle,rgba(168,85,247,.3) 0%,transparent 60%)', pointerEvents: 'none' }} />
 
@@ -63,15 +63,15 @@ const ResultsPage = () => {
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }}
-            style={{ fontWeight: 900, fontSize: 'clamp(2.5rem,5vw,4.5rem)', letterSpacing: '-.05em', lineHeight: 1.05, margin: '0 0 1.5rem', color: 'white' }}>
+            style={{ fontWeight: 900, fontSize: 'clamp(2.5rem,5vw,4.5rem)', letterSpacing: '-.05em', lineHeight: 1.05, margin: '0 0 1.5rem', color: '#0F172A' }}>
             160+ Businesses.<br />
             <span style={{ background: 'linear-gradient(135deg,#F59E0B,#EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>7 Countries.</span><br />
             One system that works.
           </motion.h1>
 
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .2 }}
-            style={{ color: '#94A3B8', fontSize: 'clamp(.95rem,1.5vw,1.15rem)', lineHeight: 1.65, maxWidth: 620, margin: '0 auto 2.5rem' }}>
-            From a local furniture store in Hyderabad to Florida's top realtor — we've built growth systems that generated over <strong style={{ color: 'white' }}>₹100 Crore in combined client revenue</strong>.
+            style={{ color: '#475569', fontSize: 'clamp(.95rem,1.5vw,1.15rem)', lineHeight: 1.65, maxWidth: 620, margin: '0 auto 2.5rem' }}>
+            From a local furniture store in Hyderabad to Florida's top realtor — we've built growth systems that generated over <strong style={{ color: '#0F172A' }}>₹100 Crore in combined client revenue</strong>.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .3 }}
@@ -81,7 +81,7 @@ const ResultsPage = () => {
               See Case Studies <ArrowRight size={16} />
             </a>
             <a href="#client-wall"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.95rem 2rem', background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.12)', color: 'white', fontWeight: 700, fontSize: '.95rem', borderRadius: 14, textDecoration: 'none' }}>
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.95rem 2rem', background: '#ffffff', border: '1px solid rgba(0,0,0,0.12)', color: '#334155', fontWeight: 700, fontSize: '.95rem', borderRadius: 14, textDecoration: 'none' }}>
               Browse All 160+ Clients
             </a>
           </motion.div>
@@ -94,10 +94,10 @@ const ResultsPage = () => {
       </div>
 
       {/* ── CATEGORY DOMINANCE ─────────────────────────────────────────── */}
-      <section style={{ padding: '4rem 2rem', borderTop: '1px solid rgba(255,255,255,.05)' }}>
+      <section style={{ padding: '4rem 2rem', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(1.5rem,2.5vw,2rem)', letterSpacing: '-.03em', margin: '0 0 .5rem' }}>
+            <h2 style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.5rem,2.5vw,2rem)', letterSpacing: '-.03em', margin: '0 0 .5rem' }}>
               We don't serve every industry. We <span style={{ color: '#A855F7' }}>dominate</span> ours.
             </h2>
             <p style={{ color: '#64748B', fontSize: '.9rem' }}>22+ verticals. Here's where we're the deepest.</p>
@@ -106,14 +106,14 @@ const ResultsPage = () => {
             {CATEGORIES.map((cat, i) => (
               <motion.div key={cat.label}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ padding: '1.5rem', borderRadius: 16, border: `1px solid ${cat.color}18`, background: `linear-gradient(145deg,${cat.color}08,rgba(255,255,255,.01))`, display: 'flex', gap: '1rem', alignItems: 'flex-start', transition: 'transform .25s, box-shadow .25s', cursor: 'default' }}
+                style={{ padding: '1.5rem', borderRadius: 16, border: `1px solid ${cat.color}30`, background: '#FFFFFF', display: 'flex', gap: '1rem', alignItems: 'flex-start', transition: 'transform .25s, box-shadow .25s', cursor: 'default' }}
                 whileHover={{ y: -4, boxShadow: `0 10px 30px -10px ${cat.color}33` }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, background: `${cat.color}18`, border: `1px solid ${cat.color}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: `${cat.color}22`, border: `1px solid ${cat.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <cat.Icon size={20} color={cat.color} strokeWidth={2} />
                 </div>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '.5rem', marginBottom: '.25rem' }}>
-                    <h3 style={{ color: 'white', fontWeight: 800, fontSize: '.95rem', margin: 0 }}>{cat.label}</h3>
+                    <h3 style={{ color: '#0F172A', fontWeight: 800, fontSize: '.95rem', margin: 0 }}>{cat.label}</h3>
                     <span style={{ color: cat.color, fontWeight: 900, fontSize: '.88rem' }}>{cat.count}</span>
                   </div>
                   <p style={{ color: '#64748B', fontSize: '.82rem', margin: 0, lineHeight: 1.5 }}>{cat.desc}</p>
@@ -125,7 +125,7 @@ const ResultsPage = () => {
       </section>
 
       {/* ── HERO CASE STUDIES ──────────────────────────────────────────── */}
-      <section id="case-studies" style={{ padding: '5rem 2rem', background: '#04030F', borderTop: '1px solid rgba(255,255,255,.05)' }}>
+      <section id="case-studies" style={{ padding: '5rem 2rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
@@ -134,7 +134,7 @@ const ResultsPage = () => {
               <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Elite Case Studies</span>
             </motion.div>
             <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
-              style={{ color: '#1A1040', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
+              style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
               Our most jaw-dropping transformations.
             </motion.h2>
             <p style={{ color: '#64748B', fontSize: '.92rem', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
@@ -164,18 +164,18 @@ const ResultsPage = () => {
       </section>
 
       {/* ── GEOGRAPHIC REACH ───────────────────────────────────────────── */}
-      <section id="geographic-reach" style={{ padding: '5rem 2rem', borderTop: '1px solid rgba(255,255,255,.05)' }}>
+      <section id="geographic-reach" style={{ padding: '5rem 2rem', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.28rem .9rem', background: 'rgba(56,189,248,.1)', border: '1px solid rgba(56,189,248,.25)', borderRadius: '99px', marginBottom: '1rem' }}>
               <Globe size={12} color="#38BDF8" />
-              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#7DD3FC', letterSpacing: '.07em', textTransform: 'uppercase' }}>Global Reach</span>
+              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#0369A1', letterSpacing: '.07em', textTransform: 'uppercase' }}>Global Reach</span>
             </motion.div>
             <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
-              style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
+              style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
               From Hyderabad to Houston.<br />
-              <span style={{ color: '#38BDF8' }}>Our systems work everywhere.</span>
+              <span style={{ color: '#0284C7' }}>Our systems work everywhere.</span>
             </motion.h2>
             <p style={{ color: '#64748B', fontSize: '.92rem', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
               7 countries. 3 continents. We're not a Hyderabad agency. We're a global growth partner that happens to be headquartered here.
@@ -186,11 +186,11 @@ const ResultsPage = () => {
             {GEO_NODES.map((node, i) => (
               <motion.div key={node.region}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ padding: '1.75rem', borderRadius: 18, border: `1px solid ${node.color}22`, background: `linear-gradient(145deg, ${node.color}08, rgba(255,255,255,.01))`, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                style={{ padding: '1.75rem', borderRadius: 18, border: `1px solid ${node.color}33`, background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <span style={{ fontSize: '2rem' }}>{node.flag}</span>
                   <div>
-                    <div style={{ color: 'white', fontWeight: 800, fontSize: '.95rem', lineHeight: 1.2 }}>{node.region}</div>
+                    <div style={{ color: '#0F172A', fontWeight: 800, fontSize: '.95rem', lineHeight: 1.2 }}>{node.region}</div>
                     <div style={{ color: node.color, fontWeight: 900, fontSize: '1.1rem' }}>{node.count} clients</div>
                   </div>
                 </div>
@@ -202,7 +202,7 @@ const ResultsPage = () => {
       </section>
 
       {/* ── CLIENT PROOF WALL ──────────────────────────────────────────── */}
-      <section id="client-wall" style={{ background: '#04030F', borderTop: '1px solid rgba(255,255,255,.05)' }}>
+      <section id="client-wall" style={{ background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <ClientProofWall />
       </section>
 
@@ -211,11 +211,11 @@ const ResultsPage = () => {
         <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(34,197,94,.12) 0%,transparent 65%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, margin: '0 auto' }}>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            style={{ color: 'white', fontWeight: 900, fontSize: 'clamp(2rem,4vw,3.2rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 1rem' }}>
+            style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(2rem,4vw,3.2rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 1rem' }}>
             Ready to be the next<br />
             <span style={{ color: '#22C55E' }}>success story?</span>
           </motion.h2>
-          <p style={{ color: '#94A3B8', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 2.5rem', maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
+          <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 2.5rem', maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
             We built systems for 160+ businesses across 7 countries. We know exactly what will work for yours — and we'll tell you for free.
           </p>
           <motion.a

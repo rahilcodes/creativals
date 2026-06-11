@@ -19,7 +19,7 @@ const PROOF = [
   { initials: 'PH', name: 'Pista House', biz: 'Restaurant Chain', result: '200% order growth', color: '#F97316' },
   { initials: 'AK', name: 'Aakash Inst.', biz: 'Education', result: '200+ new admissions', color: '#A855F7' },
   { initials: 'GL', name: 'Glampinn', biz: 'Luxury Stays', result: '₹50Cr revenue generated', color: '#EC4899' },
-  { initials: 'GG', name: 'GMR Group', biz: 'Education Group', result: '3-Year Ongoing Partner', color: '#EAB308' },
+  { initials: 'GG', name: 'GMR Group', biz: 'Education Group', result: '3-Year Ongoing Partner', color: '#D97706' },
 ];
 
 const STEPS = [
@@ -83,7 +83,7 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="dark-page" style={{ background: '#050812', minHeight: '100vh', color: 'white', paddingTop: 80 }}>
+    <div className="dark-page" style={{ background: '#F8FAFC', minHeight: '100vh', color: '#0F172A', paddingTop: 80 }}>
       <style>{`
         .contact-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; padding: 5rem 2rem 3rem; }
         .contact-goal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
@@ -99,33 +99,33 @@ const ContactPage = () => {
       `}</style>
 
       {/* ── SCARCITY BANNER ── */}
-      <div style={{ background: 'linear-gradient(90deg,#7C3AED,#A855F7,#EC4899)', padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.05em' }}>
+      <div style={{ background: 'linear-gradient(90deg,#7C3AED,#A855F7,#EC4899)', padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.05em', color: 'white' }}>
         <motion.span animate={{ opacity: [1, 0.6, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
           ⚡ ONLY {spotsLeft} FREE AUDIT SLOTS LEFT THIS MONTH
         </motion.span>
-        {' · '}Average response today: <span style={{ color: '#86EFAC' }}>{isOnline ? '12 minutes' : '10am IST tomorrow'}</span>
+        {' · '}Average response today: <span style={{ color: '#BBF7D0' }}>{isOnline ? '12 minutes' : '10am IST tomorrow'}</span>
       </div>
 
       {/* ── HERO ── */}
       <section className="contact-hero-grid">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.3rem 0.9rem', background: isOnline ? 'rgba(34,197,94,0.12)' : 'rgba(100,116,139,0.12)', border: `1px solid ${isOnline ? 'rgba(34,197,94,0.3)' : 'rgba(100,116,139,0.3)'}`, borderRadius: 99, marginBottom: '1.5rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.3rem 0.9rem', background: isOnline ? 'rgba(34,197,94,0.10)' : 'rgba(100,116,139,0.10)', border: `1px solid ${isOnline ? 'rgba(34,197,94,0.3)' : 'rgba(100,116,139,0.3)'}`, borderRadius: 99, marginBottom: '1.5rem' }}>
             <motion.div animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ width: 7, height: 7, borderRadius: '50%', background: isOnline ? '#22C55E' : '#64748B' }} />
-            <span style={{ fontSize: '0.72rem', fontWeight: 700, color: isOnline ? '#86EFAC' : '#94A3B8' }}>
+            <span style={{ fontSize: '0.72rem', fontWeight: 700, color: isOnline ? '#16A34A' : '#475569' }}>
               {isOnline ? 'Pavan is online — avg. reply 12 mins' : 'Will respond at 10am IST tomorrow'}
             </span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.04em', margin: '0 0 1.25rem' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem,4.5vw,4rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.04em', margin: '0 0 1.25rem', color: '#0F172A' }}>
             Let's build your<br />
             <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7,#EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>growth system.</span>
           </h1>
-          <p style={{ color: '#94A3B8', fontSize: '1.05rem', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: 480 }}>
+          <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.7, margin: '0 0 2rem', maxWidth: 480 }}>
             Start with a free, no-obligation audit. We'll analyse your setup and hand you a specific roadmap — within the hour.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
             {[{ v: '160+', l: 'Clients' }, { v: '7', l: 'Countries' }, { v: '₹1B+', l: 'Revenue' }].map(({ v, l }) => (
               <div key={l} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#A855F7' }}>{v}</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#7C3AED' }}>{v}</div>
                 <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{l}</div>
               </div>
             ))}
@@ -134,12 +134,12 @@ const ContactPage = () => {
 
         {/* Animated WhatsApp chat mockup */}
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
-          style={{ background: 'linear-gradient(145deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 24, overflow: 'hidden' }}>
-          <div style={{ background: '#1B2B1F', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#22C55E,#16A34A)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 900 }}>C</div>
+          style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 24, overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
+          <div style={{ background: '#DCFCE7', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+            <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#22C55E,#16A34A)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 900, color: 'white' }}>C</div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>Creativals</div>
-              <div style={{ fontSize: '0.72rem', color: '#22C55E' }}>● Online</div>
+              <div style={{ fontWeight: 700, fontSize: '0.9rem', color: '#0F172A' }}>Creativals</div>
+              <div style={{ fontSize: '0.72rem', color: '#16A34A' }}>● Online</div>
             </div>
           </div>
           <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', minHeight: 200 }}>
@@ -147,17 +147,17 @@ const ContactPage = () => {
               {chatLines.slice(0, chatStep + 1).map((line, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
                   style={{ display: 'flex', justifyContent: line.side === 'us' ? 'flex-end' : 'flex-start' }}>
-                  <div style={{ maxWidth: '75%', padding: '0.6rem 0.9rem', borderRadius: line.side === 'us' ? '16px 16px 4px 16px' : '16px 16px 16px 4px', background: line.side === 'us' ? '#25D366' : 'rgba(255,255,255,0.08)', fontSize: '0.82rem', color: line.side === 'us' ? '#000' : '#E2E8F0', fontWeight: 500 }}>
+                  <div style={{ maxWidth: '75%', padding: '0.6rem 0.9rem', borderRadius: line.side === 'us' ? '16px 16px 4px 16px' : '16px 16px 16px 4px', background: line.side === 'us' ? '#25D366' : '#F1F5F9', fontSize: '0.82rem', color: line.side === 'us' ? '#000' : '#0F172A', fontWeight: 500 }}>
                     {line.text}
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
             {chatStep >= chatLines.length - 1 && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', gap: '4px', padding: '0.5rem 0.9rem', background: 'rgba(255,255,255,0.05)', borderRadius: 12, width: 'fit-content' }}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', gap: '4px', padding: '0.5rem 0.9rem', background: '#E2E8F0', borderRadius: 12, width: 'fit-content' }}>
                 {[0, 1, 2].map(i => (
                   <motion.div key={i} animate={{ y: [0, -4, 0] }} transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.15 }}
-                    style={{ width: 6, height: 6, borderRadius: '50%', background: '#64748B' }} />
+                    style={{ width: 6, height: 6, borderRadius: '50%', background: '#94A3B8' }} />
                 ))}
               </motion.div>
             )}
@@ -169,22 +169,22 @@ const ContactPage = () => {
       <section style={{ padding: '0 2rem 4rem', textAlign: 'center' }}>
         <motion.a href={`${WA}?text=Hi! I want a free Growth Audit.`} target="_blank" rel="noreferrer"
           whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.9rem', padding: '1.2rem 2.75rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#000', fontWeight: 900, fontSize: '1.15rem', borderRadius: 16, textDecoration: 'none', boxShadow: '0 0 60px -10px rgba(34,197,94,0.6)', marginBottom: '1rem' }}>
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.9rem', padding: '1.2rem 2.75rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#000', fontWeight: 900, fontSize: '1.15rem', borderRadius: 16, textDecoration: 'none', boxShadow: '0 0 60px -10px rgba(34,197,94,0.5)', marginBottom: '1rem' }}>
           <MessageCircle size={22} />
           Chat on WhatsApp — It's Free
           <ArrowRight size={18} />
         </motion.a>
-        <div style={{ color: '#64748B', fontSize: '0.82rem' }}>No commitment. No spam. Just a real audit from a real expert.</div>
+        <div style={{ color: '#334155', fontSize: '0.82rem' }}>No commitment. No spam. Just a real audit from a real expert.</div>
       </section>
 
       {/* ── SOCIAL PROOF STRIP ── */}
-      <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '1.5rem 2rem', overflow: 'hidden' }}>
+      <section style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderBottom: '1px solid rgba(0,0,0,0.07)', padding: '1.5rem 2rem', overflow: 'hidden', background: '#F1F5F9' }}>
         <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           {PROOF.map((p) => (
-            <div key={p.name} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1.25rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12 }}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${p.color}22`, border: `2px solid ${p.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 900, color: p.color, flexShrink: 0 }}>{p.initials}</div>
+            <div key={p.name} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1.25rem', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 12, boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+              <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${p.color}18`, border: `2px solid ${p.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 900, color: p.color, flexShrink: 0 }}>{p.initials}</div>
               <div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700 }}>{p.biz}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0F172A' }}>{p.biz}</div>
                 <div style={{ fontSize: '0.72rem', color: p.color, fontWeight: 700 }}>{p.result}</div>
               </div>
             </div>
@@ -195,19 +195,19 @@ const ContactPage = () => {
       {/* ── GOAL SELECTOR ── */}
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '4rem 2rem 3rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 0.5rem' }}>What's your main goal?</h2>
-          <p style={{ color: '#64748B', fontSize: '0.9rem' }}>Pick one — we'll tailor everything to your exact need.</p>
+          <h2 style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 0.5rem', color: '#0F172A' }}>What's your main goal?</h2>
+          <p style={{ color: '#334155', fontSize: '0.9rem' }}>Pick one — we'll tailor everything to your exact need.</p>
         </div>
         <div className="contact-goal-grid">
           {GOALS.map((g) => {
             const selected = goal?.label === g.label;
             return (
               <motion.button key={g.label} whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }} onClick={() => setGoal(g)}
-                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem', padding: '1.5rem 1rem', borderRadius: 16, background: selected ? `${g.color}15` : 'rgba(255,255,255,0.03)', border: `1px solid ${selected ? g.color : 'rgba(255,255,255,0.07)'}`, cursor: 'pointer', transition: 'all 0.2s', boxShadow: selected ? `0 0 30px -8px ${g.color}60` : 'none' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: `${g.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.6rem', padding: '1.5rem 1rem', borderRadius: 16, background: selected ? `${g.color}10` : '#FFFFFF', border: `1px solid ${selected ? g.color : 'rgba(0,0,0,0.08)'}`, cursor: 'pointer', transition: 'all 0.2s', boxShadow: selected ? `0 0 30px -8px ${g.color}50` : '0 1px 4px rgba(0,0,0,0.04)' }}>
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: `${g.color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <g.icon size={20} color={g.color} />
                 </div>
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: selected ? g.color : '#E2E8F0' }}>{g.label}</span>
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: selected ? g.color : '#1E293B' }}>{g.label}</span>
               </motion.button>
             );
           })}
@@ -217,13 +217,13 @@ const ContactPage = () => {
         <div className="contact-form-grid">
           {/* What Happens Next */}
           <div>
-            <h3 style={{ fontWeight: 800, fontSize: '1.15rem', marginBottom: '1.5rem', color: '#E2E8F0' }}>What happens after you message us?</h3>
+            <h3 style={{ fontWeight: 800, fontSize: '1.15rem', marginBottom: '1.5rem', color: '#0F172A' }}>What happens after you message us?</h3>
             {STEPS.map((s, i) => (
               <motion.div key={s.n} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
                 style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${s.color}20`, border: `1px solid ${s.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 900, color: s.color, flexShrink: 0 }}>{s.n}</div>
+                <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${s.color}12`, border: `1px solid ${s.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 900, color: s.color, flexShrink: 0 }}>{s.n}</div>
                 <div style={{ paddingTop: 4 }}>
-                  <div style={{ fontWeight: 800, fontSize: '0.95rem', marginBottom: '0.2rem' }}>{s.title}</div>
+                  <div style={{ fontWeight: 800, fontSize: '0.95rem', marginBottom: '0.2rem', color: '#0F172A' }}>{s.title}</div>
                   <div style={{ color: '#64748B', fontSize: '0.82rem' }}>{s.sub}</div>
                 </div>
               </motion.div>
@@ -234,9 +234,9 @@ const ContactPage = () => {
                 { icon: Phone,   text: '+91 7997001700', href: 'tel:+917997001700' },
                 { icon: Clock,   text: 'Mon–Sat · 10am–7pm IST', href: null },
               ].map(({ icon: Icon, text, href }) => (
-                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: '#94A3B8' }}>
+                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: '#475569' }}>
                   <Icon size={14} color="#7C3AED" />
-                  {href ? <a href={href} style={{ color: '#94A3B8', textDecoration: 'none' }}>{text}</a> : text}
+                  {href ? <a href={href} style={{ color: '#475569', textDecoration: 'none' }}>{text}</a> : text}
                 </div>
               ))}
             </div>
@@ -247,7 +247,7 @@ const ContactPage = () => {
             <AnimatePresence>
               {goal && (
                 <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                  style={{ padding: '0.6rem 1rem', background: `${goal.color}12`, border: `1px solid ${goal.color}30`, borderRadius: 10, fontSize: '0.8rem', color: goal.color, fontWeight: 700 }}>
+                  style={{ padding: '0.6rem 1rem', background: `${goal.color}10`, border: `1px solid ${goal.color}30`, borderRadius: 10, fontSize: '0.8rem', color: goal.color, fontWeight: 700 }}>
                   Goal selected: {goal.label} ✓
                 </motion.div>
               )}
@@ -259,39 +259,39 @@ const ContactPage = () => {
             ].map(({ key, placeholder, type }) => (
               <input key={key} type={type} placeholder={placeholder} value={form[key]} required
                 onChange={e => setForm({ ...form, [key]: e.target.value })}
-                style={{ padding: '0.95rem 1.1rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: 'white', fontSize: '0.95rem', outline: 'none', transition: 'border-color 0.2s' }}
+                style={{ padding: '0.95rem 1.1rem', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.12)', borderRadius: 12, color: '#0F172A', fontSize: '0.95rem', outline: 'none', transition: 'border-color 0.2s' }}
                 onFocus={e => { e.target.style.borderColor = '#7C3AED'; }}
-                onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+                onBlur={e => { e.target.style.borderColor = 'rgba(0,0,0,0.12)'; }}
               />
             ))}
             <textarea placeholder="Anything else you want us to know? (optional)" value={form.msg} rows={3}
               onChange={e => setForm({ ...form, msg: e.target.value })}
-              style={{ padding: '0.95rem 1.1rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: 'white', fontSize: '0.95rem', outline: 'none', resize: 'vertical', transition: 'border-color 0.2s' }}
+              style={{ padding: '0.95rem 1.1rem', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.12)', borderRadius: 12, color: '#0F172A', fontSize: '0.95rem', outline: 'none', resize: 'vertical', transition: 'border-color 0.2s' }}
               onFocus={e => { e.target.style.borderColor = '#7C3AED'; }}
-              onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; }}
+              onBlur={e => { e.target.style.borderColor = 'rgba(0,0,0,0.12)'; }}
             />
             <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-              style={{ padding: '1.1rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#000', borderRadius: 12, fontWeight: 900, border: 'none', cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: '0 8px 30px -8px rgba(34,197,94,0.5)' }}>
+              style={{ padding: '1.1rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#000', borderRadius: 12, fontWeight: 900, border: 'none', cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', boxShadow: '0 8px 30px -8px rgba(34,197,94,0.4)' }}>
               <MessageCircle size={18} /> Send via WhatsApp <ArrowRight size={16} />
             </motion.button>
-            <p style={{ color: '#475569', fontSize: '0.76rem', textAlign: 'center', margin: 0 }}>No spam. No unsolicited calls. Just real help.</p>
+            <p style={{ color: '#334155', fontSize: '0.76rem', textAlign: 'center', margin: 0 }}>No spam. No unsolicited calls. Just real help.</p>
           </form>
         </div>
       </section>
 
       {/* ── GUARANTEE STRIP ── */}
-      <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: 'rgba(124,58,237,0.05)', padding: '4rem 2rem', textAlign: 'center' }}>
+      <section style={{ borderTop: '1px solid rgba(0,0,0,0.07)', background: '#F1F5F9', padding: '4rem 2rem', textAlign: 'center' }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
-          <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
-            <Shield size={26} color="#A855F7" />
+          <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(124,58,237,0.10)', border: '1px solid rgba(124,58,237,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+            <Shield size={26} color="#7C3AED" />
           </div>
-          <h2 style={{ fontWeight: 900, fontSize: 'clamp(1.4rem,2.5vw,2rem)', letterSpacing: '-0.03em', margin: '0 0 0.75rem' }}>Our 100% Free Audit Guarantee</h2>
-          <p style={{ color: '#94A3B8', lineHeight: 1.7, fontSize: '0.95rem', margin: '0 0 2rem' }}>
+          <h2 style={{ fontWeight: 900, fontSize: 'clamp(1.4rem,2.5vw,2rem)', letterSpacing: '-0.03em', margin: '0 0 0.75rem', color: '#0F172A' }}>Our 100% Free Audit Guarantee</h2>
+          <p style={{ color: '#475569', lineHeight: 1.7, fontSize: '0.95rem', margin: '0 0 2rem' }}>
             Not happy with the audit? We'll throw in a full competitor analysis — completely free, no questions asked. Our job is to give you value before you spend a single rupee.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             {['Free audit, no credit card', 'Reply in 30 mins or less', 'Zero pressure, zero spam'].map(t => (
-              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: '#94A3B8', fontWeight: 600 }}>
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', color: '#334155', fontWeight: 600 }}>
                 <CheckCircle size={14} color="#22C55E" /> {t}
               </div>
             ))}
@@ -301,16 +301,16 @@ const ContactPage = () => {
 
       {/* ── MINI FAQ ── */}
       <section style={{ maxWidth: 680, margin: '0 auto', padding: '4rem 2rem 5rem' }}>
-        <h2 style={{ fontWeight: 900, fontSize: '1.6rem', textAlign: 'center', marginBottom: '2rem' }}>Quick Answers</h2>
+        <h2 style={{ fontWeight: 900, fontSize: '1.6rem', textAlign: 'center', marginBottom: '2rem', color: '#0F172A' }}>Quick Answers</h2>
         {[
           { q: 'How quickly will you respond?', a: 'WhatsApp messages are replied to within 30 minutes during business hours (10am–7pm IST, Mon–Sat). Outside hours, we\'ll respond first thing the next morning.' },
           { q: 'What happens in the free audit?', a: 'We review your website, ads, lead pipeline, and top competitors. Within 24 hours of chatting, you receive a specific written action plan — no fluff, no upsells.' },
           { q: 'Do you work with businesses outside India?', a: 'Yes! We actively serve clients in the UAE, USA, Malaysia, Canada, Australia, and Guyana. Time zones are no barrier.' },
           { q: 'Can I start with just one service?', a: 'Absolutely. Many clients begin with a single service — like Google Ads or a landing page — then scale to the full system once they see results.' },
         ].map((faq, i) => (
-          <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '1.25rem', marginBottom: '1.25rem' }}>
+          <div key={i} style={{ borderBottom: '1px solid rgba(0,0,0,0.08)', paddingBottom: '1.25rem', marginBottom: '1.25rem' }}>
             <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', background: 'none', border: 'none', color: 'white', fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer', textAlign: 'left', padding: 0, gap: '1rem' }}>
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', background: 'none', border: 'none', color: '#0F172A', fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer', textAlign: 'left', padding: 0, gap: '1rem' }}>
               {faq.q}
               <motion.span animate={{ rotate: openFaq === i ? 45 : 0 }} transition={{ duration: 0.2 }}
                 style={{ fontSize: '1.4rem', color: '#7C3AED', flexShrink: 0, lineHeight: 1 }}>+</motion.span>
@@ -318,7 +318,7 @@ const ContactPage = () => {
             <AnimatePresence>
               {openFaq === i && (
                 <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-                  style={{ color: '#94A3B8', marginTop: '0.75rem', lineHeight: 1.7, fontSize: '0.9rem', overflow: 'hidden' }}>
+                  style={{ color: '#475569', marginTop: '0.75rem', lineHeight: 1.7, fontSize: '0.9rem', overflow: 'hidden' }}>
                   {faq.a}
                 </motion.p>
               )}
@@ -327,12 +327,12 @@ const ContactPage = () => {
         ))}
 
         {/* Star ratings */}
-        <div style={{ textAlign: 'center', marginTop: '2.5rem', padding: '2rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16 }}>
+        <div style={{ textAlign: 'center', marginTop: '2.5rem', padding: '2rem', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 16, boxShadow: '0 1px 6px rgba(0,0,0,0.04)' }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.3rem', marginBottom: '0.5rem' }}>
             {[...Array(5)].map((_, i) => <Star key={i} size={18} color="#F59E0B" fill="#F59E0B" />)}
           </div>
-          <div style={{ fontWeight: 800, fontSize: '1rem', marginBottom: '0.25rem' }}>Trusted by 160+ businesses in 7 countries</div>
-          <div style={{ color: '#64748B', fontSize: '0.82rem' }}>₹1,000,000,000+ in combined client revenue generated</div>
+          <div style={{ fontWeight: 800, fontSize: '1rem', marginBottom: '0.25rem', color: '#0F172A' }}>Trusted by 160+ businesses in 7 countries</div>
+          <div style={{ color: '#374151', fontSize: '0.82rem' }}>₹1,000,000,000+ in combined client revenue generated</div>
         </div>
       </section>
 

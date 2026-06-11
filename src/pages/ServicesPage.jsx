@@ -78,17 +78,17 @@ const ServicesPage = () => {
   });
 
   return (
-    <div className="dark-page" style={{ background: '#080B14', minHeight: '100vh', paddingTop: '80px', color: 'white' }}>
+    <div className="dark-page" style={{ background: '#F8FAFC', minHeight: '100vh', paddingTop: '80px', color: '#0F172A' }}>
       {/* Hero */}
       <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#A78BFA', marginBottom: '2rem' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#7C3AED', marginBottom: '2rem' }}>
           <Zap size={14} /> 30+ Systems. One Team.
         </div>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
+        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em', color: '#0F172A' }}>
           We don't offer services.<br />
           <span style={{ background: 'linear-gradient(135deg, #7C3AED, #A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>We build growth systems.</span>
         </h1>
-        <p style={{ fontSize: '1.2rem', color: '#9CA3AF', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+        <p style={{ fontSize: '1.2rem', color: '#475569', lineHeight: 1.7, marginBottom: '2.5rem' }}>
           Every capability below is designed to work as part of a connected system — not as a standalone campaign. Traffic. Conversion. Closing. That's the loop.
         </p>
         <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', background: '#7C3AED', color: 'white', borderRadius: '0.75rem', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', transition: 'background 0.2s' }}>
@@ -98,9 +98,9 @@ const ServicesPage = () => {
 
       {/* System Loop Banner */}
       <section style={{ maxWidth: '900px', margin: '0 auto 5rem', padding: '0 2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', background: 'rgba(124,58,237,0.07)', border: '1px solid rgba(124,58,237,0.15)', borderRadius: '1rem', padding: '1.5rem 2rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.18)', borderRadius: '1rem', padding: '1.5rem 2rem', flexWrap: 'wrap' }}>
           {['Traffic (Ads + SEO)', '→', 'Conversion (Website + Funnel)', '→', 'Closing (WhatsApp + CRM)'].map((s, i) => (
-            <span key={i} style={{ color: s === '→' ? '#6B7280' : '#E2D9FF', fontWeight: s === '→' ? 400 : 700, fontSize: '1rem' }}>{s}</span>
+            <span key={i} style={{ color: s === '→' ? '#9CA3AF' : '#4C1D95', fontWeight: s === '→' ? 400 : 700, fontSize: '1rem' }}>{s}</span>
           ))}
         </div>
       </section>
@@ -111,12 +111,12 @@ const ServicesPage = () => {
         return (
           <section key={cat.label} style={{ maxWidth: '1200px', margin: '0 auto 5rem', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <div style={{ width: '44px', height: '44px', background: `${cat.color}20`, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${cat.color}40` }}>
+              <div style={{ width: '44px', height: '44px', background: `${cat.color}12`, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${cat.color}30` }}>
                 <Icon size={22} color={cat.color} />
               </div>
               <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0 }}>{cat.label}</h2>
-                <p style={{ color: '#6B7280', margin: 0, fontSize: '0.9rem' }}>{cat.sub}</p>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#0F172A' }}>{cat.label}</h2>
+                <p style={{ color: '#374151', margin: 0, fontSize: '0.9rem' }}>{cat.sub}</p>
               </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
@@ -127,20 +127,21 @@ const ServicesPage = () => {
                   style={{
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '1.25rem 1.5rem',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(0,0,0,0.08)',
                     borderRadius: '0.875rem',
                     textDecoration: 'none',
-                    color: 'white',
+                    color: '#0F172A',
                     fontWeight: 600,
                     fontSize: '0.95rem',
                     transition: 'all 0.2s',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = `${cat.color}15`; e.currentTarget.style.borderColor = `${cat.color}50`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.transform = 'none'; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = `${cat.color}08`; e.currentTarget.style.borderColor = `${cat.color}40`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}
                 >
                   {svc.name}
-                  <ChevronRight size={16} color="#6B7280" />
+                  <ChevronRight size={16} color="#9CA3AF" />
                 </Link>
               ))}
             </div>
@@ -149,9 +150,9 @@ const ServicesPage = () => {
       })}
 
       {/* Final CTA */}
-      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: 'rgba(124,58,237,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>Not sure which system you need?</h2>
-        <p style={{ color: '#9CA3AF', marginBottom: '2rem', fontSize: '1.1rem' }}>Tell us your goal. We'll map the exact system in 30 minutes — free.</p>
+      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: '#0F172A' }}>Not sure which system you need?</h2>
+        <p style={{ color: '#475569', marginBottom: '2rem', fontSize: '1.1rem' }}>Tell us your goal. We'll map the exact system in 30 minutes — free.</p>
         <a
           href="https://wa.me/917997001700?text=Hi! I'd like a free system audit for my business."
           target="_blank" rel="noreferrer"

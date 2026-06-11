@@ -126,26 +126,26 @@ const CaseStudiesPage = () => {
   const filtered = activeTag === 'All' ? CASES : CASES.filter(c => c.tag === activeTag);
 
   return (
-    <div className="dark-page" style={{ background: '#050812', color: 'white', paddingTop: 80, minHeight: '100vh' }}>
+    <div className="dark-page" style={{ background: '#F8FAFC', color: '#0F172A', paddingTop: 80, minHeight: '100vh' }}>
 
       {/* ── HERO ── */}
       <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: 820, margin: '0 auto' }}>
         <motion.div {...fin}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 1rem', background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: 99, fontSize: '0.8rem', color: '#A78BFA', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '2rem' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 1rem', background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.25)', borderRadius: 99, fontSize: '0.8rem', color: '#7C3AED', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '2rem' }}>
             <TrendingUp size={12} /> Real Numbers. Real Businesses.
           </div>
           <h1 style={{ fontSize: 'clamp(2.8rem,6vw,5rem)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-0.04em', marginBottom: '1.25rem' }}>
             Proof, not promises.<br />
             <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7,#22C55E)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Results that speak.</span>
           </h1>
-          <p style={{ fontSize: '1.1rem', color: '#94A3B8', lineHeight: 1.75, maxWidth: 600, margin: '0 auto' }}>
+          <p style={{ fontSize: '1.1rem', color: '#475569', lineHeight: 1.75, maxWidth: 600, margin: '0 auto' }}>
             We don't hide behind vague claims. These are the real businesses, real challenges, and real numbers from our work. No exaggeration. No borrowed credibility.
           </p>
         </motion.div>
       </section>
 
       {/* ── KEY NUMBERS ── */}
-      <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '2rem 2rem' }}>
+      <section style={{ borderTop: '1px solid rgba(0,0,0,0.08)', borderBottom: '1px solid rgba(0,0,0,0.08)', padding: '2rem 2rem' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem' }}>
           {[
             { v: '₹1B+', l: 'Client Revenue Generated' },
@@ -154,7 +154,7 @@ const CaseStudiesPage = () => {
             { v: '7', l: 'Countries' },
           ].map(({ v, l }) => (
             <div key={l} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 'clamp(1.8rem,3.5vw,2.5rem)', fontWeight: 900, letterSpacing: '-0.04em', background: 'linear-gradient(135deg,#fff,#94A3B8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{v}</div>
+              <div style={{ fontSize: 'clamp(1.8rem,3.5vw,2.5rem)', fontWeight: 900, letterSpacing: '-0.04em', background: 'linear-gradient(135deg,#0F172A,#7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{v}</div>
               <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '0.2rem' }}>{l}</div>
             </div>
           ))}
@@ -166,7 +166,7 @@ const CaseStudiesPage = () => {
         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           {TAGS.map(t => (
             <button key={t} onClick={() => setActiveTag(t)}
-              style={{ padding: '0.5rem 1.25rem', borderRadius: 99, border: `1px solid ${activeTag === t ? 'rgba(124,58,237,0.6)' : 'rgba(255,255,255,0.08)'}`, background: activeTag === t ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.02)', color: activeTag === t ? '#A78BFA' : '#64748B', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', transition: 'all 0.2s' }}>
+              style={{ padding: '0.5rem 1.25rem', borderRadius: 99, border: `1px solid ${activeTag === t ? 'rgba(124,58,237,0.5)' : 'rgba(0,0,0,0.1)'}`, background: activeTag === t ? 'rgba(124,58,237,0.1)' : '#ffffff', color: activeTag === t ? '#7C3AED' : '#64748B', fontWeight: 700, fontSize: '0.85rem', cursor: 'pointer', transition: 'all 0.2s' }}>
               {t}
             </button>
           ))}
@@ -179,7 +179,7 @@ const CaseStudiesPage = () => {
           <AnimatePresence>
             {filtered.map((cs, i) => (
               <motion.div key={cs.client} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ delay: i * 0.07 }}
-                style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid rgba(255,255,255,0.07)`, borderRadius: 24, overflow: 'hidden', borderLeft: `4px solid ${cs.color}` }}>
+                style={{ background: '#FFFFFF', border: `1px solid rgba(0,0,0,0.08)`, borderRadius: 24, overflow: 'hidden', borderLeft: `4px solid ${cs.color}`, boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
                 {/* Header */}
                 <div style={{ padding: '2rem 2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', cursor: 'pointer' }}
                   onClick={() => setExpanded(expanded === i ? null : i)}>
@@ -189,7 +189,7 @@ const CaseStudiesPage = () => {
                     </div>
                     <div>
                       <div style={{ fontSize: '0.72rem', fontWeight: 800, color: cs.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.2rem' }}>{cs.industry}</div>
-                      <div style={{ fontWeight: 900, fontSize: '1.1rem', color: '#F1F5F9' }}>{cs.client}</div>
+                      <div style={{ fontWeight: 900, fontSize: '1.1rem', color: '#0F172A' }}>{cs.client}</div>
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
@@ -199,7 +199,7 @@ const CaseStudiesPage = () => {
                         <div style={{ fontSize: '0.68rem', color: '#475569', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{m.l}</div>
                       </div>
                     ))}
-                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.2s', transform: expanded === i ? 'rotate(45deg)' : 'none' }}>
+                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.2s', transform: expanded === i ? 'rotate(45deg)' : 'none' }}>
                       <ArrowRight size={14} color="#64748B" />
                     </div>
                   </div>
@@ -209,25 +209,25 @@ const CaseStudiesPage = () => {
                 <AnimatePresence>
                   {expanded === i && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-                      style={{ overflow: 'hidden', borderTop: `1px solid rgba(255,255,255,0.06)` }}>
+                      style={{ overflow: 'hidden', borderTop: `1px solid rgba(0,0,0,0.07)` }}>
                       <div style={{ padding: '2rem 2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem' }}>
                         <div>
                           <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '0.75rem' }}>The Challenge</div>
-                          <p style={{ color: '#94A3B8', fontSize: '0.9rem', lineHeight: 1.7 }}>{cs.challenge}</p>
+                          <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.7 }}>{cs.challenge}</p>
                         </div>
                         <div>
                           <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '0.75rem' }}>What We Did</div>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                             {cs.what_we_did.map(w => (
-                              <div key={w} style={{ fontSize: '0.85rem', color: '#94A3B8' }}>· {w}</div>
+                              <div key={w} style={{ fontSize: '0.85rem', color: '#475569' }}>· {w}</div>
                             ))}
                           </div>
                         </div>
                         <div>
                           <div style={{ fontSize: '0.72rem', fontWeight: 800, color: cs.color, textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '0.75rem' }}>The Result</div>
-                          <p style={{ color: '#CBD5E1', fontSize: '0.9rem', lineHeight: 1.7, fontWeight: 600 }}>{cs.result}</p>
+                          <p style={{ color: '#334155', fontSize: '0.9rem', lineHeight: 1.7, fontWeight: 600 }}>{cs.result}</p>
                           <a href={`${WA}?text=Hi! I want similar results for my business like you did for ${cs.client}.`} target="_blank" rel="noreferrer"
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', padding: '0.65rem 1.25rem', background: `${cs.color}15`, border: `1px solid ${cs.color}35`, borderRadius: 10, color: cs.color, fontWeight: 700, fontSize: '0.82rem', textDecoration: 'none' }}>
+                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.25rem', padding: '0.65rem 1.25rem', background: `${cs.color}18`, border: `1px solid ${cs.color}50`, borderRadius: 10, color: cs.color, fontWeight: 700, fontSize: '0.82rem', textDecoration: 'none' }}>
                             <MessageCircle size={14} /> Get Similar Results
                           </a>
                         </div>
@@ -243,8 +243,8 @@ const CaseStudiesPage = () => {
 
       {/* ── CTA ── */}
       <section style={{ padding: '3rem 2rem 7rem', textAlign: 'center' }}>
-        <motion.div {...fin} style={{ maxWidth: 700, margin: '0 auto', padding: '4rem 2rem', background: 'linear-gradient(180deg,rgba(124,58,237,0.1),transparent)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 28 }}>
-          <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '1rem' }}>Want to be our next<br />case study?</h2>
+        <motion.div {...fin} style={{ maxWidth: 700, margin: '0 auto', padding: '4rem 2rem', background: 'linear-gradient(180deg,rgba(124,58,237,0.07),#F8FAFC)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 28 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '1rem', color: '#0F172A' }}>Want to be our next<br />case study?</h2>
           <p style={{ color: '#64748B', marginBottom: '2.5rem', fontSize: '1rem' }}>We only take on clients we're confident we can grow. Start with a free audit.</p>
           <motion.a href={`${WA}?text=Hi! I want to explore growing my business with Creativals.`} target="_blank" rel="noreferrer"
             whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}

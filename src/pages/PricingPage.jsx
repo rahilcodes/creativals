@@ -45,7 +45,7 @@ const TIERS = [
     period: '',
     desc: 'For businesses that want the complete growth infrastructure.',
     badge: 'Best for Scaling',
-    color: '#22C55E',
+    color: '#16A34A',
     features: [
       'All Marketing Channels',
       'Custom Website or App',
@@ -79,17 +79,17 @@ const PricingPage = () => {
   });
 
   return (
-    <div className="dark-page" style={{ background: '#080B14', minHeight: '100vh', paddingTop: '80px', color: 'white' }}>
+    <div className="dark-page" style={{ background: '#F8FAFC', minHeight: '100vh', paddingTop: '80px', color: '#0F172A' }}>
       {/* Hero */}
       <section style={{ padding: '6rem 2rem 3rem', textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#22C55E', marginBottom: '2rem' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#16A34A', marginBottom: '2rem' }}>
           <Shield size={14} /> 100% Money-Back Guarantee
         </div>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
+        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em', color: '#0F172A' }}>
           Pay for results.<br />
-          <span style={{ color: '#22C55E' }}>Not for promises.</span>
+          <span style={{ color: '#16A34A' }}>Not for promises.</span>
         </h1>
-        <p style={{ fontSize: '1.1rem', color: '#9CA3AF', lineHeight: 1.7 }}>
+        <p style={{ fontSize: '1.1rem', color: '#475569', lineHeight: 1.7 }}>
           No hidden fees. No 12-month lockdowns. Every plan starts with a free audit so you know exactly what you're investing in.
         </p>
       </section>
@@ -101,8 +101,8 @@ const PricingPage = () => {
           { icon: Clock, text: 'Month-to-Month After 3 Months' },
           { icon: Star, text: 'Free Audit Included' },
         ].map(({ icon: Icon, text }) => (
-          <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#9CA3AF', fontSize: '0.9rem' }}>
-            <Icon size={16} color="#22C55E" /> {text}
+          <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#475569', fontSize: '0.9rem' }}>
+            <Icon size={16} color="#16A34A" /> {text}
           </div>
         ))}
       </div>
@@ -114,11 +114,12 @@ const PricingPage = () => {
             <div
               key={tier.name}
               style={{
-                background: tier.badge === 'Most Popular' ? 'rgba(124,58,237,0.08)' : 'rgba(255,255,255,0.03)',
-                border: `1px solid ${tier.badge === 'Most Popular' ? '#7C3AED50' : 'rgba(255,255,255,0.07)'}`,
+                background: tier.badge === 'Most Popular' ? 'rgba(124,58,237,0.05)' : '#FFFFFF',
+                border: `1px solid ${tier.badge === 'Most Popular' ? '#7C3AED50' : 'rgba(0,0,0,0.08)'}`,
                 borderRadius: '1.5rem',
                 padding: '2.5rem',
                 position: 'relative',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
               }}
             >
               {tier.badge && (
@@ -126,16 +127,16 @@ const PricingPage = () => {
                   {tier.badge}
                 </div>
               )}
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '0.5rem' }}>{tier.name}</h3>
-              <p style={{ color: '#6B7280', fontSize: '0.9rem', marginBottom: '1.5rem' }}>{tier.desc}</p>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 800, marginBottom: '0.5rem', color: '#0F172A' }}>{tier.name}</h3>
+              <p style={{ color: '#374151', fontSize: '0.9rem', marginBottom: '1.5rem' }}>{tier.desc}</p>
               <div style={{ marginBottom: '2rem' }}>
-                <span style={{ fontSize: '3rem', fontWeight: 900, color: 'white' }}>{tier.price}</span>
-                <span style={{ color: '#6B7280', fontSize: '1rem' }}>{tier.period}</span>
+                <span style={{ fontSize: '3rem', fontWeight: 900, color: '#0F172A' }}>{tier.price}</span>
+                <span style={{ color: '#374151', fontSize: '1rem' }}>{tier.period}</span>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 {tier.features.map(f => (
-                  <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#D1D5DB', fontSize: '0.95rem' }}>
-                    <CheckCircle size={16} color="#22C55E" style={{ flexShrink: 0 }} /> {f}
+                  <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#1F2937', fontSize: '0.95rem' }}>
+                    <CheckCircle size={16} color="#16A34A" style={{ flexShrink: 0 }} /> {f}
                   </li>
                 ))}
               </ul>
@@ -152,36 +153,36 @@ const PricingPage = () => {
       </section>
 
       {/* Philosophy Block */}
-      <section style={{ maxWidth: '800px', margin: '0 auto 5rem', padding: '3rem 2rem', background: 'rgba(255,255,255,0.03)', borderRadius: '1.5rem', textAlign: 'center', border: '1px solid rgba(255,255,255,0.07)' }}>
-        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '1rem' }}>Our Pricing Philosophy</h2>
-        <p style={{ color: '#9CA3AF', lineHeight: 1.8, fontSize: '1.05rem' }}>
+      <section style={{ maxWidth: '800px', margin: '0 auto 5rem', padding: '3rem 2rem', background: '#FFFFFF', borderRadius: '1.5rem', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
+        <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '1rem', color: '#0F172A' }}>Our Pricing Philosophy</h2>
+        <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1.05rem' }}>
           We don't believe in locking businesses into 12-month retainers with no accountability. Our contracts are performance-driven. We earn your business every month. If we underperform, you get your money back. That's the commitment.
         </p>
       </section>
 
       {/* FAQ */}
       <section style={{ maxWidth: '700px', margin: '0 auto 5rem', padding: '0 2rem' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '2rem', textAlign: 'center' }}>Pricing Questions</h2>
+        <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '2rem', textAlign: 'center', color: '#0F172A' }}>Pricing Questions</h2>
         {FAQS.map((faq, i) => (
-          <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
+          <div key={i} style={{ borderBottom: '1px solid rgba(0,0,0,0.08)', paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
             <button
               onClick={() => setOpenFaq(openFaq === i ? null : i)}
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', background: 'none', border: 'none', color: 'white', fontWeight: 700, fontSize: '1rem', cursor: 'pointer', textAlign: 'left', padding: 0 }}
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', background: 'none', border: 'none', color: '#0F172A', fontWeight: 700, fontSize: '1rem', cursor: 'pointer', textAlign: 'left', padding: 0 }}
             >
               {faq.q}
               <span style={{ fontSize: '1.5rem', color: '#7C3AED', marginLeft: '1rem', flexShrink: 0, lineHeight: 1 }}>{openFaq === i ? '−' : '+'}</span>
             </button>
             {openFaq === i && (
-              <p style={{ color: '#9CA3AF', marginTop: '1rem', lineHeight: 1.7, fontSize: '0.95rem' }}>{faq.a}</p>
+              <p style={{ color: '#475569', marginTop: '1rem', lineHeight: 1.7, fontSize: '0.95rem' }}>{faq.a}</p>
             )}
           </div>
         ))}
       </section>
 
       {/* CTA */}
-      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: 'rgba(124,58,237,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>Not sure which plan is right?</h2>
-        <p style={{ color: '#9CA3AF', marginBottom: '2rem', fontSize: '1.1rem' }}>Get a free audit. We'll recommend the exact system your business needs.</p>
+      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: '#0F172A' }}>Not sure which plan is right?</h2>
+        <p style={{ color: '#475569', marginBottom: '2rem', fontSize: '1.1rem' }}>Get a free audit. We'll recommend the exact system your business needs.</p>
         <a
           href="https://wa.me/917997001700?text=Hi! I want to discuss pricing and get a free audit."
           target="_blank" rel="noreferrer"

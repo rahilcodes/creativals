@@ -436,9 +436,10 @@
   color: var(--lt-text) !important;
 }
 
-/* ── CRITICAL: Buttons & links on colored backgrounds always keep WHITE text ── */
-[data-theme="light"] a[style*="background"],
-[data-theme="light"] button[style*="background"],
+/* ── CRITICAL: Buttons & links on COLORED backgrounds keep WHITE text ──
+   IMPORTANT: Must NOT match background:none / background:transparent nav buttons */
+[data-theme="light"] a[style*="linear-gradient"],
+[data-theme="light"] button[style*="linear-gradient"],
 [data-theme="light"] a[class*="btn"],
 [data-theme="light"] button[class*="btn"],
 [data-theme="light"] .cta-primary-btn,
