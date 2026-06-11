@@ -8,13 +8,11 @@ const IndustryPage = () => {
   const { slug } = useParams();
   const industry = getIndustryBySlug(slug);
 
-  if (!industry) return <Navigate to="/" replace />; // Alternatively redirect to a general industries hub if we had one
-
-  const localTitle = industry.name + ' Marketing Agency in Hyderabad | Creativals';
-  const localDesc = `We build custom growth systems for ${industry.name} in Hyderabad. See how Creativals helps local businesses dominate their market and scale profitably.`;
+  const localTitle = industry ? industry.name + ' Marketing Agency in Hyderabad | Creativals' : '';
+  const localDesc = industry ? `We build custom growth systems for ${industry.name} in Hyderabad. See how Creativals helps local businesses dominate their market and scale profitably.` : '';
 
   // Generate FAQ schema dynamically if FAQs exist
-  const faqSchema = industry.faqs ? {
+  const faqSchema = industry && industry.faqs ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": industry.faqs.map(faq => ({
@@ -30,9 +28,11 @@ const IndustryPage = () => {
   useSEO({
     title: localTitle,
     description: localDesc,
-    keywords: `${industry.name.toLowerCase()} marketing hyderabad, ${industry.name.toLowerCase()} digital marketing agency hyderabad, grow ${industry.name.toLowerCase()} business hyderabad`,
+    keywords: industry ? `${industry.name.toLowerCase()} marketing hyderabad, ${industry.name.toLowerCase()} digital marketing agency hyderabad, grow ${industry.name.toLowerCase()} business hyderabad` : '',
     schema: faqSchema,
   });
+
+  if (!industry) return <Navigate to="/" replace />;
 
   return <IndustryPageTemplate industry={industry} />;
 };

@@ -99,3 +99,10 @@
 .footer-links a:hover { color: white; }
 .text-green-500 { color: #22C55E; }
 @media (max-width: 768px) { .footer-top { flex-direction: column; gap: 2rem; } .footer-links { flex-direction: column; gap: 1rem; } }
+
+/* Responsive adjustments for industry flow steps */
+@media (max-width: 768px) {
+  .step-arrow-container {
+    display: none !important;
+  }
+}

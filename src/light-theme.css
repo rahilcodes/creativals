@@ -319,22 +319,42 @@
 [data-theme="light"] .coi-card p  { color: var(--lt-muted) !important; }
 
 /* ═══════════════════════════════════════════════════════════════
-   17. FOOTER — KEEP DARK (intentional contrast anchor)
+   17. FOOTER — LIGHT THEME OVERRIDES
 ═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] footer {
-  background: #1A1040 !important;
+  background: #F8FAFC !important;
+  color: #0F172A !important;
+  border-top: 1px solid rgba(124, 58, 237, 0.15) !important;
 }
 
-/* Prevent our light-theme rules from leaking into footer */
-[data-theme="light"] footer * {
-  color: inherit !important;
+[data-theme="light"] footer p {
+  color: #475569 !important;
 }
 
-[data-theme="light"] footer p { color: inherit !important; }
-[data-theme="light"] footer span { color: inherit !important; }
-[data-theme="light"] footer h1, [data-theme="light"] footer h2,
-[data-theme="light"] footer h3, [data-theme="light"] footer h4 {
-  color: #ffffff !important;
+[data-theme="light"] footer .ftr-link {
+  color: #475569 !important;
+}
+
+[data-theme="light"] footer .ftr-link:hover {
+  color: #7C3AED !important;
+}
+
+[data-theme="light"] footer .ftr-soc {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] footer .ftr-soc:hover {
+  background: #F1F5F9 !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+[data-theme="light"] footer .ftr-goals-grid a {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] footer .ftr-goals-grid a:hover {
+  box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.14) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -670,4 +690,140 @@
 [data-theme="light"] .prob-card svg,
 [data-theme="light"] .coi-card svg {
   opacity: 1 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   33. SUBPAGES SWEEP & CARDS OVERRIDES
+═══════════════════════════════════════════════════════════════ */
+
+/* Override dark page container */
+[data-theme="light"] .dark-page {
+  background: var(--lt-bg) !important;
+  color: var(--lt-text) !important;
+}
+
+/* Force headings on dark-page to be deep navy */
+[data-theme="light"] .dark-page h1,
+[data-theme="light"] .dark-page h2,
+[data-theme="light"] .dark-page h3,
+[data-theme="light"] .dark-page h4,
+[data-theme="light"] .dark-page h5,
+[data-theme="light"] .dark-page h6 {
+  color: var(--lt-text) !important;
+}
+
+/* Force body paragraphs and generic texts */
+[data-theme="light"] .dark-page p {
+  color: var(--lt-muted) !important;
+}
+
+/* Force bullet text items and general lists */
+[data-theme="light"] .dark-page li,
+[data-theme="light"] .dark-page li span {
+  color: var(--lt-muted) !important;
+}
+
+/* Override card containers (both rgba(255,255,255,0.02) and #111827/similar) */
+[data-theme="light"] .dark-page div[style*="background: rgba(255,255,255,0.02)"],
+[data-theme="light"] .dark-page div[style*="background:rgba(255,255,255,0.02)"],
+[data-theme="light"] .dark-page div[style*="background: rgba(255, 255, 255, 0.02)"],
+[data-theme="light"] .dark-page div[style*="background: #111827"],
+[data-theme="light"] .dark-page div[style*="background:#111827"],
+[data-theme="light"] .dark-page div[style*="background: rgb(17, 24, 39)"] {
+  background: var(--lt-card) !important;
+  border: 1px solid var(--lt-border) !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.06) !important;
+}
+
+/* Hover effect on these cards */
+[data-theme="light"] .dark-page div[style*="background: rgba(255,255,255,0.02)"]:hover,
+[data-theme="light"] .dark-page div[style*="background:rgba(255,255,255,0.02)"]:hover,
+[data-theme="light"] .dark-page div[style*="background: rgba(255, 255, 255, 0.02)"]:hover,
+[data-theme="light"] .dark-page div[style*="background: #111827"]:hover,
+[data-theme="light"] .dark-page div[style*="background:#111827"]:hover {
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.12) !important;
+  border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* Force inline styled text colors that were light/white to be dark readable */
+[data-theme="light"] .dark-page [style*="color: white"],
+[data-theme="light"] .dark-page [style*="color:white"],
+[data-theme="light"] .dark-page [style*="color: rgb(255, 255, 255)"],
+[data-theme="light"] .dark-page [style*="color: #9CA3AF"],
+[data-theme="light"] .dark-page [style*="color:#9CA3AF"],
+[data-theme="light"] .dark-page [style*="color: rgb(156, 163, 175)"],
+[data-theme="light"] .dark-page [style*="color: #D1D5DB"],
+[data-theme="light"] .dark-page [style*="color:#D1D5DB"],
+[data-theme="light"] .dark-page [style*="color: rgb(209, 213, 219)"],
+[data-theme="light"] .dark-page [style*="color: #CBD5E1"],
+[data-theme="light"] .dark-page [style*="color:#CBD5E1"],
+[data-theme="light"] .dark-page [style*="color: rgb(203, 213, 225)"],
+[data-theme="light"] .dark-page [style*="color: #94A3B8"],
+[data-theme="light"] .dark-page [style*="color:#94A3B8"],
+[data-theme="light"] .dark-page [style*="color: rgb(148, 163, 184)"],
+[data-theme="light"] .dark-page [style*="color: #F1F5F9"],
+[data-theme="light"] .dark-page [style*="color:#F1F5F9"],
+[data-theme="light"] .dark-page [style*="color: rgb(241, 245, 249)"] {
+  color: var(--lt-text) !important;
+}
+
+/* Muted spans */
+[data-theme="light"] .dark-page span[style*="color: #9CA3AF"],
+[data-theme="light"] .dark-page span[style*="color:#9CA3AF"],
+[data-theme="light"] .dark-page span[style*="color: #D1D5DB"],
+[data-theme="light"] .dark-page span[style*="color:#D1D5DB"],
+[data-theme="light"] .dark-page span[style*="color: #CBD5E1"],
+[data-theme="light"] .dark-page span[style*="color:#CBD5E1"],
+[data-theme="light"] .dark-page span[style*="color: #94A3B8"],
+[data-theme="light"] .dark-page span[style*="color:#94A3B8"] {
+  color: var(--lt-muted) !important;
+}
+
+/* CTA box on all subpages (e.g. waitlist box, demo booking) */
+[data-theme="light"] .dark-page div[style*="background: #111827"],
+[data-theme="light"] .dark-page div[style*="background:#111827"] {
+  background: rgba(124, 58, 237, 0.05) !important;
+  border: 1px solid rgba(124, 58, 237, 0.18) !important;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.03) !important;
+}
+
+/* Badges on all subpages (make sure orange, yellow, pink labels have enough contrast) */
+[data-theme="light"] .dark-page div[style*="color: #FDE047"],
+[data-theme="light"] .dark-page div[style*="color: #EAB308"],
+[data-theme="light"] .dark-page span[style*="color: #FDE047"],
+[data-theme="light"] .dark-page span[style*="color: #EAB308"],
+[data-theme="light"] .dark-page div[style*="color:#FDE047"],
+[data-theme="light"] .dark-page div[style*="color:#EAB308"] {
+  color: #D97706 !important; /* Gold */
+}
+[data-theme="light"] .dark-page div[style*="color: #F472B6"],
+[data-theme="light"] .dark-page span[style*="color: #F472B6"],
+[data-theme="light"] .dark-page div[style*="color:#F472B6"] {
+  color: #DB2777 !important; /* Pink */
+}
+[data-theme="light"] .dark-page div[style*="color: #FB923C"],
+[data-theme="light"] .dark-page span[style*="color: #FB923C"],
+[data-theme="light"] .dark-page div[style*="color:#FB923C"] {
+  color: #EA580C !important; /* Orange */
+}
+
+/* Success result box in ExperimentsPage */
+[data-theme="light"] .dark-page div[style*="background: rgba(34,197,94,0.1)"] h4 {
+  color: #15803D !important; /* Dark Green */
+}
+[data-theme="light"] .dark-page div[style*="background: rgba(34,197,94,0.1)"] p {
+  color: #1B4332 !important; /* Dark Green text */
+}
+
+/* Tab button colors for ApproachPage */
+[data-theme="light"] .dark-page button[style*="rgba(255,255,255,0.02)"],
+[data-theme="light"] .dark-page button[style*="rgba(255, 255, 255, 0.02)"] {
+  background: var(--lt-card) !important;
+  border: 1px solid var(--lt-border) !important;
+  color: var(--lt-muted) !important;
+}
+[data-theme="light"] .dark-page button[style*="rgba(255,255,255,0.02)"]:hover,
+[data-theme="light"] .dark-page button[style*="rgba(255, 255, 255, 0.02)"]:hover {
+  background: var(--lt-bg-alt) !important;
+  color: var(--lt-text) !important;
 }

@@ -8,16 +8,14 @@ const ServicePage = () => {
   const { slug } = useParams();
   const service = getServiceBySlug(slug);
 
-  if (!service) return <Navigate to="/services" replace />;
-
-  const localTitle = `${service.title} in Hyderabad | Guaranteed Rankings | Creativals`;
-  const localDesc = `Get premium ${service.title.toLowerCase()} in Hyderabad. Creativals helps local businesses and global brands scale profitably with expert ${service.title.toLowerCase()}.`;
+  const localTitle = service ? `${service.title} in Hyderabad | Guaranteed Rankings | Creativals` : '';
+  const localDesc = service ? `Get premium ${service.title.toLowerCase()} in Hyderabad. Creativals helps local businesses and global brands scale profitably with expert ${service.title.toLowerCase()}.` : '';
 
   useSEO({
     title: localTitle,
     description: localDesc,
-    keywords: `${service.title.toLowerCase()} hyderabad, best ${service.title.toLowerCase()} agency hyderabad, ${service.title.toLowerCase()} company in hyderabad`,
-    schema: {
+    keywords: service ? `${service.title.toLowerCase()} hyderabad, best ${service.title.toLowerCase()} agency hyderabad, ${service.title.toLowerCase()} company in hyderabad` : '',
+    schema: service ? {
       "@context": "https://schema.org",
       "@type": "Service",
       "provider": {
@@ -26,8 +24,10 @@ const ServicePage = () => {
       },
       "areaServed": "Hyderabad",
       "serviceType": service.title
-    }
+    } : null
   });
+
+  if (!service) return <Navigate to="/services" replace />;
 
   return <ServicePageTemplate service={service} />;
 };

@@ -144,7 +144,7 @@ const Footer = () => {
   return (
     <footer style={{ background:'#F8FAFC', color:'#0F172A', fontFamily:'Inter,system-ui,sans-serif', borderTop:'1px solid rgba(124,58,237,0.15)', position:'relative', overflow:'hidden' }}>
       <style>{`
-        .ftr-link { color:#475569; text-decoration:none; font-size:0.8rem; font-weight:500; transition:color 0.2s; display:block; }
+        .ftr-link { color:#475569; text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; display:block; }
         .ftr-link:hover { color:#0F172A; }
         .ftr-soc { width:32px; height:32px; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; background:#F1F5F9; border:1px solid rgba(0,0,0,0.08); transition:all 0.2s; text-decoration:none; flex-shrink:0; }
         .ftr-soc:hover { background:#E2E8F0; transform:translateY(-2px); }
@@ -188,9 +188,9 @@ const Footer = () => {
       </div>
 
       {/* ── ZONE 1: GALAXY HERO CTA ─────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'4rem clamp(1.25rem,5vw,6rem) 3rem', borderBottom:'1px solid rgba(0,0,0,0.07)', textAlign:'center' }}>
-        <div style={{ fontSize:'0.68rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.5rem', flexWrap:'wrap' }}>
-          <span style={{ width:7, height:7, borderRadius:'50%', background:'#22C55E', display:'inline-block', boxShadow:'0 0 10px #22C55E' }} />
+      <div style={{ position:'relative', zIndex:1, padding:'4.5rem clamp(1.25rem,5vw,6rem) 3.5rem', borderBottom:'1px solid rgba(0,0,0,0.07)', textAlign:'center' }}>
+        <div style={{ fontSize:'0.82rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1.2rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.55rem', flexWrap:'wrap' }}>
+          <span style={{ width:8, height:8, borderRadius:'50%', background:'#22C55E', display:'inline-block', boxShadow:'0 0 10px #22C55E' }} />
           Now Accepting Clients · 6 Global Offices · Live Results
         </div>
 
@@ -199,7 +199,7 @@ const Footer = () => {
             ₹1,000,000,000+
           </span>
         </div>
-        <div style={{ fontSize:'clamp(0.85rem,2vw,1.3rem)', fontWeight:600, color:'#334155', letterSpacing:'-0.02em', marginBottom:'2.5rem' }}>
+        <div style={{ fontSize:'clamp(1rem,2vw,1.4rem)', fontWeight:600, color:'#334155', letterSpacing:'-0.02em', marginBottom:'2.5rem' }}>
           Generated for our clients. And counting.
         </div>
 
@@ -209,22 +209,22 @@ const Footer = () => {
             <Link key={label} to={href}
               onMouseEnter={() => setHGoal(label)} onMouseLeave={() => setHGoal(null)}
               style={{
-                display:'flex', flexDirection:'column', alignItems:'center', gap:'0.65rem',
-                padding:'1.25rem 0.85rem', borderRadius:'0.875rem', textDecoration:'none',
+                display:'flex', flexDirection:'column', alignItems:'center', gap:'0.75rem',
+                padding:'1.5rem 1rem', borderRadius:'1rem', textDecoration:'none',
                 border:`1px solid ${hGoal===label ? color+'40' : 'rgba(0,0,0,0.09)'}`,
                 background: hGoal===label ? `${color}10` : '#ffffff',
-                boxShadow: hGoal===label ? `0 8px 28px -8px ${color}50` : 'none',
+                boxShadow: hGoal===label ? `0 8px 28px -8px ${color}35` : 'none',
                 transition:'all 0.25s',
               }}>
-              <div style={{ width:42, height:42, borderRadius:'0.65rem', background:`${color}18`, display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <Icon size={20} color={color} />
+              <div style={{ width:48, height:48, borderRadius:'0.75rem', background:`${color}15`, display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <Icon size={24} color={color} />
               </div>
               <div>
-                <div style={{ fontSize:'0.82rem', fontWeight:800, color:'#0F172A', marginBottom:'0.2rem' }}>{label}</div>
-                <div style={{ fontSize:'0.62rem', color:'#64748B', fontWeight:500 }}>{sub}</div>
+                <div style={{ fontSize:'1rem', fontWeight:800, color:'#0F172A', marginBottom:'0.25rem' }}>{label}</div>
+                <div style={{ fontSize:'0.78rem', color:'#64748B', fontWeight:500 }}>{sub}</div>
               </div>
-              <div style={{ display:'flex', alignItems:'center', gap:'0.3rem', fontSize:'0.68rem', fontWeight:700, color }}>
-                Start <ArrowRight size={11} />
+              <div style={{ display:'flex', alignItems:'center', gap:'0.35rem', fontSize:'0.85rem', fontWeight:800, color }}>
+                Start <ArrowRight size={13} />
               </div>
             </Link>
           ))}
@@ -242,22 +242,22 @@ const Footer = () => {
           <Link to="/" style={{ textDecoration:'none' }}>
             <img src="/logo.webp" alt="Creativals" style={{ height:34, width:'auto' }} />
           </Link>
-          <p style={{ color:'#64748B', fontSize:'0.8rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:220 }}>
+          <p style={{ color:'#64748B', fontSize:'0.9rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:260 }}>
             We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
           </p>
           <div className="ftr-soc-wrap" style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
             {SOCIALS.map(({ Icon, href, color }) => (
               <a key={href} href={href} target="_blank" rel="noreferrer" className="ftr-soc">
-                <Icon size={13} color={color} />
+                <Icon size={14} color={color} />
               </a>
             ))}
           </div>
 
-          <div className="ftr-stats-badge" style={{ marginTop:'0.5rem', padding:'0.5rem 0.6rem', background:'rgba(124,58,237,0.06)', border:'1px solid rgba(124,58,237,0.12)', borderRadius:'0.6rem', width: 'fit-content' }}>
-            <div style={{ fontSize:'0.55rem', color:'#A78BFA', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em' }}>160+ Clients · 6 Countries</div>
-            <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.3rem', flexWrap:'wrap', justifyContent:'center' }}>
+          <div className="ftr-stats-badge" style={{ marginTop:'0.5rem', padding:'0.6rem 0.8rem', background:'rgba(124,58,237,0.06)', border:'1px solid rgba(124,58,237,0.12)', borderRadius:'0.6rem', width: 'fit-content' }}>
+            <div style={{ fontSize:'0.75rem', color:'#7C3AED', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em' }}>160+ Clients · 6 Countries</div>
+            <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.4rem', flexWrap:'wrap', justifyContent:'center' }}>
               {['IN','US','CA','AE','MY','AU'].map(c => (
-                <span key={c} style={{ fontSize:'0.5rem', fontWeight:800, color:'#374151', background:'rgba(0,0,0,0.06)', padding:'0.1rem 0.3rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
+                <span key={c} style={{ fontSize:'0.68rem', fontWeight:800, color:'#374151', background:'rgba(0,0,0,0.06)', padding:'0.15rem 0.4rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
               ))}
             </div>
           </div>
@@ -267,8 +267,8 @@ const Footer = () => {
         <div className="ftr-nav-col">
           {NAV_COLS.map(col => (
             <div key={col.label}>
-              <div style={{ fontSize:'0.58rem', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.1em', color:'#374151', marginBottom:'1.1rem' }}>{col.label}</div>
-              <div style={{ display:'flex', flexDirection:'column', gap:'0.8rem' }}>
+              <div style={{ fontSize:'0.85rem', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em', color:'#0F172A', marginBottom:'1.2rem' }}>{col.label}</div>
+              <div style={{ display:'flex', flexDirection:'column', gap:'0.95rem' }}>
                 {col.links.map(({ text, href }) => <Link key={text} to={href} className="ftr-link">{text}</Link>)}
               </div>
             </div>
@@ -277,57 +277,57 @@ const Footer = () => {
 
         {/* Contact */}
         <div className="ftr-contact-col">
-          <div style={{ fontSize:'0.57rem', fontWeight:900, textTransform:'uppercase', letterSpacing:'0.1em', color:'#374151', marginBottom:'0.4rem' }}>Get In Touch</div>
-          <a href={WA_IN} target="_blank" rel="noreferrer" className="cc" style={{ background:'rgba(34,197,94,0.07)', border:'1px solid rgba(34,197,94,0.18)' }}>
-            <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(34,197,94,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <MessageCircle size={14} color="#22C55E"/>
+          <div style={{ fontSize:'0.85rem', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em', color:'#0F172A', marginBottom:'0.8rem' }}>Get In Touch</div>
+          <a href={WA_IN} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(34,197,94,0.07)', border:'1px solid rgba(34,197,94,0.18)' }}>
+            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(34,197,94,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <MessageCircle size={18} color="#22C55E"/>
             </div>
-            <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>WhatsApp India</div>
-              <div style={{ fontSize:'0.58rem', color:'#22C55E', fontWeight:600 }}>+91 799 700 1700</div>
+            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
+              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>WhatsApp India</div>
+              <div style={{ fontSize:'0.78rem', color:'#16A34A', fontWeight:600 }}>+91 799 700 1700</div>
             </div>
-            <ArrowRight size={11} color="#22C55E" style={{ flexShrink:0, opacity:0.6 }}/>
+            <ArrowRight size={13} color="#22C55E" style={{ flexShrink:0, opacity:0.6 }}/>
           </a>
-          <a href={WA_US} target="_blank" rel="noreferrer" className="cc" style={{ background:'rgba(56,189,248,0.06)', border:'1px solid rgba(56,189,248,0.15)' }}>
-            <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(56,189,248,0.15)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Phone size={14} color="#38BDF8"/>
+          <a href={WA_US} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(56,189,248,0.06)', border:'1px solid rgba(56,189,248,0.15)' }}>
+            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(56,189,248,0.15)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <Phone size={18} color="#38BDF8"/>
             </div>
-            <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>WhatsApp USA</div>
-              <div style={{ fontSize:'0.58rem', color:'#38BDF8', fontWeight:600 }}>+1 628 628 4743</div>
+            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
+              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>WhatsApp USA</div>
+              <div style={{ fontSize:'0.78rem', color:'#0284C7', fontWeight:600 }}>+1 628 628 4743</div>
             </div>
-            <ArrowRight size={11} color="#38BDF8" style={{ flexShrink:0, opacity:0.6 }}/>
+            <ArrowRight size={13} color="#38BDF8" style={{ flexShrink:0, opacity:0.6 }}/>
           </a>
-          <a href="mailto:hello@creativals.com" className="cc" style={{ background:'#F1F5F9', border:'1px solid rgba(0,0,0,0.08)' }}>
-            <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(124,58,237,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Mail size={14} color="#A78BFA"/>
+          <a href="mailto:hello@creativals.com" className="cc" style={{ padding:'0.7rem 0.9rem', background:'#F1F5F9', border:'1px solid rgba(0,0,0,0.08)' }}>
+            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(124,58,237,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <Mail size={18} color="#7C3AED"/>
             </div>
-            <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>Email Us</div>
-              <div style={{ fontSize:'0.58rem', color:'#64748B' }}>hello@creativals.com</div>
+            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
+              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>Email Us</div>
+              <div style={{ fontSize:'0.78rem', color:'#475569' }}>hello@creativals.com</div>
             </div>
-            <ArrowRight size={11} color="#A78BFA" style={{ flexShrink:0, opacity:0.6 }}/>
+            <ArrowRight size={13} color="#7C3AED" style={{ flexShrink:0, opacity:0.6 }}/>
           </a>
-          <a href={CAL} target="_blank" rel="noreferrer" className="cc" style={{ background:'rgba(124,58,237,0.07)', border:'1px solid rgba(124,58,237,0.18)', marginTop:'0.15rem' }}>
-            <div style={{ width:28, height:28, borderRadius:'0.45rem', background:'rgba(124,58,237,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Calendar size={14} color="#A78BFA"/>
+          <a href={CAL} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(124,58,237,0.07)', border:'1px solid rgba(124,58,237,0.18)', marginTop:'0.15rem' }}>
+            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(124,58,237,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <Calendar size={18} color="#7C3AED"/>
             </div>
-            <div style={{ flex:1, minWidth:0 }}>
-              <div style={{ fontSize:'0.73rem', fontWeight:700, color:'#0F172A' }}>Book a Call</div>
-              <div style={{ fontSize:'0.58rem', color:'#A78BFA' }}>30-min free session</div>
+            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
+              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>Book a Call</div>
+              <div style={{ fontSize:'0.78rem', color:'#7C3AED' }}>30-min free session</div>
             </div>
-            <ArrowRight size={11} color="#A78BFA" style={{ flexShrink:0, opacity:0.6 }}/>
+            <ArrowRight size={13} color="#7C3AED" style={{ flexShrink:0, opacity:0.6 }}/>
           </a>
         </div>
       </div>
 
       {/* ── ZONE 4: FOOTER BAR ───────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'1rem clamp(1.5rem,6vw,6rem)', display:'flex', alignItems:'center', justifyContent:'center', gap:'1.5rem', flexWrap:'wrap' }}>
-        <div style={{ display:'flex', gap:'1.25rem', alignItems:'center', flexWrap:'wrap' }}>
-          <span style={{ fontSize:'0.7rem', color:'#1E293B', fontWeight:500 }}>© {new Date().getFullYear()} Creativals</span>
+      <div style={{ position:'relative', zIndex:1, padding:'1.5rem clamp(1.5rem,6vw,6rem)', display:'flex', alignItems:'center', justifyContent:'center', gap:'1.5rem', flexWrap:'wrap' }}>
+        <div style={{ display:'flex', gap:'1.5rem', alignItems:'center', flexWrap:'wrap' }}>
+          <span style={{ fontSize:'0.85rem', color:'#475569', fontWeight:500 }}>© {new Date().getFullYear()} Creativals</span>
           {[['Privacy', '#'], ['Terms', '#'], ['Support', '/contact']].map(([l, h]) =>
-            h.startsWith('/') ? <Link key={l} to={h} className="ftr-link" style={{ fontSize:'0.7rem' }}>{l}</Link>
-            : <a key={l} href={h} className="ftr-link" style={{ fontSize:'0.7rem' }}>{l}</a>
+            h.startsWith('/') ? <Link key={l} to={h} className="ftr-link" style={{ fontSize:'0.85rem' }}>{l}</Link>
+            : <a key={l} href={h} className="ftr-link" style={{ fontSize:'0.85rem' }}>{l}</a>
           )}
         </div>
       </div>
