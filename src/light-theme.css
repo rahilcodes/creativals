@@ -649,3 +649,24 @@
   box-shadow: 0 6px 20px -4px rgba(217,119,6,.35) !important;
 }
 [data-theme="light"] a[style*="rgba(245,158,11,.1)"] * { color: #ffffff !important; stroke: #ffffff !important; }
+
+/* ---------------------------------------------------------------
+   32. ICON BOX BACKGROUNDS - fix faint transparent icon containers
+   Any div used as an icon box with very low-opacity brand color
+   backgrounds becomes nearly invisible on light theme.
+--------------------------------------------------------------- */
+
+/* Method card icon boxes */
+[data-theme="light"] .mth-card [style*="border-radius:'12px'"],
+[data-theme="light"] .mth-card > div > div:first-child {
+  opacity: 1 !important;
+}
+
+/* Ensure icon SVGs inside boxes are always visible */
+[data-theme="light"] .fn-tab svg,
+[data-theme="light"] .ip-tab svg,
+[data-theme="light"] .mth-card svg,
+[data-theme="light"] .prob-card svg,
+[data-theme="light"] .coi-card svg {
+  opacity: 1 !important;
+}

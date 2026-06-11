@@ -61,8 +61,8 @@ const CostOfInaction = () => (
           <motion.div key={c.title} className="coi-card"
             initial={{ opacity:0, y:24 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay:i*.1, duration:.5 }}>
             <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'1rem' }}>
-              <div style={{ width:'48px', height:'48px', borderRadius:'12px', background:'rgba(239,68,68,.1)', border:'1px solid rgba(239,68,68,.2)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-                <c.Icon size={24} color="#EF4444" strokeWidth={2}/>
+              <div style={{ width:'48px', height:'48px', borderRadius:'12px', background:'#FEF2F2', border:'2px solid rgba(220,38,38,.25)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                <c.Icon size={24} color="#DC2626" strokeWidth={2}/>
               </div>
               <h3 style={{ color:'#1A1040', fontWeight:800, fontSize:'1.1rem', margin:0, lineHeight:1.2, letterSpacing:'-.02em' }}>{c.title}</h3>
             </div>

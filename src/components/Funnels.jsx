@@ -69,10 +69,10 @@ const Funnels = () => {
               return (
                 <motion.button key={fn.title} className="fn-tab" onClick={() => setActive(i)}
                   whileHover={{ x:4 }}
-              style={{ background: isA ? `linear-gradient(135deg, ${fn.color}12, ${fn.color}06)` : '#ffffff', border:`1.5px solid ${isA ? fn.color + '40' : 'rgba(0,0,0,.08)'}`,
+              style={{ background: isA ? `${fn.color}15` : '#ffffff', border:`1.5px solid ${isA ? fn.color + '55' : 'rgba(0,0,0,.08)'}`,
                 boxShadow: isA ? `0 4px 20px ${fn.glow}` : '0 1px 4px rgba(0,0,0,.05)' }}>
-                  <div style={{ width:'36px', height:'36px', borderRadius:'10px', background: isA ? `${fn.color}18` : '#F3F4F6', border:`1.5px solid ${isA ? fn.color + '35' : '#E5E7EB'}`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'all .22s' }}>
-                    <fn.Icon size={16} color={isA ? fn.color : '#9CA3AF'} strokeWidth={2}/>
+                  <div style={{ width:'40px', height:'40px', borderRadius:'11px', background: isA ? `${fn.color}28` : '#EFEFEF', border:`2px solid ${isA ? fn.color + '55' : '#D1D5DB'}`, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'all .22s' }}>
+                    <fn.Icon size={18} color={isA ? fn.color : '#6B7280'} strokeWidth={2}/>
                   </div>
                   <div style={{ flex:1 }}>
                     <div style={{ fontSize:'.88rem', fontWeight: isA ? 800 : 600, color: isA ? '#1A1040' : '#6B7280', lineHeight:1.3, transition:'color .22s' }}>{fn.title}</div>
