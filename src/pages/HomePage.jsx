@@ -1,18 +1,17 @@
 import React from 'react';
 import { useSEO } from '../hooks/useSEO';
-import Problem from '../components/Problem';
-import InteractiveProblem from '../components/InteractiveProblem';
-import Method from '../components/Method';
-import Funnels from '../components/Funnels';
-import CaseStudies from '../components/CaseStudies';
-import Comparison from '../components/Comparison';
-import Industries from '../components/Industries';
-import FounderVideo from '../components/FounderVideo';
-import Testimonials from '../components/Testimonials';
-import CostOfInaction from '../components/CostOfInaction';
-import FAQ from '../components/FAQ';
-import FinalCTA from '../components/FinalCTA';
-import Hero from '../components/Hero';
+import { ScrollProgress } from '../components/ui/primitives';
+import Hero from '../components/home/Hero';
+import Problem from '../components/home/Problem';
+import LeakCalculator from '../components/home/LeakCalculator';
+import SystemMethod from '../components/home/SystemMethod';
+import ClientTicker from '../components/home/ClientTicker';
+import ProofCards from '../components/home/ProofCards';
+import Difference from '../components/home/Difference';
+import IndustriesGrid from '../components/home/IndustriesGrid';
+import Testimonials from '../components/home/Testimonials';
+import FAQ from '../components/home/FAQ';
+import FinalCTA from '../components/home/FinalCTA';
 
 const HomePage = () => {
   useSEO({
@@ -49,17 +48,16 @@ const HomePage = () => {
 
   return (
     <>
+      <ScrollProgress />
       <Hero />
       <Problem />
-      <InteractiveProblem />
-      <Method />
-      <Funnels />
-      <CaseStudies />
-      <Comparison />
-      <Industries />
-      <FounderVideo />
+      <LeakCalculator />
+      <SystemMethod />
+      <ClientTicker />
+      <ProofCards />
+      <Difference />
+      <IndustriesGrid />
       <Testimonials />
-      <CostOfInaction />
       <FAQ />
       <FinalCTA />
     </>

@@ -1,90 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
-import { ArrowRight, Building, BookOpen, ShoppingCart, Utensils, Heart, Briefcase, Home, Dumbbell } from 'lucide-react';
+import industries from '../data/industries';
+import { Reveal, SecNum, waLink } from '../components/ui/primitives';
 
-const INDUSTRIES = [
-  {
-    icon: Building,
-    name: 'Hotels & Resorts',
-    tagline: 'Drive direct bookings. Reduce OTA dependency.',
-    problem: 'Losing 30-40% revenue to OTAs every month.',
-    result: '+180% direct bookings',
-    services: ['Google Ads', 'Booking Funnel', 'WhatsApp CRM'],
-    color: '#7C3AED',
-    slug: 'hotels-resorts',
-  },
-  {
-    icon: BookOpen,
-    name: 'Education & Coaching',
-    tagline: 'Fill seats. Reduce cost per admission.',
-    problem: 'Leads going cold because of zero follow-up system.',
-    result: '4x more enrolments',
-    services: ['Meta Lead Ads', 'WhatsApp Automation', 'Nurture Sequences'],
-    color: '#2563EB',
-    slug: 'education',
-  },
-  {
-    icon: ShoppingCart,
-    name: 'E-Commerce',
-    tagline: 'Fix ROAS. Increase repeat buyers.',
-    problem: 'Spending on ads with 1.2x ROAS and no retention.',
-    result: '3.5x average ROAS',
-    services: ['Meta Ads', 'Email Flows', 'Abandoned Cart WhatsApp'],
-    color: '#DB2777',
-    slug: 'ecommerce',
-  },
-  {
-    icon: Utensils,
-    name: 'Restaurants & Cafes',
-    tagline: 'Pack more tables. Build repeat customers.',
-    problem: 'No online presence. Zero loyalty system.',
-    result: '60% more walk-ins',
-    services: ['Google Maps', 'Instagram Ads', 'WhatsApp Loyalty'],
-    color: '#F59E0B',
-    slug: 'restaurants',
-  },
-  {
-    icon: Heart,
-    name: 'Healthcare & Clinics',
-    tagline: 'Fill your appointment calendar every week.',
-    problem: 'Generic ads reaching the wrong audience.',
-    result: '2.8x appointment bookings',
-    services: ['Google Ads', 'Local SEO', 'Appointment Funnel'],
-    color: '#10B981',
-    slug: 'healthcare',
-  },
-  {
-    icon: Briefcase,
-    name: 'Professional Services',
-    tagline: 'Generate qualified leads. Not tyre-kickers.',
-    problem: 'Getting leads that never convert to clients.',
-    result: '5x more qualified leads',
-    services: ['LinkedIn Ads', 'SEO Content', 'Lead Qualification Funnel'],
-    color: '#6366F1',
-    slug: 'professional-services',
-  },
-  {
-    icon: Home,
-    name: 'Real Estate',
-    tagline: 'More site visits. More closings.',
-    problem: 'High cost per lead with low-intent buyers.',
-    result: '3x site visit bookings',
-    services: ['Meta Ads', 'WhatsApp Bot', 'Virtual Tour Funnel'],
-    color: '#EF4444',
-    slug: 'real-estate',
-  },
-  {
-    icon: Dumbbell,
-    name: 'Fitness & Wellness',
-    tagline: 'Fill memberships. Reduce churn.',
-    problem: 'High member dropout and no referral system.',
-    result: '70% membership growth',
-    services: ['Instagram Ads', 'Referral System', 'WhatsApp Retention'],
-    color: '#F97316',
-    slug: 'fitness',
-  },
-];
+const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
 
 const IndustriesPage = () => {
   useSEO({
@@ -94,84 +14,104 @@ const IndustriesPage = () => {
   });
 
   return (
-    <div className="dark-page" style={{ background: '#080B14', minHeight: '100vh', paddingTop: '80px', color: 'white' }}>
-      {/* Hero */}
-      <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#A78BFA', marginBottom: '2rem' }}>
-          8 Industries. 120+ Brands Grown.
+    <div>
+      {/* ── 01 · HERO (indigo) ─────────────────────────────────── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap" style={{ paddingTop: 140, paddingBottom: 96 }}>
+          <Reveal>
+            <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 34 })}>
+              <span className="cx-dot" />
+              8 industries · 120+ brands grown
+            </div>
+          </Reveal>
+          <Reveal delay={60}>
+            <h1 className="cx-display cx-h1" style={{ maxWidth: 1000 }}>
+              Generic marketing fails.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>We speak your industry.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="cx-lead cx-lead-light" style={{ maxWidth: 620, marginTop: 30 }}>
+              Every industry has a different customer journey, a different sales cycle, and a different way people
+              decide to buy. We've built systems for all of it.
+            </p>
+          </Reveal>
         </div>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
-          Generic marketing fails.<br />
-          <span style={{ background: 'linear-gradient(135deg, #7C3AED, #A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>We speak your industry.</span>
-        </h1>
-        <p style={{ fontSize: '1.2rem', color: '#9CA3AF', lineHeight: 1.7 }}>
-          Every industry has a different customer journey, a different sales cycle, and a different way people decide to buy. We've built systems for all of it.
-        </p>
       </section>
 
-      {/* Industries Grid */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto 5rem', padding: '0 2rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
-          {INDUSTRIES.map((ind) => {
-            const Icon = ind.icon;
-            return (
-              <div
-                key={ind.name}
-                style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: `1px solid rgba(255,255,255,0.07)`,
-                  borderRadius: '1.25rem',
-                  padding: '2rem',
-                  transition: 'all 0.25s',
-                  cursor: 'default',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = `${ind.color}50`; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = `0 20px 40px -10px ${ind.color}20`; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
-                  <div style={{ width: '44px', height: '44px', background: `${ind.color}20`, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${ind.color}40`, flexShrink: 0 }}>
-                    <Icon size={20} color={ind.color} />
+      {/* ── 02 · INDUSTRIES GRID (cream) ───────────────────────── */}
+      <section style={{ background: '#F4F2EC', color: '#17151A' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="01" label="Pick your industry" /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+              Battle-tested systems.<br />
+              <span style={{ color: '#4F46E5', fontStyle: 'italic' }}>Built for your market.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="cx-lead" style={{ maxWidth: 620, marginBottom: 60 }}>
+              Choose your industry to see the exact playbook — the problems we fix, the system we deploy, and the
+              numbers it produces.
+            </p>
+          </Reveal>
+
+          <div className="cx-grid3" style={{ gap: 22 }}>
+            {industries.map((ind, i) => (
+              <Reveal key={ind.slug} delay={(i % 3) * 60}>
+                <Link
+                  to={`/industries/${ind.slug}`}
+                  className="cx-card-invert"
+                  style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', color: 'inherit', height: '100%', boxSizing: 'border-box' }}
+                >
+                  <div style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .55, marginBottom: 14 })}>
+                    {String(i + 1).padStart(2, '0')}
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, margin: 0 }}>{ind.name}</h3>
-                    <p style={{ color: '#6B7280', margin: 0, fontSize: '0.85rem' }}>{ind.tagline}</p>
+                  <div style={{ fontWeight: 800, fontSize: 22, letterSpacing: '-0.01em', marginBottom: 12 }}>{ind.title}</div>
+                  <p style={{ margin: '0 0 22px', fontSize: 14.5, lineHeight: 1.6, opacity: .75, flex: 1 }}>{ind.heroSub}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+                    <span className="cx-badge">{ind.metrics[0].value} {ind.metrics[0].label}</span>
+                    <span style={{ fontWeight: 900, fontSize: 20 }}>→</span>
                   </div>
-                </div>
-                <p style={{ color: '#9CA3AF', fontSize: '0.9rem', marginBottom: '1rem', lineHeight: 1.5 }}>
-                  <strong style={{ color: '#E5E7EB' }}>Common problem: </strong>{ind.problem}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 03 · FINAL CTA (ink) ───────────────────────────────── */}
+      <section style={{ background: '#17151A', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="02" label="Not listed?" dark /></Reveal>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 40, flexWrap: 'wrap' }}>
+            <div>
+              <Reveal delay={60}>
+                <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+                  Your industry<br />
+                  <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>isn't listed?</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={140}>
+                <p className="cx-lead cx-lead-light" style={{ maxWidth: 520 }}>
+                  Tell us what you do. If there's growth to be had, we'll find it.
                 </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
-                  {ind.services.map(s => (
-                    <span key={s} style={{ padding: '0.3rem 0.7rem', background: `${ind.color}15`, color: ind.color, borderRadius: '1rem', fontSize: '0.78rem', fontWeight: 600, border: `1px solid ${ind.color}30` }}>{s}</span>
-                  ))}
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  <span style={{ color: '#22C55E', fontWeight: 800, fontSize: '0.95rem' }}>{ind.result}</span>
-                  <a
-                    href={`https://wa.me/917997001700?text=Hi! I run a business in the ${ind.name} industry and want a free audit.`}
-                    target="_blank" rel="noreferrer"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: ind.color, fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none' }}
-                  >
-                    Get audit <ArrowRight size={14} />
-                  </a>
-                </div>
+              </Reveal>
+            </div>
+            <Reveal delay={200}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                <a
+                  href={waLink("Hi! I want to discuss growth for my business.")}
+                  target="_blank" rel="noreferrer"
+                  className="cx-btn cx-btn-lg cx-btn-yellow"
+                >
+                  Let's talk →
+                </a>
+                <span style={mono({ fontSize: 12, letterSpacing: '.08em', opacity: .6 })}>FREE AUDIT · NO CONTRACTS</span>
               </div>
-            );
-          })}
+            </Reveal>
+          </div>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: 'rgba(124,58,237,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>Your industry isn't listed?</h2>
-        <p style={{ color: '#9CA3AF', marginBottom: '2rem', fontSize: '1.1rem' }}>Tell us what you do. If there's growth to be had, we'll find it.</p>
-        <a
-          href="https://wa.me/917997001700?text=Hi! I want to discuss growth for my business."
-          target="_blank" rel="noreferrer"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', background: '#7C3AED', color: 'white', borderRadius: '0.75rem', fontWeight: 700, textDecoration: 'none' }}
-        >
-          Let's Talk <ArrowRight size={18} />
-        </a>
       </section>
     </div>
   );

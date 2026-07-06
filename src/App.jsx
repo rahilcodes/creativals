@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './typography.css';
-import './new-components.css';
-import './premium-theme.css';
-import './light-theme.css';
-import { ThemeProvider } from './context/ThemeContext';
+import './styles/theme.css';
 
 // Layout
 import PageLayout from './layouts/PageLayout';
@@ -31,13 +27,13 @@ import IndustryPage from './pages/IndustryPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
 import ClientReviewsPage from './pages/ClientReviewsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <PageLayout>
+    <BrowserRouter>
+      <ScrollToTop />
+      <PageLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
@@ -59,10 +55,10 @@ function App() {
           <Route path="/success-stories" element={<SuccessStoriesPage />} />
           <Route path="/client-reviews" element={<ClientReviewsPage />} />
           <Route path="/industries/:slug" element={<IndustryPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        </PageLayout>
-      </BrowserRouter>
-    </ThemeProvider>
+      </PageLayout>
+    </BrowserRouter>
   );
 }
 

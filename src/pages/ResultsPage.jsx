@@ -1,32 +1,41 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
-import { ArrowRight, Globe, Building2, GraduationCap, UtensilsCrossed, Home, Code2, Car } from 'lucide-react';
-import TrustNumbers from '../components/TrustNumbers';
-import CaseStudyCard from '../components/CaseStudyCard';
-import ClientProofWall from '../components/ClientProofWall';
-import { HERO_CASE_STUDIES } from '../data/clientData';
+import { Reveal, Marquee, SecNum, waLink } from '../components/ui/primitives';
+import { ALL_CLIENTS, INDUSTRIES, COUNTRIES, COUNTRY_FLAGS } from '../data/clientData';
 
-// Geography data for the reach section
-const GEO_NODES = [
-  { region: 'Hyderabad, India', flag: '🇮🇳', count: '100+', desc: 'Our home market — dominant across hotels, education, F&B, and real estate.', color: '#A855F7' },
-  { region: 'USA (Florida, New York, California, Virginia)', flag: '🇺🇸', count: '25+', desc: 'Realtors, restaurants, marine, retail, non-profits, and tech startups.', color: '#38BDF8' },
-  { region: 'Malaysia (KL, Kuala Lumpur)', flag: '🇲🇾', count: '3', desc: 'BPL Baseball League, My Expat visa firm, Embun Teratai confinement centre.', color: '#22C55E' },
-  { region: 'Canada (Vancouver)', flag: '🇨🇦', count: '3', desc: 'Quick Cell Repair, PhoneEra, Amazing Bins — full digital transformations.', color: '#F97316' },
-  { region: 'Australia (Sydney/Melbourne)', flag: '🇦🇺', count: '1', desc: 'Deccan Biryani House — Indian restaurant ranked top online in Australia.', color: '#F59E0B' },
-  { region: 'UAE (Dubai)', flag: '🇦🇪', count: '2', desc: 'Al-Haya and Khalijeb — SaaS and service brands in the Gulf region.', color: '#EC4899' },
-  { region: 'Guyana (Georgetown)', flag: '🇬🇾', count: '2', desc: "Casa Nuvo Investments (Guyana's #1 realty) and Medi Care Pharmacy.", color: '#8B5CF6' },
+const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
+
+const HERO_STATS = [
+  { v: '₹100 Cr+', l: 'Client revenue generated' },
+  { v: '160+', l: 'Clients served' },
+  { v: '7', l: 'Countries' },
+  { v: '22+', l: 'Industries' },
 ];
 
-// Category dominance breakdown
-const CATEGORIES = [
-  { Icon: Building2,       color: '#22C55E', label: 'Hotels & Hospitality', count: '24+', desc: 'From city hotels to luxury resorts and farmhouses' },
-  { Icon: GraduationCap,  color: '#A855F7', label: 'Education',             count: '29+', desc: 'Schools, colleges, universities, and edtech platforms' },
-  { Icon: UtensilsCrossed,color: '#F97316', label: 'Food & Restaurants',    count: '20+', desc: 'Cafes, cloud kitchens, fine dining, and grocery chains' },
-  { Icon: Home,           color: '#F59E0B', label: 'Real Estate',           count: '7+',  desc: 'Realtors, builders, rental platforms across 3 countries' },
-  { Icon: Code2,          color: '#38BDF8', label: 'Tech & SaaS',           count: '15+', desc: 'CRMs, AI chatbots, AR/VR companies, and platforms' },
-  { Icon: Car,            color: '#EF4444', label: 'Automobile',            count: '4+',  desc: 'From Mahindra Motors to regional car dealerships' },
+const TESTIMONIALS = [
+  {
+    stat: '10x enquiries in 3 weeks', initials: 'RK', name: 'Ramesh Kumar', role: 'Principal · Sunrise Academy',
+    quote: '"In 21 days, we went from 12 enquiries a month to over 140. Before Creativals, I was seriously considering cutting staff. Now we have a waitlist. This system is not a joke."',
+  },
+  {
+    stat: 'Bookings tripled. No OTAs.', initials: 'PS', name: 'Priya Sharma', role: 'Owner · The Palm Resort Goa',
+    quote: '"We stopped paying Swiggy/MakeMyTrip. We stopped relying on walk-ins. The WhatsApp bot alone saves my team 3 hours every single day. I only wish I had found them sooner."',
+  },
+  {
+    stat: '112 leads from ₹4,000', initials: 'AM', name: 'Arjun Mehra', role: 'Founder · StyleCraft Mumbai',
+    quote: '"I was skeptical. Everyone promises leads, nobody delivers. But ₹4,000 in, I had 112 paying customer enquiries. I\'ve not looked back. These guys genuinely know what they are doing."',
+  },
 ];
+
+const WINS = ALL_CLIENTS.filter((c) => c.badge).map((c) => `${c.name} — ${c.badge.text}`);
+
+const pillStyle = (active) => mono({
+  fontSize: 12, fontWeight: 600, letterSpacing: '.06em', textTransform: 'uppercase',
+  padding: '11px 18px', borderRadius: 999, border: '2px solid #17151A',
+  background: active ? '#17151A' : 'transparent',
+  color: active ? '#FFD84D' : '#17151A',
+  cursor: 'pointer', transition: 'background .15s,color .15s',
+});
 
 const ResultsPage = () => {
   useSEO({
@@ -35,205 +44,207 @@ const ResultsPage = () => {
     keywords: 'digital marketing results, case studies india, client portfolio, revenue generated, marketing results hyderabad',
   });
 
+  const [industry, setIndustry] = useState('All');
+  const [country, setCountry] = useState('All');
+
+  const filtered = useMemo(
+    () => ALL_CLIENTS.filter(
+      (c) => (industry === 'All' || c.industry === industry) && (country === 'All' || c.country === country)
+    ),
+    [industry, country]
+  );
+
   return (
-    <div style={{ background: '#F8FAFC', minHeight: '100vh', color: '#0F172A' }}>
-      <style>{`
-        .results-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .results-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .results-grid-3-last { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media(max-width: 1024px) {
-          .results-grid-3, .results-grid-3-last { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media(max-width: 768px) {
-          .results-grid-3, .results-grid-2, .results-grid-3-last { grid-template-columns: 1fr; }
-        }
-      `}</style>
+    <div>
+      {/* ── 01 · HERO — indigo ─────────────────────────────────── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal>
+            <div style={mono({ display: 'inline-flex', alignItems: 'center', gap: 12, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 30 })}>
+              <span className="cx-dot" /> Proven results · Real businesses
+            </div>
+          </Reveal>
+          <Reveal delay={60}>
+            <h1 className="cx-display cx-h1" style={{ marginBottom: 28, maxWidth: 1050 }}>
+              160+ businesses.<br />
+              7 countries.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>One system that works.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="cx-lead cx-lead-light" style={{ maxWidth: 620, color: 'rgba(244,242,236,.75)', marginBottom: 54 }}>
+              From a local furniture store in Hyderabad to Florida's top realtor — we've built growth systems
+              that generated over <strong style={{ color: '#FFD84D' }}>₹100 Crore in combined client revenue</strong>.
+            </p>
+          </Reveal>
 
-      {/* ── HERO ─────────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', overflow: 'hidden', padding: '8rem 2rem 5rem', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(168,85,247,.08) 1px,transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
-        <motion.div animate={{ scale: [1, 1.08, 1], opacity: [.08, .18, .08] }} transition={{ duration: 10, repeat: Infinity }}
-          style={{ position: 'absolute', left: '50%', top: '30%', transform: 'translate(-50%, -50%)', width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle,rgba(168,85,247,.3) 0%,transparent 60%)', pointerEvents: 'none' }} />
+          <Reveal delay={200}>
+            <div id="revenue-generated" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 26, borderTop: '1px solid rgba(244,242,236,.3)', paddingTop: 40, marginBottom: 48 }}>
+              {HERO_STATS.map((s) => (
+                <div key={s.l}>
+                  <div style={{ fontWeight: 900, fontStretch: '120%', fontSize: 'clamp(38px,4.4vw,58px)', lineHeight: 1, color: '#FFD84D' }}>{s.v}</div>
+                  <div style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .75, marginTop: 10 })}>{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 900, margin: '0 auto' }}>
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.3rem 1rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', borderRadius: '99px', marginBottom: '1.5rem' }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', boxShadow: '0 0 8px rgba(245,158,11,.8)' }} />
-            <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Proven Results · Real Businesses</span>
-          </motion.div>
-
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1 }}
-            style={{ fontWeight: 900, fontSize: 'clamp(2.5rem,5vw,4.5rem)', letterSpacing: '-.05em', lineHeight: 1.05, margin: '0 0 1.5rem', color: '#0F172A' }}>
-            160+ Businesses.<br />
-            <span style={{ background: 'linear-gradient(135deg,#F59E0B,#EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>7 Countries.</span><br />
-            One system that works.
-          </motion.h1>
-
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .2 }}
-            style={{ color: '#475569', fontSize: 'clamp(.95rem,1.5vw,1.15rem)', lineHeight: 1.65, maxWidth: 620, margin: '0 auto 2.5rem' }}>
-            From a local furniture store in Hyderabad to Florida's top realtor — we've built growth systems that generated over <strong style={{ color: '#0F172A' }}>₹100 Crore in combined client revenue</strong>.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .3 }}
-            style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#case-studies"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.95rem 2rem', background: 'linear-gradient(135deg,#A855F7,#8B5CF6)', color: 'white', fontWeight: 800, fontSize: '.95rem', borderRadius: 14, textDecoration: 'none', boxShadow: '0 10px 30px -10px rgba(168,85,247,.5)' }}>
-              See Case Studies <ArrowRight size={16} />
-            </a>
-            <a href="#client-wall"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.95rem 2rem', background: '#ffffff', border: '1px solid rgba(0,0,0,0.12)', color: '#334155', fontWeight: 700, fontSize: '.95rem', borderRadius: 14, textDecoration: 'none' }}>
-              Browse All 160+ Clients
-            </a>
-          </motion.div>
+          <Reveal delay={260}>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+              <a href="#client-wall" className="cx-btn cx-btn-yellow cx-btn-lg">Browse all 160+ clients →</a>
+              <a href={waLink('Hi! I saw your results page and want a free growth audit.')} target="_blank" rel="noreferrer" className="cx-btn cx-btn-outline-cream cx-btn-lg">Get my free audit</a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── TRUST NUMBERS ──────────────────────────────────────────────── */}
-      <div id="revenue-generated" style={{ padding: '0 2rem 4rem' }}>
-        <TrustNumbers />
-      </div>
+      {/* ── MARQUEE — yellow ticker of client wins ─────────────── */}
+      <section style={{ background: '#FFD84D', color: '#17151A', borderTop: '4px solid #17151A', borderBottom: '4px solid #17151A', padding: '18px 0' }}>
+        <Marquee speed={60} segStyle={mono({ fontSize: 13, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase' })}>
+          {WINS.map((w) => (
+            <React.Fragment key={w}>
+              <span>{w}</span>
+              <span aria-hidden="true">✦</span>
+            </React.Fragment>
+          ))}
+        </Marquee>
+      </section>
 
-      {/* ── CATEGORY DOMINANCE ─────────────────────────────────────────── */}
-      <section style={{ padding: '4rem 2rem', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.5rem,2.5vw,2rem)', letterSpacing: '-.03em', margin: '0 0 .5rem' }}>
-              We don't serve every industry. We <span style={{ color: '#A855F7' }}>dominate</span> ours.
+      {/* ── 01 · CLIENT PROOF WALL — cream ─────────────────────── */}
+      <section id="client-wall" style={{ background: '#F4F2EC', color: '#17151A' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="01" label="The client wall" /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+              Every client.<br />
+              <span style={{ color: '#4F46E5', fontStyle: 'italic' }}>Every result.</span>
             </h2>
-            <p style={{ color: '#64748B', fontSize: '.9rem' }}>22+ verticals. Here's where we're the deepest.</p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.25rem' }}>
-            {CATEGORIES.map((cat, i) => (
-              <motion.div key={cat.label}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ padding: '1.5rem', borderRadius: 16, border: `1px solid ${cat.color}30`, background: '#FFFFFF', display: 'flex', gap: '1rem', alignItems: 'flex-start', transition: 'transform .25s, box-shadow .25s', cursor: 'default' }}
-                whileHover={{ y: -4, boxShadow: `0 10px 30px -10px ${cat.color}33` }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, background: `${cat.color}22`, border: `1px solid ${cat.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <cat.Icon size={20} color={cat.color} strokeWidth={2} />
-                </div>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '.5rem', marginBottom: '.25rem' }}>
-                    <h3 style={{ color: '#0F172A', fontWeight: 800, fontSize: '.95rem', margin: 0 }}>{cat.label}</h3>
-                    <span style={{ color: cat.color, fontWeight: 900, fontSize: '.88rem' }}>{cat.count}</span>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="cx-lead" style={{ maxWidth: 620, marginBottom: 44 }}>
+              We don't serve every industry — we dominate ours. 22+ verticals, 7 countries, 3 continents.
+              Filter the wall and see for yourself.
+            </p>
+          </Reveal>
+
+          {/* industry filter */}
+          <Reveal>
+            <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 16 })}>Filter by industry</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 34 }}>
+              {INDUSTRIES.map((i) => (
+                <button key={i} onClick={() => setIndustry(i)} style={pillStyle(industry === i)}>{i}</button>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* country filter */}
+          <Reveal delay={60}>
+            <div id="geographic-reach" style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 16 })}>Filter by country</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 40 }}>
+              {COUNTRIES.map((c) => (
+                <button key={c} onClick={() => setCountry(c)} style={pillStyle(country === c)}>
+                  {c !== 'All' && <span style={{ marginRight: 6 }}>{COUNTRY_FLAGS[c]}</span>}{c}
+                </button>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div style={mono({ fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .6, marginBottom: 26 })}>
+              Showing {filtered.length} of {ALL_CLIENTS.length} clients
+            </div>
+          </Reveal>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', gap: 18 }}>
+            {filtered.map((c, i) => (
+              <Reveal key={`${c.name}-${c.industry}`} delay={(i % 6) * 60}>
+                <div className="cx-card" style={{ padding: '26px 24px', height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <div style={mono({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, fontSize: 10.5, letterSpacing: '.1em', textTransform: 'uppercase', opacity: .6 })}>
+                    <span>{c.industry}</span>
+                    <span style={{ flex: 'none' }}>{COUNTRY_FLAGS[c.country]} {c.country}</span>
                   </div>
-                  <p style={{ color: '#64748B', fontSize: '.82rem', margin: 0, lineHeight: 1.5 }}>{cat.desc}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                    <div style={{ fontWeight: 800, fontSize: 17.5, letterSpacing: '-0.01em' }}>{c.name}</div>
+                    {c.badge && <span className="cx-tag cx-tag-yellow">{c.badge.text}</span>}
+                  </div>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.55, color: 'rgba(23,21,26,.7)', flex: 1 }}>{c.result}</p>
+                  {c.services.length > 0 && (
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                      {c.services.map((s) => (
+                        <span key={s} style={mono({ fontSize: 10, letterSpacing: '.06em', textTransform: 'uppercase', border: '1px solid rgba(23,21,26,.35)', borderRadius: 999, padding: '4px 10px' })}>{s}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── HERO CASE STUDIES ──────────────────────────────────────────── */}
-      <section id="case-studies" style={{ padding: '5rem 2rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.28rem .9rem', background: 'rgba(245,158,11,.1)', border: '1px solid rgba(245,158,11,.25)', borderRadius: '99px', marginBottom: '1rem' }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#F59E0B', boxShadow: '0 0 8px rgba(245,158,11,.8)' }} />
-              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#B45309', letterSpacing: '.07em', textTransform: 'uppercase' }}>Elite Case Studies</span>
-            </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
-              style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
-              Our most jaw-dropping transformations.
-            </motion.h2>
-            <p style={{ color: '#64748B', fontSize: '.92rem', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
-              Not testimonials. Not hypotheticals. Specific numbers from specific businesses who trusted our systems.
-            </p>
-          </div>
-
-          {/* Featured 3 (large) */}
-          <div className="results-grid-3">
-            {HERO_CASE_STUDIES.slice(0, 3).map((s, i) => (
-              <CaseStudyCard key={s.id} study={s} index={i} size="large" />
-            ))}
-          </div>
-
-          {/* Next 5 (normal, 2+3 grid) */}
-          <div className="results-grid-2">
-            {HERO_CASE_STUDIES.slice(3, 5).map((s, i) => (
-              <CaseStudyCard key={s.id} study={s} index={i} />
-            ))}
-          </div>
-          <div className="results-grid-3-last">
-            {HERO_CASE_STUDIES.slice(5, 8).map((s, i) => (
-              <CaseStudyCard key={s.id} study={s} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── GEOGRAPHIC REACH ───────────────────────────────────────────── */}
-      <section id="geographic-reach" style={{ padding: '5rem 2rem', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.28rem .9rem', background: 'rgba(56,189,248,.1)', border: '1px solid rgba(56,189,248,.25)', borderRadius: '99px', marginBottom: '1rem' }}>
-              <Globe size={12} color="#38BDF8" />
-              <span style={{ fontSize: '.72rem', fontWeight: 800, color: '#0369A1', letterSpacing: '.07em', textTransform: 'uppercase' }}>Global Reach</span>
-            </motion.div>
-            <motion.h2 initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .1 }}
-              style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(1.8rem,3vw,2.6rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 .75rem' }}>
-              From Hyderabad to Houston.<br />
-              <span style={{ color: '#0284C7' }}>Our systems work everywhere.</span>
-            </motion.h2>
-            <p style={{ color: '#64748B', fontSize: '.92rem', maxWidth: 500, margin: '0 auto', lineHeight: 1.6 }}>
-              7 countries. 3 continents. We're not a Hyderabad agency. We're a global growth partner that happens to be headquartered here.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem' }}>
-            {GEO_NODES.map((node, i) => (
-              <motion.div key={node.region}
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ padding: '1.75rem', borderRadius: 18, border: `1px solid ${node.color}33`, background: '#FFFFFF', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <span style={{ fontSize: '2rem' }}>{node.flag}</span>
-                  <div>
-                    <div style={{ color: '#0F172A', fontWeight: 800, fontSize: '.95rem', lineHeight: 1.2 }}>{node.region}</div>
-                    <div style={{ color: node.color, fontWeight: 900, fontSize: '1.1rem' }}>{node.count} clients</div>
+      {/* ── 02 · TESTIMONIALS — ink band ───────────────────────── */}
+      <section style={{ background: '#17151A', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="02" label="Word of mouth" dark /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 60 }}>
+              The numbers talk.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>So do the owners.</span>
+            </h2>
+          </Reveal>
+          <div className="cx-grid3">
+            {TESTIMONIALS.map((r, i) => (
+              <Reveal key={r.initials} delay={i * 120}>
+                <div className="cx-review-card" style={{ background: 'rgba(244,242,236,.05)', border: '1px solid rgba(244,242,236,.2)', borderRadius: 18, padding: '34px 30px', display: 'flex', flexDirection: 'column', gap: 22, height: '100%', boxSizing: 'border-box', transition: 'transform .2s, border-color .2s' }}>
+                  <div style={mono({ display: 'inline-flex', alignSelf: 'flex-start', fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', background: '#FFD84D', color: '#17151A', borderRadius: 999, padding: '6px 13px' })}>
+                    {r.stat}
+                  </div>
+                  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, fontWeight: 500, flex: 1 }}>{r.quote}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, borderTop: '1px solid rgba(244,242,236,.15)', paddingTop: 20 }}>
+                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 14, flex: 'none' }}>
+                      {r.initials}
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 14.5 }}>{r.name}</div>
+                      <div style={mono({ fontSize: 11, opacity: .55 })}>{r.role}</div>
+                    </div>
                   </div>
                 </div>
-                <p style={{ color: '#64748B', fontSize: '.85rem', lineHeight: 1.55, margin: 0 }}>{node.desc}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CLIENT PROOF WALL ──────────────────────────────────────────── */}
-      <section id="client-wall" style={{ background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-        <ClientProofWall />
-      </section>
-
-      {/* ── FINAL CTA ──────────────────────────────────────────────────── */}
-      <section style={{ padding: '6rem 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%,-50%)', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(34,197,94,.12) 0%,transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 700, margin: '0 auto' }}>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            style={{ color: '#0F172A', fontWeight: 900, fontSize: 'clamp(2rem,4vw,3.2rem)', letterSpacing: '-.04em', lineHeight: 1.1, margin: '0 0 1rem' }}>
-            Ready to be the next<br />
-            <span style={{ color: '#22C55E' }}>success story?</span>
-          </motion.h2>
-          <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 2.5rem', maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
-            We built systems for 160+ businesses across 7 countries. We know exactly what will work for yours — and we'll tell you for free.
-          </p>
-          <motion.a
-            href="https://wa.me/917997001700?text=Hi!%20I%20saw%20your%20results%20page%20and%20want%20a%20free%20growth%20audit."
-            target="_blank" rel="noreferrer"
-            whileHover={{ scale: 1.03, boxShadow: '0 15px 40px -10px rgba(34,197,94,.5)' }} whileTap={{ scale: .97 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#ffffff', fontWeight: 900, fontSize: '1.1rem', borderRadius: 16, textDecoration: 'none', boxShadow: '0 10px 30px -10px rgba(34,197,94,.4)' }}>
-            Get My Free Growth Audit
-            <ArrowRight size={20} color="#ffffff" />
-          </motion.a>
-          <div style={{ marginTop: '1.25rem', display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <span style={{ color: '#64748B', fontSize: '.82rem', fontWeight: 600 }}>✓ 100% Free · No obligation</span>
-            <span style={{ color: '#64748B', fontSize: '.82rem', fontWeight: 600 }}>✓ Reply in 30 mins</span>
-            <span style={{ color: '#FCA5A5', fontSize: '.82rem', fontWeight: 700 }}>● Only 3 spots left this month</span>
-          </div>
+      {/* ── 03 · FINAL CTA — indigo ────────────────────────────── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section" style={{ textAlign: 'center' }}>
+          <Reveal>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+              Ready to be the next<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>success story?</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <p className="cx-lead cx-lead-light" style={{ maxWidth: 520, margin: '0 auto 40px', color: 'rgba(244,242,236,.75)' }}>
+              We built systems for 160+ businesses across 7 countries. We know exactly what will work
+              for yours — and we'll tell you for free.
+            </p>
+          </Reveal>
+          <Reveal delay={140}>
+            <a href={waLink('Hi! I saw your results page and want a free growth audit.')} target="_blank" rel="noreferrer" className="cx-btn cx-btn-yellow cx-btn-lg">
+              Get my free growth audit →
+            </a>
+          </Reveal>
+          <Reveal delay={200}>
+            <div style={mono({ marginTop: 26, display: 'flex', gap: 26, justifyContent: 'center', flexWrap: 'wrap', fontSize: 11.5, letterSpacing: '.1em', textTransform: 'uppercase', opacity: .8 })}>
+              <span>✓ 100% free · No obligation</span>
+              <span>✓ Reply in 30 mins</span>
+              <span style={{ color: '#FFD84D' }}>● Only 3 spots left this month</span>
+            </div>
+          </Reveal>
         </div>
       </section>
-
     </div>
   );
 };

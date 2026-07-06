@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { useSEO } from '../hooks/useSEO';
-import { ArrowRight, MessageCircle, Zap, Shield, TrendingUp, Eye, Clock, Heart, CheckCircle, X } from 'lucide-react';
+import { Reveal, SecNum, waLink } from '../components/ui/primitives';
 
-const WA = 'https://wa.me/917997001700';
+const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
+
 const TEAM = [
   {
     name: 'Mohammed Rahil Azeez',
     role: 'Founder & CEO',
     handle: '@rahil',
     owns: ['Clients', 'Finance', 'Growth', 'Strategy', 'Partnerships'],
-    color: '#7C3AED',
-    glow: 'rgba(124,58,237,0.4)',
     avatar: '/rahil.png',
     quote: '"Execution is the only strategy that matters."',
   },
@@ -20,8 +18,6 @@ const TEAM = [
     role: 'Head of Tech & Systems',
     handle: '@raiyan',
     owns: ['Development', 'Automation', 'Systems', 'AI Ops'],
-    color: '#38BDF8',
-    glow: 'rgba(56,189,248,0.4)',
     avatar: '/raiyan.png',
     quote: '"If it can be automated, it should be."',
   },
@@ -30,8 +26,6 @@ const TEAM = [
     role: 'Head of Marketing & Growth',
     handle: '@ahmed',
     owns: ['SEO', 'Paid Ads', 'Analytics', 'Growth Execution'],
-    color: '#22C55E',
-    glow: 'rgba(34,197,94,0.4)',
     avatar: '/ahmed.png',
     quote: '"Every rupee of ad spend is a question. We find the answer."',
   },
@@ -40,29 +34,27 @@ const TEAM = [
     role: 'Creative Director',
     handle: '@farhan',
     owns: ['Branding', 'Design', 'Video', 'Visual Identity'],
-    color: '#EC4899',
-    glow: 'rgba(236,72,153,0.4)',
     avatar: '/farhan.png',
     quote: '"Design is not decoration. It\'s direction."',
   },
 ];
 
 const VALUES = [
-  { icon: Zap,       title: 'Execution Over Excuses',  desc: 'We get things done, properly and on time. Always.', color: '#7C3AED' },
-  { icon: Eye,       title: 'Clarity Over Complexity', desc: 'Simple systems beat complicated noise. Every time.',  color: '#38BDF8' },
-  { icon: TrendingUp,title: 'Results Over Vanity',     desc: 'Revenue. Leads. Bookings. Growth. Not impressions.', color: '#22C55E' },
-  { icon: Clock,     title: 'Long-Term Thinking',      desc: 'We build sustainable systems, not short-term hacks.', color: '#F59E0B' },
-  { icon: Heart,     title: 'Ownership Mindset',       desc: 'Every team member thinks like a founder, not an employee.', color: '#EC4899' },
-  { icon: Shield,    title: 'Trust by Default',        desc: 'Honest communication even when it\'s uncomfortable.',  color: '#A855F7' },
+  { n: '01', title: 'Execution Over Excuses', desc: 'We get things done, properly and on time. Always.' },
+  { n: '02', title: 'Clarity Over Complexity', desc: 'Simple systems beat complicated noise. Every time.' },
+  { n: '03', title: 'Results Over Vanity', desc: 'Revenue. Leads. Bookings. Growth. Not impressions.' },
+  { n: '04', title: 'Long-Term Thinking', desc: 'We build sustainable systems, not short-term hacks.' },
+  { n: '05', title: 'Ownership Mindset', desc: 'Every team member thinks like a founder, not an employee.' },
+  { n: '06', title: 'Trust by Default', desc: 'Honest communication even when it\'s uncomfortable.' },
 ];
 
 const STATS = [
-  { v: '2019',   l: 'Founded' },
-  { v: '160+',   l: 'Clients Scaled' },
-  { v: '7',      l: 'Countries' },
-  { v: '₹1B+',   l: 'Revenue Generated' },
-  { v: '92%',    l: 'Retention Rate' },
-  { v: '6+',     l: 'Years Running' },
+  { v: '2019', l: 'Founded' },
+  { v: '160+', l: 'Clients Scaled' },
+  { v: '7', l: 'Countries' },
+  { v: '₹1B+', l: 'Revenue Generated' },
+  { v: '92%', l: 'Retention Rate' },
+  { v: '6+', l: 'Years Running' },
 ];
 
 const AGENCY_SINS = [
@@ -74,7 +66,20 @@ const AGENCY_SINS = [
   'Monthly reports instead of monthly results',
 ];
 
-const fin = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
+const VISION = [
+  'Leading Execution Partner for agencies & businesses',
+  'Highly systemized company with recurring revenue',
+  'Trusted growth brand in India & selected global markets',
+  'AI-powered business tools & products',
+  'Talent-building ecosystem through Creativals Academy',
+];
+
+const LETTER = [
+  'When I founded Creativals, I looked at an industry full of excuses and decided to build an execution machine that leaves no room for failure. But you don\'t build an empire with strangers who clock out at 5 PM. You need absolute trust, relentless execution, and a level of loyalty money simply cannot buy.',
+  'That\'s why I didn\'t hire a corporate board. I built this company with my three brothers: Raiyan, Ahmed, and Farhan.',
+  'We are not just colleagues. We are a single, unstoppable unit. We don\'t have office politics or departments that point fingers at each other; we have a shared, ruthless obsession with winning. The speed and synchronicity of four brothers fighting for the same vision cannot be matched by any traditional agency.',
+  'When you partner with us, you aren\'t getting handed off to a junior account manager. You are bringing four brothers into your war room who treat your revenue like our own bank account. Every system we build, every ad we scale, and every brand we transform carries our family name.',
+];
 
 const AboutPage = () => {
   useSEO({
@@ -84,255 +89,254 @@ const AboutPage = () => {
   });
 
   return (
-    <div style={{ background: '#F8F6FF', color: '#0F172A', paddingTop: 80, minHeight: '100vh' }}>
-      <style>{`
-        .about-origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
-        .about-mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .rahil-profile-col { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; }
-        .rahil-avatar { width: 140px; height: 140px; border-radius: 24px; overflow: hidden; margin-bottom: 1.5rem; }
-        .team-avatar { width: 100px; height: 100px; border-radius: 20px; overflow: hidden; margin-bottom: 1.5rem; }
-        @media (max-width: 900px) {
-          .about-origin-grid { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
-          .about-mission-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 640px) {
-          .rahil-profile-col { width: 100%; }
-          .rahil-avatar { width: 100%; height: auto; aspect-ratio: 1/1; max-width: 100%; }
-          .team-avatar { width: 100%; height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius: 24px; }
-        }
-      `}</style>
-
-      {/* ── HERO ── */}
-      <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: 820, margin: '0 auto' }}>
-        <motion.div {...fin}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.35rem 1rem', background: 'rgba(124,58,237,0.10)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: 99, fontSize: '0.8rem', color: '#7C3AED', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '2rem' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#7C3AED', display: 'inline-block' }} />
-            Est. 2019 · Hyderabad, India
-          </div>
-          <h1 style={{ fontSize: 'clamp(2.8rem,6vw,5rem)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-0.04em', marginBottom: '1.5rem', color: '#0F172A' }}>
-            We don't run campaigns.<br />
-            <span style={{ background: 'linear-gradient(135deg,#7C3AED,#A855F7,#EC4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>We build growth engines.</span>
-          </h1>
-          <p style={{ fontSize: '1.15rem', color: '#475569', lineHeight: 1.75, maxWidth: 640, margin: '0 auto 2.5rem' }}>
-            Creativals was born from one frustration — watching businesses bleed money on agencies that measured success in posts and impressions, not revenue. We exist to change that.
-          </p>
-          <motion.a href={`${WA}?text=Hi! I want to know more about Creativals.`} target="_blank" rel="noreferrer"
-            whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2.25rem', background: 'linear-gradient(135deg,#7C3AED,#A855F7)', color: 'white', borderRadius: 14, fontWeight: 800, fontSize: '1rem', textDecoration: 'none', boxShadow: '0 0 40px -10px rgba(124,58,237,0.5)' }}>
-            <MessageCircle size={18} /> Talk to the Team <ArrowRight size={16} />
-          </motion.a>
-        </motion.div>
-      </section>
-
-      {/* ── STATS BAR ── */}
-      <section style={{ borderTop: '1px solid rgba(0,0,0,0.07)', borderBottom: '1px solid rgba(0,0,0,0.07)', padding: '2.5rem 2rem', background: '#ffffff' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem' }}>
-          {STATS.map(({ v, l }) => (
-            <motion.div key={l} {...fin} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 'clamp(2rem,4vw,2.75rem)', fontWeight: 900, letterSpacing: '-0.04em', color: '#1A1040' }}>{v}</div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.09em', marginTop: '0.25rem' }}>{l}</div>
-            </motion.div>
-          ))}
+    <div>
+      {/* ── HERO — indigo ── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap" style={{ paddingTop: 96, paddingBottom: 90 }}>
+          <Reveal>
+            <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 30 })}>
+              <span className="cx-dot" />
+              Inside Creativals · Est. 2019 · Hyderabad, India
+            </div>
+          </Reveal>
+          <Reveal delay={60}>
+            <h1 className="cx-display cx-h1" style={{ marginBottom: 30 }}>
+              We don't run campaigns.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>We build growth engines.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={140}>
+            <p style={{ margin: '0 0 38px', maxWidth: 560, fontSize: 18, lineHeight: 1.55, color: 'rgba(244,242,236,.85)', textWrap: 'pretty' }}>
+              Creativals was born from one frustration — watching businesses bleed money on agencies that measured
+              success in posts and impressions, not revenue. We exist to change that.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+              <a href={waLink('Hi! I want to know more about Creativals.')} target="_blank" rel="noreferrer" className="cx-btn cx-btn-lg cx-btn-yellow">
+                Talk to the Team →
+              </a>
+              <span style={mono({ fontSize: 12, letterSpacing: '.08em', opacity: .7 })}>NO PITCH · JUST A REAL CONVERSATION</span>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── ORIGIN STORY ── */}
-      <section className="about-origin-grid">
-        <motion.div {...fin}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>The Origin Story</div>
-          <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '1.5rem', color: '#0F172A' }}>
-            Built from frustration.<br />Driven by results.
-          </h2>
-          <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1rem', marginBottom: '1.25rem' }}>
-            Rahil founded Creativals in 2019 with a clear vision — not to run another agency, but to build a company that creates <em>measurable business growth</em> through systems, execution, and modern technology.
-          </p>
-          <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1rem', marginBottom: '1.25rem' }}>
-            The turning point was watching business after business waste money on agencies obsessed with vanity metrics, slow execution, and zero accountability. They got reports. They needed results.
-          </p>
-          <p style={{ color: '#475569', lineHeight: 1.8, fontSize: '1rem' }}>
-            Creativals started lean — websites, branding, and marketing — built on referrals and reputation. Over six years, it evolved into a full-scale execution partner for businesses across India and beyond.
-          </p>
-        </motion.div>
-
-        {/* Agency sins card */}
-        <motion.div {...fin} transition={{ delay: 0.15 }} style={{ background: '#FFF5F5', border: '1px solid rgba(239,68,68,.15)', borderRadius: 24, padding: '2.5rem' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#EF4444', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.25rem' }}>What we were built to fix</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-            {AGENCY_SINS.map(s => (
-              <div key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                <div style={{ width: 20, height: 20, borderRadius: '50%', background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
-                  <X size={10} color="#EF4444" />
-                </div>
-                <span style={{ color: '#374151', fontSize: '0.92rem', lineHeight: 1.5 }}>{s}</span>
+      {/* ── 01 STORY & MISSION — cream ── */}
+      <section style={{ background: '#F4F2EC', color: '#17151A' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="01" label="The origin story" /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 28 }}>
+              Built from frustration.<br />
+              <span style={{ color: '#4F46E5', fontStyle: 'italic' }}>Driven by results.</span>
+            </h2>
+          </Reveal>
+          <div className="cx-grid2" style={{ alignItems: 'start', marginBottom: 56 }}>
+            <Reveal delay={120}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <p className="cx-lead" style={{ fontSize: 19, fontWeight: 600, color: '#17151A' }}>
+                  Rahil founded Creativals in 2019 with a clear vision — not to run another agency, but to build a
+                  company that creates <em>measurable business growth</em> through systems, execution, and modern technology.
+                </p>
+                <p className="cx-lead">
+                  The turning point was watching business after business waste money on agencies obsessed with vanity
+                  metrics, slow execution, and zero accountability. They got reports. They needed results.
+                </p>
+                <p className="cx-lead">
+                  Creativals started lean — websites, branding, and marketing — built on referrals and reputation. Over
+                  six years, it evolved into a full-scale execution partner for businesses across India and beyond.
+                </p>
               </div>
-            ))}
-          </div>
-          <div style={{ marginTop: '2rem', padding: '1rem 1.25rem', background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.25)', borderRadius: 12 }}>
-            <div style={{ fontSize: '0.8rem', color: '#15803D', fontWeight: 700 }}>✓ Creativals is the antidote to all of the above.</div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ── CORE VALUES ── */}
-      <section style={{ padding: '4rem 2rem 6rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <motion.div {...fin} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>How We Operate</div>
-            <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 1rem', color: '#0F172A' }}>The 6 Laws of Creativals</h2>
-            <p style={{ color: '#334155', fontSize: '1rem', maxWidth: 500, margin: '0 auto' }}>These aren't values on a wall. They're the operating principles every decision is made against.</p>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem' }}>
-            {VALUES.map((v, i) => (
-              <motion.div key={v.title} {...fin} transition={{ delay: i * 0.07 }}
-                style={{ padding: '2rem', background: '#ffffff', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 20, display: 'flex', gap: '1.25rem', alignItems: 'flex-start', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: `${v.color}18`, border: `1.5px solid ${v.color}35`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <v.icon size={20} color={v.color} />
+            </Reveal>
+            <Reveal delay={180}>
+              <div className="cx-card tilt-r" style={{ boxSizing: 'border-box' }}>
+                <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#FF5F57', marginBottom: 22 })}>
+                  What we were built to fix
                 </div>
-                <div>
-                  <div style={{ fontWeight: 800, fontSize: '1rem', marginBottom: '0.4rem', color: '#0F172A' }}>{v.title}</div>
-                  <div style={{ color: '#475569', fontSize: '0.88rem', lineHeight: 1.6 }}>{v.desc}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  {AGENCY_SINS.map((s) => (
+                    <div key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 15, lineHeight: 1.5, color: 'rgba(23,21,26,.75)' }}>
+                      <span style={mono({ color: '#FF5F57', fontWeight: 600, flex: 'none' })}>✗</span>
+                      {s}
+                    </div>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TEAM ── */}
-      <section style={{ padding: '6rem 2rem', maxWidth: 1100, margin: '0 auto' }}>
-        <motion.div {...fin} style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>The People</div>
-          <h2 style={{ fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 900, letterSpacing: '-0.03em', margin: '0 0 1rem', color: '#0F172A' }}>Small team. Massive output.</h2>
-          <p style={{ color: '#334155', fontSize: '1rem', maxWidth: 500, margin: '0 auto' }}>
-            We're deliberately lean. Fewer people, deeper ownership, faster execution.
-          </p>
-        </motion.div>
-
-        {/* Big Card for Rahil */}
-        {(() => {
-          const rahil = TEAM[0];
-          return (
-            <motion.div {...fin}
-              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 28, overflow: 'hidden', position: 'relative', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-              <div style={{ height: 4, background: `linear-gradient(90deg,${rahil.color},transparent)` }} />
-              <div style={{ padding: 'clamp(2rem, 5vw, 3.5rem)', display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                
-                {/* Left Profile Section */}
-                <div className="rahil-profile-col">
-                  <div className="rahil-avatar" style={{ border: `2px solid ${rahil.color}40`, boxShadow: `0 0 32px -8px ${rahil.glow}` }}>
-                    <img src={rahil.avatar} alt={rahil.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 800, color: rahil.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>{rahil.role}</div>
-                  <div style={{ fontWeight: 900, fontSize: '1.8rem', color: '#0F172A', marginBottom: '1.25rem', lineHeight: 1.1 }}>{rahil.name}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {rahil.owns.map(o => (
-                      <span key={o} style={{ fontSize: '0.72rem', fontWeight: 700, padding: '0.35rem 0.8rem', background: `${rahil.color}12`, border: `1px solid ${rahil.color}30`, borderRadius: 99, color: rahil.color }}>
-                        {o}
-                      </span>
-                    ))}
-                  </div>
+                <div style={{ marginTop: 26, paddingTop: 20, borderTop: '2px solid #17151A', fontWeight: 800, fontSize: 15 }}>
+                  <span style={{ color: '#3DDC84' }}>✓</span> Creativals is the antidote to all of the above.
                 </div>
-
-                {/* Right Message Section */}
-                <div style={{ flex: 1, minWidth: 300, position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: -30, left: -20, fontSize: '7rem', color: 'rgba(124,58,237,0.08)', fontWeight: 900, lineHeight: 1, pointerEvents: 'none', fontFamily: 'serif' }}>"</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontSize: '1rem', color: '#475569', lineHeight: 1.8, position: 'relative', zIndex: 1 }}>
-                    <p style={{ margin: 0, fontSize: '1.35rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', lineHeight: 1.4 }}>
-                      Most agencies are built on buzzwords. We built ours on blood.
-                    </p>
-                    <p style={{ margin: 0 }}>
-                      When I founded Creativals, I looked at an industry full of excuses and decided to build an execution machine that leaves no room for failure. But you don't build an empire with strangers who clock out at 5 PM. You need absolute trust, relentless execution, and a level of loyalty money simply cannot buy.
-                    </p>
-                    <p style={{ margin: 0 }}>
-                      That's why I didn't hire a corporate board. I built this company with my three brothers: <strong style={{ color: '#1E293B', fontWeight: 700 }}>Raiyan, Ahmed, and Farhan.</strong>
-                    </p>
-                    <p style={{ margin: 0 }}>
-                      We are not just colleagues. We are a single, unstoppable unit. We don't have office politics or departments that point fingers at each other; we have a shared, ruthless obsession with winning. The speed and synchronicity of four brothers fighting for the same vision cannot be matched by any traditional agency.
-                    </p>
-                    <p style={{ margin: 0 }}>
-                      When you partner with us, you aren't getting handed off to a junior account manager. You are bringing four brothers into your war room who treat your revenue like our own bank account. Every system we build, every ad we scale, and every brand we transform carries our family name.
-                    </p>
-                    <p style={{ margin: 0, fontWeight: 800, color: rahil.color, fontSize: '1.15rem', marginTop: '0.5rem' }}>
-                      Other agencies want your retainer. We want your total market dominance.
-                    </p>
-                  </div>
-                </div>
-
               </div>
-            </motion.div>
-          );
-        })()}
+            </Reveal>
+          </div>
 
-        {/* 3 Cards for the rest */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-          {TEAM.slice(1).map((member, i) => (
-            <motion.div key={member.name} {...fin} transition={{ delay: i * 0.1 }}
-              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 24, overflow: 'hidden', position: 'relative', boxShadow: '0 1px 6px rgba(0,0,0,0.05)' }}>
-              <div style={{ height: 4, background: `linear-gradient(90deg,${member.color},transparent)` }} />
-              <div style={{ padding: '2rem' }}>
-                <div className="team-avatar" style={{ border: `2px solid ${member.color}40`, boxShadow: `0 0 24px -6px ${member.glow}` }}>
-                  <img src={member.avatar} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          {/* mission + vision */}
+          <div className="cx-grid2" style={{ alignItems: 'stretch' }}>
+            <Reveal delay={80}>
+              <div className="cx-card-indigo" style={{ height: '100%', boxSizing: 'border-box' }}>
+                <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#FFD84D', marginBottom: 18 })}>
+                  Our mission
                 </div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 800, color: member.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.4rem' }}>{member.role}</div>
-                <div style={{ fontWeight: 900, fontSize: '1.15rem', color: '#0F172A', marginBottom: '1rem', lineHeight: 1.2 }}>{member.name}</div>
-                <p style={{ fontSize: '0.85rem', color: '#475569', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '1.5rem' }}>{member.quote}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  {member.owns.map(o => (
-                    <span key={o} style={{ fontSize: '0.7rem', fontWeight: 700, padding: '0.3rem 0.7rem', background: `${member.color}12`, border: `1px solid ${member.color}25`, borderRadius: 99, color: member.color }}>
-                      {o}
-                    </span>
+                <p style={{ margin: 0, fontSize: 21, fontWeight: 700, lineHeight: 1.5, letterSpacing: '-0.01em' }}>
+                  "To help Indian and global businesses grow through reliable execution systems, smart marketing,
+                  strong branding, and technology-enabled operations."
+                </p>
+                <p style={{ margin: '20px 0 0', fontSize: 14.5, fontStyle: 'italic', color: 'rgba(244,242,236,.75)' }}>
+                  Businesses deserve partners who care about results, not reports.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={140}>
+              <div className="cx-card" style={{ height: '100%', boxSizing: 'border-box' }}>
+                <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 18 })}>
+                  The 5-year vision
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
+                  {VISION.map((v) => (
+                    <div key={v} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 15, lineHeight: 1.55, color: 'rgba(23,21,26,.75)' }}>
+                      <span style={{ color: '#3DDC84', fontWeight: 900, flex: 'none' }}>✓</span>
+                      {v}
+                    </div>
                   ))}
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* ── MISSION & VISION ── */}
-      <section style={{ padding: '4rem 2rem 6rem', borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-        <div className="about-mission-grid">
-          <motion.div {...fin} style={{ padding: '3rem', background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 24 }}>
-            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7C3AED', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Our Mission</div>
-            <p style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0F172A', lineHeight: 1.65 }}>
-              "To help Indian and global businesses grow through reliable execution systems, smart marketing, strong branding, and technology-enabled operations."
+      {/* ── 02 THE BROTHERS — yellow band ── */}
+      <section style={{ background: '#FFD84D', color: '#17151A', borderTop: '4px solid #17151A', borderBottom: '4px solid #17151A' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="02" label="The people" yellow /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+              Small team.<br />
+              <span style={{ color: '#4F46E5', fontStyle: 'italic' }}>Massive output.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <p className="cx-lead" style={{ maxWidth: 560, marginBottom: 54, color: 'rgba(23,21,26,.75)' }}>
+              We're deliberately lean. Fewer people, deeper ownership, faster execution. Four brothers — Rahil, Raiyan,
+              Ahmed, and Farhan — one shared obsession with winning.
             </p>
-            <div style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: '#334155', fontStyle: 'italic' }}>Businesses deserve partners who care about results, not reports.</div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div {...fin} transition={{ delay: 0.1 }} style={{ padding: '3rem', background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24 }}>
-            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#16A34A', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>The 5-Year Vision</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {[
-                'Leading Execution Partner for agencies & businesses',
-                'Highly systemized company with recurring revenue',
-                'Trusted growth brand in India & selected global markets',
-                'AI-powered business tools & products',
-                'Talent-building ecosystem through Creativals Academy',
-              ].map(v => (
-                <div key={v} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <CheckCircle size={15} color="#16A34A" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: '0.9rem', color: '#334155', lineHeight: 1.5 }}>{v}</span>
-                </div>
-              ))}
+          {/* founder's note */}
+          <Reveal delay={160}>
+            <div className="cx-card" style={{ marginBottom: 28, boxSizing: 'border-box', padding: 'clamp(30px, 4vw, 48px)' }}>
+              <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 20 })}>
+                A note from the founder — {TEAM[0].handle}
+              </div>
+              <p style={{ margin: '0 0 22px', fontWeight: 900, fontSize: 'clamp(22px, 2.6vw, 30px)', lineHeight: 1.25, letterSpacing: '-0.02em', textTransform: 'uppercase', fontStretch: '115%' }}>
+                Most agencies are built on buzzwords. We built ours on blood.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 860 }}>
+                {LETTER.map((p) => (
+                  <p key={p.slice(0, 24)} style={{ margin: 0, fontSize: 15.5, lineHeight: 1.7, color: 'rgba(23,21,26,.72)' }}>{p}</p>
+                ))}
+              </div>
+              <p style={{ margin: '24px 0 0', fontWeight: 800, fontSize: 17, color: '#4F46E5' }}>
+                Other agencies want your retainer. We want your total market dominance.
+              </p>
             </div>
-          </motion.div>
+          </Reveal>
+
+          {/* 4 founder cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 22 }}>
+            {TEAM.map((m, i) => (
+              <Reveal key={m.name} delay={i * 90}>
+                <div className={`cx-card ${i % 2 ? 'tilt-r' : 'tilt-l'}`} style={{ height: '100%', boxSizing: 'border-box', padding: '30px 26px' }}>
+                  <div style={{ width: 96, height: 96, borderRadius: 16, overflow: 'hidden', border: '2px solid #17151A', marginBottom: 20 }}>
+                    <img src={m.avatar} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                  <div style={mono({ fontSize: 10.5, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 8 })}>
+                    {m.role} · {m.handle}
+                  </div>
+                  <div style={{ fontWeight: 900, fontSize: 19, lineHeight: 1.15, letterSpacing: '-0.01em', marginBottom: 12 }}>{m.name}</div>
+                  <p style={{ margin: '0 0 18px', fontSize: 13.5, fontStyle: 'italic', lineHeight: 1.6, color: 'rgba(23,21,26,.65)' }}>{m.quote}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {m.owns.map((o) => (
+                      <span key={o} className="cx-tag cx-tag-indigo">{o}</span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section style={{ padding: '5rem 2rem 7rem', textAlign: 'center' }}>
-        <motion.div {...fin} style={{ maxWidth: 700, margin: '0 auto', padding: '4rem 2rem', background: 'rgba(124,58,237,0.05)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 28 }}>
-          <h2 style={{ fontSize: 'clamp(1.8rem,3.5vw,2.8rem)', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '1rem', color: '#0F172A' }}>Ready to stop guessing<br />and start growing?</h2>
-          <p style={{ color: '#334155', fontSize: '1rem', marginBottom: '2.5rem' }}>Talk to the team. No pitch. Just a real conversation about your business.</p>
-          <motion.a href={`${WA}?text=Hi! I read your About page and want to explore working together.`} target="_blank" rel="noreferrer"
-            whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '1.1rem 2.5rem', background: 'linear-gradient(135deg,#22C55E,#16A34A)', color: '#000', borderRadius: 14, fontWeight: 900, fontSize: '1.05rem', textDecoration: 'none', boxShadow: '0 0 50px -12px rgba(34,197,94,0.5)' }}>
-            <MessageCircle size={20} /> Chat with Us on WhatsApp <ArrowRight size={16} />
-          </motion.a>
-        </motion.div>
+      {/* ── 03 NUMBERS & LAWS — ink ── */}
+      <section style={{ background: '#17151A', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal><SecNum n="03" label="Numbers & laws" dark /></Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 24 }}>
+              Receipts first.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>Rules second.</span>
+            </h2>
+          </Reveal>
+
+          {/* big stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '36px 28px', margin: '54px 0 72px' }}>
+            {STATS.map(({ v, l }, i) => (
+              <Reveal key={l} delay={i * 70}>
+                <div>
+                  <div style={{ fontWeight: 900, fontSize: 'clamp(40px, 4.6vw, 64px)', fontStretch: '122%', lineHeight: 1, letterSpacing: '-0.02em', color: '#FFD84D' }}>{v}</div>
+                  <div style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', marginTop: 10, color: 'rgba(244,242,236,.6)' })}>{l}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* the 6 laws */}
+          <Reveal>
+            <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(244,242,236,.55)', marginBottom: 6 })}>
+              How we operate — the 6 laws of Creativals
+            </div>
+          </Reveal>
+          <div>
+            {VALUES.map((v, i) => (
+              <Reveal key={v.n} delay={i * 60} className="cx-sysrow" style={{ gridTemplateColumns: '90px 1fr 1.4fr' }}>
+                <div style={{ fontWeight: 900, fontSize: 40, fontStretch: '120%', color: '#FFD84D' }}>{v.n}</div>
+                <div style={{ fontWeight: 800, fontSize: 22, letterSpacing: '-0.01em' }}>{v.title}</div>
+                <div className="cx-sysdesc" style={{ fontSize: 15, lineHeight: 1.55, color: 'rgba(244,242,236,.65)' }}>{v.desc}</div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
+      {/* ── FINAL CTA — indigo ── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal>
+            <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 30 })}>
+              <span className="cx-dot" />
+              Talk to the team
+            </div>
+          </Reveal>
+          <Reveal delay={60}>
+            <h2 className="cx-display cx-h2-xl" style={{ marginBottom: 28 }}>
+              Ready to stop guessing<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>and start growing?</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <p style={{ margin: '0 0 36px', maxWidth: 480, fontSize: 18, lineHeight: 1.55, color: 'rgba(244,242,236,.85)' }}>
+              Talk to the team. No pitch. Just a real conversation about your business.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+              <a href={waLink('Hi! I read your About page and want to explore working together.')} target="_blank" rel="noreferrer" className="cx-btn cx-btn-lg cx-btn-yellow">
+                Chat with Us on WhatsApp →
+              </a>
+              <span style={mono({ fontSize: 12, letterSpacing: '.08em', opacity: .75 })}>REPLY IN 2 HRS · NO COMMITMENT</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,61 +1,61 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
-import { ArrowRight, Zap, Globe, Palette, ChevronRight } from 'lucide-react';
+import { Reveal, SecNum, WA_INDIA } from '../components/ui/primitives';
 
-const CATEGORIES = [
+const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
+
+/* Same slug/title mapping as the Navbar services mega-menu */
+const SERVICE_COLS = [
   {
-    icon: Zap,
-    color: '#7C3AED',
-    label: 'Marketing & Growth',
+    n: '01',
+    head: 'Marketing & Growth',
     sub: 'Paid Ads · SEO · WhatsApp · Email · Lead Gen',
-    services: [
-      { name: 'Paid Social Ads', slug: 'paid-social-ads' },
-      { name: 'Google Ads & PPC', slug: 'google-ads-ppc' },
-      { name: 'Search Engine Optimization', slug: 'search-engine-optimization' },
-      { name: 'Local Maps & GBP', slug: 'local-maps-gbp' },
-      { name: 'Social Media Management', slug: 'social-media-management' },
-      { name: 'Email Marketing', slug: 'email-marketing' },
-      { name: 'WhatsApp & SMS Marketing', slug: 'whatsapp-sms-marketing' },
-      { name: 'Lead Generation Funnels', slug: 'lead-generation-funnels' },
-      { name: 'Conversion Optimization', slug: 'conversion-optimization' },
-      { name: 'Influencer Partnerships', slug: 'influencer-partnerships' },
+    items: [
+      { slug: 'paid-social-ads', title: 'Paid Social Ads', tag: ['POPULAR', 'yellow'] },
+      { slug: 'google-ads-ppc', title: 'Google Ads & PPC' },
+      { slug: 'search-engine-optimization', title: 'Search Engine Optimization' },
+      { slug: 'local-maps-gbp', title: 'Local Maps & GBP', tag: ['HIGH ROI', 'indigo'] },
+      { slug: 'social-media-management', title: 'Social Media Management' },
+      { slug: 'email-marketing', title: 'Email Marketing' },
+      { slug: 'whatsapp-sms-marketing', title: 'WhatsApp & SMS' },
+      { slug: 'lead-generation-funnels', title: 'Lead Generation Funnels', tag: ['MOST USED', 'ink'] },
+      { slug: 'conversion-optimization', title: 'Conversion Optimization' },
+      { slug: 'influencer-partnerships', title: 'Influencer Partnerships' },
     ],
   },
   {
-    icon: Globe,
-    color: '#2563EB',
-    label: 'Development & Systems',
+    n: '02',
+    head: 'Development & Systems',
     sub: 'Websites · Apps · Automations · CRM · AI',
-    services: [
-      { name: 'Custom Websites', slug: 'custom-websites' },
-      { name: 'High-Converting Landing Pages', slug: 'landing-pages' },
-      { name: 'E-commerce Stores', slug: 'ecommerce-stores' },
-      { name: 'Mobile Applications', slug: 'mobile-applications' },
-      { name: 'Web Applications', slug: 'web-applications' },
-      { name: 'CRM Management', slug: 'crm-management' },
-      { name: 'Workflow Automations', slug: 'workflow-automations' },
-      { name: 'API Integrations', slug: 'api-integrations' },
-      { name: 'AI Chatbots', slug: 'ai-chatbots' },
-      { name: 'Hosting & Server Ops', slug: 'hosting-server-ops' },
+    items: [
+      { slug: 'custom-websites', title: 'Custom Websites', tag: ['POPULAR', 'yellow'] },
+      { slug: 'landing-pages', title: 'High-Converting Landings' },
+      { slug: 'ecommerce-stores', title: 'E-commerce Stores' },
+      { slug: 'mobile-applications', title: 'Mobile Applications' },
+      { slug: 'web-applications', title: 'Web Applications', tag: ['HIGH ROI', 'indigo'] },
+      { slug: 'crm-management', title: 'CRM Management' },
+      { slug: 'workflow-automations', title: 'Workflow Automations', tag: ['MOST USED', 'ink'] },
+      { slug: 'api-integrations', title: 'API Integrations' },
+      { slug: 'ai-chatbots', title: 'AI Chatbots' },
+      { slug: 'hosting-server-ops', title: 'Hosting & Server Ops' },
     ],
   },
   {
-    icon: Palette,
-    color: '#DB2777',
-    label: 'Branding & Creative',
+    n: '03',
+    head: 'Branding & Creative',
     sub: 'Identity · Video · Content · Design · Copy',
-    services: [
-      { name: 'Brand Identity', slug: 'brand-identity' },
-      { name: 'Logo Design & Animation', slug: 'logo-design' },
-      { name: 'Direct Response Video', slug: 'direct-response-video' },
-      { name: 'Short-Form Content', slug: 'short-form-content' },
-      { name: 'Social Media Graphics', slug: 'social-media-graphics' },
-      { name: 'UI/UX Interface Design', slug: 'ui-ux-design' },
-      { name: 'Copywriting & Scripts', slug: 'copywriting-scripts' },
-      { name: 'Photography', slug: 'photography' },
-      { name: 'Pitch Decks', slug: 'pitch-decks' },
-      { name: 'Print & Packaging', slug: 'print-packaging' },
+    items: [
+      { slug: 'brand-identity', title: 'Brand Identity', tag: ['POPULAR', 'yellow'] },
+      { slug: 'logo-design', title: 'Logo Design & Animation' },
+      { slug: 'direct-response-video', title: 'Direct Response Video' },
+      { slug: 'short-form-content', title: 'Short-Form Content', tag: ['HIGH ROI', 'indigo'] },
+      { slug: 'social-media-graphics', title: 'Social Media Graphics' },
+      { slug: 'ui-ux-design', title: 'UI / UX Interface Design' },
+      { slug: 'copywriting-scripts', title: 'Copywriting & Scripts', tag: ['MOST USED', 'ink'] },
+      { slug: 'photography', title: 'Photography' },
+      { slug: 'pitch-decks', title: 'Pitch Decks' },
+      { slug: 'print-packaging', title: 'Print & Packaging' },
     ],
   },
 ];
@@ -78,88 +78,93 @@ const ServicesPage = () => {
   });
 
   return (
-    <div className="dark-page" style={{ background: '#F8FAFC', minHeight: '100vh', paddingTop: '80px', color: '#0F172A' }}>
-      {/* Hero */}
-      <section style={{ padding: '6rem 2rem 4rem', textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: '2rem', fontSize: '0.85rem', color: '#7C3AED', marginBottom: '2rem' }}>
-          <Zap size={14} /> 30+ Systems. One Team.
+    <div>
+      {/* ── HERO — indigo ─────────────────────────────────────── */}
+      <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section">
+          <Reveal>
+            <div style={mono({ display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 11.5, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', background: '#FFD84D', color: '#17151A', borderRadius: 999, padding: '8px 16px', marginBottom: 30 })}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#17151A' }} />30+ Systems. One Team.
+            </div>
+          </Reveal>
+          <Reveal delay={60}>
+            <h1 className="cx-display cx-h1" style={{ marginBottom: 28 }}>
+              We don't offer services.<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>We build growth systems.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="cx-lead cx-lead-light" style={{ maxWidth: 640, marginBottom: 38 }}>
+              Every capability below is designed to work as part of a connected system — not as a standalone
+              campaign. Traffic. Conversion. Closing. That's the loop.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+              <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-lg cx-btn-yellow">Get a Free System Audit →</a>
+              <span style={mono({ fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase', opacity: .75 })}>
+                Traffic → Conversion → Closing
+              </span>
+            </div>
+          </Reveal>
         </div>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em', color: '#0F172A' }}>
-          We don't offer services.<br />
-          <span style={{ background: 'linear-gradient(135deg, #7C3AED, #A855F7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>We build growth systems.</span>
-        </h1>
-        <p style={{ fontSize: '1.2rem', color: '#475569', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-          Every capability below is designed to work as part of a connected system — not as a standalone campaign. Traffic. Conversion. Closing. That's the loop.
-        </p>
-        <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', background: '#7C3AED', color: 'white', borderRadius: '0.75rem', fontWeight: 700, textDecoration: 'none', fontSize: '1rem', transition: 'background 0.2s' }}>
-          Get a Free System Audit <ArrowRight size={18} />
-        </Link>
       </section>
 
-      {/* System Loop Banner */}
-      <section style={{ maxWidth: '900px', margin: '0 auto 5rem', padding: '0 2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.18)', borderRadius: '1rem', padding: '1.5rem 2rem', flexWrap: 'wrap' }}>
-          {['Traffic (Ads + SEO)', '→', 'Conversion (Website + Funnel)', '→', 'Closing (WhatsApp + CRM)'].map((s, i) => (
-            <span key={i} style={{ color: s === '→' ? '#9CA3AF' : '#4C1D95', fontWeight: s === '→' ? 400 : 700, fontSize: '1rem' }}>{s}</span>
+      {/* ── ALL 30 SYSTEMS — cream ────────────────────────────── */}
+      <section style={{ background: '#F4F2EC', color: '#17151A' }}>
+        <div className="cx-wrap cx-section">
+          {SERVICE_COLS.map((col, ci) => (
+            <div key={col.head} style={{ marginBottom: ci < SERVICE_COLS.length - 1 ? 72 : 0 }}>
+              <Reveal><SecNum n={col.n} label={col.head} /></Reveal>
+              <Reveal delay={60}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 18, flexWrap: 'wrap', marginBottom: 30 }}>
+                  <h2 className="cx-display" style={{ fontSize: 'clamp(26px,3vw,40px)' }}>{col.head}</h2>
+                  <span className="cx-mega-colhead" style={{ marginBottom: 0 }}>{col.sub}</span>
+                </div>
+              </Reveal>
+              <div className="cx-grid3" style={{ gap: 18 }}>
+                {col.items.map((s, i) => (
+                  <Reveal key={s.slug} delay={(i % 3) * 60}>
+                    <Link
+                      to={`/services/${s.slug}`}
+                      className="cx-card-invert"
+                      style={{ padding: '22px 24px', height: '100%', boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14 }}
+                    >
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', fontWeight: 800, fontSize: 16.5, letterSpacing: '-0.01em' }}>
+                        {s.title}
+                        {s.tag && <span className={`cx-tag cx-tag-${s.tag[1]}`}>{s.tag[0]}</span>}
+                      </span>
+                      <span aria-hidden="true" style={{ fontWeight: 900, fontSize: 18, flex: 'none' }}>→</span>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Categories */}
-      {CATEGORIES.map((cat) => {
-        const Icon = cat.icon;
-        return (
-          <section key={cat.label} style={{ maxWidth: '1200px', margin: '0 auto 5rem', padding: '0 2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <div style={{ width: '44px', height: '44px', background: `${cat.color}12`, borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${cat.color}30` }}>
-                <Icon size={22} color={cat.color} />
-              </div>
-              <div>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 800, margin: 0, color: '#0F172A' }}>{cat.label}</h2>
-                <p style={{ color: '#374151', margin: 0, fontSize: '0.9rem' }}>{cat.sub}</p>
-              </div>
+      {/* ── FINAL CTA — ink ───────────────────────────────────── */}
+      <section style={{ background: '#17151A', color: '#F4F2EC' }}>
+        <div className="cx-wrap cx-section" style={{ textAlign: 'center' }}>
+          <Reveal>
+            <h2 className="cx-display cx-h2" style={{ marginBottom: 22 }}>
+              Not sure which<br />
+              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>system you need?</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={80}>
+            <p className="cx-lead cx-lead-light" style={{ maxWidth: 560, margin: '0 auto 36px' }}>
+              Tell us your goal. We'll map the exact system in 30 minutes — free.
+            </p>
+          </Reveal>
+          <Reveal delay={160}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
+              <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-lg cx-btn-yellow">Book Free Audit on WhatsApp →</a>
+              <span style={mono({ fontSize: 12, letterSpacing: '.08em', opacity: .55, textTransform: 'uppercase' })}>Free audit · No commitment · Reply in 2 hrs</span>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-              {cat.services.map((svc) => (
-                <Link
-                  key={svc.slug}
-                  to={`/services/${svc.slug}`}
-                  style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    padding: '1.25rem 1.5rem',
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(0,0,0,0.08)',
-                    borderRadius: '0.875rem',
-                    textDecoration: 'none',
-                    color: '#0F172A',
-                    fontWeight: 600,
-                    fontSize: '0.95rem',
-                    transition: 'all 0.2s',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = `${cat.color}08`; e.currentTarget.style.borderColor = `${cat.color}40`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}
-                >
-                  {svc.name}
-                  <ChevronRight size={16} color="#9CA3AF" />
-                </Link>
-              ))}
-            </div>
-          </section>
-        );
-      })}
-
-      {/* Final CTA */}
-      <section style={{ textAlign: 'center', padding: '5rem 2rem', background: '#F1F5F9', borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: '#0F172A' }}>Not sure which system you need?</h2>
-        <p style={{ color: '#475569', marginBottom: '2rem', fontSize: '1.1rem' }}>Tell us your goal. We'll map the exact system in 30 minutes — free.</p>
-        <a
-          href="https://wa.me/917997001700?text=Hi! I'd like a free system audit for my business."
-          target="_blank" rel="noreferrer"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem', background: '#22C55E', color: 'white', borderRadius: '0.75rem', fontWeight: 700, textDecoration: 'none', fontSize: '1rem' }}
-        >
-          Book Free Audit on WhatsApp <ArrowRight size={18} />
-        </a>
+          </Reveal>
+        </div>
       </section>
     </div>
   );

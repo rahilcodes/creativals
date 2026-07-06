@@ -1,334 +1,123 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Instagram, Linkedin, Twitter, Youtube, Mail, MessageCircle, TrendingUp, Target, Globe, MapPin, Calendar, Sun, Zap, Moon, Phone } from 'lucide-react';
+import { Marquee, WA_INDIA, WA_USA } from './ui/primitives';
 
-const WA_MSG = encodeURIComponent('Hi! I want a free Growth Audit for my business.');
-const WA_IN  = `https://wa.me/917997001700?text=${WA_MSG}`;
-const WA_US  = `https://wa.me/16286284743?text=${WA_MSG}`;
-const CAL    = 'https://calendly.com/smmcreativals/30min';
+const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
 
-const WIN_TICKER = [
-  'Hotel Sky Intl. · Revenue 2x in 6 months',
-  'MRA Motors · 50M Views Generated',
-  'Glampinn Valley · ₹50 Crore Revenue',
-  'Pista House · 200% Order Growth',
-  'GMR Group · 3-Year Ongoing Partner',
-  'Gopuppy · ₹15 Crore Revenue',
-  'Teak Studio · ₹30 Crore Revenue',
-  'Mahindra · 500+ Monthly Leads',
-  'RL Tours · Top 3 in Hyderabad',
-];
+const WORDMARK_ROT = [-6, 5, -4, 6, -5, 4, -6, 5, -4, 6];
 
-const GOALS = [
-  { Icon: TrendingUp, label: 'More Revenue',  sub: 'Scale from X to 2X in 90 days',   color: '#22C55E', href: '/contact?goal=revenue' },
-  { Icon: Target,     label: 'More Leads',    sub: 'Fill your sales pipeline fast',    color: '#7C3AED', href: '/contact?goal=leads'   },
-  { Icon: Globe,      label: 'Go Global',     sub: 'Expand beyond Indian borders',     color: '#38BDF8', href: '/contact?goal=global'  },
-];
-
-const SOCIALS = [
-  { Icon: Instagram, href: 'https://instagram.com/creativals',         color: '#E1306C' },
-  { Icon: Linkedin,  href: 'https://linkedin.com/company/creativals',  color: '#0077B5' },
-  { Icon: Twitter,   href: 'https://twitter.com/creativals',           color: '#1DA1F2' },
-  { Icon: Youtube,   href: 'https://youtube.com/@creativals',          color: '#FF0000' },
-];
-
-
-const NAV_COLS = [
-  { label: 'Services', links: [
-    { text: 'Paid Social Ads',  href: '/services/paid-social-ads'  },
-    { text: 'Google Ads & PPC', href: '/services/google-ads-ppc'   },
-    { text: 'Custom Websites',  href: '/services/custom-websites'  },
-    { text: 'Brand Identity',   href: '/services/brand-identity'   },
-    { text: 'AI Chatbots',      href: '/services/ai-chatbots'      },
-  ]},
-  { label: 'Company', links: [
-    { text: 'About Us',     href: '/about-us'  },
-    { text: 'Our Approach', href: '/approach'  },
-    { text: 'Playbooks',    href: '/playbooks' },
-    { text: 'Academy',      href: '/academy'   },
-    { text: 'Careers',      href: '/join-us'   },
-  ]},
-  { label: 'Results', links: [
-    { text: 'Case Studies', href: '/case-studies'         },
-    { text: 'Client Wall',  href: '/results#client-wall'  },
-    { text: 'Reviews',      href: '/client-reviews'       },
-    { text: 'Industries',   href: '/industries'           },
-    { text: 'Pricing',      href: '/pricing'              },
-  ]},
-];
-
-/* ── Particle Galaxy Canvas ────────────────────────────── */
-function ParticleCanvas() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const canvas = ref.current; if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let af;
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
-    resize();
-    window.addEventListener('resize', resize);
-    const pts = Array.from({ length: 90 }, () => ({
-      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-      r: Math.random() * 1.4 + 0.3,
-      vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
-      col: ['#7C3AED','#EC4899','#38BDF8','#F59E0B'][Math.floor(Math.random()*4)],
-      op: Math.random() * 0.55 + 0.15,
-    }));
-    const tick = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      pts.forEach(p => {
-        p.x = (p.x + p.vx + canvas.width)  % canvas.width;
-        p.y = (p.y + p.vy + canvas.height) % canvas.height;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fillStyle = p.col; ctx.globalAlpha = p.op; ctx.fill();
-      });
-      ctx.globalAlpha = 1; af = requestAnimationFrame(tick);
-    };
-    tick();
-    return () => { cancelAnimationFrame(af); window.removeEventListener('resize', resize); };
-  }, []);
-  return <canvas ref={ref} style={{ position:'absolute', inset:0, width:'100%', height:'100%', pointerEvents:'none' }} />;
-}
-
-/* ── Live Wins Ticker ──────────────────────────────────── */
-function WinTicker() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    let pos = 0, af;
-    const tick = () => {
-      pos -= 0.6;
-      if (Math.abs(pos) >= el.scrollWidth / 2) pos = 0;
-      el.style.transform = `translateX(${pos}px)`;
-      af = requestAnimationFrame(tick);
-    };
-    tick(); return () => cancelAnimationFrame(af);
-  }, []);
-  return (
-    <div style={{ overflow:'hidden', padding:'0.55rem 0', borderBottom:'1px solid rgba(0,0,0,0.07)', background:'#F1F5F9' }}>
-      <div ref={ref} style={{ display:'inline-flex', gap:'3rem', whiteSpace:'nowrap', willChange:'transform' }}>
-        {[...WIN_TICKER,...WIN_TICKER].map((item,i) => (
-          <span key={i} style={{ fontSize:'0.7rem', fontWeight:600, color:'#475569', display:'inline-flex', alignItems:'center', gap:'0.45rem' }}>
-            <span style={{ width:4, height:4, borderRadius:'50%', background:'#7C3AED', display:'inline-block' }} />
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ── Animated SVG Signature ────────────────────────────── */
-function Signature() {
-  return (
-    <svg viewBox="0 0 320 48" style={{ width:220, height:36, display:'block', flexShrink:0 }}>
-      <style>{`
-        @keyframes drawLine { to { stroke-dashoffset: 0; } }
-        .sp { stroke-dasharray:900; stroke-dashoffset:900; animation: drawLine 2.8s ease forwards 0.3s; }
-      `}</style>
-      <path className="sp" d="M8 36 C20 8,40 8,52 28 C64 48,72 42,84 32 C96 22,102 16,118 28 C134 40,140 18,156 22 C172 28,178 42,194 32 C210 22,218 12,238 26 C258 40,268 28,284 24 C300 18,310 34,318 30" fill="none" stroke="url(#sg)" strokeWidth="2" strokeLinecap="round"/>
-      <defs>
-        <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#7C3AED"/>
-          <stop offset="100%" stopColor="#EC4899"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-}
-
-/* ══════════════════════════════════════════════════════ */
 const Footer = () => {
-  const [hGoal, setHGoal] = useState(null);
-
   return (
-    <footer style={{ background:'#F8FAFC', color:'#0F172A', fontFamily:'Inter,system-ui,sans-serif', borderTop:'1px solid rgba(124,58,237,0.15)', position:'relative', overflow:'hidden' }}>
-      <style>{`
-        .ftr-link { color:#475569; text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; display:block; }
-        .ftr-link:hover { color:#0F172A; }
-        .ftr-soc { width:32px; height:32px; border-radius:0.5rem; display:flex; align-items:center; justify-content:center; background:#F1F5F9; border:1px solid rgba(0,0,0,0.08); transition:all 0.2s; text-decoration:none; flex-shrink:0; }
-        .ftr-soc:hover { background:#E2E8F0; transform:translateY(-2px); }
-        .cc { display:flex; align-items:center; gap:0.55rem; border-radius:0.7rem; padding:0.55rem 0.7rem; text-decoration:none; transition:all 0.18s; }
-        .cc:hover { transform:translateX(3px); }
-        @keyframes ftrPulse { 0%,100%{opacity:.4} 50%{opacity:.8} }
-        .ftr-main-grid { display:grid; grid-template-columns:1.2fr 2fr 1fr; border-bottom:1px solid rgba(0,0,0,0.07); }
-        .ftr-brand-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); border-right:1px solid rgba(0,0,0,0.07); display:flex; flex-direction:column; gap:1.25rem; }
-        .ftr-nav-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1.5rem,3vw,3rem); display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; border-right:1px solid rgba(0,0,0,0.07); }
-        .ftr-contact-col { padding:clamp(1.5rem,2vw,1.5rem) clamp(1rem,2vw,1.75rem); display:flex; flex-direction:column; gap:0.5rem; }
-        .ftr-goals-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.85rem; max-width:660px; margin:0 auto; }
-        .ftr-billion { font-size:clamp(3rem,8vw,6.5rem); font-weight:900; letter-spacing:-0.05em; line-height:1; margin-bottom:0.4rem; overflow:hidden; }
-        @media(max-width:900px){
-          .ftr-main-grid { grid-template-columns:1fr 1fr; }
-          .ftr-brand-col { border-right:1px solid rgba(0,0,0,0.07); }
-          .ftr-nav-col { grid-column:1/-1; border-right:none; border-top:1px solid rgba(0,0,0,0.07); }
-          .ftr-contact-col { grid-column:2/3; grid-row:1/2; border-left:none; border-top:none; }
-        }
-        @media(max-width:640px){
-          .ftr-main-grid { grid-template-columns:1fr; }
-          .ftr-brand-col { border-right:none; border-bottom:1px solid rgba(0,0,0,0.07); align-items:center; text-align:center; padding:2rem 1.5rem; }
-          .ftr-brand-col p { margin-left:auto; margin-right:auto; }
-          .ftr-soc-wrap { justify-content:center; }
-          .ftr-stats-badge { margin-left:auto; margin-right:auto; align-items:center; display:flex; flex-direction:column; }
-          .ftr-nav-col { grid-template-columns:repeat(3,1fr); gap:1rem; border-top:none; }
-          .ftr-contact-col { grid-column:auto; grid-row:auto; border-top:1px solid rgba(0,0,0,0.07); }
-          .ftr-goals-grid { grid-template-columns:1fr; max-width:360px; }
-        }
-        @media(max-width:480px){
-          .ftr-nav-col { grid-template-columns:repeat(2,1fr); }
-          .ftr-billion { font-size:clamp(2.4rem,11vw,3.5rem) !important; }
-          .cc { padding:0.6rem 0.7rem; }
-        }
-      `}</style>
-
-      {/* Galaxy background */}
-      <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none' }}>
-        <ParticleCanvas />
-        <div style={{ position:'absolute', top:'-5%', left:'35%', width:'600px', height:'350px', borderRadius:'50%', background:'radial-gradient(circle, rgba(124,58,237,0.05) 0%, transparent 70%)', animation:'ftrPulse 6s ease-in-out infinite' }} />
-        <div style={{ position:'absolute', bottom:'5%', right:'5%', width:'350px', height:'250px', borderRadius:'50%', background:'radial-gradient(circle, rgba(236,72,153,0.04) 0%, transparent 70%)' }} />
+    <footer style={{ background: '#17151A', color: '#F4F2EC', position: 'relative', overflow: 'hidden' }}>
+      {/* reverse marquee band */}
+      <div style={{ background: '#FFD84D', color: '#17151A', borderBottom: '4px solid #17151A' }}>
+        <Marquee speed={20} reverse segStyle={{ gap: 30, paddingRight: 30, fontWeight: 900, fontStretch: '122%', textTransform: 'uppercase', fontSize: 19, padding: '14px 30px 14px 0' }}>
+          <span>Stop scrolling. Start scaling.</span><span>→</span>
+          <span>Your competitors already called us.</span><span>→</span>
+          <span>Okay, not all of them. Yet.</span><span>→</span>
+        </Marquee>
       </div>
 
-      {/* ── ZONE 1: GALAXY HERO CTA ─────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'4.5rem clamp(1.25rem,5vw,6rem) 3.5rem', borderBottom:'1px solid rgba(0,0,0,0.07)', textAlign:'center' }}>
-        <div style={{ fontSize:'0.82rem', fontWeight:800, color:'#7C3AED', textTransform:'uppercase', letterSpacing:'0.14em', marginBottom:'1.2rem', display:'flex', alignItems:'center', justifyContent:'center', gap:'0.55rem', flexWrap:'wrap' }}>
-          <span style={{ width:8, height:8, borderRadius:'50%', background:'#22C55E', display:'inline-block', boxShadow:'0 0 10px #22C55E' }} />
-          Now Accepting Clients · 6 Global Offices · Live Results
-        </div>
-
-        <div className="ftr-billion">
-          <span style={{ background:'linear-gradient(135deg,#F59E0B 0%,#EC4899 50%,#7C3AED 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text', filter:'drop-shadow(0 0 40px rgba(124,58,237,0.35))', display:'block', whiteSpace:'nowrap' }}>
-            ₹1,000,000,000+
-          </span>
-        </div>
-        <div style={{ fontSize:'clamp(1rem,2vw,1.4rem)', fontWeight:600, color:'#334155', letterSpacing:'-0.02em', marginBottom:'2.5rem' }}>
-          Generated for our clients. And counting.
-        </div>
-
-        {/* 3-Goal cards */}
-        <div className="ftr-goals-grid">
-          {GOALS.map(({ Icon, label, sub, color, href }) => (
-            <Link key={label} to={href}
-              onMouseEnter={() => setHGoal(label)} onMouseLeave={() => setHGoal(null)}
-              style={{
-                display:'flex', flexDirection:'column', alignItems:'center', gap:'0.75rem',
-                padding:'1.5rem 1rem', borderRadius:'1rem', textDecoration:'none',
-                border:`1px solid ${hGoal===label ? color+'40' : 'rgba(0,0,0,0.09)'}`,
-                background: hGoal===label ? `${color}10` : '#ffffff',
-                boxShadow: hGoal===label ? `0 8px 28px -8px ${color}35` : 'none',
-                transition:'all 0.25s',
-              }}>
-              <div style={{ width:48, height:48, borderRadius:'0.75rem', background:`${color}15`, display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <Icon size={24} color={color} />
-              </div>
-              <div>
-                <div style={{ fontSize:'1rem', fontWeight:800, color:'#0F172A', marginBottom:'0.25rem' }}>{label}</div>
-                <div style={{ fontSize:'0.78rem', color:'#64748B', fontWeight:500 }}>{sub}</div>
-              </div>
-              <div style={{ display:'flex', alignItems:'center', gap:'0.35rem', fontSize:'0.85rem', fontWeight:800, color }}>
-                Start <ArrowRight size={13} />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* ── ZONE 2: LIVE WINS TICKER ─────────────────────── */}
-      <div style={{ position:'relative', zIndex:1 }}><WinTicker /></div>
-
-      {/* ── ZONE 3: MAIN GRID ───────────────────────────── */}
-      <div className="ftr-main-grid" style={{ position:'relative', zIndex:1 }}>
-
-        {/* Brand */}
-        <div className="ftr-brand-col">
-          <Link to="/" style={{ textDecoration:'none' }}>
-            <img src="/logo.webp" alt="Creativals" style={{ height:34, width:'auto' }} />
-          </Link>
-          <p style={{ color:'#64748B', fontSize:'0.9rem', lineHeight:1.65, fontWeight:500, margin:0, maxWidth:260 }}>
-            We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
-          </p>
-          <div className="ftr-soc-wrap" style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
-            {SOCIALS.map(({ Icon, href, color }) => (
-              <a key={href} href={href} target="_blank" rel="noreferrer" className="ftr-soc">
-                <Icon size={14} color={color} />
-              </a>
-            ))}
+      <div className="cx-wrap" style={{ paddingTop: 74 }}>
+        {/* top row: statement + offices */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 50, paddingBottom: 56, flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ fontWeight: 900, fontStretch: '122%', textTransform: 'uppercase', fontSize: 'clamp(30px,3.4vw,44px)', lineHeight: .95, letterSpacing: '-0.02em', marginBottom: 18 }}>
+              Let's make your competitors <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>nervous.</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+              <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-yellow" style={{ padding: '16px 26px', fontSize: 13 }}>WhatsApp us →</a>
+              <span style={mono({ fontSize: 11.5, letterSpacing: '.1em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 8, opacity: .7 })}>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#3DDC84', animation: 'cxBlink 1.3s infinite' }} />
+                Systems online · leads flowing
+              </span>
+            </div>
           </div>
-
-          <div className="ftr-stats-badge" style={{ marginTop:'0.5rem', padding:'0.6rem 0.8rem', background:'rgba(124,58,237,0.06)', border:'1px solid rgba(124,58,237,0.12)', borderRadius:'0.6rem', width: 'fit-content' }}>
-            <div style={{ fontSize:'0.75rem', color:'#7C3AED', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em' }}>160+ Clients · 6 Countries</div>
-            <div style={{ display:'flex', gap:'0.3rem', marginTop:'0.4rem', flexWrap:'wrap', justifyContent:'center' }}>
-              {['IN','US','CA','AE','MY','AU'].map(c => (
-                <span key={c} style={{ fontSize:'0.68rem', fontWeight:800, color:'#374151', background:'rgba(0,0,0,0.06)', padding:'0.15rem 0.4rem', borderRadius:'0.25rem', letterSpacing:'0.04em' }}>{c}</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end', flex: 'none' }}>
+            <div style={mono({ fontSize: 10.5, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5 })}>6 offices, always awake</div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              {['IN', 'US', 'CA', 'AE', 'MY', 'AU'].map((cc) => (
+                <span key={cc} className="cx-office-pill" style={mono({ fontSize: 11, fontWeight: 600, border: '1px solid rgba(244,242,236,.3)', borderRadius: 999, padding: '6px 12px' })}>{cc}</span>
               ))}
             </div>
+            <div style={mono({ fontSize: 10.5, letterSpacing: '.1em', opacity: .4 })}>HYD · FLORIDA · VANCOUVER · DUBAI · KL · SYDNEY</div>
           </div>
         </div>
 
-        {/* Nav */}
-        <div className="ftr-nav-col">
-          {NAV_COLS.map(col => (
-            <div key={col.label}>
-              <div style={{ fontSize:'0.85rem', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em', color:'#0F172A', marginBottom:'1.2rem' }}>{col.label}</div>
-              <div style={{ display:'flex', flexDirection:'column', gap:'0.95rem' }}>
-                {col.links.map(({ text, href }) => <Link key={text} to={href} className="ftr-link">{text}</Link>)}
+        {/* link columns */}
+        <div
+          style={{
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '40px 56px',
+            paddingBottom: 56, paddingTop: 52,
+            borderTop: '1px solid rgba(244,242,236,.15)', borderBottom: '1px solid rgba(244,242,236,.15)',
+          }}
+        >
+          <div>
+            <div style={mono({ fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5, marginBottom: 20 })}>The honest pitch</div>
+            <p style={{ margin: '0 0 22px', fontSize: 15, lineHeight: 1.6, color: 'rgba(244,242,236,.65)', maxWidth: 300 }}>
+              We build systems that scale businesses — not just run ads. Strategy, tech, and creative, unified.
+              Yes, we built this website too. <span style={{ color: '#FFD84D' }}>Notice how you're still reading?</span>
+            </p>
+            <div style={mono({ fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase', color: '#FFD84D' })}>160+ clients · 6 countries</div>
+          </div>
+          <div>
+            <div style={mono({ fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5, marginBottom: 20 })}>Services</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15 }}>
+              <Link to="/services/paid-social-ads" className="cx-flink">Paid Social Ads</Link>
+              <Link to="/services/google-ads-ppc" className="cx-flink">Google Ads &amp; PPC</Link>
+              <Link to="/services/custom-websites" className="cx-flink">Custom Websites</Link>
+              <Link to="/services/brand-identity" className="cx-flink">Brand Identity</Link>
+              <Link to="/services/ai-chatbots" className="cx-flink">AI Chatbots</Link>
+              <Link to="/services" className="cx-flink" style={{ color: '#FFD84D' }}>All 30 services →</Link>
+            </div>
+          </div>
+          <div>
+            <div style={mono({ fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5, marginBottom: 20 })}>Company</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15 }}>
+              <Link to="/about-us" className="cx-flink">About Us</Link>
+              <Link to="/case-studies" className="cx-flink">Case Studies</Link>
+              <Link to="/industries" className="cx-flink">Industries</Link>
+              <Link to="/pricing" className="cx-flink">Pricing</Link>
+              <Link to="/join-us" className="cx-flink">Careers</Link>
+            </div>
+          </div>
+          <div>
+            <div style={mono({ fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5, marginBottom: 20 })}>Get in touch</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, fontSize: 15 }}>
+              <div>
+                <div style={mono({ fontSize: 11, opacity: .5, marginBottom: 4 })}>WHATSAPP INDIA</div>
+                <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-flink" style={{ fontWeight: 700 }}>+91 799 700 1700</a>
+              </div>
+              <div>
+                <div style={mono({ fontSize: 11, opacity: .5, marginBottom: 4 })}>WHATSAPP USA</div>
+                <a href={WA_USA} target="_blank" rel="noreferrer" className="cx-flink" style={{ fontWeight: 700 }}>+1 628 628 4743</a>
+              </div>
+              <div>
+                <div style={mono({ fontSize: 11, opacity: .5, marginBottom: 4 })}>EMAIL</div>
+                <a href="mailto:hello@creativals.com" className="cx-flink" style={{ fontWeight: 700 }}>hello@creativals.com</a>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* giant playable wordmark */}
+        <div className="cx-wordmark" aria-hidden="true">
+          {'CREATIVALS'.split('').map((ch, i) => (
+            <span key={i} style={{ '--r': `${WORDMARK_ROT[i]}deg` }}>{ch}</span>
           ))}
+          <span style={{ color: '#FFD84D', '--r': '0deg' }}>.</span>
+        </div>
+        <div style={mono({ textAlign: 'center', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .4, paddingBottom: 28 })}>
+          ← Pet the letters. They like it.
         </div>
 
-        {/* Contact */}
-        <div className="ftr-contact-col">
-          <div style={{ fontSize:'0.85rem', fontWeight:800, textTransform:'uppercase', letterSpacing:'0.05em', color:'#0F172A', marginBottom:'0.8rem' }}>Get In Touch</div>
-          <a href={WA_IN} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(34,197,94,0.07)', border:'1px solid rgba(34,197,94,0.18)' }}>
-            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(34,197,94,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <MessageCircle size={18} color="#22C55E"/>
-            </div>
-            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
-              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>WhatsApp India</div>
-              <div style={{ fontSize:'0.78rem', color:'#16A34A', fontWeight:600 }}>+91 799 700 1700</div>
-            </div>
-            <ArrowRight size={13} color="#22C55E" style={{ flexShrink:0, opacity:0.6 }}/>
-          </a>
-          <a href={WA_US} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(56,189,248,0.06)', border:'1px solid rgba(56,189,248,0.15)' }}>
-            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(56,189,248,0.15)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Phone size={18} color="#38BDF8"/>
-            </div>
-            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
-              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>WhatsApp USA</div>
-              <div style={{ fontSize:'0.78rem', color:'#0284C7', fontWeight:600 }}>+1 628 628 4743</div>
-            </div>
-            <ArrowRight size={13} color="#38BDF8" style={{ flexShrink:0, opacity:0.6 }}/>
-          </a>
-          <a href="mailto:hello@creativals.com" className="cc" style={{ padding:'0.7rem 0.9rem', background:'#F1F5F9', border:'1px solid rgba(0,0,0,0.08)' }}>
-            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(124,58,237,0.14)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Mail size={18} color="#7C3AED"/>
-            </div>
-            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
-              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>Email Us</div>
-              <div style={{ fontSize:'0.78rem', color:'#475569' }}>hello@creativals.com</div>
-            </div>
-            <ArrowRight size={13} color="#7C3AED" style={{ flexShrink:0, opacity:0.6 }}/>
-          </a>
-          <a href={CAL} target="_blank" rel="noreferrer" className="cc" style={{ padding:'0.7rem 0.9rem', background:'rgba(124,58,237,0.07)', border:'1px solid rgba(124,58,237,0.18)', marginTop:'0.15rem' }}>
-            <div style={{ width:34, height:34, borderRadius:'0.5rem', background:'rgba(124,58,237,0.18)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <Calendar size={18} color="#7C3AED"/>
-            </div>
-            <div style={{ flex:1, minWidth:0, marginLeft:'0.45rem' }}>
-              <div style={{ fontSize:'0.9rem', fontWeight:700, color:'#0F172A' }}>Book a Call</div>
-              <div style={{ fontSize:'0.78rem', color:'#7C3AED' }}>30-min free session</div>
-            </div>
-            <ArrowRight size={13} color="#7C3AED" style={{ flexShrink:0, opacity:0.6 }}/>
-          </a>
-        </div>
-      </div>
-
-      {/* ── ZONE 4: FOOTER BAR ───────────────────────── */}
-      <div style={{ position:'relative', zIndex:1, padding:'1.5rem clamp(1.5rem,6vw,6rem)', display:'flex', alignItems:'center', justifyContent:'center', gap:'1.5rem', flexWrap:'wrap' }}>
-        <div style={{ display:'flex', gap:'1.5rem', alignItems:'center', flexWrap:'wrap' }}>
-          <span style={{ fontSize:'0.85rem', color:'#475569', fontWeight:500 }}>© {new Date().getFullYear()} Creativals</span>
-          {[['Privacy', '#'], ['Terms', '#'], ['Support', '/contact']].map(([l, h]) =>
-            h.startsWith('/') ? <Link key={l} to={h} className="ftr-link" style={{ fontSize:'0.85rem' }}>{l}</Link>
-            : <a key={l} href={h} className="ftr-link" style={{ fontSize:'0.85rem' }}>{l}</a>
-          )}
+        {/* bottom bar */}
+        <div style={mono({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '22px 0 26px', borderTop: '1px solid rgba(244,242,236,.15)', fontSize: 12, letterSpacing: '.08em', color: 'rgba(244,242,236,.5)', flexWrap: 'wrap', gap: 12 })}>
+          <span>© 2026 CREATIVALS — MADE WITH ☕ AND A MONEY-BACK GUARANTEE</span>
+          <div style={{ display: 'flex', gap: 26 }}>
+            <Link to="/contact" className="cx-flink" style={{ color: 'rgba(244,242,236,.5)' }}>SUPPORT</Link>
+            <a href="#top" className="cx-flink" style={{ color: 'rgba(244,242,236,.5)' }} onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>BACK TO TOP ↑</a>
+          </div>
         </div>
       </div>
     </footer>
