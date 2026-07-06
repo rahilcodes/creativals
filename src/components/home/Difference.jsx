@@ -25,16 +25,16 @@ const Difference = () => (
 
       <Reveal delay={120}>
         <div style={{ borderRadius: 18, overflow: 'hidden', border: '2px solid #17151A' }}>
-          <div className="cx-cmp-row" style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', background: '#17151A', color: '#F4F2EC', borderTop: 'none' })}>
+          <div className="cx-cmp-row cx-cmp-head" style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', background: '#17151A', color: '#F4F2EC', borderTop: 'none' })}>
             <div style={{ padding: '18px 26px', opacity: .6 }}>The difference</div>
             <div style={{ padding: '18px 26px', opacity: .6 }}>Typical agency</div>
             <div style={{ padding: '18px 26px', background: '#FFD84D', color: '#17151A', fontWeight: 600 }}>Creativals system</div>
           </div>
           {ROWS.map(([label, them, us]) => (
             <div key={label} className="cx-cmp-row">
-              <div style={{ fontWeight: 800 }}>{label}</div>
-              <div style={{ color: 'rgba(23,21,26,.55)' }}>{them}</div>
-              <div style={{ fontWeight: 600, background: '#FFF8E0' }}>{us}</div>
+              <div className="cx-cmp-t" style={{ fontWeight: 800 }}>{label}</div>
+              <div className="cx-cmp-c" data-col="Typical agency" style={{ color: 'rgba(23,21,26,.55)' }}>{them}</div>
+              <div className="cx-cmp-c" data-col="Creativals system" style={{ fontWeight: 600, background: '#FFF8E0' }}>{us}</div>
             </div>
           ))}
         </div>

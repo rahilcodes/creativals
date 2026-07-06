@@ -190,7 +190,7 @@ const PricingPage = () => {
 
           <Reveal delay={120}>
             <div style={{ borderRadius: 18, overflow: 'hidden', border: '2px solid #F4F2EC' }}>
-              <div className="cx-cmp-row" style={mono({ gridTemplateColumns: '1.1fr 1fr 1fr 1fr', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', background: '#17151A', color: '#F4F2EC', borderTop: 'none' })}>
+              <div className="cx-cmp-row cx-cmp-head" style={mono({ gridTemplateColumns: '1.1fr 1fr 1fr 1fr', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', background: '#17151A', color: '#F4F2EC', borderTop: 'none' })}>
                 <div style={{ padding: '18px 26px', opacity: .6 }}>Feature</div>
                 <div style={{ padding: '18px 26px', opacity: .6 }}>Starter System</div>
                 <div style={{ padding: '18px 26px', background: '#FFD84D', color: '#17151A', fontWeight: 600 }}>Growth Engine</div>
@@ -198,10 +198,10 @@ const PricingPage = () => {
               </div>
               {CMP_ROWS.map(([label, starter, growth, full]) => (
                 <div key={label} className="cx-cmp-row" style={{ gridTemplateColumns: '1.1fr 1fr 1fr 1fr' }}>
-                  <div style={{ fontWeight: 800 }}>{label}</div>
-                  <div style={{ color: 'rgba(23,21,26,.55)' }}>{starter}</div>
-                  <div style={{ fontWeight: 600, background: '#FFF8E0' }}>{growth}</div>
-                  <div style={{ color: 'rgba(23,21,26,.55)' }}>{full}</div>
+                  <div className="cx-cmp-t" style={{ fontWeight: 800 }}>{label}</div>
+                  <div className="cx-cmp-c" data-col="Starter System" style={{ color: 'rgba(23,21,26,.55)' }}>{starter}</div>
+                  <div className="cx-cmp-c" data-col="Growth Engine" style={{ fontWeight: 600, background: '#FFF8E0' }}>{growth}</div>
+                  <div className="cx-cmp-c" data-col="Full Stack System" style={{ color: 'rgba(23,21,26,.55)' }}>{full}</div>
                 </div>
               ))}
             </div>
