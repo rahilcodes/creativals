@@ -20,10 +20,10 @@ const Footer = () => {
 
       <div className="cx-wrap" style={{ paddingTop: 74 }}>
         {/* top row: statement + offices */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 50, paddingBottom: 56, flexWrap: 'wrap' }}>
-          <div>
-            <div style={{ fontWeight: 900, fontStretch: '122%', textTransform: 'uppercase', fontSize: 'clamp(30px,3.4vw,44px)', lineHeight: .95, letterSpacing: '-0.02em', marginBottom: 18 }}>
-              Let's make your competitors <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>nervous.</span>
+        <div className="cx-foot-top" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 50, paddingBottom: 56, flexWrap: 'wrap' }}>
+          <div style={{ flex: '1 1 460px', minWidth: 0 }}>
+            <div style={{ fontWeight: 900, fontStretch: '122%', textTransform: 'uppercase', fontSize: 'clamp(30px,3.4vw,44px)', lineHeight: .95, letterSpacing: '-0.02em', marginBottom: 18, maxWidth: 780 }}>
+              Let's make your<br />competitors <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>nervous.</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
               <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-yellow" style={{ padding: '16px 26px', fontSize: 13 }}>WhatsApp us →</a>
@@ -33,7 +33,7 @@ const Footer = () => {
               </span>
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end', flex: 'none' }}>
+          <div className="cx-foot-offices" style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end', flex: 'none' }}>
             <div style={mono({ fontSize: 10.5, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5 })}>6 offices, always awake</div>
             <div style={{ display: 'flex', gap: 8 }}>
               {['IN', 'US', 'CA', 'AE', 'MY', 'AU'].map((cc) => (

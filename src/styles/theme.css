@@ -255,6 +255,28 @@ a.cx-card-invert { display: block; color: var(--ink); text-decoration: none; }
   .cx-mobile-menu a { color: inherit; }
 }
 
+/* mobile nav accordions */
+.cx-mob-link {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  padding: 14px 4px; text-decoration: none; font-weight: 800; font-size: 19px;
+  border: none; border-bottom: 1px solid rgba(23, 21, 26, .1);
+  background: none; font-family: var(--font-display); color: var(--ink); text-align: left; cursor: pointer;
+}
+.cx-mob-chev { font-size: 14px; transition: transform .2s; }
+.cx-mob-chev.open { transform: rotate(180deg); }
+.cx-mob-panel { padding: 12px 4px 18px 14px; border-bottom: 1px solid rgba(23, 21, 26, .1); border-left: 3px solid var(--indigo); margin-bottom: 4px; }
+.cx-mob-sublink {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 8px 6px; margin: 0 -6px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; text-decoration: none; color: var(--ink);
+}
+.cx-mob-sublink:active { background: var(--indigo); color: var(--cream); }
+
+/* footer top row */
+@media (max-width: 900px) {
+  .cx-foot-offices { align-items: flex-start !important; }
+}
+
 /* ── comparison table ──────────────────────────────────────── */
 .cx-cmp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--cream); color: var(--ink); border-top: 1px solid rgba(23, 21, 26, .15); font-size: 15px; line-height: 1.5; }
 .cx-cmp-row > div { padding: 21px 26px; }

@@ -94,6 +94,15 @@ const ABOUT_COLS = [
   },
 ];
 
+const INDUSTRY_PICKS = [
+  { to: '/industries/hotels-resorts', title: 'Hotels & Resorts', desc: 'Get more direct bookings. Reduce OTA dependency.', tag: ['HIGH ROI', 'yellow'] },
+  { to: '/industries/schools-colleges', title: 'Schools & Colleges', desc: 'Get more mass enrollments.', tag: ['MOST POPULAR', 'yellow'] },
+  { to: '/industries/ecommerce-brands', title: 'E-commerce Brands', desc: 'Boost your product sales.' },
+  { to: '/industries/healthcare', title: 'Healthcare', desc: 'Get more patients.' },
+  { to: '/industries/restaurants', title: 'Restaurants', desc: 'Fill your tables daily.', tag: ['FAST GROWTH', 'indigo'] },
+  { to: '/industries/b2b-enterprise', title: 'B2B Enterprise', desc: 'Dialed sales meetings.' },
+];
+
 const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
 
 /* ─── component ─────────────────────────────────────────────── */
@@ -101,6 +110,7 @@ const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extr
 const Navbar = () => {
   const [menu, setMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobSub, setMobSub] = useState(null);
   const [prevPath, setPrevPath] = useState(null);
   const closeT = useRef(null);
   const location = useLocation();
@@ -114,6 +124,7 @@ const Navbar = () => {
     setPrevPath(location.pathname);
     if (menu !== null) setMenu(null);
     if (mobileOpen) setMobileOpen(false);
+    if (mobSub !== null) setMobSub(null);
   }
 
   const isActive = (path) => (path === '/' ? location.pathname === '/' : location.pathname.startsWith(path));
@@ -348,20 +359,89 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="cx-mobile-menu">
           <div style={{ padding: '10px 20px 26px' }}>
-            {[
-              ['Home', '/'],
-              ['Services', '/services'],
-              ['Results', '/results'],
-              ['Case Studies', '/case-studies'],
-              ['Industries', '/industries'],
-              ['Pricing', '/pricing'],
-              ['About', '/about-us'],
-              ['Contact', '/contact'],
-            ].map(([label, to]) => (
-              <Link key={to} to={to} style={{ display: 'block', padding: '14px 4px', textDecoration: 'none', fontWeight: 800, fontSize: 19, borderBottom: '1px solid rgba(23,21,26,.1)' }}>
-                {label}
-              </Link>
-            ))}
+            <Link to="/" className="cx-mob-link">Home</Link>
+
+            {/* Services accordion */}
+            <button className="cx-mob-link cx-mob-acc" aria-expanded={mobSub === 'services'} onClick={() => setMobSub(mobSub === 'services' ? null : 'services')}>
+              Services <span className={`cx-mob-chev${mobSub === 'services' ? ' open' : ''}`}>▾</span>
+            </button>
+            {mobSub === 'services' && (
+              <div className="cx-mob-panel">
+                {SERVICE_COLS.map((col) => (
+                  <div key={col.head} style={{ marginBottom: 18 }}>
+                    <div className="cx-mega-colhead" style={{ marginBottom: 8 }}>{col.head}</div>
+                    {col.items.map((s) => (
+                      <Link key={s.slug} to={`/services/${s.slug}`} className="cx-mob-sublink">
+                        <span>{s.title}</span>
+                        {s.tag && <span className={`cx-tag cx-tag-${s.tag[1]}`}>{s.tag[0]}</span>}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+                <Link to="/services" className="cx-mob-sublink" style={{ fontWeight: 800, color: '#4F46E5' }}>All 30 services →</Link>
+              </div>
+            )}
+
+            {/* Results accordion */}
+            <button className="cx-mob-link cx-mob-acc" aria-expanded={mobSub === 'results'} onClick={() => setMobSub(mobSub === 'results' ? null : 'results')}>
+              Results <span className={`cx-mob-chev${mobSub === 'results' ? ' open' : ''}`}>▾</span>
+            </button>
+            {mobSub === 'results' && (
+              <div className="cx-mob-panel">
+                <div className="cx-mega-colhead" style={{ marginBottom: 8 }}>Proof of performance</div>
+                {RESULTS_LINKS.map((l) => (
+                  <Link key={l.title} to={l.to} className="cx-mob-sublink" style={{ display: 'block' }}>
+                    <span style={{ display: 'block', fontWeight: 800 }}>{l.title}</span>
+                    <span style={{ display: 'block', fontSize: 12.5, opacity: .6, marginTop: 2 }}>{l.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Industries accordion */}
+            <button className="cx-mob-link cx-mob-acc" aria-expanded={mobSub === 'industries'} onClick={() => setMobSub(mobSub === 'industries' ? null : 'industries')}>
+              Industries <span className={`cx-mob-chev${mobSub === 'industries' ? ' open' : ''}`}>▾</span>
+            </button>
+            {mobSub === 'industries' && (
+              <div className="cx-mob-panel">
+                <div className="cx-mega-colhead" style={{ marginBottom: 8 }}>Choose your business type</div>
+                {INDUSTRY_PICKS.map((l) => (
+                  <Link key={l.title} to={l.to} className="cx-mob-sublink">
+                    <span>
+                      <span style={{ display: 'block', fontWeight: 800 }}>{l.title}</span>
+                      <span style={{ display: 'block', fontSize: 12.5, opacity: .6, marginTop: 2 }}>{l.desc}</span>
+                    </span>
+                    {l.tag && <span className={`cx-tag cx-tag-${l.tag[1]}`}>{l.tag[0]}</span>}
+                  </Link>
+                ))}
+                <Link to="/industries" className="cx-mob-sublink" style={{ fontWeight: 800, color: '#4F46E5' }}>View all industries →</Link>
+              </div>
+            )}
+
+            <Link to="/pricing" className="cx-mob-link">Pricing</Link>
+
+            {/* About accordion */}
+            <button className="cx-mob-link cx-mob-acc" aria-expanded={mobSub === 'about'} onClick={() => setMobSub(mobSub === 'about' ? null : 'about')}>
+              About <span className={`cx-mob-chev${mobSub === 'about' ? ' open' : ''}`}>▾</span>
+            </button>
+            {mobSub === 'about' && (
+              <div className="cx-mob-panel">
+                {ABOUT_COLS.map((col) => (
+                  <div key={col.head} style={{ marginBottom: 18 }}>
+                    <div className="cx-mega-colhead" style={{ marginBottom: 8 }}>{col.head}</div>
+                    {col.items.map((l) => (
+                      <Link key={l.title} to={l.to} className="cx-mob-sublink" style={{ display: 'block' }}>
+                        <span style={{ display: 'block', fontWeight: 800 }}>{l.title}</span>
+                        <span style={{ display: 'block', fontSize: 12.5, opacity: .6, marginTop: 2 }}>{l.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <Link to="/contact" className="cx-mob-link">Contact</Link>
+
             <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-yellow" style={{ display: 'block', marginTop: 18, border: '2px solid #17151A' }}>
               Get Free Audit →
             </a>
