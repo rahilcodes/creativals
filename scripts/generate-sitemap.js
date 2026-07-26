@@ -8,31 +8,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-// Import the four service files directly (src/data/allServices.js uses
-// extensionless imports that Vite resolves but plain Node ESM cannot).
-import industries from '../src/data/industries.js';
-import baseServices from '../src/data/services.js';
-import extraServices from '../src/data/servicesExtra.js';
-import devServices from '../src/data/servicesDev.js';
-import brandingServices from '../src/data/servicesBranding.js';
-
-const allServices = [...baseServices, ...extraServices, ...devServices, ...brandingServices];
+import { getExpandedRoutes } from './routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BASE_URL = 'https://creativals.com';
 
-// ── 1. Parse route paths straight out of the router ─────────────────────────
-const appSource = fs.readFileSync(path.join(__dirname, '../src/App.jsx'), 'utf8');
-const routePaths = [...appSource.matchAll(/<Route\s+path="([^"]+)"/g)]
-  .map((m) => m[1])
-  .filter((p) => p !== '*'); // catch-all 404 is not a public URL
-
-// ── 2. Expand dynamic patterns from the data files ───────────────────────────
-const SLUG_SOURCES = {
-  '/services/:slug': allServices.map((s) => s.slug),
-  '/industries/:slug': industries.map((i) => i.slug),
-};
+// ── 1+2. Routes from the router, dynamic patterns expanded from data files ──
+const { routePaths, urls, errors } = getExpandedRoutes();
 
 const PRIORITIES = [
   [/^\/$/, 1.0],
@@ -45,27 +27,6 @@ const priorityFor = (url) => {
   const hit = PRIORITIES.find(([re]) => re.test(url));
   return hit ? hit[1] : 0.6;
 };
-
-const urls = [];
-const errors = [];
-
-for (const p of routePaths) {
-  if (p.includes(':')) {
-    const slugs = SLUG_SOURCES[p];
-    if (!slugs) {
-      errors.push(`Dynamic route "${p}" has no slug source in generate-sitemap.js — add one.`);
-      continue;
-    }
-    const seen = new Set();
-    for (const slug of slugs) {
-      if (seen.has(slug)) errors.push(`Duplicate slug "${slug}" for route ${p}`);
-      seen.add(slug);
-      urls.push({ url: p.replace(/:.+$/, slug), route: p });
-    }
-  } else {
-    urls.push({ url: p, route: p });
-  }
-}
 
 // ── 3. Validate: every sitemap URL must match a real router route ────────────
 const matchesRoute = (url, route) =>

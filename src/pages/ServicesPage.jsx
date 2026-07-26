@@ -65,16 +65,9 @@ const ServicesPage = () => {
     title: 'Digital Marketing & SEO Services in Hyderabad | Creativals',
     description: 'From local SEO to paid ads and web development, explore the premium digital marketing services we offer to scale Hyderabad businesses profitably.',
     keywords: 'digital marketing services hyderabad, seo services hyderabad, paid ads hyderabad, web development company hyderabad',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Creativals"
-      },
-      "areaServed": "Hyderabad",
-      "serviceType": "Digital Marketing, SEO, Web Development, Branding"
-    }
+    // No inline schema — Service schema belongs to the individual service
+    // pages (built from src/config/schema.js); this listing page carries
+    // BreadcrumbList via PageLayout.
   });
 
   return (

@@ -1,8 +1,19 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # 1. Real files (assets, images, verification files, snapshots addressed
+  #    directly) are served as-is.
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 2. Prerendered snapshot for clean URLs: /services/seo -> services/seo.html
+  #    Checked BEFORE the directory case so /services serves services.html
+  #    instead of triggering a mod_dir trailing-slash redirect.
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # 3. SPA fallback — unknown routes get index.html; React renders the 404
+  #    page client-side.
   RewriteRule . /index.html [L]
 </IfModule>

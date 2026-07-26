@@ -34,19 +34,8 @@ const ContactPage = () => {
     title: 'Contact the Best Marketing Agency in Hyderabad | Creativals',
     description: 'Ready to dominate your market? Contact Creativals, Hyderabad\'s premier digital marketing agency, for a free growth audit and strategy session.',
     keywords: 'contact creativals, marketing agency in hyderabad contact, hire digital marketer hyderabad',
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Creativals",
-      "url": "https://creativals.com/contact",
-      "telephone": "+917997001700",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Hyderabad",
-        "addressRegion": "Telangana",
-        "addressCountry": "IN"
-      }
-    }
+    // No inline org schema — the canonical Organization/LocalBusiness lives on
+    // the homepage, built from src/config/organization.js (CLAUDE.md rule).
   });
 
   const setField = (key) => (e) => {
