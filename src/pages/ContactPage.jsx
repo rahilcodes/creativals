@@ -104,7 +104,7 @@ const ContactPage = () => {
           </Reveal>
           <Reveal delay={200}>
             <div style={{ display: 'flex', gap: 'clamp(24px,4vw,48px)', marginTop: 40, flexWrap: 'wrap' }}>
-              {[{ v: '160+', l: 'Clients' }, { v: '7', l: 'Countries' }, { v: '₹1B+', l: 'Revenue generated' }].map(({ v, l }) => (
+              {[{ v: '160+', l: 'Clients' }, { v: '7', l: 'Countries' }, { v: '500M+', l: 'Views created' }].map(({ v, l }) => (
                 <div key={l}>
                   <div style={{ fontWeight: 900, fontStretch: '122%', fontSize: 'clamp(34px,4vw,52px)', lineHeight: 1, color: '#FFD84D' }}>{v}</div>
                   <div style={mono({ fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .7, marginTop: 8 })}>{l}</div>

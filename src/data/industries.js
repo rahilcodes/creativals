@@ -28,9 +28,10 @@ const industries = [
       { title: 'Luxury Suite Sales', desc: 'Targeting ultra-high-net-worth individuals for premium, high-margin inventory.' },
       { title: 'Wedding & MICE Leads', desc: 'Capturing high-ticket event bookings through targeted B2B and consumer funnels.' },
     ],
+    // Verified clients only; % / traffic / lead results only (CLAUDE.md content policy)
     caseStudies: [
-      { client: 'Glampinn Valley', before: '₹13L/mo Revenue', after: '₹50Cr+ Generated', system: 'Meta Ads + Brand Build' },
-      { client: 'Hotel Sky International', before: '₹13L/month', after: '₹25L/month', system: 'Google Ads + Direct Booking Funnel' },
+      { client: 'Glampinn Valley', before: 'Zero digital presence', after: '30M+ views · 30K followers', system: 'Meta Ads + Brand Build' },
+      { client: 'Hotel Sky International', before: 'OTA-dependent bookings', after: '92% revenue growth in 6 months', system: 'Google Ads + Direct Booking Funnel' },
     ],
     relatedServices: ['paid-social-ads', 'search-engine-optimization', 'whatsapp-sms-marketing', 'direct-response-video'],
     mechanism: 'By mathematically testing thousands of visual hooks (drone shots, luxury close-ups, experiences) against targeted audiences, we discover exactly what makes a traveler book. We then push that winning creative through aggressive retargeting until the user converts on your direct ecosystem.',
@@ -111,7 +112,6 @@ const industries = [
     ],
     caseStudies: [
       { client: 'Pista House', before: 'Limited online orders', after: '200% Order Growth', system: 'Social Ads + Content Strategy' },
-      { client: 'Cloud Kitchen', before: '100% Swiggy Reliant', after: '35% Direct Revenue', system: 'WhatsApp Ordering Bot' },
     ],
     relatedServices: ['local-maps-gbp', 'short-form-content', 'whatsapp-sms-marketing', 'social-media-management'],
     mechanism: 'We use the "FOMO Protocol". Irresistible, high-resolution video of your food paired with local influencers and artificial scarcity (limited weekend tables) forces the local market to act immediately. Local SEO captures high-intent traffic; social captures impulse traffic.',
@@ -145,14 +145,11 @@ const industries = [
       { value: '3x', label: 'Customer LTV' },
     ],
     useCases: [
-      { title: 'Scaling Paid Ads', desc: 'Taking brands from ₹1L/mo to ₹10L+/mo in ad spend while maintaining profitable ROAS.' },
+      { title: 'Scaling Paid Ads', desc: 'Scaling ad spend aggressively while maintaining profitable ROAS at every step.' },
       { title: 'Store CRO & Redesign', desc: 'Rebuilding your store architecture to eliminate friction and dramatically boost conversion.' },
       { title: 'Retention Ecosystems', desc: 'Advanced Email & WhatsApp automations that generate 30%+ of total revenue on autopilot.' },
     ],
-    caseStudies: [
-      { client: 'Apparel D2C Brand', before: '1.2x ROAS', after: '3.8x ROAS', system: 'Creative Testing + Store Redesign' },
-      { client: 'Skincare Brand', before: '0% Retention Revenue', after: '35% from Email', system: 'Email Automation Flows' },
-    ],
+    caseStudies: [], // no verified entries yet — section hidden (CLAUDE.md content policy)
     relatedServices: ['paid-social-ads', 'ecommerce-stores', 'email-marketing', 'conversion-optimization'],
     mechanism: 'E-commerce is won on creative testing and unit economics. We launch massive volumes of UGC and Direct Response video variations to find winning hooks, then optimize the post-click experience (landing pages, cart) to ensure every click has the highest probability of converting.',
     faqs: [
@@ -189,10 +186,7 @@ const industries = [
       { title: 'SaaS Demo Bookings', desc: 'Aggressive Google campaigns targeting high-intent software evaluation queries.' },
       { title: 'Authority Content', desc: 'High-level whitepapers, case studies, and SEO clusters positioning you as the apex solution.' },
     ],
-    caseStudies: [
-      { client: 'Enterprise IT Firm', before: '100% Outbound', after: '$2M Inbound Pipeline', system: 'B2B SEO + LinkedIn ABM' },
-      { client: 'B2B SaaS Startup', before: '4 Demos/month', after: '42 Demos/month', system: 'Google PPC + Landing Pages' },
-    ],
+    caseStudies: [],
     relatedServices: ['search-engine-optimization', 'google-ads-ppc', 'lead-generation-funnels', 'copywriting-scripts'],
     mechanism: 'B2B sales require more trust. We build Educational Funnels — offering massive upfront value (industry data, calculators, audits) to capture the decision-maker\'s contact info, then nurturing them through automated, high-authority email sequences until they are ready to buy.',
     faqs: [
@@ -229,10 +223,7 @@ const industries = [
       { title: 'Multi-Specialty Hospitals', desc: 'Department-specific local SEO and Google Ads to capture immediate high-intent searches.' },
       { title: 'Telehealth Scaling', desc: 'National performance marketing for digital healthcare and subscription health models.' },
     ],
-    caseStudies: [
-      { client: 'Premium Dental Clinic', before: 'Word of Mouth Only', after: '50+ Implant Consults/mo', system: 'Local SEO + Google Ads' },
-      { client: 'Aesthetics Center', before: 'Wasting Ad Spend', after: '4x ROI on Meta Ads', system: 'Video Ads + WhatsApp Booking' },
-    ],
+    caseStudies: [],
     relatedServices: ['local-maps-gbp', 'search-engine-optimization', 'custom-websites', 'whatsapp-sms-marketing'],
     mechanism: 'Patient decision-making is driven by geographical convenience and perceived authority. We secure the top 3 spots in local search (where 80% of clicks happen) and outclass competitors with premium websites featuring doctor video-bios, eliminating patient anxiety before they even call.',
     faqs: [
@@ -269,10 +260,7 @@ const industries = [
       { title: 'Luxury Property Leads', desc: 'High-net-worth individual targeting for premium residential and commercial projects.' },
       { title: 'Broker Network Building', desc: 'B2B funnels that attract serious channel partners and brokers to your project.' },
     ],
-    caseStudies: [
-      { client: 'Residential Developer', before: '500 Leads, 2 Closings', after: '120 Leads, 18 Closings', system: 'Intent Qualifier Funnel' },
-      { client: 'Commercial Real Estate', before: 'Zero Inbound', after: '30+ Investor Meetings', system: 'LinkedIn ABM + Google Ads' },
-    ],
+    caseStudies: [],
     relatedServices: ['paid-social-ads', 'lead-generation-funnels', 'whatsapp-sms-marketing', 'direct-response-video'],
     mechanism: 'Real estate leads fail because they\'re unqualified. We insert qualification layers directly into the ad funnel — budget, timeline, location preference — so only serious buyers reach your CRM. Your sales team closes more because they start with better prospects.',
     faqs: [
@@ -309,10 +297,7 @@ const industries = [
       { title: 'Yoga & Wellness Studios', desc: 'Community-building content and Instagram growth that attracts the right lifestyle audience.' },
       { title: 'Retention & Loyalty Programs', desc: 'WhatsApp-based milestone systems that make members feel seen and dramatically reduce dropout.' },
     ],
-    caseStudies: [
-      { client: 'Hyderabad Gym Chain', before: '40% Annual Churn', after: '15% Churn, 3x Members', system: 'Retention Bot + Local Ads' },
-      { client: 'Wellness Studio', before: 'Empty Off-Peak Hours', after: 'Fully Booked 6 Days/wk', system: 'Instagram Growth + Offer Funnel' },
-    ],
+    caseStudies: [],
     relatedServices: ['social-media-management', 'whatsapp-sms-marketing', 'local-maps-gbp', 'short-form-content'],
     mechanism: 'Fitness is an emotional purchase, not a logical one. We engineer content that makes your gym or studio feel like a community worth belonging to, not just a place to work out. When members feel belonging, they stay. When they stay, they refer. Retention is the growth engine.',
     faqs: [

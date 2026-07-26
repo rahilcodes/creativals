@@ -90,6 +90,8 @@ const IndustryPageTemplate = ({ industry }) => {
             ))}
           </div>
 
+          {/* Case studies render only with verified entries (CLAUDE.md content policy) */}
+          {industry.caseStudies.length > 0 && (
           <div className="cx-grid2" style={{ gap: 22 }}>
             {industry.caseStudies.map((cs, i) => (
               <Reveal key={cs.client} delay={i * 80}>
@@ -106,6 +108,7 @@ const IndustryPageTemplate = ({ industry }) => {
               </Reveal>
             ))}
           </div>
+          )}
         </div>
       </section>
 

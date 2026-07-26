@@ -6,25 +6,10 @@ import { ALL_CLIENTS, INDUSTRIES, COUNTRIES, COUNTRY_FLAGS } from '../data/clien
 const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
 
 const HERO_STATS = [
-  { v: '₹100 Cr+', l: 'Client revenue generated' },
   { v: '160+', l: 'Clients served' },
+  { v: '500M+', l: 'Views created' },
   { v: '7', l: 'Countries' },
   { v: '22+', l: 'Industries' },
-];
-
-const TESTIMONIALS = [
-  {
-    stat: '10x enquiries in 3 weeks', initials: 'RK', name: 'Ramesh Kumar', role: 'Principal · Sunrise Academy',
-    quote: '"In 21 days, we went from 12 enquiries a month to over 140. Before Creativals, I was seriously considering cutting staff. Now we have a waitlist. This system is not a joke."',
-  },
-  {
-    stat: 'Bookings tripled. No OTAs.', initials: 'PS', name: 'Priya Sharma', role: 'Owner · The Palm Resort Goa',
-    quote: '"We stopped paying Swiggy/MakeMyTrip. We stopped relying on walk-ins. The WhatsApp bot alone saves my team 3 hours every single day. I only wish I had found them sooner."',
-  },
-  {
-    stat: '112 leads from ₹4,000', initials: 'AM', name: 'Arjun Mehra', role: 'Founder · StyleCraft Mumbai',
-    quote: '"I was skeptical. Everyone promises leads, nobody delivers. But ₹4,000 in, I had 112 paying customer enquiries. I\'ve not looked back. These guys genuinely know what they are doing."',
-  },
 ];
 
 const WINS = ALL_CLIENTS.filter((c) => c.badge).map((c) => `${c.name} — ${c.badge.text}`);
@@ -39,9 +24,9 @@ const pillStyle = (active) => mono({
 
 const ResultsPage = () => {
   useSEO({
-    title: 'Results & Case Studies | Creativals — ₹100 Crore in Revenue Generated',
-    description: '160+ clients. 7 countries. ₹100+ Crore in combined revenue generated. See real results from real businesses — hotels, schools, restaurants, real estate, tech startups, and more.',
-    keywords: 'digital marketing results, case studies india, client portfolio, revenue generated, marketing results hyderabad',
+    title: 'Client Results & Portfolio | 160+ Businesses | Creativals',
+    description: '160+ clients across 7 countries and 22+ industries. See real results from real businesses — hotels, schools, restaurants, real estate, tech startups, and more.',
+    keywords: 'digital marketing results, case studies india, client portfolio, marketing results hyderabad',
   });
 
   const [industry, setIndustry] = useState('All');
@@ -74,7 +59,7 @@ const ResultsPage = () => {
           <Reveal delay={140}>
             <p className="cx-lead cx-lead-light" style={{ maxWidth: 620, color: 'rgba(244,242,236,.75)', marginBottom: 54 }}>
               From a local furniture store in Hyderabad to Florida's top realtor — we've built growth systems
-              that generated over <strong style={{ color: '#FFD84D' }}>₹100 Crore in combined client revenue</strong>.
+              for <strong style={{ color: '#FFD84D' }}>160+ businesses across 22+ industries</strong>.
             </p>
           </Reveal>
 
@@ -182,41 +167,7 @@ const ResultsPage = () => {
         </div>
       </section>
 
-      {/* ── 02 · TESTIMONIALS — ink band ───────────────────────── */}
-      <section style={{ background: '#17151A', color: '#F4F2EC' }}>
-        <div className="cx-wrap cx-section">
-          <Reveal><SecNum n="02" label="Word of mouth" dark /></Reveal>
-          <Reveal delay={60}>
-            <h2 className="cx-display cx-h2" style={{ marginBottom: 60 }}>
-              The numbers talk.<br />
-              <span style={{ color: '#FFD84D', fontStyle: 'italic' }}>So do the owners.</span>
-            </h2>
-          </Reveal>
-          <div className="cx-grid3">
-            {TESTIMONIALS.map((r, i) => (
-              <Reveal key={r.initials} delay={i * 120}>
-                <div className="cx-review-card" style={{ background: 'rgba(244,242,236,.05)', border: '1px solid rgba(244,242,236,.2)', borderRadius: 18, padding: '34px 30px', display: 'flex', flexDirection: 'column', gap: 22, height: '100%', boxSizing: 'border-box', transition: 'transform .2s, border-color .2s' }}>
-                  <div style={mono({ display: 'inline-flex', alignSelf: 'flex-start', fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', background: '#FFD84D', color: '#17151A', borderRadius: 999, padding: '6px 13px' })}>
-                    {r.stat}
-                  </div>
-                  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, fontWeight: 500, flex: 1 }}>{r.quote}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, borderTop: '1px solid rgba(244,242,236,.15)', paddingTop: 20 }}>
-                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 14, flex: 'none' }}>
-                      {r.initials}
-                    </div>
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: 14.5 }}>{r.name}</div>
-                      <div style={mono({ fontSize: 11, opacity: .55 })}>{r.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 03 · FINAL CTA — indigo ────────────────────────────── */}
+      {/* ── 02 · FINAL CTA — indigo ────────────────────────────── */}
       <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
         <div className="cx-wrap cx-section" style={{ textAlign: 'center' }}>
           <Reveal>

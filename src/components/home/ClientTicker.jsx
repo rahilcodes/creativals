@@ -2,12 +2,12 @@ import React from 'react';
 import { Marquee } from '../ui/primitives';
 
 const WINS = [
-  'Glampinn Valley — ₹50 Cr revenue',
-  'Teak Studio — ₹30 Cr revenue',
-  'Hotel Sky Intl — revenue 2x in 6 mo',
+  'Glampinn Valley — 30M+ views',
+  'Teak Studio — 10x lead growth',
+  'Hotel Sky Intl — +92% revenue in 6 mo',
   'MRA Motors — 50M views',
   'Pista House — 200% order growth',
-  'Gopuppy — ₹15 Cr revenue',
+  'Gopuppy — 1 store → franchise',
   'Mahindra — 500+ monthly leads',
   'GMR Group — 3-year partner',
 ];

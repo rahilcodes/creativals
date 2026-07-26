@@ -96,7 +96,7 @@ const ServicePageTemplate = ({ service }) => {
               </Reveal>
             ))}
           </div>
-          <div className="cx-grid2" style={{ gap: 26 }}>
+          <div className={service.caseStudies.length > 0 ? 'cx-grid2' : undefined} style={{ gap: 26 }}>
             <Reveal>
               <div style={{ border: '2px solid #17151A', borderRadius: 18, padding: '28px 26px', background: '#FFF8E0', height: '100%', boxSizing: 'border-box' }}>
                 <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 20, opacity: .7 })}>Industry proof</div>
@@ -108,22 +108,25 @@ const ServicePageTemplate = ({ service }) => {
                 ))}
               </div>
             </Reveal>
-            <Reveal delay={100}>
-              <div style={{ background: '#17151A', color: '#F4F2EC', borderRadius: 18, padding: '28px 26px', height: '100%', boxSizing: 'border-box' }}>
-                <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 20, color: '#FFD84D' })}>Real results</div>
-                {service.caseStudies.map((cs, i) => (
-                  <div key={cs.client} style={{ padding: '14px 0', borderTop: i > 0 ? '1px solid rgba(244,242,236,.2)' : 'none' }}>
-                    <div style={{ fontWeight: 800, fontSize: 17, marginBottom: 8 }}>{cs.client}</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
-                      <span style={mono({ fontSize: 12, opacity: .6, textDecoration: 'line-through' })}>{cs.before}</span>
-                      <span aria-hidden="true" style={{ color: '#FFD84D', fontWeight: 900 }}>→</span>
-                      <span style={mono({ fontSize: 13.5, fontWeight: 600, color: '#FFD84D' })}>{cs.after}</span>
+            {/* Case-study card renders only with verified entries (CLAUDE.md content policy) */}
+            {service.caseStudies.length > 0 && (
+              <Reveal delay={100}>
+                <div style={{ background: '#17151A', color: '#F4F2EC', borderRadius: 18, padding: '28px 26px', height: '100%', boxSizing: 'border-box' }}>
+                  <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', marginBottom: 20, color: '#FFD84D' })}>Real results</div>
+                  {service.caseStudies.map((cs, i) => (
+                    <div key={cs.client} style={{ padding: '14px 0', borderTop: i > 0 ? '1px solid rgba(244,242,236,.2)' : 'none' }}>
+                      <div style={{ fontWeight: 800, fontSize: 17, marginBottom: 8 }}>{cs.client}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
+                        <span style={mono({ fontSize: 12, opacity: .6, textDecoration: 'line-through' })}>{cs.before}</span>
+                        <span aria-hidden="true" style={{ color: '#FFD84D', fontWeight: 900 }}>→</span>
+                        <span style={mono({ fontSize: 13.5, fontWeight: 600, color: '#FFD84D' })}>{cs.after}</span>
+                      </div>
+                      <span style={mono({ display: 'inline-block', fontSize: 10.5, letterSpacing: '.08em', textTransform: 'uppercase', border: '1px solid rgba(244,242,236,.35)', borderRadius: 999, padding: '5px 11px', opacity: .85 })}>{cs.system}</span>
                     </div>
-                    <span style={mono({ display: 'inline-block', fontSize: 10.5, letterSpacing: '.08em', textTransform: 'uppercase', border: '1px solid rgba(244,242,236,.35)', borderRadius: 999, padding: '5px 11px', opacity: .85 })}>{cs.system}</span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+                  ))}
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>

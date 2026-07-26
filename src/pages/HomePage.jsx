@@ -9,7 +9,6 @@ import ClientTicker from '../components/home/ClientTicker';
 import ProofCards from '../components/home/ProofCards';
 import Difference from '../components/home/Difference';
 import IndustriesGrid from '../components/home/IndustriesGrid';
-import Testimonials from '../components/home/Testimonials';
 import FAQ from '../components/home/FAQ';
 import FinalCTA from '../components/home/FinalCTA';
 
@@ -57,7 +56,6 @@ const HomePage = () => {
       <ProofCards />
       <Difference />
       <IndustriesGrid />
-      <Testimonials />
       <FAQ />
       <FinalCTA />
     </>

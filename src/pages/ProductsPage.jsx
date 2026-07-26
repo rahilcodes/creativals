@@ -29,7 +29,7 @@ const PRODUCTS = [
     status: 'Internal',
     live: false,
     tilt: 'tilt-l',
-    desc: 'An internal library of 500+ high-converting landing page blocks tested across $5M+ in ad spend. We deploy winning layouts in minutes.',
+    desc: 'An internal library of 500+ high-converting landing page blocks tested in live campaigns across 22+ industries. We deploy winning layouts in minutes.',
   },
 ];
 
@@ -118,7 +118,7 @@ const ProductsPage = () => {
           </Reveal>
           <Reveal delay={140}>
             <p className="cx-lead cx-lead-light" style={{ maxWidth: 620, color: 'rgba(244,242,236,.75)' }}>
-              500+ landing blocks. $5M+ of ad spend behind every layout. 30%+ of "lost" attribution recovered.
+              500+ landing blocks. Live-campaign testing behind every layout. 30%+ of "lost" attribution recovered.
               This is the stack working behind every Creativals engagement.
             </p>
           </Reveal>

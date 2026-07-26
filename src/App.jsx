@@ -25,8 +25,6 @@ import ContactPage from './pages/ContactPage';
 import ServicePage from './pages/ServicePage';
 import IndustryPage from './pages/IndustryPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
-import SuccessStoriesPage from './pages/SuccessStoriesPage';
-import ClientReviewsPage from './pages/ClientReviewsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -51,9 +49,9 @@ function App() {
           <Route path="/playbooks" element={<PlaybooksPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          {/* /success-stories and /client-reviews removed until verified
+              content exists (CLAUDE.md content policy) */}
           <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/success-stories" element={<SuccessStoriesPage />} />
-          <Route path="/client-reviews" element={<ClientReviewsPage />} />
           <Route path="/industries/:slug" element={<IndustryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

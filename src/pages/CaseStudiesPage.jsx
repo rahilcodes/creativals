@@ -12,25 +12,25 @@ const CASES = [
     headline: 'A resort that became a movement.',
     challenge: 'Beautiful property with zero digital presence and minimal advance bookings. Revenue was entirely dependent on walk-ins and word-of-mouth.',
     what_we_did: ['Full brand identity & website build', 'Instagram & Meta paid campaigns', 'High-end photography & video production', 'Influencer campaign management', 'Online booking funnel optimization'],
-    result: '₹50 Crore+ revenue generated. Became one of Hyderabad\'s most talked-about luxury experiences.',
+    result: '30M+ views and 30K followers in a year. Became one of Hyderabad\'s most talked-about luxury experiences.',
     metrics: [
-      { v: '₹50Cr+', l: 'Revenue Generated' },
+      { v: '30M+', l: 'Total Views' },
+      { v: '30K', l: 'Followers Gained' },
       { v: '3x', l: 'Booking Rate' },
-      { v: '#1', l: 'Hyderabad Luxury Stays' },
     ],
   },
   {
     client: 'Hotel Sky International',
     industry: 'Business Hotels',
     tag: 'Hotels',
-    headline: 'Monthly revenue doubled in 6 months.',
-    challenge: 'Revenue stuck at ₹13 Lakh/month for 8+ months. Heavy dependence on OTAs eating into margins. No direct booking channel.',
+    headline: 'Monthly revenue grew 92% in 6 months.',
+    challenge: 'Revenue flat for 8+ months. Heavy dependence on OTAs eating into margins. No direct booking channel.',
     what_we_did: ['Google Ads targeting business travellers', 'Direct booking website with no-OTA offers', 'WhatsApp lead nurture automation', 'Google Business Profile optimization', 'Review acquisition strategy'],
-    result: '₹13L → ₹25L/month in under 6 months. Significant shift from OTA to direct bookings.',
+    result: '92% revenue growth in under 6 months. Significant shift from OTA to direct bookings.',
     metrics: [
-      { v: '₹13L→₹25L', l: 'Monthly Revenue' },
-      { v: '92%', l: 'Direct Booking Growth' },
-      { v: '6 Months', l: 'To Double Revenue' },
+      { v: '92%', l: 'Revenue Growth' },
+      { v: 'Direct', l: 'Booking Channel Built' },
+      { v: '6 Months', l: 'To Result' },
     ],
   },
   {
@@ -44,7 +44,7 @@ const CASES = [
     metrics: [
       { v: '200%', l: 'Order Volume Growth' },
       { v: '5M+', l: 'Campaign Reach' },
-      { v: '₹X Cr', l: 'Festive Revenue' },
+      { v: 'City-Wide', l: 'Festive Dominance' },
     ],
   },
   {
@@ -94,9 +94,9 @@ const CASES = [
 const TAGS = ['All', 'Hotels', 'Food', 'Education', 'Auto'];
 
 const KEY_NUMBERS = [
-  { v: '₹1B+', l: 'Client Revenue Generated' },
   { v: '160+', l: 'Businesses Scaled' },
   { v: '50M+', l: 'Combined Views' },
+  { v: '22+', l: 'Industries' },
   { v: '7', l: 'Countries' },
 ];
 

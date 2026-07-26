@@ -54,11 +54,10 @@ const SERVICE_COLS = [
 ];
 
 const RESULTS_LINKS = [
-  { to: '/case-studies', title: 'Case Studies', desc: '8 elite transformations' },
+  { to: '/case-studies', title: 'Case Studies', desc: 'Real client transformations' },
   { to: '/results#client-wall', title: 'Client Proof Wall', desc: 'Browse all 160+ clients' },
-  { to: '/results', title: 'Revenue Generated', desc: '₹100 Crore+ combined revenue' },
+  { to: '/results', title: 'Client Results', desc: 'Real outcomes across 22+ industries' },
   { to: '/results', title: 'Global Reach', desc: '7 countries · 3 continents' },
-  { to: '/client-reviews', title: 'Client Reviews', desc: 'Unedited feedback from founders' },
 ];
 
 const CITIES = [
@@ -231,9 +230,9 @@ const Navbar = () => {
                 <div style={mono({ display: 'flex', alignItems: 'center', gap: 8, fontSize: 10.5, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#FFD84D', marginBottom: 18 })}>
                   <span className="cx-dot" style={{ width: 7, height: 7 }} />Live result
                 </div>
-                <div style={{ fontWeight: 900, fontSize: 54, fontStretch: '120%', lineHeight: 1, color: '#FFD84D' }}>₹50 Crore</div>
-                <div style={mono({ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', opacity: .8, margin: '10px 0 14px' })}>Revenue generated — Glampinn Valley</div>
-                <p style={{ margin: '0 0 20px', fontSize: 14.5, lineHeight: 1.55, color: 'rgba(244,242,236,.85)', flex: 1 }}>A resort that became a movement. Zero digital presence → ₹50 Cr empire in 12 months.</p>
+                <div style={{ fontWeight: 900, fontSize: 54, fontStretch: '120%', lineHeight: 1, color: '#FFD84D' }}>30M+ views</div>
+                <div style={mono({ fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', opacity: .8, margin: '10px 0 14px' })}>In one year — Glampinn Valley</div>
+                <p style={{ margin: '0 0 20px', fontSize: 14.5, lineHeight: 1.55, color: 'rgba(244,242,236,.85)', flex: 1 }}>A resort that became a movement. Zero digital presence → 30M+ views and 30K followers in 12 months.</p>
                 <a href={WA_INDIA} target="_blank" rel="noreferrer" className="cx-btn cx-btn-sm cx-btn-ink" style={{ display: 'block' }}>Get Free Audit →</a>
               </div>
               <div>
@@ -249,7 +248,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="cx-hide-sm" style={mono({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '2px solid #17151A', marginTop: 26, paddingTop: 18, fontSize: 12, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase' })}>
-              <span>160+ clients</span><span style={{ color: '#4F46E5' }}>✺</span><span>₹100 Cr+ revenue</span><span style={{ color: '#4F46E5' }}>✺</span><span>7 countries</span><span style={{ color: '#4F46E5' }}>✺</span><span>22+ industries</span>
+              <span>160+ clients</span><span style={{ color: '#4F46E5' }}>✺</span><span>500M+ views</span><span style={{ color: '#4F46E5' }}>✺</span><span>7 countries</span><span style={{ color: '#4F46E5' }}>✺</span><span>22+ industries</span>
             </div>
           </div>
         </div>

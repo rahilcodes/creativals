@@ -52,7 +52,7 @@ const STATS = [
   { v: '2019', l: 'Founded' },
   { v: '160+', l: 'Clients Scaled' },
   { v: '7', l: 'Countries' },
-  { v: '₹1B+', l: 'Revenue Generated' },
+  { v: '500M+', l: 'Views Created' },
   { v: '92%', l: 'Retention Rate' },
   { v: '6+', l: 'Years Running' },
 ];

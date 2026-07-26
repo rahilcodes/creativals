@@ -10,7 +10,7 @@ const Hero = () => {
       <div className="cx-wrap" style={{ width: '100%', boxSizing: 'border-box', position: 'relative', paddingTop: 30, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 12, opacity: .95, animation: 'cxRise .7s both' })}>
           <span className="cx-dot" />
-          Trusted by 120+ growing brands · ₹100 Cr+ generated
+          Trusted by 160+ growing brands across 7 countries
         </div>
 
         <div className="cx-hide-md" style={{ position: 'absolute', top: 44, right: 70, zIndex: 3 }}>
@@ -48,8 +48,8 @@ const Hero = () => {
         <Marquee speed={22} segStyle={{ fontWeight: 900, fontStretch: '120%', textTransform: 'uppercase', fontSize: 24, letterSpacing: '-0.01em', padding: '18px 34px 18px 0' }}>
           <span>500+ leads/month</span><span style={{ color: '#FFD84D' }}>✺</span>
           <span>3.5x avg ROAS</span><span style={{ color: '#FFD84D' }}>✺</span>
-          <span>120+ brands grown</span><span style={{ color: '#FFD84D' }}>✺</span>
-          <span>₹100 Cr+ generated</span><span style={{ color: '#FFD84D' }}>✺</span>
+          <span>160+ brands grown</span><span style={{ color: '#FFD84D' }}>✺</span>
+          <span>500M+ views created</span><span style={{ color: '#FFD84D' }}>✺</span>
         </Marquee>
       </div>
     </section>

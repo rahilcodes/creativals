@@ -8,20 +8,20 @@ const CASES = [
   {
     theme: 'indigo',
     meta: ['Hospitality · India', '12 months'],
-    front: { big: '₹50 Cr', plus: true, label: 'Revenue generated', name: 'Glampinn Valley', body: 'From a scenic resort with zero digital presence to a ₹50 Crore empire in one year. 30M+ views. 30K followers. End-to-end ecosystem.', pills: ['30M+ VIEWS', '30K FOLLOWERS'] },
+    front: { big: '30M', plus: true, label: 'Views in one year', name: 'Glampinn Valley', body: 'From a scenic resort with zero digital presence to a movement in one year. 30M+ views. 30K followers. End-to-end ecosystem.', pills: ['30M+ VIEWS', '30K FOLLOWERS'] },
     back: { big: '₹0', label: 'Online bookings, before', name: 'Completely invisible', body: 'A scenic resort with zero digital presence, no social strategy, and zero online bookings. Beautiful place — nobody knew it existed.', pills: ['NO WEBSITE', 'NO STRATEGY'] },
   },
   {
     theme: 'ink',
     meta: ['Furniture · India', '12 months'],
-    front: { big: '₹30 Cr', plus: true, label: 'Revenue in 12 months', name: 'Teak Studio', body: 'Beautiful products, zero digital reach, everything riding on walk-ins. We built the funnel — qualified leads now convert to high-ticket sales.', pills: ['10X LEADS', '100% DIGITAL'] },
+    front: { big: '10x', label: 'Lead growth in 12 months', name: 'Teak Studio', body: 'Beautiful products, zero digital reach, everything riding on walk-ins. We built the funnel — qualified leads now convert to high-ticket sales.', pills: ['10X LEADS', '100% DIGITAL'] },
     back: { big: '0', label: 'Digital leads, before', name: 'Walk-ins only', body: 'A premium furniture studio with beautiful products but no digital reach — relying entirely on walk-ins and word-of-mouth to survive.', pills: ['NO REACH', 'WORD OF MOUTH'] },
   },
   {
     theme: 'white',
     meta: ['Hotels · Hyderabad', '6 months'],
-    front: { big: '2x', label: 'Monthly revenue', name: 'Hotel Sky International', body: 'Stuck at ₹13L/month, hostage to OTA commissions. Direct booking campaigns + WhatsApp automation took it to ₹25L — without raising ad spend.', pills: ['₹13L → ₹25L', '+0% AD SPEND'] },
-    back: { big: '₹13L', label: 'Stuck monthly revenue, before', name: 'OTA-hostage', body: 'A mid-range hotel flatlined at ₹13L/month. High OTA dependency, no direct booking system, zero brand identity online.', pills: ['OTA FEES', 'NO DIRECT'] },
+    front: { big: '92%', label: 'Revenue growth in 6 months', name: 'Hotel Sky International', body: 'Flat revenue, hostage to OTA commissions. Direct booking campaigns + WhatsApp automation nearly doubled revenue — without raising ad spend.', pills: ['+92% REVENUE', '+0% AD SPEND'] },
+    back: { big: '0', label: 'Direct bookings, before', name: 'OTA-hostage', body: 'A mid-range hotel with flat revenue for months. High OTA dependency, no direct booking system, zero brand identity online.', pills: ['OTA FEES', 'NO DIRECT'] },
   },
 ];
 

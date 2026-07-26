@@ -33,10 +33,8 @@ const services = [
       { name: 'Education', result: '4x more enrolments' },
       { name: 'E-Commerce', result: '3.5x average ROAS' },
     ],
-    caseStudies: [
-      { client: 'Royal Palm Resorts', before: '12 bookings/mo', after: '68 bookings/mo', system: 'Meta Ads + Booking Funnel' },
-      { client: 'Pinnacle Academy', before: '47 leads/mo', after: '210 leads/mo', system: 'Facebook Lead Ads + WhatsApp' },
-    ],
+    // Verified client case studies only (CLAUDE.md content policy). Empty = section hidden.
+    caseStudies: [],
     outcomes: [
       'Fully managed ad campaigns across Meta, Instagram, LinkedIn',
       'Weekly creative refresh with performance-tested variants',
@@ -84,10 +82,7 @@ const services = [
       { name: 'Real Estate', result: '3x site visit bookings' },
       { name: 'Professional Services', result: '5x qualified leads' },
     ],
-    caseStudies: [
-      { client: 'City Dental Clinic', before: '8 appointments/mo', after: '34 appointments/mo', system: 'Google Search Ads + Booking Page' },
-      { client: 'Horizon Realty', before: '₹4,200/lead', after: '₹890/lead', system: 'PPC + WhatsApp Bot' },
-    ],
+    caseStudies: [],
     outcomes: [
       'Fully managed Google Search & Display campaigns',
       'Custom landing pages per campaign/keyword group',
@@ -135,10 +130,7 @@ const services = [
       { name: 'Education', result: '300% organic traffic growth' },
       { name: 'E-Commerce', result: '45% reduction in paid ad dependency' },
     ],
-    caseStudies: [
-      { client: 'Wellness Retreat Co.', before: '120 organic visits/mo', after: '1,840 organic visits/mo', system: 'Technical SEO + Content Strategy' },
-      { client: 'Bright Future Academy', before: 'Page 5+', after: 'Page 1, Position 3', system: 'Local SEO + GBP Optimization' },
-    ],
+    caseStudies: [],
     outcomes: [
       'Full technical SEO audit and fix implementation',
       'Keyword-targeted content calendar (monthly)',
