@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/theme.css';
 
@@ -6,55 +6,60 @@ import './styles/theme.css';
 import PageLayout from './layouts/PageLayout';
 import ScrollToTop from './components/ScrollToTop';
 
-// Pages
+// Homepage stays eager — most-visited entry, no second round-trip.
 import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import ResultsPage from './pages/ResultsPage';
-import IndustriesPage from './pages/IndustriesPage';
-import PricingPage from './pages/PricingPage';
-import AboutPage from './pages/AboutPage';
-import ApproachPage from './pages/ApproachPage';
-import JoinUsPage from './pages/JoinUsPage';
-import ProductsPage from './pages/ProductsPage';
-import AutomationsPage from './pages/AutomationsPage';
-import ExperimentsPage from './pages/ExperimentsPage';
-import AcademyPage from './pages/AcademyPage';
-import PlaybooksPage from './pages/PlaybooksPage';
-import ResourcesPage from './pages/ResourcesPage';
-import ContactPage from './pages/ContactPage';
-import ServicePage from './pages/ServicePage';
-import IndustryPage from './pages/IndustryPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
-import NotFoundPage from './pages/NotFoundPage';
+
+// Every other page is route-split (React.lazy) so its code + data load on
+// demand instead of shipping in one bundle.
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ResultsPage = lazy(() => import('./pages/ResultsPage'));
+const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ApproachPage = lazy(() => import('./pages/ApproachPage'));
+const JoinUsPage = lazy(() => import('./pages/JoinUsPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const AutomationsPage = lazy(() => import('./pages/AutomationsPage'));
+const ExperimentsPage = lazy(() => import('./pages/ExperimentsPage'));
+const AcademyPage = lazy(() => import('./pages/AcademyPage'));
+const PlaybooksPage = lazy(() => import('./pages/PlaybooksPage'));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ServicePage = lazy(() => import('./pages/ServicePage'));
+const IndustryPage = lazy(() => import('./pages/IndustryPage'));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <PageLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServicePage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/industries" element={<IndustriesPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/about-us" element={<AboutPage />} />
-          <Route path="/approach" element={<ApproachPage />} />
-          <Route path="/join-us" element={<JoinUsPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/automations" element={<AutomationsPage />} />
-          <Route path="/experiments" element={<ExperimentsPage />} />
-          <Route path="/academy" element={<AcademyPage />} />
-          <Route path="/playbooks" element={<PlaybooksPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* /success-stories and /client-reviews removed until verified
-              content exists (CLAUDE.md content policy) */}
-          <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/industries/:slug" element={<IndustryPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:slug" element={<ServicePage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/approach" element={<ApproachPage />} />
+            <Route path="/join-us" element={<JoinUsPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/automations" element={<AutomationsPage />} />
+            <Route path="/experiments" element={<ExperimentsPage />} />
+            <Route path="/academy" element={<AcademyPage />} />
+            <Route path="/playbooks" element={<PlaybooksPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* /success-stories and /client-reviews removed until verified
+                content exists (CLAUDE.md content policy) */}
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/industries/:slug" element={<IndustryPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </PageLayout>
     </BrowserRouter>
   );

@@ -1,5 +1,20 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+# ── 301 redirects: legacy URLs from the old sitemap/site ────────────────────
+# Old singular prefixes -> current plural routes (slugs are identical)
+RewriteRule ^service/(.+)$ /services/$1 [R=301,L]
+RewriteRule ^industry/(.+)$ /industries/$1 [R=301,L]
+RewriteRule ^about/?$ /about-us [R=301,L]
+# Pages removed until verified content exists (CLAUDE.md content policy)
+RewriteRule ^success-stories/?$ /results [R=301,L]
+RewriteRule ^client-reviews/?$ /results [R=301,L]
+
+# ── Trailing slash -> clean URL (canonical form, except root) ───────────────
+RewriteCond %{REQUEST_URI} !^/dist/
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# ── Everything else serves from the built site in /dist ─────────────────────
 RewriteCond %{REQUEST_URI} !^/dist/
 RewriteRule ^(.*)$ /dist/$1 [L]
 </IfModule>

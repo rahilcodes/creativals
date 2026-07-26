@@ -10,7 +10,7 @@ const TEAM = [
     role: 'Founder & CEO',
     handle: '@rahil',
     owns: ['Clients', 'Finance', 'Growth', 'Strategy', 'Partnerships'],
-    avatar: '/rahil.png',
+    avatar: '/rahil.webp',
     quote: '"Execution is the only strategy that matters."',
   },
   {
@@ -18,7 +18,7 @@ const TEAM = [
     role: 'Head of Tech & Systems',
     handle: '@raiyan',
     owns: ['Development', 'Automation', 'Systems', 'AI Ops'],
-    avatar: '/raiyan.png',
+    avatar: '/raiyan.webp',
     quote: '"If it can be automated, it should be."',
   },
   {
@@ -26,7 +26,7 @@ const TEAM = [
     role: 'Head of Marketing & Growth',
     handle: '@ahmed',
     owns: ['SEO', 'Paid Ads', 'Analytics', 'Growth Execution'],
-    avatar: '/ahmed.png',
+    avatar: '/ahmed.webp',
     quote: '"Every rupee of ad spend is a question. We find the answer."',
   },
   {
@@ -34,7 +34,7 @@ const TEAM = [
     role: 'Creative Director',
     handle: '@farhan',
     owns: ['Branding', 'Design', 'Video', 'Visual Identity'],
-    avatar: '/farhan.png',
+    avatar: '/farhan.webp',
     quote: '"Design is not decoration. It\'s direction."',
   },
 ];
@@ -247,7 +247,7 @@ const AboutPage = () => {
               <Reveal key={m.name} delay={i * 90}>
                 <div className={`cx-card ${i % 2 ? 'tilt-r' : 'tilt-l'}`} style={{ height: '100%', boxSizing: 'border-box', padding: '30px 26px' }}>
                   <div style={{ width: 96, height: 96, borderRadius: 16, overflow: 'hidden', border: '2px solid #17151A', marginBottom: 20 }}>
-                    <img src={m.avatar} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <img src={m.avatar} alt={m.name} width={96} height={96} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
                   <div style={mono({ fontSize: 10.5, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 8 })}>
                     {m.role} · {m.handle}

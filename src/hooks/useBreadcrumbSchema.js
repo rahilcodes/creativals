@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { breadcrumbSchema } from '../config/schema.js';
-import { getServiceBySlug } from '../data/allServices';
-import { getIndustryBySlug } from '../data/industries';
 
 const STATIC_LABELS = {
   services: 'Services',
@@ -28,28 +26,49 @@ const titleCase = (slug) =>
 // Injects a BreadcrumbList JSON-LD script for the current route. Mounted once
 // in PageLayout so every page carries breadcrumbs without per-page wiring.
 // Uses its own <script> tag (separate from useSEO's #dynamic-schema).
+// Data files are imported dynamically so this eager hook doesn't pull all
+// service/industry data into the entry bundle (they land in the shared chunks
+// the service/industry pages already use).
 export const useBreadcrumbSchema = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const segments = pathname.split('/').filter(Boolean);
-    const items = [{ name: 'Home', path: '/' }];
-    let path = '';
-    segments.forEach((seg, i) => {
-      path += `/${seg}`;
-      let name = STATIC_LABELS[seg];
-      if (!name && segments[i - 1] === 'services') name = getServiceBySlug(seg)?.title;
-      if (!name && segments[i - 1] === 'industries') name = getIndustryBySlug(seg)?.title;
-      items.push({ name: name || titleCase(seg), path });
-    });
+    let cancelled = false;
 
-    let tag = document.getElementById('breadcrumb-schema');
-    if (!tag) {
-      tag = document.createElement('script');
-      tag.id = 'breadcrumb-schema';
-      tag.type = 'application/ld+json';
-      document.head.appendChild(tag);
-    }
-    tag.text = JSON.stringify(breadcrumbSchema(items));
+    const resolveName = async (seg, prevSeg) => {
+      if (STATIC_LABELS[seg]) return STATIC_LABELS[seg];
+      if (prevSeg === 'services') {
+        const { getServiceBySlug } = await import('../data/allServices');
+        return getServiceBySlug(seg)?.title;
+      }
+      if (prevSeg === 'industries') {
+        const { getIndustryBySlug } = await import('../data/industries');
+        return getIndustryBySlug(seg)?.title;
+      }
+      return null;
+    };
+
+    (async () => {
+      const segments = pathname.split('/').filter(Boolean);
+      const items = [{ name: 'Home', path: '/' }];
+      let path = '';
+      for (let i = 0; i < segments.length; i++) {
+        path += `/${segments[i]}`;
+        const name = await resolveName(segments[i], segments[i - 1]);
+        items.push({ name: name || titleCase(segments[i]), path });
+      }
+      if (cancelled) return;
+
+      let tag = document.getElementById('breadcrumb-schema');
+      if (!tag) {
+        tag = document.createElement('script');
+        tag.id = 'breadcrumb-schema';
+        tag.type = 'application/ld+json';
+        document.head.appendChild(tag);
+      }
+      tag.text = JSON.stringify(breadcrumbSchema(items));
+    })();
+
+    return () => { cancelled = true; };
   }, [pathname]);
 };

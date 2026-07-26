@@ -3,7 +3,47 @@
    Palette:  indigo #4F46E5 · yellow #FFD84D · cream #F4F2EC · ink #17151A
    Type:     Archivo (variable wdth/wght) · IBM Plex Mono
    ═══════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+/* Self-hosted fonts (latin subset, from @fontsource — see public/fonts/).
+   Replaces the render-blocking Google Fonts @import; primary files are
+   preloaded in index.html. Archivo is variable on wght 100-900 + wdth 62-125%
+   (the design's fontStretch values need the wdth axis). */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('/fonts/archivo-var.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('/fonts/archivo-var-italic.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('/fonts/ibm-plex-mono-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('/fonts/ibm-plex-mono-600.woff2') format('woff2');
+}
 
 :root {
   --indigo: #4F46E5;

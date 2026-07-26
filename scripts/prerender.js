@@ -91,12 +91,14 @@ const crawl = async () => {
         waitUntil: 'networkidle2',
         timeout: 45000,
       });
-      // PageLayout injects breadcrumb JSON-LD + canonical on every page — a
-      // reliable "React has rendered and SEO effects ran" signal.
+      // PageLayout injects breadcrumb JSON-LD + canonical on every page, and
+      // every page renders exactly one H1. The H1 check matters with lazy
+      // routes: the layout mounts before the page chunk loads, so waiting on
+      // the H1 guarantees the route's code-split chunk has actually rendered.
       await page.waitForFunction(
         () => document.getElementById('breadcrumb-schema') &&
               document.querySelector('link[rel="canonical"]') &&
-              document.querySelector('#root').children.length > 0,
+              document.querySelector('main h1'),
         { timeout: 15000 }
       );
       await new Promise((r) => setTimeout(r, 250));
@@ -111,8 +113,11 @@ const crawl = async () => {
     }
   };
 
-  console.log(`Prerendering ${routes.length} routes...`);
-  const queue = [...routes];
+  console.log(`Prerendering ${routes.length} routes + 404 page...`);
+  // An unknown path renders the NotFound page — snapshot it as dist/404.html
+  // for the .htaccess ErrorDocument so unknown URLs get a real HTTP 404.
+  const NOT_FOUND_ROUTE = '/__creativals-404__';
+  const queue = [...routes, NOT_FOUND_ROUTE];
   await Promise.all(
     Array.from({ length: CONCURRENCY }, async () => {
       while (queue.length) await renderRoute(queue.shift());
@@ -134,6 +139,18 @@ const crawl = async () => {
     fs.writeFileSync(file, '<!doctype html>\n' + results.get(route).html.replace(/^<!doctype html>/i, '').trim());
   }
   fs.writeFileSync(snapshotPath('/'), '<!doctype html>\n' + results.get('/').html.replace(/^<!doctype html>/i, '').trim());
+
+  // 404 page: no canonical, no breadcrumb (the URL is junk by definition),
+  // noindex for safety. Served with a real 404 status via ErrorDocument.
+  const notFoundHtml = ('<!doctype html>\n' + results.get(NOT_FOUND_ROUTE).html.replace(/^<!doctype html>/i, '').trim())
+    .replace(/<link[^>]*rel="canonical"[^>]*>/, '')
+    .replace(/<script id="breadcrumb-schema"[^>]*>[\s\S]*?<\/script>/, '')
+    .replace('</head>', '<meta name="robots" content="noindex"></head>');
+  fs.writeFileSync(path.join(DIST, '404.html'), notFoundHtml);
+  if (!/Page Not Found/i.test(notFoundHtml)) {
+    console.error('❌ dist/404.html does not contain the Not Found page');
+    process.exit(1);
+  }
 
   // ── 0.2b crawl report from the RAW written files (no JS execution) ─────────
   const report = [];

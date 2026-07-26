@@ -2,8 +2,8 @@
   RewriteEngine On
   RewriteBase /
 
-  # 1. Real files (assets, images, verification files, snapshots addressed
-  #    directly) are served as-is.
+  # 1. Real files (assets, images, fonts, verification files, snapshots
+  #    addressed directly) are served as-is.
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
@@ -13,7 +13,34 @@
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
 
-  # 3. SPA fallback — unknown routes get index.html; React renders the 404
-  #    page client-side.
-  RewriteRule . /index.html [L]
+  # 3. No SPA fallback: every valid route has a prerendered file (the build
+  #    guarantees it), so anything left is a genuine 404.
+</IfModule>
+
+# Unknown URLs return real HTTP 404 with the prerendered styled page.
+ErrorDocument 404 /404.html
+
+# ── Compression ──────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── Cache policy ─────────────────────────────────────────────────────────────
+# Hashed bundles + fonts: cache forever. Images: 30 days. HTML: always
+# revalidate (snapshots change every deploy). Sitemap/robots: 1 hour.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|webp|gif|svg|ico|mp4)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(xml|txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
 </IfModule>
