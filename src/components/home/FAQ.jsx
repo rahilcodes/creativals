@@ -1,7 +1,9 @@
 import React from 'react';
 import { Reveal, SecNum, WA_INDIA } from '../ui/primitives';
 
-const FAQS = [
+// Exported for the homepage FAQPage JSON-LD — schema must mirror the rendered block.
+// eslint-disable-next-line react-refresh/only-export-components
+export const HOME_FAQS = [
   { q: 'When will I actually start seeing leads?', a: 'Our systems are built for speed. Once your campaign launches, most clients see qualified enquiries within 7–14 days. A complete growth system takes about 30 days to fully optimise and scale.' },
   { q: 'How much ad budget do I need to start?', a: "There's no fixed minimum — we design the system around your budget and scale spend only when the numbers prove it. Most clients start small and grow spend as returns come in." },
   { q: 'Do I need an existing website?', a: "No. We build the high-converting landing page as part of the system. If you have a website, we'll audit it; if not, we'll build what's needed to close." },
@@ -31,7 +33,7 @@ const FAQ = () => (
         </Reveal>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {FAQS.map((f, i) => (
+        {HOME_FAQS.map((f, i) => (
           <Reveal key={f.q} delay={i * 60}>
             <details className="cx-faq" open={i === 0}>
               <summary>

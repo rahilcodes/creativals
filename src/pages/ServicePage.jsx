@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
+import { serviceSchema, faqSchema } from '../config/schema';
 import { getServiceBySlug } from '../data/allServices';
 import ServicePageTemplate from '../templates/ServicePageTemplate';
 
@@ -15,16 +16,8 @@ const ServicePage = () => {
     title: localTitle,
     description: localDesc,
     keywords: service ? `${service.title.toLowerCase()} hyderabad, best ${service.title.toLowerCase()} agency hyderabad, ${service.title.toLowerCase()} company in hyderabad` : '',
-    schema: service ? {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Creativals"
-      },
-      "areaServed": "Hyderabad",
-      "serviceType": service.title
-    } : null
+    // Service schema + FAQPage (every service page renders a real FAQ block)
+    schema: service ? [serviceSchema(service), faqSchema(service.faqs)].filter(Boolean) : null,
   });
 
   if (!service) return <Navigate to="/services" replace />;
