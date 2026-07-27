@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# SEO audit artifacts (internal findings - repo root is the web root, never deploy)
+creativals.com-audit/
