@@ -229,7 +229,7 @@ const ServicePageTemplate = ({ service }) => {
               {service.faqs.map((faq, i) => (
                 <Reveal key={faq.q} delay={i * 60}>
                   <details className="cx-faq">
-                    <summary>{faq.q}<span className="plus">+</span></summary>
+                    <summary><h3>{faq.q}</h3><span className="plus">+</span></summary>
                     <p>{faq.a}</p>
                   </details>
                 </Reveal>

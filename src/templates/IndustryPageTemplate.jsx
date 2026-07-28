@@ -184,7 +184,7 @@ const IndustryPageTemplate = ({ industry }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {industry.faqs.map((f) => (
                     <details key={f.q} className="cx-faq">
-                      <summary>{f.q}<span className="plus">+</span></summary>
+                      <summary><h3>{f.q}</h3><span className="plus">+</span></summary>
                       <p>{f.a}</p>
                     </details>
                   ))}

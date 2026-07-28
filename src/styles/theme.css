@@ -268,6 +268,9 @@ a.cx-card-invert { display: block; color: var(--ink); text-decoration: none; }
 .cx-faq summary::-webkit-details-marker { display: none; }
 .cx-faq summary::marker { content: ""; }
 .cx-faq summary .plus { color: var(--indigo); font-weight: 900; font-size: 22px; flex: none; transition: transform .2s; }
+/* FAQ questions are real <h3>s (semantic/SEO) but render exactly like the
+   plain summary text did. */
+.cx-faq summary h3 { font: inherit; margin: 0; display: inline; }
 .cx-faq[open] summary .plus { transform: rotate(45deg); }
 .cx-faq p { margin: 0; padding: 0 26px 24px; font-size: 15px; line-height: 1.65; color: rgba(23, 21, 26, .7); }
 
