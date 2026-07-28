@@ -14,7 +14,7 @@ const ContactDock = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ position: 'fixed', bottom: '1.5rem', right: '1.5rem', zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.6rem' }}>
+    <div className="cx-dock">
       {open && (
         <div style={{ width: 268, background: '#17151A', color: '#F4F2EC', border: '2px solid #17151A', borderRadius: 18, overflow: 'hidden', boxShadow: '8px 8px 0 #FFD84D' }}>
           <div style={{ padding: '0.9rem 1rem', borderBottom: '1px solid rgba(244,242,236,.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -50,8 +50,9 @@ const ContactDock = () => {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Contact Creativals"
+        className="cx-dock-toggle"
         style={{
-          width: 56, height: 56, padding: 0, borderRadius: '50%',
+          padding: 0, borderRadius: '50%',
           background: open ? '#17151A' : '#FFD84D',
           color: open ? '#F4F2EC' : '#17151A',
           border: '2px solid #17151A',

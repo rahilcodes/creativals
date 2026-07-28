@@ -78,7 +78,7 @@ const ContactPage = () => {
     <div>
       {/* ── HERO (indigo) ──────────────────────────────────────── */}
       <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
-        <div className="cx-wrap" style={{ paddingTop: 140, paddingBottom: 96 }}>
+        <div className="cx-wrap" style={{ paddingTop: 96, paddingBottom: 80 }}>
           <Reveal>
             <div style={mono({ fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 34 })}>
               <span className="cx-dot" style={{ background: isOnline ? '#3DDC84' : '#FFD84D' }} />
@@ -97,7 +97,19 @@ const ContactPage = () => {
               within the hour.
             </p>
           </Reveal>
-          <Reveal delay={200}>
+          {/* In-hero CTA so the page's primary action is above the fold
+              (visual audit finding 5). */}
+          <Reveal delay={180}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 32, flexWrap: 'wrap' }}>
+              <a href={waLink('Hi! I want a free Growth Audit.')} target="_blank" rel="noreferrer" className="cx-btn cx-btn-lg cx-btn-yellow">
+                WhatsApp us now →
+              </a>
+              <a href="#audit-form" className="cx-btn cx-btn-lg cx-btn-outline-cream">
+                Fill the form ↓
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={220}>
             <div style={{ display: 'flex', gap: 'clamp(24px,4vw,48px)', marginTop: 40, flexWrap: 'wrap' }}>
               {[{ v: '160+', l: 'Clients' }, { v: '7', l: 'Countries' }, { v: '500M+', l: 'Views created' }].map(({ v, l }) => (
                 <div key={l}>
@@ -124,7 +136,7 @@ const ContactPage = () => {
           <div className="cx-grid2" style={{ alignItems: 'start' }}>
             {/* LEFT — the form */}
             <Reveal>
-              <form onSubmit={handleSubmit} noValidate className="cx-card" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <form id="audit-form" onSubmit={handleSubmit} noValidate className="cx-card" style={{ display: 'flex', flexDirection: 'column', gap: 20, scrollMarginTop: 90 }}>
                 <div>
                   <label className="cx-label" htmlFor="ct-name">Your full name *</label>
                   <input id="ct-name" className="cx-input" type="text" value={form.name} onChange={setField('name')} placeholder="e.g. Suresh Kumar" aria-invalid={!!errors.name} />

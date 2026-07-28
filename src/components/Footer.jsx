@@ -124,7 +124,7 @@ const Footer = () => {
         </div>
 
         {/* bottom bar */}
-        <div style={mono({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '22px 0 26px', borderTop: '1px solid rgba(244,242,236,.15)', fontSize: 12, letterSpacing: '.08em', color: 'rgba(244,242,236,.5)', flexWrap: 'wrap', gap: 12 })}>
+        <div className="cx-foot-bottom" style={mono({ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(244,242,236,.15)', fontSize: 12, letterSpacing: '.08em', color: 'rgba(244,242,236,.5)', flexWrap: 'wrap', gap: 12 })}>
           <span>© 2026 CREATIVALS — MADE WITH ☕ AND A MONEY-BACK GUARANTEE</span>
           <div style={{ display: 'flex', gap: 26 }}>
             <Link to="/contact" className="cx-flink" style={{ color: 'rgba(244,242,236,.5)' }}>SUPPORT</Link>

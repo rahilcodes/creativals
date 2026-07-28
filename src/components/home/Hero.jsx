@@ -32,7 +32,7 @@ const Hero = () => {
         </h1>
 
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 32, paddingBottom: 40, animation: 'cxRise .7s .55s both', flexWrap: 'wrap', gap: 24 }}>
-          <p style={{ margin: 0, maxWidth: 460, fontSize: 18, lineHeight: 1.55, color: 'rgba(244,242,236,.88)', textWrap: 'pretty' }}>
+          <p style={{ margin: 0, maxWidth: 460, fontSize: 18, lineHeight: 1.55, color: 'rgba(244,242,236,.92)', textWrap: 'pretty' }}>
             We don't run ads. We build growth systems — ads, pages, CRM, and 24/7 WhatsApp follow-up — that turn
             strangers into revenue. <strong>Guaranteed, or your money back.</strong>
           </p>
