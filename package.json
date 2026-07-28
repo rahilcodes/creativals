@@ -10,6 +10,7 @@
     "build": "vite build",
     "postbuild": "npm run prerender",
     "prerender": "node scripts/prerender.js",
+    "indexnow": "node scripts/indexnow-submit.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
