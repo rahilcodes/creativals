@@ -17,8 +17,6 @@ import brandingServices from '../src/data/servicesBranding.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const allServices = [...baseServices, ...extraServices, ...devServices, ...brandingServices];
-
 // Each slug remembers which data file defines it, so the sitemap can compute a
 // real per-URL <lastmod> from git history (file-level granularity: editing one
 // service touches the lastmod of every slug in that file — acceptable).
