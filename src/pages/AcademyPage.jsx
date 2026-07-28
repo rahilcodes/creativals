@@ -30,7 +30,7 @@ const MODULES = [
 const AcademyPage = () => {
   useSEO({
     title: 'Digital Marketing Training in Hyderabad | Creativals Academy',
-    description: 'Join Creativals Academy in Hyderabad to master advanced digital marketing, SEO, and growth hacking from industry experts. Practical, execution-focused training.',
+    description: 'Creativals Academy in Hyderabad: practical, execution-focused training in digital marketing, SEO, and growth from working practitioners.',
     keywords: 'digital marketing course hyderabad, seo training hyderabad, performance marketing course hyderabad',
   });
 

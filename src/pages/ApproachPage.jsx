@@ -63,8 +63,8 @@ const TOOLS = [
 
 const ApproachPage = () => {
   useSEO({
-    title: 'Growth Marketing Strategy & Execution Hyderabad | Creativals',
-    description: 'Discover the Creativals Growth Engine™. Our 5-step digital marketing framework ensures predictable lead generation and revenue growth for Hyderabad businesses.',
+    title: 'Growth Marketing Strategy & Execution | Creativals',
+    description: 'The Creativals Growth Engine™ — a 5-step digital marketing framework for predictable lead generation and revenue growth for Hyderabad businesses.',
     keywords: 'marketing strategy hyderabad, growth marketing framework, lead generation process, performance marketing hyderabad',
   });
 

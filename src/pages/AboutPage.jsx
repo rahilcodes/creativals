@@ -83,8 +83,8 @@ const LETTER = [
 
 const AboutPage = () => {
   useSEO({
-    title: 'Top Digital Marketing Company in Hyderabad | About Creativals',
-    description: 'Meet the team behind Creativals. We are a Hyderabad-based execution powerhouse that has scaled 160+ brands globally. We build growth engines, not just campaigns.',
+    title: 'About Creativals | Digital Marketing Company, Hyderabad',
+    description: 'Meet the team behind Creativals — a Hyderabad-based execution powerhouse that has scaled 160+ brands globally. Growth engines, not just campaigns.',
     keywords: 'about creativals, digital marketing agency hyderabad, best digital marketing company hyderabad, founder rahil, growth agency india',
   });
 

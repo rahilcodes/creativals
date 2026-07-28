@@ -30,7 +30,7 @@ const RESOURCES = [
 
 const ResourcesPage = () => {
   useSEO({
-    title: 'Digital Marketing Resources & Playbooks | Creativals Hyderabad',
+    title: 'Digital Marketing Resources & Playbooks | Creativals',
     description: 'Access premium digital marketing resources, SEO playbooks, and growth blueprints from Hyderabad\'s top execution agency.',
     keywords: 'digital marketing resources hyderabad, free seo playbooks, growth marketing guides',
   });

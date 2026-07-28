@@ -17,7 +17,7 @@ const IndustryPage = () => {
   useSEO({
     title: localTitle,
     description: localDesc,
-    keywords: industry ? `${industry.title.toLowerCase()} marketing hyderabad, ${industry.title.toLowerCase()} digital marketing agency hyderabad, grow ${industry.title.toLowerCase()} business hyderabad` : '',
+    keywords: industry ? `${industry.title} marketing Hyderabad, ${industry.title} digital marketing agency Hyderabad, grow ${industry.title} business Hyderabad` : '',
     // FAQPage only — every industry page renders a real FAQ block
     schema: industry ? faqSchema(industry.faqs) : null,
   });

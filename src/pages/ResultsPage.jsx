@@ -24,8 +24,8 @@ const pillStyle = (active) => mono({
 
 const ResultsPage = () => {
   useSEO({
-    title: 'Client Results & Portfolio | 160+ Businesses | Creativals',
-    description: '160+ clients across 7 countries and 22+ industries. See real results from real businesses — hotels, schools, restaurants, real estate, tech startups, and more.',
+    title: 'Client Results: 160+ Businesses | Creativals',
+    description: '160+ clients across 7 countries and 22+ industries. Real results from hotels, schools, restaurants, real estate, and tech startups.',
     keywords: 'digital marketing results, case studies india, client portfolio, marketing results hyderabad',
   });
 

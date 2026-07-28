@@ -167,7 +167,7 @@ const CaseStudiesPage = () => {
   const [activeTag, setActiveTag] = useState('All');
 
   useSEO({
-    title: 'Marketing Case Studies & Results in Hyderabad | Creativals',
+    title: 'Marketing Case Studies in Hyderabad | Creativals',
     description: 'View our proven marketing results. See how Creativals helps Hyderabad businesses and global brands achieve 300%+ ROI with predictable growth engines.',
     keywords: 'marketing case studies, marketing results hyderabad, best marketing agency in hyderabad case studies',
   });

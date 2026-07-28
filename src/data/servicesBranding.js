@@ -1,7 +1,7 @@
 // Branding & Creative services (10)
 const s = (slug,title,headline,sub,m,fails,approach,steps,inds,cases,outs,mech,faqs,related) => ({
   slug,title,category:'Branding & Creative',
-  metaTitle:`${title} — Creativals | Creative Systems India`,
+  // metaTitle intentionally omitted — ServicePage's template stays ≤60 chars.
   metaDesc:sub,heroHeadline:headline,heroSub:sub,metrics:m,failReasons:fails,
   systemApproach:approach,systemSteps:steps,industries:inds,
   caseStudies:cases,outcomes:outs,mechanism:mech,faqs,relatedServices:related,
