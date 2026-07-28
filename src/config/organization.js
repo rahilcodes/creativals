@@ -32,3 +32,10 @@ export const ORG = {
     'https://www.youtube.com/@creativalsagency',
   ],
 };
+
+// ── Display/NAP helpers (single source for every visible address render) ─────
+export const FULL_ADDRESS = `${ORG.address.streetAddress}, ${ORG.address.addressLocality}, ${ORG.address.addressRegion} ${ORG.address.postalCode}, India`;
+
+const MAPS_QUERY = encodeURIComponent(`${ORG.name}, ${FULL_ADDRESS}`);
+export const MAPS_DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
+export const MAPS_EMBED_URL = `https://maps.google.com/maps?q=${MAPS_QUERY}&z=15&output=embed`;

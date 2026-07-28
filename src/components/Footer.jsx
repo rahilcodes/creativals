@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Marquee, WA_INDIA, WA_USA } from './ui/primitives';
+import { ORG, FULL_ADDRESS, MAPS_DIRECTIONS_URL } from '../config/organization';
 
 const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
 
@@ -95,6 +96,17 @@ const Footer = () => {
               <div>
                 <div style={mono({ fontSize: 11, opacity: .5, marginBottom: 4 })}>EMAIL</div>
                 <a href="mailto:hello@creativals.com" className="cx-flink" style={{ fontWeight: 700 }}>hello@creativals.com</a>
+              </div>
+              <div>
+                <div style={mono({ fontSize: 11, opacity: .5, marginBottom: 4 })}>HQ — HYDERABAD</div>
+                {/* Visible NAP (audit item 8) — address text comes from the central
+                    org config only, never inline. */}
+                <address style={{ fontStyle: 'normal', fontSize: 13.5, lineHeight: 1.55, color: 'rgba(244,242,236,.65)', maxWidth: 280 }}>
+                  {ORG.name}, {FULL_ADDRESS}
+                </address>
+                <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noreferrer" className="cx-flink" style={mono({ fontSize: 11, letterSpacing: '.08em', color: '#FFD84D' })}>
+                  GET DIRECTIONS →
+                </a>
               </div>
             </div>
           </div>

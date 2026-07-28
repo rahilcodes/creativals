@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
+import { contactPageSchema } from '../config/schema';
+import { ORG, FULL_ADDRESS, MAPS_DIRECTIONS_URL, MAPS_EMBED_URL } from '../config/organization';
 import { Reveal, SecNum, WA_INDIA, WA_USA, waLink } from '../components/ui/primitives';
 
 const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
+
+// Static — built once so useSEO's effect doesn't re-run on every keystroke.
+const CONTACT_SCHEMA = contactPageSchema();
 
 const STEPS = [
   { n: '1', title: 'You message us', body: 'WhatsApp or the form — takes 60 seconds. We reply within 30 minutes during business hours.' },
@@ -34,8 +39,9 @@ const ContactPage = () => {
     title: 'Contact Creativals | Digital Marketing Agency, Hyderabad',
     description: 'Ready to grow? Contact Creativals, a digital marketing agency in Hyderabad, for a free growth audit and strategy session.',
     keywords: 'contact creativals, marketing agency in hyderabad contact, hire digital marketer hyderabad',
-    // No inline org schema — the canonical Organization/LocalBusiness lives on
-    // the homepage, built from src/config/organization.js (CLAUDE.md rule).
+    // ContactPage schema references the canonical Organization by @id — the
+    // full Organization/LocalBusiness object lives on the homepage only.
+    schema: CONTACT_SCHEMA,
   });
 
   const setField = (key) => (e) => {
@@ -226,6 +232,37 @@ const ContactPage = () => {
                   </span>
                 ))}
               </div>
+            </Reveal>
+          </div>
+
+          {/* HQ address + map (visible NAP — audit item 8). Address text renders
+              from the central org config only, never inline. */}
+          <div className="cx-grid2" style={{ alignItems: 'stretch', marginTop: 56 }}>
+            <Reveal>
+              <div style={{ border: '2px solid rgba(244,242,236,.3)', borderRadius: 16, padding: '28px 28px', height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <div style={mono({ fontSize: 11, fontWeight: 600, letterSpacing: '.16em', textTransform: 'uppercase', color: '#FFD84D' })}>
+                  Headquarters — Hyderabad
+                </div>
+                <address style={{ fontStyle: 'normal', margin: 0, fontSize: 16, lineHeight: 1.7, color: 'rgba(244,242,236,.85)' }}>
+                  <strong>{ORG.name}</strong><br />
+                  {FULL_ADDRESS}
+                </address>
+                <div style={mono({ fontSize: 11.5, letterSpacing: '.1em', opacity: .6 })}>MON–SAT · 10AM–7PM IST</div>
+                <div style={{ marginTop: 'auto' }}>
+                  <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noreferrer" className="cx-btn cx-btn-yellow" style={{ padding: '14px 22px', fontSize: 12.5 }}>
+                    Get directions →
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <iframe
+                src={MAPS_EMBED_URL}
+                title={`${ORG.name} office location — Kondapur, Hyderabad (Google Maps)`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ width: '100%', height: '100%', minHeight: 320, border: '2px solid rgba(244,242,236,.3)', borderRadius: 16, filter: 'grayscale(1) contrast(1.05)', display: 'block', boxSizing: 'border-box' }}
+              />
             </Reveal>
           </div>
         </div>

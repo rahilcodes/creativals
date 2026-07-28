@@ -65,6 +65,17 @@ export const breadcrumbSchema = (items) => ({
   })),
 });
 
+// ContactPage schema — references the canonical Organization by @id instead of
+// duplicating org data (the full object lives on the homepage).
+export const contactPageSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': `${BASE}/contact`,
+  url: `${BASE}/contact`,
+  name: `Contact ${ORG.name}`,
+  about: { '@id': `${BASE}/#organization` },
+});
+
 // Returns null when there are no FAQs so callers can .filter(Boolean).
 export const faqSchema = (faqs) =>
   Array.isArray(faqs) && faqs.length > 0
