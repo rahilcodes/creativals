@@ -7,25 +7,59 @@
 
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { getExpandedRoutes } from './routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.join(__dirname, '..');
 const BASE_URL = 'https://creativals.com';
 
 // ── 1+2. Routes from the router, dynamic patterns expanded from data files ──
 const { routePaths, urls, errors } = getExpandedRoutes();
 
-const PRIORITIES = [
-  [/^\/$/, 1.0],
-  [/^\/(services|industries|contact)$/, 0.9],
-  [/^\/(services|industries)\/[^/]+$/, 0.8],
-  [/^\/case-studies$/, 0.8],
-  [/^\/(about-us|approach|pricing|results)$/, 0.7],
-];
-const priorityFor = (url) => {
-  const hit = PRIORITIES.find(([re]) => re.test(url));
-  return hit ? hit[1] : 0.6;
+// ── Real <lastmod> from git: last commit touching the URL's source files. ────
+// Files with uncommitted changes count as modified today (they'll ship in the
+// commit this build belongs to). <priority> is not emitted — Google ignores it.
+const today = new Date().toISOString().split('T')[0];
+
+let dirtyFiles = new Set();
+try {
+  dirtyFiles = new Set(
+    execSync('git status --porcelain', { cwd: REPO_ROOT, encoding: 'utf8' })
+      .split('\n')
+      .map((l) => l.slice(3).trim().replace(/\\/g, '/'))
+      .filter(Boolean)
+  );
+} catch {
+  /* not a git checkout — every lastmod falls back to today */
+}
+
+const gitDateCache = new Map();
+const gitLastTouched = (file) => {
+  if (gitDateCache.has(file)) return gitDateCache.get(file);
+  let date = null;
+  if (dirtyFiles.has(file)) {
+    date = today;
+  } else {
+    try {
+      const iso = execSync(`git log -1 --format=%cI -- "${file}"`, {
+        cwd: REPO_ROOT,
+        encoding: 'utf8',
+      }).trim();
+      if (iso) date = iso.split('T')[0];
+    } catch {
+      /* fall through to today */
+    }
+  }
+  date = date || today;
+  gitDateCache.set(file, date);
+  return date;
+};
+
+const lastmodFor = (sources) => {
+  const dates = (sources || []).map(gitLastTouched);
+  return dates.length ? dates.sort().at(-1) : today;
 };
 
 // ── 3. Validate: every sitemap URL must match a real router route ────────────
@@ -48,12 +82,10 @@ if (errors.length) {
 }
 
 // ── 4. Write sitemap.xml ─────────────────────────────────────────────────────
-const today = new Date().toISOString().split('T')[0];
 const entries = urls
-  .map(({ url }) => `  <url>
+  .map(({ url, sources }) => `  <url>
     <loc>${BASE_URL}${url === '/' ? '/' : url}</loc>
-    <lastmod>${today}</lastmod>
-    <priority>${priorityFor(url).toFixed(1)}</priority>
+    <lastmod>${lastmodFor(sources)}</lastmod>
   </url>`)
   .join('\n');
 
