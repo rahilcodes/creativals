@@ -33,7 +33,7 @@ const industries = [
       { client: 'Glampinn Valley', before: 'Zero digital presence', after: '30M+ views · 30K followers', system: 'Meta Ads + Brand Build' },
       { client: 'Hotel Sky International', before: 'OTA-dependent bookings', after: '92% revenue growth in 6 months', system: 'Google Ads + Direct Booking Funnel' },
     ],
-    relatedServices: ['paid-social-ads', 'search-engine-optimization', 'whatsapp-sms-marketing', 'direct-response-video'],
+    relatedServices: ['local-maps-gbp', 'photography', 'direct-response-video', 'social-media-management'],
     mechanism: 'By mathematically testing thousands of visual hooks (drone shots, luxury close-ups, experiences) against targeted audiences, we discover exactly what makes a traveler book. We then push that winning creative through aggressive retargeting until the user converts on your direct ecosystem.',
     faqs: [
       { q: 'How fast can you fill empty rooms?', a: 'Once the direct booking funnel is live, we typically see booking attribution within the first 7–14 days depending on offer strength and retargeting pool size.' },

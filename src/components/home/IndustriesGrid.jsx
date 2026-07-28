@@ -5,10 +5,12 @@ import { Reveal, SecNum } from '../ui/primitives';
 const INDUSTRIES = [
   { slug: 'schools-colleges', title: 'Schools & Education', badge: '10X ENQUIRY VOLUME', body: 'Stop relying on word of mouth. Direct-admission funnels that pack classrooms and create waitlists.' },
   { slug: 'real-estate', title: 'Real Estate & Builders', badge: '60% LOWER CPL', body: 'No more junk leads. High-intent Google Ads that capture active buyers in your exact locality.' },
-  { slug: 'hotels-resorts', title: 'Hotels & Restaurants', badge: '280% DIRECT BOOKINGS', body: 'Bypass OTA commissions. Direct bookings and reliable footfall, every single weekend.' },
+  { slug: 'hotels-resorts', title: 'Hotels & Resorts', badge: '280% DIRECT BOOKINGS', body: 'Bypass OTA commissions. Direct bookings and reliable occupancy, every single weekend.' },
+  { slug: 'restaurants', title: 'Restaurants & Cafes', badge: 'FOOTFALL & ORDERS', body: 'Less Zomato dependency, more direct orders. Hyper-local campaigns that pack tables every weekend.' },
   { slug: 'healthcare', title: 'Hospitals & Clinics', badge: '2X PATIENT FOOTFALL', body: 'Build trust before the first visit. Automated booking plus dominance in local Google searches.' },
   { slug: 'b2b-enterprise', title: 'B2B & Service Firms', badge: 'HIGH-TICKET CLOSURES', body: 'Target exact decision-makers with intent-based ads that deliver qualified sales calls.' },
   { slug: 'ecommerce-brands', title: 'E-commerce Brands', badge: '300% AVERAGE ROAS', body: 'Stop burning budget on "boost post". Precision Shopping funnels engineered to scale ROAS.' },
+  { slug: 'fitness', title: 'Fitness & Wellness', badge: 'MEMBERS & RETENTION', body: 'New members every month, old members who stay. Local growth systems for gyms and studios.' },
 ];
 
 const IndustriesGrid = () => (
@@ -24,7 +26,7 @@ const IndustriesGrid = () => (
         </Reveal>
         <Reveal delay={140}>
           <p className="cx-lead" style={{ maxWidth: 620 }}>
-            Battle-tested across 6 high-competition domestic industries. We know exactly what works in each.
+            Battle-tested across 8 high-competition domestic industries. We know exactly what works in each.
           </p>
         </Reveal>
       </div>

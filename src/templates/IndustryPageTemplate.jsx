@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getRelatedServices } from '../data/allServices';
 import { Reveal, SecNum, waLink } from '../components/ui/primitives';
 
 const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extra });
@@ -7,6 +8,9 @@ const mono = (extra = {}) => ({ fontFamily: "'IBM Plex Mono',monospace", ...extr
 const IndustryPageTemplate = ({ industry }) => {
   const waMsg = `Hi! I run a business in the ${industry.title} industry. I want a free growth audit.`;
   const [headLine1, headLine2] = industry.heroHeadline.split('\n');
+  // Topical per-industry service set (audit: cross-links were one fixed
+  // 5-service list sitewide) — curated slugs live in industries.js.
+  const relatedServices = getRelatedServices(industry.relatedServices || []);
 
   return (
     <div>
@@ -195,10 +199,44 @@ const IndustryPageTemplate = ({ industry }) => {
         </section>
       )}
 
-      {/* ── 05 · FINAL CTA (indigo) ────────────────────────────── */}
+      {/* ── 05 · SYSTEMS FOR THIS INDUSTRY (cream) ─────────────── */}
+      {relatedServices.length > 0 && (
+        <section style={{ background: '#F4F2EC', color: '#17151A', borderTop: '1px solid rgba(23,21,26,.12)' }}>
+          <div className="cx-wrap cx-section">
+            <Reveal><SecNum n="05" label="Systems for this industry" /></Reveal>
+            <Reveal delay={60}>
+              <h2 className="cx-display cx-h2" style={{ marginBottom: 48 }}>
+                What we deploy for<br />
+                <span style={{ color: '#4F46E5', fontStyle: 'italic' }}>{industry.title.toLowerCase()}.</span>
+              </h2>
+            </Reveal>
+            <div className="cx-grid2" style={{ gap: 18 }}>
+              {relatedServices.map((r, i) => (
+                <Reveal key={r.slug} delay={i * 80}>
+                  <Link
+                    to={`/services/${r.slug}`}
+                    className="cx-card-invert"
+                    style={{ padding: '22px 24px', height: '100%', boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14 }}
+                  >
+                    <span style={{ fontWeight: 800, fontSize: 16.5, letterSpacing: '-0.01em' }}>{r.title}</span>
+                    <span aria-hidden="true" style={{ fontWeight: 900, fontSize: 18, flex: 'none' }}>→</span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal>
+              <div style={{ marginTop: 40, display: 'flex', justifyContent: 'center' }}>
+                <Link to="/services" className="cx-btn cx-btn-outline-ink">View all 30+ services →</Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* ── 06 · FINAL CTA (indigo) ────────────────────────────── */}
       <section style={{ background: '#4F46E5', color: '#F4F2EC' }}>
         <div className="cx-wrap cx-section">
-          <Reveal><SecNum n="05" label="Free · No commitment" dark /></Reveal>
+          <Reveal><SecNum n="06" label="Free · No commitment" dark /></Reveal>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 40, flexWrap: 'wrap' }}>
             <div>
               <Reveal delay={60}>
