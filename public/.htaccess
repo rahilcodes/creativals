@@ -2,6 +2,16 @@
   RewriteEngine On
   RewriteBase /
 
+  # 0a. Canonical host: www -> apex (root .htaccess rules don't inherit here).
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # 0b. Direct external requests to /dist/... 301 to the clean URL. Internal
+  #     rewrites from the root .htaccess don't change THE_REQUEST, so this
+  #     only fires for genuinely typed/linked /dist URLs.
+  RewriteCond %{THE_REQUEST} \s/+dist/ [NC]
+  RewriteRule ^(.*)$ /$1 [R=301,L]
+
   # 1. Real files (assets, images, fonts, verification files, snapshots
   #    addressed directly) are served as-is.
   RewriteCond %{REQUEST_FILENAME} -f
