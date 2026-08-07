@@ -11,6 +11,7 @@
     "postbuild": "npm run prerender",
     "prerender": "node scripts/prerender.js",
     "indexnow": "node scripts/indexnow-submit.js",
+    "instant-index": "node scripts/instant-index.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

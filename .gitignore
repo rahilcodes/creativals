@@ -25,3 +25,10 @@ dist-ssr
 
 # SEO audit artifacts (internal findings - repo root is the web root, never deploy)
 creativals.com-audit/
+
+# Google Indexing API service account key
+google-service-account.json
+*.key.json
+*.zip
+
+
