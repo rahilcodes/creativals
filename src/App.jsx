@@ -24,6 +24,8 @@ const ExperimentsPage = lazy(() => import('./pages/ExperimentsPage'));
 const AcademyPage = lazy(() => import('./pages/AcademyPage'));
 const PlaybooksPage = lazy(() => import('./pages/PlaybooksPage'));
 const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogArticlePage = lazy(() => import('./pages/BlogArticlePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const IndustryPage = lazy(() => import('./pages/IndustryPage'));
@@ -52,6 +54,8 @@ function App() {
             <Route path="/academy" element={<AcademyPage />} />
             <Route path="/playbooks" element={<PlaybooksPage />} />
             <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* /success-stories and /client-reviews removed until verified
                 content exists (CLAUDE.md content policy) */}

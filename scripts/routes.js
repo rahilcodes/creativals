@@ -14,6 +14,7 @@ import baseServices from '../src/data/services.js';
 import extraServices from '../src/data/servicesExtra.js';
 import devServices from '../src/data/servicesDev.js';
 import brandingServices from '../src/data/servicesBranding.js';
+import blogArticles from '../src/data/blogArticles.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,12 +29,14 @@ const SLUG_SOURCES = {
     ...brandingServices.map((s) => ({ slug: s.slug, file: 'src/data/servicesBranding.js' })),
   ],
   '/industries/:slug': industries.map((i) => ({ slug: i.slug, file: 'src/data/industries.js' })),
+  '/blog/:slug': blogArticles.map((a) => ({ slug: a.slug, file: 'src/data/blogArticles.js' })),
 };
 
 // Extra content-bearing files per dynamic route (template + page shell).
 const ROUTE_EXTRA_SOURCES = {
   '/services/:slug': ['src/templates/ServicePageTemplate.jsx', 'src/pages/ServicePage.jsx'],
   '/industries/:slug': ['src/templates/IndustryPageTemplate.jsx', 'src/pages/IndustryPage.jsx'],
+  '/blog/:slug': ['src/templates/BlogArticleTemplate.jsx', 'src/pages/BlogArticlePage.jsx'],
 };
 
 function readAppSource() {

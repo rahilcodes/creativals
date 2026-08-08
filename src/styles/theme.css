@@ -422,3 +422,18 @@ a.cx-card-invert { display: block; color: var(--ink); text-decoration: none; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 5px; border: 2px solid var(--cream); }
 ::-webkit-scrollbar-thumb:hover { background: #3f38c9; }
+
+/* ── Blog article body (dangerouslySetInnerHTML content) ──── */
+.cx-article-body p { margin: 0 0 18px; }
+.cx-article-body p:last-child { margin-bottom: 0; }
+.cx-article-body ul, .cx-article-body ol { margin: 0 0 18px; padding-left: 24px; }
+.cx-article-body li { margin-bottom: 8px; line-height: 1.7; }
+.cx-article-body h3 { font-size: 20px; font-weight: 800; margin: 28px 0 14px; letter-spacing: -0.01em; color: var(--ink); }
+.cx-article-body strong { font-weight: 700; color: var(--ink); }
+.cx-article-body em { font-style: italic; }
+.cx-article-body code { font-family: var(--font-mono); font-size: 0.9em; background: rgba(79,70,229,.08); padding: 2px 6px; border-radius: 4px; }
+.cx-article-body table { width: 100%; border-collapse: collapse; margin: 0 0 18px; font-size: 15px; }
+.cx-article-body th, .cx-article-body td { padding: 10px 14px; border: 1.5px solid rgba(23,21,26,.15); text-align: left; }
+.cx-article-body th { background: var(--ink); color: var(--cream); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+.cx-article-body a { color: var(--indigo); text-decoration: underline; text-underline-offset: 3px; }
+.cx-article-body a:hover { color: #3f38c9; }

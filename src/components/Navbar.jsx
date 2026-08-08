@@ -26,9 +26,13 @@ const SERVICE_COLS = [
     items: [
       { slug: 'custom-websites', title: 'Custom Websites', tag: ['POPULAR', 'yellow'] },
       { slug: 'landing-pages', title: 'High-Converting Landings' },
-      { slug: 'ecommerce-stores', title: 'E-commerce Stores' },
+      { slug: 'ecommerce-development', title: 'E-commerce Development' },
+      { slug: 'wordpress-development', title: 'WordPress Development' },
+      { slug: 'shopify-development', title: 'Shopify Development' },
+      { slug: 'woocommerce-development', title: 'WooCommerce Development' },
+      { slug: 'web-app-development', title: 'Web Application Dev', tag: ['HIGH ROI', 'indigo'] },
+      { slug: 'portal-development', title: 'Portal Development' },
       { slug: 'mobile-applications', title: 'Mobile Applications' },
-      { slug: 'web-applications', title: 'Web Applications', tag: ['HIGH ROI', 'indigo'] },
       { slug: 'crm-management', title: 'CRM Management' },
       { slug: 'workflow-automations', title: 'Workflow Automations', tag: ['MOST USED', 'ink'] },
       { slug: 'api-integrations', title: 'API Integrations' },
@@ -86,6 +90,7 @@ const ABOUT_COLS = [
   {
     head: 'What we teach', sub: 'Playbooks behind our results.', quote: '"Everything we use to scale clients"',
     items: [
+      { to: '/blog', title: 'Blog & Insights', desc: 'Tech & growth playbooks' },
       { to: '/academy', title: 'Academy', desc: 'Structured learning' },
       { to: '/playbooks', title: 'Playbooks', desc: 'Proven frameworks' },
       { to: '/resources', title: 'Resources', desc: 'Guides and templates' },

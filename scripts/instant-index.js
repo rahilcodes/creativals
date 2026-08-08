@@ -172,7 +172,7 @@ async function submitGoogleIndexing() {
           const errJson = await res.json().catch(() => ({}));
           console.warn(`   ⚠️ ${url} -> ${res.status}: ${errJson.error?.message || 'Failed'}`);
         }
-      } catch (err) {
+      } catch (_err) {
         failCount++;
       }
     }

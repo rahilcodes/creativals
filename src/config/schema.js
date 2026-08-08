@@ -89,3 +89,28 @@ export const faqSchema = (faqs) =>
         })),
       }
     : null;
+
+// Article schema for blog posts.
+export const articleSchema = (article) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.metaDesc || article.excerpt,
+  datePublished: article.date,
+  dateModified: article.date,
+  url: `${BASE}/blog/${article.slug}`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE}/blog/${article.slug}` },
+  author: {
+    '@type': 'Organization',
+    '@id': `${BASE}/#organization`,
+    name: ORG.name,
+    url: BASE,
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${BASE}/#organization`,
+    name: ORG.name,
+    url: BASE,
+    logo: { '@type': 'ImageObject', url: ORG.logo },
+  },
+});

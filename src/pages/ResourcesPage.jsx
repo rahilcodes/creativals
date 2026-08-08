@@ -30,9 +30,9 @@ const RESOURCES = [
 
 const ResourcesPage = () => {
   useSEO({
-    title: 'Digital Marketing Resources & Playbooks | Creativals',
-    description: 'Access premium digital marketing resources, SEO playbooks, and growth blueprints from Hyderabad\'s top execution agency.',
-    keywords: 'digital marketing resources hyderabad, free seo playbooks, growth marketing guides',
+    title: 'App Development & Playbooks Hyderabad | Creativals',
+    description: 'Growth guides & insights from top app development companies in hyderabad. Download playbooks, Figma wireframes & SEO blueprints.',
+    keywords: 'app development companies in hyderabad, app developers in hyderabad, designers in hyderabad, design agency hyderabad, digital marketing resources hyderabad',
   });
 
   return (

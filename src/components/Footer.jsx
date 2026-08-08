@@ -76,6 +76,7 @@ const Footer = () => {
             <div style={mono({ fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', opacity: .5, marginBottom: 20 })}>Company</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: 15 }}>
               <Link to="/about-us" className="cx-flink">About Us</Link>
+              <Link to="/blog" className="cx-flink">Blog &amp; Insights</Link>
               <Link to="/case-studies" className="cx-flink">Case Studies</Link>
               <Link to="/industries" className="cx-flink">Industries</Link>
               <Link to="/pricing" className="cx-flink">Pricing</Link>
