@@ -30,6 +30,10 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const IndustryPage = lazy(() => import('./pages/IndustryPage'));
 const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'));
+const RianProfilePage = lazy(() => import('./pages/RianProfilePage'));
+const RahilProfilePage = lazy(() => import('./pages/RahilProfilePage'));
+const AhmedProfilePage = lazy(() => import('./pages/AhmedProfilePage'));
+const FarhanProfilePage = lazy(() => import('./pages/FarhanProfilePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
@@ -46,6 +50,14 @@ function App() {
             <Route path="/industries" element={<IndustriesPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about-us" element={<AboutPage />} />
+            <Route path="/mohammed-rahil-azeez" element={<RahilProfilePage />} />
+            <Route path="/team/mohammed-rahil-azeez" element={<RahilProfilePage />} />
+            <Route path="/mohammed-rian-azeez" element={<RianProfilePage />} />
+            <Route path="/team/mohammed-rian-azeez" element={<RianProfilePage />} />
+            <Route path="/syed-ahmed" element={<AhmedProfilePage />} />
+            <Route path="/team/syed-ahmed" element={<AhmedProfilePage />} />
+            <Route path="/mohammed-farhan-azeez" element={<FarhanProfilePage />} />
+            <Route path="/team/mohammed-farhan-azeez" element={<FarhanProfilePage />} />
             <Route path="/approach" element={<ApproachPage />} />
             <Route path="/join-us" element={<JoinUsPage />} />
             <Route path="/products" element={<ProductsPage />} />

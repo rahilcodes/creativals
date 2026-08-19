@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
 import { Reveal, SecNum, waLink } from '../components/ui/primitives';
 
@@ -12,14 +13,16 @@ const TEAM = [
     owns: ['Clients', 'Finance', 'Growth', 'Strategy', 'Partnerships'],
     avatar: '/rahil.webp',
     quote: '"Execution is the only strategy that matters."',
+    link: '/mohammed-rahil-azeez',
   },
   {
-    name: 'Raiyan Azeez',
+    name: 'Mohammed Rian Azeez',
     role: 'Head of Tech & Systems',
-    handle: '@raiyan',
+    handle: '@rian',
     owns: ['Development', 'Automation', 'Systems', 'AI Ops'],
-    avatar: '/raiyan.webp',
+    avatar: '/rian.webp',
     quote: '"If it can be automated, it should be."',
+    link: '/mohammed-rian-azeez',
   },
   {
     name: 'Syed Ahmed',
@@ -28,14 +31,16 @@ const TEAM = [
     owns: ['SEO', 'Paid Ads', 'Analytics', 'Growth Execution'],
     avatar: '/ahmed.webp',
     quote: '"Every rupee of ad spend is a question. We find the answer."',
+    link: '/syed-ahmed',
   },
   {
-    name: 'Farhan Azeez',
+    name: 'Mohammed Farhan Azeez',
     role: 'Creative Director',
     handle: '@farhan',
     owns: ['Branding', 'Design', 'Video', 'Visual Identity'],
     avatar: '/farhan.webp',
     quote: '"Design is not decoration. It\'s direction."',
+    link: '/mohammed-farhan-azeez',
   },
 ];
 
@@ -76,7 +81,7 @@ const VISION = [
 
 const LETTER = [
   'When I founded Creativals, I looked at an industry full of excuses and decided to build an execution machine that leaves no room for failure. But you don\'t build an empire with strangers who clock out at 5 PM. You need absolute trust, relentless execution, and a level of loyalty money simply cannot buy.',
-  'That\'s why I didn\'t hire a corporate board. I built this company with my three brothers: Raiyan, Ahmed, and Farhan.',
+  'That\'s why I didn\'t hire a corporate board. I built this company with my three brothers: Rian, Ahmed, and Farhan.',
   'We are not just colleagues. We are a single, unstoppable unit. We don\'t have office politics or departments that point fingers at each other; we have a shared, ruthless obsession with winning. The speed and synchronicity of four brothers fighting for the same vision cannot be matched by any traditional agency.',
   'When you partner with us, you aren\'t getting handed off to a junior account manager. You are bringing four brothers into your war room who treat your revenue like our own bank account. Every system we build, every ad we scale, and every brand we transform carries our family name.',
 ];
@@ -216,7 +221,7 @@ const AboutPage = () => {
           </Reveal>
           <Reveal delay={120}>
             <p className="cx-lead" style={{ maxWidth: 560, marginBottom: 54, color: 'rgba(23,21,26,.75)' }}>
-              We're deliberately lean. Fewer people, deeper ownership, faster execution. Four brothers — Rahil, Raiyan,
+              We're deliberately lean. Fewer people, deeper ownership, faster execution. Four brothers — Rahil, Rian,
               Ahmed, and Farhan — one shared obsession with winning.
             </p>
           </Reveal>
@@ -254,11 +259,18 @@ const AboutPage = () => {
                   </div>
                   <div style={{ fontWeight: 900, fontSize: 19, lineHeight: 1.15, letterSpacing: '-0.01em', marginBottom: 12 }}>{m.name}</div>
                   <p style={{ margin: '0 0 18px', fontSize: 13.5, fontStyle: 'italic', lineHeight: 1.6, color: 'rgba(23,21,26,.65)' }}>{m.quote}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: m.link ? 16 : 0 }}>
                     {m.owns.map((o) => (
                       <span key={o} className="cx-tag cx-tag-indigo">{o}</span>
                     ))}
                   </div>
+                  {m.link && (
+                    <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(23,21,26,.1)' }}>
+                      <Link to={m.link} className="cx-flink" style={{ ...mono({ fontSize: 11, fontWeight: 700, letterSpacing: '.08em', color: '#4F46E5' }) }}>
+                        VIEW FULL PROFILE →
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             ))}

@@ -19,7 +19,7 @@ const HomePage = () => {
     title: 'Digital Marketing Agency in Hyderabad | Creativals',
     description: 'Stop running ads that don\'t convert. Creativals is a digital marketing agency in Hyderabad building growth systems that close deals.',
     keywords: 'digital marketing agency hyderabad, best marketing agency in hyderabad, growth agency hyderabad, seo company hyderabad',
-    abstract: 'Creativals is a Hyderabad-based digital marketing agency and growth powerhouse founded in 2019 by four brothers: Rahil, Raiyan, Farhan, and Ahmed. We specialize in SEO, paid ads, web development, and branding.',
+    abstract: 'Creativals is a Hyderabad-based digital marketing agency and growth powerhouse founded in 2019 by four brothers: Rahil, Rian, Farhan, and Ahmed. We specialize in SEO, paid ads, web development, and branding.',
     // Org + LocalBusiness(ProfessionalService) from the central config, plus
     // FAQPage mirroring the rendered FAQ block. Person schema deferred.
     schema: [orgSchema(), faqSchema(HOME_FAQS)].filter(Boolean),
